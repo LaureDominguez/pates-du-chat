@@ -1,0 +1,19 @@
+<section class="shop-view">
+    <?php foreach($tousMesArticles as $product): ?>
+        <figure class="shop-tuile">
+            <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
+                <!-- @if ($product->image)
+                    <img src="/images/{{$product->img}}" alt="">
+                    @else
+                    <img src="/images/logo.png" alt="">
+                @endif -->
+                <figcaption>
+                    <h5><?php $product ?></h5>
+                    <!-- <p>{{$product->descript}}</p>
+                    <p>{{$product->price}}€</p> -->
+                    <p class="btn">Voir plus</p>
+                </figcaption>
+            <!-- </a> -->
+        </figure>
+    <?php endforeach; ?>
+</section>
