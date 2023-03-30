@@ -9,6 +9,7 @@ spl_autoload_register(function ($class) {                            // $class =
 if(array_key_exists('route', $_GET)):
     
     switch ($_GET['route']) {
+        //pages
         case 'home':
             $controller = new Controllers\HomeController();
             $controller->displayHomePage();
@@ -27,8 +28,34 @@ if(array_key_exists('route', $_GET)):
             # code...
             break;
 
+        case 'admin':
+            # code...
+            break;
+
+        //login
         case 'login':
             $controller = new Controllers\UsersController();
+            break;
+
+        case 'register':
+            # code...
+            break;
+
+        case 'logout':
+            # code...
+            break;
+
+        //profil
+        case 'myAccount':
+            # code...
+            break;
+
+        case 'myShopCart':
+            # code...
+            break;
+
+        case 'myShopHist':
+            # code...
             break;
 
         default:
