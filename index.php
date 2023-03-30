@@ -29,16 +29,21 @@ if(array_key_exists('route', $_GET)):
             break;
 
         case 'admin':
-            # code...
+
+            $controller = new Controllers\AdminController();
+            $controller->displayDashboard();
             break;
 
         //login
         case 'login':
             $controller = new Controllers\UsersController();
+            $controller->login();
             break;
 
         case 'register':
-            # code...
+
+            $controller = new Controllers\UsersController();
+            $controller->register();
             break;
 
         case 'logout':
@@ -47,7 +52,8 @@ if(array_key_exists('route', $_GET)):
 
         //profil
         case 'myAccount':
-            # code...
+            $controller = new Controllers\UsersController();
+            $controller->profil();
             break;
 
         case 'myShopCart':
