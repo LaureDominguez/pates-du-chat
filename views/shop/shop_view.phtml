@@ -1,21 +1,31 @@
-<section class="shop-view">
+<section class="content">
     <h2>Tous les articles</h2>
-    <?php foreach ($products as $product) : ?>
-        <h3><?= $product["name"] ?></h3>
-        <figure class="shop-tuile">
-            <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-            <!-- @if ($product->image)
-                    <img src="/images/{{$product->img}}" alt="">
-                    @else -->
-            <img src="/public/img/Hades.jpg" alt="">
-            <!-- @endif -->
-            <figcaption>
-                <h5><?= $product["name"] ?></h5>
-                <p><?= $product["descript"] ?></p>
-                <p><?= $product["price"] ?>€</p>
-                <p class="btn">Voir plus</p>
-            </figcaption>
-            <!-- </a> -->
-        </figure>
-    <?php endforeach; ?>
+    <div class="shop-view">
+        <?php foreach ($categories as $category) : ?>
+            <h3><?= $category["name"] ?></h3>
+            <article class="shop-cat">
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($category["id"] == $product["cat_id"]) : ?>
+                        <figure class="shop-tuile">
+                            <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
+                            <!-- @if ($product->image)
+                            <img src="/images/{{$product->img}}" alt="">
+                            @else -->
+                            <img src="public/img/Hades.jpg" alt="">
+                            <!-- @endif -->
+                            <figcaption>
+                                <h5><?= $product["name"] ?></h5>
+                                <p><?= $product["descript"] ?></p>
+                                <p><?= $product["price"] ?>€</p>
+                                <p class="btn">Voir plus</p>
+                            </figcaption>
+                            <!-- </a> -->
+                        </figure>
+                    <//?php else : ?>
+                        <!-- <p>aucun produit dans ce rayon</p> -->
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+            </article>
+    </div>
 </section>

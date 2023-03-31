@@ -23,7 +23,7 @@ if(array_key_exists('route', $_GET)):
 
         case 'shop':
             $controller = new Controllers\ShopController();
-            $controller->displayAllProducts();
+            $controller->displayAllShop();
             break;
             
         case 'recipes':
@@ -66,6 +66,17 @@ if(array_key_exists('route', $_GET)):
             # code...
             break;
 
+        //form
+        case 'submitCatForm':
+            $controller = new Controllers\AdminController;
+            $controller->verifForm();
+            break;
+
+        case 'submitProdForm':
+            # code...
+            break;
+
+        //end
         default:
             header('Location : index.php?route=home');
             exit;
@@ -73,9 +84,9 @@ if(array_key_exists('route', $_GET)):
     }
 else:
     //var_dump('coucou');
-    $controller = new Controllers\HomeController();
-    $controller->displayHomePage();
-    //header('Location : index.php?route=home');
+    // $controller = new Controllers\HomeController();
+    // $controller->displayHomePage();
+    header('Location: index.php?route=home');
     exit;
 endif;
 

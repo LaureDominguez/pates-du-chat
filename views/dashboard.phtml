@@ -5,10 +5,34 @@
 
 <section>
     <h2>boutique</h2>
+    <form action="index.php?route=submitCatForm" method="post">
+        <!-- verifForm -->
+        <h3>Créer une nouvelle catégorie</h3>
+        <div>
+            <label for="name">nom</label>
+            <input type="text" name="name" id="" required>
+        </div>
+        <div>
+            <label for="descript">decription</label>
+            <textarea name="descript" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn" value="">envoyer</button>
+    </form>
+
     <form action="" method="post">
+        <h3>Créer un nouveau produit</h3>
         <div>
             <label for="">nom</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="" required>
+        </div>
+        <div>
+            <label for="">catégorie</label>
+            <select name="category" id="">
+                <option value="">---</option>
+                <?php foreach ($categories as $category) : ?>
+                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div>
             <label for="">decription</label>
@@ -16,7 +40,7 @@
         </div>
         <div>
             <label for="">prix</label>
-            <input type="number" name="" id="">
+            <input type="number" name="" id="" required>
         </div>
         <div>
             <label for="">image</label>
@@ -30,7 +54,7 @@
     <form action="" method="post">
         <div>
             <label for="">nom</label>
-            <input type="text" name="" id="">
+            <input type="text" name="" id="" required>
         </div>
         <div>
             <label for="">recette</label>
@@ -45,5 +69,5 @@
 
 <section>
     <h2>contact</h2>
-    
+
 </section>

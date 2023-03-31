@@ -1,6 +1,19 @@
+
+/******************* general *******************/
+
+:root{
+    --orange: rgb(242, 143, 24);
+    --vert: rgb(0, 79, 18);
+}
+
 body *{
     box-sizing: border-box;
-    margin: 0;
+}
+
+body {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--orange);
 }
 
 nav {
@@ -18,9 +31,100 @@ nav a{
     padding: 1rem;
 }
 
+section{
+    margin-bottom: 3rem ;
+}
+
+main{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.content{
+    background-color: #ffffff57;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/******************* Fonts *******************/
+
+h1, h2, h3, h4, h5, nav, .btn {
+    font-family: 'Pacifico', cursive;
+    color: var(--vert);
+}
+
+h1, h2, h3, h4, h5 {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5rem;
+    line-height: 8rem;
+    margin-bottom: 3rem;
+}
+
+h2{
+    font-size: 1.5rem;
+    line-height: 3rem;
+    overflow: hidden;
+    text-align: center;
+}
+h2:before,
+h2:after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+}
+h2:before {
+    right: 1rem;
+    margin-left: -10%;
+}
+h2:after {
+    left: 1rem;
+    margin-right: -10%;
+}
+
+h3{
+    font-size: 1.2rem;
+    line-height: 2.5rem;
+}
+
+a, a:active{
+    text-decoration: none;
+    color: inherit;
+}
+
+/******************* boutton *******************/
+
+.btn{
+    padding: 0.5rem;
+    margin: 1rem;
+    color: var(--vert);
+    border: solid var(--vert) 1px ;
+    border-radius: 5px;
+    transition: all, 0.2s ease-in;
+}
+
+.btn:hover, .btn:active{
+    color: #fff;
+    border: solid var(--orange) 1px ;
+    background-color: var(--vert);
+}
+
+
 /******************* shop *******************/
 
-.shop-view{
+/* .shop-view{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop-cat{
     margin: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, 15rem);
@@ -29,7 +133,7 @@ nav a{
     justify-items: center;
     align-content: center;
     justify-content: center;
-}
+} */
 
 .shop-tuile{
     height: 12rem;
