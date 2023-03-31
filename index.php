@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
@@ -70,6 +72,10 @@ if(array_key_exists('route', $_GET)):
             break;
     }
 else:
-    header('Location : index.php?route=home');
+    //var_dump('coucou');
+    $controller = new Controllers\HomeController();
+    $controller->displayHomePage();
+    //header('Location : index.php?route=home');
     exit;
 endif;
+
