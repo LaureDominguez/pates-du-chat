@@ -31,7 +31,6 @@ if(array_key_exists('route', $_GET)):
             break;
 
         case 'admin':
-
             $controller = new Controllers\AdminController();
             $controller->displayDashboard();
             break;
@@ -43,13 +42,13 @@ if(array_key_exists('route', $_GET)):
             break;
 
         case 'register':
-
             $controller = new Controllers\UsersController();
             $controller->register();
             break;
 
         case 'logout':
-            # code...
+            $controller = new Controllers\UsersController();
+            $controller->logout();
             break;
 
         //profil
@@ -83,9 +82,6 @@ if(array_key_exists('route', $_GET)):
             break;
     }
 else:
-    //var_dump('coucou');
-    // $controller = new Controllers\HomeController();
-    // $controller->displayHomePage();
     header('Location: index.php?route=home');
     exit;
 endif;

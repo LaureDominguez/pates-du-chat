@@ -1,6 +1,9 @@
 <?php 
 
 namespace Models;
+
+use PDOException;
+
 // define("DB_HOST", 'db.3wa.io');
 // define("DB_NAME", 'argon71hotmailfr_mysociety');
 // define("DB_USER", 'argon71hotmailfr');
@@ -34,5 +37,24 @@ class Database {
         $query = $this->bdd->prepare($req);
         $query->execute($params);
         return $query->fetch(); // Récupérer 1 enregistrement
+    }
+
+    protected function creatOne(string $req, array $params = []){
+        $query = $this->bdd->prepare($req);
+
+        // $query->bindValue($params);
+
+        // $query->bindValue($params[$name]);
+        // $query->bindValue($params[$descript]);
+
+        // foreach($params as $param){
+        //     $query->bindValue($param);
+        // }
+
+        if ($query->execute()) {
+            echo 'Nouvelle catégorie enregistrée';
+        } else {
+            'Impossible de créer la catégorie';
+        }
     }
 }
