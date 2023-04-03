@@ -120,11 +120,15 @@ form label{
     text-transform: capitalize;
 }
 
-form input, form textarea, form select{
+form input:not(.btn, .file), form textarea, form select{
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 1px #00000085;
 }
+/* 
+.file{
+
+} */
 
 form div {
     display: flex;
