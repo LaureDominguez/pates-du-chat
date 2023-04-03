@@ -2,9 +2,6 @@
 
 namespace Controllers;
 
-use Models\Categories;
-use PDO;
-use PDOException;
 
 class AdminController{
     public function displayDashboard(){
@@ -21,22 +18,26 @@ class AdminController{
     public function verifForm()
     {
         $errors = [];
-        if (array_key_exists('name', $_POST)) {
+        $success = [];
+        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
             if (empty($_POST['name']))
-                $errors[] = "Veuillez renseigner ce champs";
-            if (!filter_var($_POST['name']))
-                $errors[] = "Veuillez utiliser des caractères valides";
-            if (array_key_exists('descript', $_POST)) {
-                if (!filter_var($_POST['descript']))
-                    $errors[] = "Veuillez utiliser des caractères valides";
-            }
+                $errors[] = "Veuillez renseigner le nom de la catgéorie";
+            if (empty($_POST['descript']))
+                $errors[] = "Veuillez entrer une description";
+
             if (count($errors) == 0) {
+                $addCategory = [
+                    trim($_POST['name']),
+                    trim($_POST['descript'])
+                ];
+
                 $model = new \Models\Categories();
-                $model->creatNew();
+                $model->creatNew($addCategory);
+                $success[] = "La nouvelle catégorie a bien été créée !";
             }
         }
-        else{
-            echo $errors;
-        }
+        $template = "dashboard.phtml";
+        include_once 'views/layout.phtml';
+
     }
 }

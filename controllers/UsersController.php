@@ -27,4 +27,6 @@ class UsersController{
         header('Location: index.php');
         exit();
     }
+
+    
 }

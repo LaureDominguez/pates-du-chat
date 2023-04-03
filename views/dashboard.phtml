@@ -1,3 +1,8 @@
+<aside>
+    <?php require_once('errors.phtml') ?>
+    <?php require_once('success.phtml') ?>
+</aside>
+
 <section>
     <h2>news</h2>
     ckeditor
@@ -8,13 +13,14 @@
     <form action="index.php?route=submitCatForm" method="post">
         <!-- verifForm -->
         <h3>Créer une nouvelle catégorie</h3>
+
         <div>
             <label for="name">nom</label>
-            <input type="text" name="name" id="" required>
+            <input type="text" name="name" id="name" required>
         </div>
         <div>
             <label for="descript">decription</label>
-            <textarea name="descript" id="" cols="30" rows="10"></textarea>
+            <textarea name="descript" id="decript" cols="30" rows="10"></textarea>
         </div>
         <button type="submit" class="btn" value="">envoyer</button>
     </form>

@@ -1,0 +1,7 @@
+<div class="success">
+    <?php if (isset($success) && count($success) > 0) : ?>
+        <?php foreach ($success as $elem) : ?>
+            <p><?= $elem ?></p>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

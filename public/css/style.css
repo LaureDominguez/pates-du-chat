@@ -50,11 +50,11 @@ main{
 h1, h2, h3, h4, h5, nav, .btn {
     font-family: 'Pacifico', cursive;
     color: var(--vert);
+    text-align: center;
 }
 
-h1, h2, h3, h4, h5 {
+*::first-letter {
     text-transform: capitalize;
-    text-align: center;
 }
 
 h1{
@@ -68,6 +68,9 @@ h2{
     line-height: 3rem;
     overflow: hidden;
     text-align: center;
+}
+h2:first-child{
+    text-transform: capitalize;
 }
 h2:before,
 h2:after {
@@ -118,6 +121,7 @@ a, a:active{
 /******************* form *******************/
 form label{
     text-transform: capitalize;
+    font-weight: bold;
 }
 
 form input:not(.btn, .file), form textarea, form select{
@@ -135,6 +139,15 @@ form div {
     flex-wrap: wrap;
     flex-direction: column;
     margin-bottom: 1rem;
+}
+
+/******************* prompt *******************/
+.error{
+    color: red;
+}
+
+.success{
+    color: green;
 }
 
 /******************* shop *******************/

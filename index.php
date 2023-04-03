@@ -77,7 +77,7 @@ if(array_key_exists('route', $_GET)):
 
         //end
         default:
-            header('Location : index.php?route=home');
+            header('Location: index.php?route=home');
             exit;
             break;
     }
