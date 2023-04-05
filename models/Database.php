@@ -34,7 +34,22 @@ class Database {
     {
         $query = $this->bdd->prepare($req);
         $query->execute($params);
-        return $query->fetch(); // Récupérer 1 enregistrement
+        return $query->fetch(); // Récupérer les enregistrements
+    }
+
+    protected function isUsed(string $req, array $params = []): array
+    {
+        $query = $this->bdd->prepare($req);
+        $query->execute($params);
+        $result = $query->fetch();
+
+        if ($result == false) {
+            $free = ["free" => true];
+            return $free;
+        } else {
+            $free = ["free" => false];
+            return $free;
+        }
     }
 
     protected function addOne(string $table, string $columns, string $values, $data)
@@ -43,5 +58,6 @@ class Database {
 
         $query->execute($data);
         $query->closeCursor();
+        // return $this->bdd->lastInsertId();
     }
 }

@@ -38,6 +38,5 @@ class AdminController{
         }
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
-
     }
 }

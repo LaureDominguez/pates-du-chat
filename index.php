@@ -43,7 +43,7 @@ if(array_key_exists('route', $_GET)):
 
         case 'register':
             $controller = new Controllers\UsersController();
-            $controller->register();
+            $controller->verifForm();
             break;
 
         case 'logout':
