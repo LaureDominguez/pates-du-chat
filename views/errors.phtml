@@ -1,7 +1,7 @@
-<div class="error">
-    <?php if(isset ($errors) && count($errors)>0): ?>
+<?php if (isset($errors) && count($errors) > 0) : ?>
+    <div class="modale error" id="modale">
         <?php foreach ($errors as $error) : ?>
             <p><?= $error ?></p>
         <?php endforeach; ?>
-    <?php endif; ?>
-</div>
+    </div>
+<?php endif; ?>

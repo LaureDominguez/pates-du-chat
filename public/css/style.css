@@ -129,10 +129,6 @@ form input:not(.btn, .file), form textarea, form select{
     border-radius: 5px;
     box-shadow: 0px 0px 5px 1px #00000085;
 }
-/* 
-.file{
-
-} */
 
 form div {
     display: flex;
@@ -142,6 +138,16 @@ form div {
 }
 
 /******************* prompt *******************/
+
+.modale{
+    width: 20vw;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--orange);
+    position:absolute;
+    transform:translate(-50%,-50%);
+    box-shadow: 2px 2px 15px 2px #000000a3;
+}
 .error{
     color: red;
 }

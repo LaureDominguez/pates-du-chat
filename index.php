@@ -2,8 +2,6 @@
 
 session_start();
 
-
-
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
@@ -41,9 +39,14 @@ if(array_key_exists('route', $_GET)):
             $controller->login();
             break;
 
+        case 'connect':
+            $controller = new Controllers\UsersController();
+            $controller->checkUser();
+            break;
+
         case 'register':
             $controller = new Controllers\UsersController();
-            $controller->verifForm();
+            $controller->newUser();
             break;
 
         case 'logout':

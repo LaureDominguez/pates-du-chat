@@ -30,7 +30,7 @@ class Database {
         return $query->fetchAll(); // Récupérer les enregistrements
     }
 
-    protected function findOne(string $req, array $params = []): array
+    protected function findOne(string $req, array $params = []): array | bool
     {
         $query = $this->bdd->prepare($req);
         $query->execute($params);

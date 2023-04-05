@@ -12,7 +12,12 @@ class Users extends Database {
     public function checkEmail($email){
         $req = "SELECT id FROM users WHERE email = :email";
         $params = ["email"=> $email];
-        $check = $this->findOne($req, $params);
-        return $check;
+        return $this->findOne($req, $params);
+    }
+
+    public function findUser($id){
+        $req = "SELECT * FROM users WHERE id = :id";
+        $params = ["id" => $id];
+        return $this->findOne($req, $params);
     }
 }
