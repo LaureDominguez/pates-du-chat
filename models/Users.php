@@ -12,13 +12,7 @@ class Users extends Database {
     public function checkEmail($email){
         $req = "SELECT id FROM users WHERE email = :email";
         $params = ["email"=> $email];
-        $check = $this->isItUsed($req, $params);
-        $free = false;
-        if ($check['free'] == true) {
-            $free = true;
-            return $free;
-        } else {
-            return $free;
-        }
+        $check = $this->findOne($req, $params);
+        return $check;
     }
 }

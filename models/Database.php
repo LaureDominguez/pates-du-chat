@@ -37,21 +37,6 @@ class Database {
         return $query->fetch(); // Récupérer les enregistrements
     }
 
-    protected function isItUsed(string $req, array $params = []): array
-    {
-        $query = $this->bdd->prepare($req);
-        $query->execute($params);
-        $result = $query->fetch();
-
-        if ($result == false) {
-            $free = ["free" => true];
-            return $free;
-        } else {
-            $free = ["free" => false];
-            return $free;
-        }
-    }
-
     protected function addOne(string $table, string $columns, string $values, $data)
     {
         $query = $this->bdd->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');

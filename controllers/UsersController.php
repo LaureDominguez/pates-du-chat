@@ -43,7 +43,8 @@ class UsersController{
             //stockage du mail pour verification dans db
             $email = trim($_POST['email']);
             $isItFree = $model->checkEmail($email);
-            if($isItFree == false)
+
+            if(!empty ($isItFree))
                 $errors[] = "→ Cet email est éjà utilisé";
             
         //validation mot de passe
@@ -60,7 +61,6 @@ class UsersController{
             $pswd_confirm = trim($_POST['pswd_confirm']);
             if (empty($errors_pswd) && ($pswd != $pswd_confirm))
             $errors[] = $errors_pswd[] = "→ Les mots de passe ne correspondent pas";
-
 
             if (count($errors) == 0) {
                 $newUser = [
