@@ -37,7 +37,7 @@ class Database {
         return $query->fetch(); // Récupérer les enregistrements
     }
 
-    protected function isUsed(string $req, array $params = []): array
+    protected function isItUsed(string $req, array $params = []): array
     {
         $query = $this->bdd->prepare($req);
         $query->execute($params);
