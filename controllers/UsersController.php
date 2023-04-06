@@ -29,8 +29,22 @@ class UsersController{
         exit();
     }
 
-    //database
+    //token
+    function generateToken($length = 40)
+    {
+        $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
+        $charactersLength = strlen($characters);
+        $token            = '';
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $token;
+    }
 
+    //session
+    // $_SESSION['user']['token'] = $this->generateToken;
+
+    //register
     public function newUser()
     {
         $errors = $errors_pswd = $success = [];
@@ -79,12 +93,14 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
+    //connexion
     public function checkUser(){
         $errors = $success = $UserExist = [];
         $email = $pswd = $userExist = "";
         $model = new \Models\Users();
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
+        
             //validation email
             if (empty($_POST['email']))
                 $errors[] = "Veuillez renseigner le champs email";
@@ -96,8 +112,7 @@ class UsersController{
             $emailUsed = $model->checkEmail($email);
             if (empty($emailUsed))
                 $errors[] = "Email inconnu";
-
-            $userExist = $model->findUser($emailUsed['id']);
+            $userExist = $model->getUser($emailUsed['id']);
 
             //validation mot de passe
             if (empty($_POST['pswd']))
@@ -105,19 +120,28 @@ class UsersController{
             //stockage du mdp pour verification
             $pswd = trim($_POST['pswd']);
 
-            if (count($errors) == 0){
-
+            if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
-                    
+                    $token = $this->generateToken();
                     $_SESSION['user'] = [
-                        'id' => $userExist['id'],
-                        'email' => $userExist['email']
+                        'email' => $userExist['email'],
+                        'token' => $token
                         ];
-                    }
 
-                var_dump($_SESSION['user']);
-                die;
+                    $user = "";
+
+                    if(isset($userExist['name'])) {
+                        $user = $userExist['name'];
+                    }
+                    
+                    else {
+                        $user = $userExist['email'];
+                    }
+                    $success [] = "Bienvenue, ". $user;
                 }
             }
+        $template = "users/login.phtml";
+        include_once 'views/layout.phtml';
         }
+    }
     }

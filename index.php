@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+// var_dump('session');
+// var_dump($_SESSION);
 
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php

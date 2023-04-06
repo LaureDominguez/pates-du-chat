@@ -15,7 +15,7 @@ class Users extends Database {
         return $this->findOne($req, $params);
     }
 
-    public function findUser($id){
+    public function getUser($id){
         $req = "SELECT * FROM users WHERE id = :id";
         $params = ["id" => $id];
         return $this->findOne($req, $params);
