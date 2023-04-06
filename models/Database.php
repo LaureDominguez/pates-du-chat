@@ -24,7 +24,8 @@ class Database {
         ]);
     }
 
-    protected function findAll(string $req, array $params = []) :array{
+    protected function findAll(string $req, array $params = []) :array
+    {
         $query = $this->bdd->prepare($req);
         $query->execute($params);
         return $query->fetchAll(); // Récupérer les enregistrements
@@ -40,7 +41,6 @@ class Database {
     protected function addOne(string $table, string $columns, string $values, $data)
     {
         $query = $this->bdd->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
-
         $query->execute($data);
         $query->closeCursor();
         // return $this->bdd->lastInsertId();

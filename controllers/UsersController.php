@@ -52,32 +52,39 @@ class UsersController{
         $model = new \Models\Users();
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
-        //validation email
-            if (empty($_POST['email']))
+            //validation email
+            $email = trim($_POST['email']);
+
+            if (empty($email))
                 $errors[] = "Veuillez renseigner le champs email";
-            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-                $errors[] = "Veuillez renseigner un email valide";
-            //stockage du mail pour verification dans db
-            if (!empty($_POST['email']))
-                $email = trim($_POST['email']);
-            $isItFree = $model->checkEmail($email);
-            if(!empty ($isItFree))
-                $errors[] = "Cet email est éjà utilisé";
-            
-        //validation mot de passe
-            if (empty($_POST['pswd']))
-                $errors[] = $errors_pswd [] = "Veuillez choisir un mot de passe";
-            if (strlen(trim($_POST['pswd'])) < 6){
+            else
+                switch ($email) {
+                    case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
+                        $errors[] = "Veuillez renseigner un email valide";
+                        break;
+                    case !empty($email):
+                        $isItFree = $model->checkEmail($email);
+                        if (!empty($isItFree))
+                            $errors[] = "Cet email est éjà utilisé";
+                        break;
+                }
+
+            //validation mot de passe
+            $pswd = trim($_POST['pswd']);
+
+            if (empty($pswd))
+                $errors[] = "Veuillez choisir un mot de passe";
+            elseif (strlen($pswd) < 6){
                 $errors[] = $errors_pswd[] = "Le mot de passe doit contenièr au moins 6 caractères";
             }
-            //stockage du mdp pour verification
-            $pswd = trim($_POST['pswd']);
-            if (empty($_POST['pswd_confirm']))
-            $errors[] = $errors_pswd[] = "Veuillez confirmer votre mot de passe";
-            //stockage de la confirm du mdp
+
             $pswd_confirm = trim($_POST['pswd_confirm']);
+
+            if (empty($_POST['pswd_confirm']))
+                $errors[] = $errors_pswd[] = "Veuillez confirmer votre mot de passe";
+
             if (empty($errors_pswd) && ($pswd != $pswd_confirm))
-            $errors[] = $errors_pswd[] = "Les mots de passe ne correspondent pas";
+                $errors[] = $errors_pswd[] = "Les mots de passe ne correspondent pas";
 
             if (count($errors) == 0) {
                 $newUser = [
@@ -95,24 +102,29 @@ class UsersController{
 
     //connexion
     public function checkUser(){
-        $errors = $success = $UserExist = [];
-        $email = $pswd = $userExist = "";
+        $errors = $success = $userExist = [];
+        $email = $pswd = $emailUsed  = "";
         $model = new \Models\Users();
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
-        
+
+            $email = trim($_POST['email']);
             //validation email
-            if (empty($_POST['email']))
+            if(empty($email))
                 $errors[] = "Veuillez renseigner le champs email";
-            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
-                $errors[] = "Veuillez renseigner un email valide";
-            //stockage du mail pour verification dans db
-            if (!empty($_POST['email']))
-                $email = trim($_POST['email']);
-            $emailUsed = $model->checkEmail($email);
-            if (empty($emailUsed))
-                $errors[] = "Email inconnu";
-            $userExist = $model->getUser($emailUsed['id']);
+            else
+                switch ($email) {
+                    case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
+                        $errors[] = "Veuillez renseigner un email valide";
+                        break;
+                    case !empty($email):
+                        $emailUsed = $model->checkEmail($email);
+                        if (empty($emailUsed))
+                            $errors[] = "Email inconnu";
+                        if (!empty($emailUsed))
+                            $userExist = $model->getUser($emailUsed['id']);
+                        break;
+                }         
 
             //validation mot de passe
             if (empty($_POST['pswd']))
@@ -129,7 +141,6 @@ class UsersController{
                         ];
 
                     $user = "";
-
                     if(isset($userExist['name'])) {
                         $user = $userExist['name'];
                     }
@@ -140,6 +151,7 @@ class UsersController{
                     $success [] = "Bienvenue, ". $user;
                 }
             }
+        // $modale = "users/login.phtml";
         $template = "users/login.phtml";
         include_once 'views/layout.phtml';
         }
