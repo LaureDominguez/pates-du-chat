@@ -1,8 +1,11 @@
 <?php
 
 session_start();
-
-$user['name'] = $_SESSION;
+// $_SESSION['user'] = [
+//     'email' => $userExist['email'],
+//     'token' => $token
+// ];
+var_dump($_SESSION);
 
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php

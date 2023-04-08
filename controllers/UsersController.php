@@ -42,7 +42,6 @@ class UsersController{
     }
 
     //session
-    // $_SESSION['user']['token'] = $this->generateToken;
 
     //register
     public function newUser()
@@ -134,10 +133,10 @@ class UsersController{
 
             if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
-                    $token = $this->generateToken();
+                    // $token = $this->generateToken();
                     $_SESSION['user'] = [
                         'email' => $userExist['email'],
-                        'token' => $token
+                        // 'token' => $token
                         ];
 
                     $user = "";
