@@ -107,6 +107,11 @@ if (array_key_exists('route', $_GET)):
             $controller->verifProdForm();
             break;
 
+        case 'submitRecipeForm':
+            $controller = new Controllers\AdminController;
+            $controller->verifRecipeForm();
+            break;
+
         //end
         default:
             header('Location: index.php?route=home');

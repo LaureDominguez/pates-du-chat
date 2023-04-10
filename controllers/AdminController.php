@@ -50,15 +50,11 @@ class AdminController{
         $success = [];
 
         if (array_key_exists('name', $_POST)) {
-            // $model = new \Models\Categories();
 
             if (empty($_POST['name']))
                 $errors[] = "Veuillez donner un nom au produit";
             if (empty($_POST['category']))
                 $errors[] = "Veuillez selectionner une catégorie";
-            // if (!empty($_POST['category']))
-            //     $cat = $model->findCat(trim($_POST['category']));
-            //     var_dump($cat);
             if (empty($_POST['descript']))
                 $errors[] = "Veuillez entrer une description";
             if (empty($_POST['price']))
@@ -76,6 +72,43 @@ class AdminController{
                 $modelProduct = new \Models\Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";
+            }
+        }
+        $template = "dashboard.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    public function verifRecipeForm(){
+        $errors = [];
+        $success = [];
+
+        if (array_key_exists('name', $_POST)) {
+
+            // var_dump($_POST);
+            // die;
+
+            if (empty($_POST['name']))
+                $errors[] = "Veuillez donner un nom à la recette";
+            if (empty($_POST['product']))
+            $errors[] = "Veuillez selectionner l'ingrédient phare de la recette";
+            if (empty($_POST['recipe']))
+                $errors[] = "Veuillez écrire ici votre recette";
+
+            if (count($errors) == 0) {
+                $addNew = [
+                    trim($_POST['name']),
+                    trim($_POST['product']),
+                    trim($_POST['difficulty']),
+                    trim($_POST['time']),
+                    trim($_POST['thermostat']),
+                    trim($_POST['portions']),
+                    trim($_POST['recipe']),
+                    trim($_POST['img'])
+                ];
+
+                $modelRecipes = new \Models\Recipes();
+                $modelRecipes->creatNew($addNew);
+                $success[] = "La nouvelle recette a bien été créée !";
             }
         }
         $template = "dashboard.phtml";

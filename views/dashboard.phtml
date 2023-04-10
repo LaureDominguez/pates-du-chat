@@ -5,7 +5,6 @@
 
 <section class="dashboard">
     <h2>boutique</h2>
-    
 
     <form action="index.php?route=submitCatForm" method="post">
         <h3>Créer une nouvelle catégorie</h3>
@@ -52,18 +51,43 @@
 
 <section>
     <h2>recettes</h2>
-    <form action="" method="post">
+    <form action="index.php?route=submitRecipeForm" method="post">
         <div>
-            <label for="">nom</label>
-            <input type="text" name="" id="" required>
+            <label for="name">nom</label>
+            <input type="text" name="name" id="name" required>
         </div>
         <div>
-            <label for="">recette</label>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <label for="product_id">inrédient principal</label>
+            <select name="product_id" id="product_id">
+                <option value="">---</option>
+                <?php foreach ($products as $product) : ?>
+                    <option value="<?= $product['id'] ?>"><?= $product['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div>
-            <label for="">image</label>
-            <input type="file" name="" id="">
+            <label for="difficulty">difficulté</label>
+            <input type="range" name="difficulty" id="difficulty" min="1" max="5">
+        </div>
+        <div>
+            <label for="time">temps</label>
+            <input type="time" name="time" id="time">
+        </div>
+        <div>
+            <label for="recipe">recette</label>
+            <textarea name="recipe" id="recipe" cols="30" rows="10" required></textarea>
+        </div>
+        <div>
+            <label for="thermostat">thermostat</label>
+            <input type="number" name="thermostat" id="thermostat">
+        </div>
+        <div>
+            <label for="portions">nombre de personnes</label>
+            <input type="number" name="portions" id="portions">
+        </div>
+        <div>
+            <label for="img">image</label>
+            <input type="file" name="img" id="img">
         </div>
         <button type="submit" class="btn" value="">envoyer</button>
     </form>
