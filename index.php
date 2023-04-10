@@ -21,8 +21,8 @@ spl_autoload_register(function ($class) {                            // $class =
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
 
-if(array_key_exists('route', $_GET)):
-    
+
+if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
         //pages
         case 'home':
@@ -42,6 +42,12 @@ if(array_key_exists('route', $_GET)):
         case 'recipes':
             $controller = new Controllers\RecipesController();
             $controller->displayAllRecipes();
+            break;
+
+        case 'recipeDetail':
+            $id = $_GET['id'];
+            $controller = new Controllers\RecipesController();
+            $controller->displayOneRecipe($id);
             break;
 
         case 'admin':
@@ -100,6 +106,7 @@ if(array_key_exists('route', $_GET)):
             header('Location: index.php?route=home');
             exit;
     }
+
 else:
     header('Location: index.php?route=home');
     exit;

@@ -10,4 +10,12 @@ class RecipesController{
         $template = "recipes/index.phtml";
         include_once'views/layout.phtml';
     }
+    public function displayOneRecipe($id)
+    {
+        $model = new \Models\Recipes();
+        $recipe = $model->getOneRecipe($id);
+
+        $template = "recipes/detail.phtml";
+        include_once 'views/layout.phtml';
+    }
 }
