@@ -13,4 +13,16 @@ class ShopController{
         $template = "shop/index.phtml";
         include_once'views/layout.phtml';
     }
+
+    public function displayOneProduct($id)
+    {
+        $modelProducts = new \Models\Products();
+        $product = $modelProducts->getOneProduct($id);
+
+        $modelCategories = new \Models\Categories();
+        $category = $modelCategories->getOneCategory($product['cat_id']);
+
+        $template = "shop/detail.phtml";
+        include_once 'views/layout.phtml';
+    }
 }

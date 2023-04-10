@@ -9,12 +9,12 @@ class Categories extends Database {
         return $this->findAll($req);
     }
 
-    // public function findCat($cat): array | bool
-    // {
-    //     $req = "SELECT id FROM categories WHERE name = :name";
-    //     $params = ["name" => $cat];
-    //     return $this->findOne($req, $params);
-    // }
+    public function getOneCategory($id): array | bool
+    {
+        $req = "SELECT * FROM categories WHERE id = :id";
+        $params = ["id" => $id];
+        return $this->findOne($req, $params);
+    }
 
     public function creatNewCat($params)
     {

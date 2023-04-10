@@ -4,16 +4,19 @@ namespace Controllers;
 
 class RecipesController{
     public function displayAllRecipes(){
-        $model = new \Models\Recipes();
-        $recipes = $model->getAllRecipes();
+        $modelRecipes = new \Models\Recipes();
+        $recipes = $modelRecipes->getAllRecipes();
 
         $template = "recipes/index.phtml";
         include_once'views/layout.phtml';
     }
     public function displayOneRecipe($id)
     {
-        $model = new \Models\Recipes();
-        $recipe = $model->getOneRecipe($id);
+        $modelRecipes = new \Models\Recipes();
+        $recipe = $modelRecipes->getOneRecipe($id);
+
+        $modelProducts = new \Models\Products();
+        $product = $modelProducts->getOneProduct($recipe['product_id']);
 
         $template = "recipes/detail.phtml";
         include_once 'views/layout.phtml';

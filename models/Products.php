@@ -9,6 +9,13 @@ class Products extends Database {
         return $this->findAll($req);
     }
 
+    public function getOneProduct($id): array | bool
+    {
+        $req = "SELECT * FROM products WHERE id = :id";
+        $params = ["id" => $id];
+        return $this->findOne($req, $params);
+    }
+
     public function creatNew($params)
     {
         $this->addOne("products", "name, cat_id, descript, price, img", "?, ?, ?, ?, ?", $params);

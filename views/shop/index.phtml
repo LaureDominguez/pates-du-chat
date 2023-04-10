@@ -17,11 +17,11 @@
                                 <h5><?= $product["name"] ?></h5>
                                 <p><?= $product["descript"] ?></p>
                                 <p><?= $product["price"] ?>€</p>
-                                <p class="btn">Voir plus</p>
+                                <a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" class="btn">Voir plus</a>
                             </figcaption>
                             <!-- </a> -->
                         </figure>
-                    <//?php else : ?>
+                        </ /?php else : ?>
                         <!-- <p>aucun produit dans ce rayon</p> -->
                     <?php endif; ?>
                 <?php endforeach; ?>

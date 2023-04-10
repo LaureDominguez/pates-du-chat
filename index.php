@@ -38,6 +38,12 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\ShopController();
             $controller->displayAllShop();
             break;
+
+        case 'shopDetail':
+            $id = $_GET['id'];
+            $controller = new Controllers\ShopController();
+            $controller->displayOneProduct($id);
+            break;
             
         case 'recipes':
             $controller = new Controllers\RecipesController();

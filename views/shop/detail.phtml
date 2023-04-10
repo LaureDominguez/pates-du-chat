@@ -1,4 +1,4 @@
-<h2><?= $category["name"] ?></h2>
+<h2><?= $product["name"] ?></h2>
 <figure class="">
     <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
     <!-- @if ($product->image)
@@ -7,10 +7,9 @@
     <img src="public/img/Hades.jpg" alt="">
     <!-- @endif -->
     <figcaption>
-        <h5><?= $product["name"] ?></h5>
+        <p><?= $category["name"] ?></p>
         <p><?= $product["descript"] ?></p>
         <p><?= $product["price"] ?>€</p>
-        <p class="btn">Voir plus</p>
     </figcaption>
     <!-- </a> -->
 </figure>
