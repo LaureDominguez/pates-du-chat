@@ -1,0 +1,31 @@
+<section class="content">
+    <h2>Toutes les recettes</h2>
+    <div class="">
+        <!-- <//?php foreach ($categories as $category) : ?>
+            <h3><//?= $category["name"] ?></h3>
+            <article class="shop-cat"> -->
+                <?php foreach ($recipes as $recipe) : ?>
+                    <!-- <//?php if ($category["id"] == $product["cat_id"]) : ?> -->
+                        <figure class="shop-tuile">
+                            <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
+                            <!-- @if ($product->image)
+                            <img src="/images/{{$product->img}}" alt="">
+                            @else -->
+                            <img src="public/img/Hades.jpg" alt="">
+                            <!-- @endif -->
+                            <figcaption>
+                                <h5><?= $recipe["name"] ?></h5>
+                                <p><?= $recipe["time"] ?></p>
+                                <p><?= $recipe["difficulty"] ?></p>
+                                <p class="btn">Voir plus</p>
+                            </figcaption>
+                            <!-- </a> -->
+                        </figure>
+                    <!-- <//?php else : ?> -->
+                        <!-- <p>aucun produit dans ce rayon</p> -->
+                    <!-- <//?php endif; ?> -->
+                <?php endforeach; ?>
+            <!-- <//?php endforeach; ?> -->
+            </article>
+    </div>
+</section>

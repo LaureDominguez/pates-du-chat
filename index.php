@@ -40,7 +40,8 @@ if(array_key_exists('route', $_GET)):
             break;
             
         case 'recipes':
-            # code...
+            $controller = new Controllers\RecipesController();
+            $controller->displayAllRecipes();
             break;
 
         case 'admin':

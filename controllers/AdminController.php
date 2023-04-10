@@ -12,6 +12,9 @@ class AdminController{
         $modelCategory = new \Models\Categories();
         $categories = $modelCategory->getAllCategories();
 
+        $modelRecipes = new \Models\Recipes();
+        $recipes = $modelRecipes->getAllRecipes();
+
         $template = "dashboard.phtml";
         include_once'views/layout.phtml';
     }

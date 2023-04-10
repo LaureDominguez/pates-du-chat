@@ -10,7 +10,7 @@ class ShopController{
         $model = new \Models\Categories();
         $categories = $model->getAllCategories();
 
-        $template = "shop/shop_view.phtml";
+        $template = "shop/index.phtml";
         include_once'views/layout.phtml';
     }
 }
