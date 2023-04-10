@@ -31,7 +31,14 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'news':
-            # code...
+            $controller = new Controllers\NewsController();
+            $controller->displayAllNews();
+            break;
+
+        case 'newsDetail':
+            $id = $_GET['id'];
+            $controller = new Controllers\NewsController();
+            $controller->displayOneActu($id);
             break;
 
         case 'shop':
