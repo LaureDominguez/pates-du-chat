@@ -30,16 +30,16 @@ class UsersController{
     }
 
     //token
-    function generateToken($length = 40)
-    {
-        $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
-        $charactersLength = strlen($characters);
-        $token            = '';
-        for ($i = 0; $i < $length; $i++) {
-            $token .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $token;
-    }
+    // function generateToken($length = 40)
+    // {
+    //     $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
+    //     $charactersLength = strlen($characters);
+    //     $token            = '';
+    //     for ($i = 0; $i < $length; $i++) {
+    //         $token .= $characters[rand(0, $charactersLength - 1)];
+    //     }
+    //     return $token;
+    // }
 
     //session
 
@@ -133,10 +133,9 @@ class UsersController{
 
             if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
-                    // $token = $this->generateToken();
                     $_SESSION['user'] = [
                         'email' => $userExist['email'],
-                        // 'token' => $token
+                        'name' => $userExist['name']
                         ];
 
                     $user = "";

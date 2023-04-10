@@ -8,4 +8,9 @@ class Products extends Database {
         $req = "SELECT * FROM products";
         return $this->findAll($req);
     }
+
+    public function creatNew($params)
+    {
+        $this->addOne("products", "name, cat_id, descript, price, img", "?, ?, ?, ?, ?", $params);
+    }
 }

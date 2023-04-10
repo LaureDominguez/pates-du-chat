@@ -1,11 +1,21 @@
 <?php
 
 session_start();
-// $_SESSION['user'] = [
-//     'email' => $userExist['email'],
-//     'token' => $token
-// ];
-var_dump($_SESSION);
+$_SESSION['visitor'] = [
+    'token' => generateToken()
+];
+// var_dump($_SESSION);
+
+function generateToken($length = 40)
+{
+    $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
+    $charactersLength = strlen($characters);
+    $token            = '';
+    for ($i = 0; $i < $length; $i++) {
+        $token .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $token;
+}
 
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
@@ -76,11 +86,12 @@ if(array_key_exists('route', $_GET)):
         //form
         case 'submitCatForm':
             $controller = new Controllers\AdminController;
-            $controller->verifForm();
+            $controller->verifCatForm();
             break;
 
         case 'submitProdForm':
-            # code...
+            $controller = new Controllers\AdminController;
+            $controller->verifProdForm();
             break;
 
         //end
