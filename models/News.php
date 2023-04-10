@@ -18,6 +18,6 @@ class News extends Database {
 
     public function creatNew($params)
     {
-        $this->addOne("news", "titre", "?, ?", $params);
+        $this->addOne("news", "title, message", "?, ?", $params);
     }
 }

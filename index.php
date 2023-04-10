@@ -103,7 +103,12 @@ if (array_key_exists('route', $_GET)):
             # code...
             break;
 
-        //form
+            //form
+        case 'submitNewsForm':
+            $controller = new Controllers\AdminController;
+            $controller->veriNewsForm();
+            break;
+
         case 'submitCatForm':
             $controller = new Controllers\AdminController;
             $controller->verifCatForm();

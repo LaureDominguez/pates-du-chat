@@ -1,6 +1,16 @@
 <section>
     <h2>news</h2>
-    ckeditor
+    <form action="index.php?route=submitNewsForm" method="post">
+        <div>
+            <label for="title">titre</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div>
+            <label for="message">article</label>
+            <textarea name="message" id="editor" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn" value="submit">envoyer</button>
+    </form>
 </section>
 
 <section class="dashboard">

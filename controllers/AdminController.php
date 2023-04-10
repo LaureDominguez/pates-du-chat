@@ -19,6 +19,31 @@ class AdminController{
         include_once'views/layout.phtml';
     }
 
+    public function veriNewsForm()
+    {
+        $errors = [];
+        $success = [];
+        if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
+            if (empty($_POST['title']))
+            $errors[] = "Veuillez entrer un titre";
+            if (empty($_POST['message']))
+            $errors[] = "Veuillez entrer votre article";
+
+            if (count($errors) == 0) {
+                $addNew = [
+                    trim($_POST['title']),
+                    trim($_POST['message'])
+                ];
+
+                $modelNews = new \Models\News();
+                $modelNews->creatNew($addNew);
+                $success[] = "Le nouvel article a bien été créé !";
+            }
+        }
+        $template = "dashboard.phtml";
+        include_once 'views/layout.phtml';
+    }
+
     public function verifCatForm()
     {
         $errors = [];
