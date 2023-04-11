@@ -41,7 +41,7 @@ class UsersController{
             $email = trim($_POST['email']);
 
             if (empty($email))
-                $errors[] = "Veuillez renseigner le champs email";
+                $errors[] = "Veuillez entrer une adresse mail";
             else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
@@ -59,9 +59,27 @@ class UsersController{
 
             if (empty($pswd))
                 $errors[] = "Veuillez choisir un mot de passe";
-            elseif (strlen($pswd) < 6){
-                $errors[] = $errors_pswd[] = "Le mot de passe doit contenièr au moins 6 caractères";
-            }
+            else 
+                $numberMinimal = 8;
+
+                switch ($pswd) {
+                    case strlen($pswd) < $numberMinimal:
+                        $errors[] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
+                        break;
+                    case preg_match('@[A-Z]@', $pswd)?:
+                        $errors[] = "Le mot de passe doit inclure au moins une lettre majuscule";
+                        break;
+                    case preg_match('@[a-z]@', $pswd)?:
+                        $errors[] = "Le mot de passe doit inclure au moins une lettre minuscule";
+                        break;
+                    case preg_match('@[0-9]@', $pswd)?:
+                        $errors[] = "Le mot de passe doit inclure au moins un chiffre";
+                        break;
+                    case preg_match('@[^\w]@', $pswd)?:
+                        $errors[] = "Le mot de passe doit inclure au moins un caractère spécial";
+                        break;
+                }
+
 
             $pswd_confirm = trim($_POST['pswd_confirm']);
 
