@@ -238,21 +238,36 @@ form div {
     bottom: 0;
     right: 0;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: flex-end;
     width: 20%;
     background-size: 150%;
     transition: all, .5s ease-out;
 }
 .more p{
     padding-right: 1rem;
+    line-height: 2rem;
+}
+.more p:last-child{
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+.more div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all, .5s ease-out;
 }
 .more:hover{
     background-position: left;
     width: 50%;
+}
+.more:hover > div > p:last-child{
+    opacity: 1;
+    transform: scale(1.5);
 }
 
 /******************* shop *******************/
