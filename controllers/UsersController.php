@@ -29,20 +29,6 @@ class UsersController{
         exit();
     }
 
-    //token
-    // function generateToken($length = 40)
-    // {
-    //     $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
-    //     $charactersLength = strlen($characters);
-    //     $token            = '';
-    //     for ($i = 0; $i < $length; $i++) {
-    //         $token .= $characters[rand(0, $charactersLength - 1)];
-    //     }
-    //     return $token;
-    // }
-
-    //session
-
     //register
     public function newUser()
     {
@@ -148,7 +134,10 @@ class UsersController{
                     else {
                         $user = $userExist['email'];
                     }
-                    $success [] = "Bienvenue, ". $user;
+                    if($userExist['role']==1)
+                        $success[] = "Bienvenue admin " . $userExist['email'];
+                    else
+                        $success [] = "Bienvenue, ". $user;
                 }
             }
         // $modale = "users/login.phtml";

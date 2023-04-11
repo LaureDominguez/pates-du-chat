@@ -6,12 +6,20 @@
         <li><a href="index.php?route=shop">boutique</a></li>
         <li><a href="index.php?route=recipes">recettes</a></li>
         <li><a href="#">contact</a></li>
-        <li><a href="index.php?route=admin">tableau de bord</a></li>
+        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
+            <li><a href="index.php?route=admin">tableau de bord</a></li>
+        <?php endif; ?>
     </ul>
     <ul>
         <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">nom</ /?=$_SESSION["email"] ?></a>
+                <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php if (isset($_SESSION['user']['name'])) : ?>
+                        <?= $_SESSION['user']['name'] ?>
+                    <?php else : ?>
+                        <?= $_SESSION['user']['email'] ?>
+                    <?php endif; ?>
+                </a>
                 <ul class="dropdown-menu">
                     <li><a href="index.php?route=profil">mon compte</a></li>
                     <li><a href="#">mon panier</a></li>

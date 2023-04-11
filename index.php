@@ -1,25 +1,14 @@
 <?php
 
 session_start();
-$_SESSION['visitor'] = [
-    'token' => generateToken()
-];
-// var_dump($_SESSION);
-
-function generateToken($length = 40)
-{
-    $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
-    $charactersLength = strlen($characters);
-    $token            = '';
-    for ($i = 0; $i < $length; $i++) {
-        $token .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $token;
-}
 
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
+// var_dump($_SESSION);
+//session visitor
+$controller = new Controllers\HomeController();
+$controller->visitor();
 
 
 if (array_key_exists('route', $_GET)):
@@ -65,6 +54,7 @@ if (array_key_exists('route', $_GET)):
 
         case 'admin':
             $controller = new Controllers\AdminController();
+            $controller->isAdmin();
             $controller->displayDashboard();
             break;
 
@@ -106,21 +96,25 @@ if (array_key_exists('route', $_GET)):
             //form
         case 'submitNewsForm':
             $controller = new Controllers\AdminController;
+            $controller->isAdmin();
             $controller->veriNewsForm();
             break;
 
         case 'submitCatForm':
             $controller = new Controllers\AdminController;
+            $controller->isAdmin();
             $controller->verifCatForm();
             break;
 
         case 'submitProdForm':
             $controller = new Controllers\AdminController;
+            $controller->isAdmin();
             $controller->verifProdForm();
             break;
 
         case 'submitRecipeForm':
             $controller = new Controllers\AdminController;
+            $controller->isAdmin();
             $controller->verifRecipeForm();
             break;
 
