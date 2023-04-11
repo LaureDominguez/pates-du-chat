@@ -137,6 +137,30 @@ form div {
     margin-bottom: 1rem;
 }
 
+/******************* short *******************/
+.short{
+    height: 13rem;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        #000 70%,
+        transparent 90%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/******************* timestamp *******************/
+.timestamp {
+    font-size: smaller;
+    font-weight: bold;
+    color: var(--vert);
+    margin: 0;
+    position: absolute;
+    bottom: 0.5rem;
+}
+
 /******************* prompt *******************/
 #modale{
     position:absolute;
@@ -173,6 +197,62 @@ form div {
 }
 .log .btn{
     margin: 0 auto;
+}
+
+/******************* news *******************/
+
+.news-index{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.news-short{
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-short img{
+    height: 20rem;
+    border-radius: 10px 0 0 10px;
+}
+
+.news-short figcaption{
+    padding: 1rem;
+}
+
+.more{
+    position: absolute;
+    color: #fff;
+    /* background-color: var(--vert); */
+    background: linear-gradient(
+        270deg,
+        var(--orange) 60%,
+        transparent 100%
+    );
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-end;
+    align-items: flex-end;
+    width: 20%;
+    background-size: 150%;
+    transition: all, .5s ease-out;
+}
+.more p{
+    padding-right: 1rem;
+}
+.more:hover{
+    background-position: left;
+    width: 50%;
 }
 
 /******************* shop *******************/

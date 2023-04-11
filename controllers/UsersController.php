@@ -134,10 +134,12 @@ class UsersController{
             if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
                     $_SESSION['user'] = [
+                        'id' => $userExist['id'],
                         'email' => $userExist['email'],
-                        'name' => $userExist['name']
+                        'name' => $userExist['name'],
+                        'role' => $userExist['role']
                         ];
-
+                        
                     $user = "";
                     if(isset($userExist['name'])) {
                         $user = $userExist['name'];

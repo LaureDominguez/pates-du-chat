@@ -1,8 +1,9 @@
 <section class="content">
     <h2>Toutes les news</h2>
-    <div class="">
+    <h4>trier les news</h4>
+    <div class="news-index">
         <?php foreach ($news as $actu) : ?>
-            <figure class="shop-tuile">
+            <figure class="news-short">
                 <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
                 <!-- @if ($product->image)
                             <img src="/images/{{$product->img}}" alt="">
@@ -11,7 +12,16 @@
                 <!-- @endif -->
                 <figcaption>
                     <h5><?= $actu["title"] ?></h5>
-                    <a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>" class="btn">Voir plus</a>
+                    <div class="short"><?= $actu["message"] ?></div>
+                    <?php if ($actu["created_at"] != $actu["updated_at"]) : ?>
+                        <p class="timestamp">modifié le : <?= $actu["updated_at"] ?></p>
+                    <?php else : ?>
+                        <p class="timestamp">créé le : <?= $actu["created_at"] ?></p>
+                    <?php endif; ?>
+                    <a href=" index.php?route=newsDetail&id=<?= $actu['id'] ?>" class="more">
+                        <p>Lire la suite</p>
+                        <p>Suite</p>
+                    </a>
                 </figcaption>
                 <!-- </a> -->
             </figure>

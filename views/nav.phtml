@@ -9,19 +9,19 @@
         <li><a href="index.php?route=admin">tableau de bord</a></li>
     </ul>
     <ul>
-        <li><a href="index.php?route=login">connexion</a></li>
-        <li><a href="index.php?route=register">nouveau compte</a></li>
-        <!-- if connecté -->
-        </ /?php if(!empty($_SESSION['email'])) {?>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">nom</ /?=$_SESSION["email"] ?></a>
-            <ul class="dropdown-menu">
-                <li><a href="index.php?route=profil">mon compte</a></li>
-                <li><a href="#">mon panier</a></li>
-                <li><a href="#">mes commandes</a></li>
-                <li><a href="index.php?route=logout">déconnexion</a></li>
-            </ul>
-        </li>
-        </ /?php } ?>
+        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">nom</ /?=$_SESSION["email"] ?></a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.php?route=profil">mon compte</a></li>
+                    <li><a href="#">mon panier</a></li>
+                    <li><a href="#">mes commandes</a></li>
+                    <li><a href="index.php?route=logout">déconnexion</a></li>
+                </ul>
+            </li>
+        <?php else : ?>
+            <li><a href="index.php?route=login">connexion</a></li>
+            <li><a href="index.php?route=register">nouveau compte</a></li>
+        <?php endif; ?>
     </ul>
 </nav>
