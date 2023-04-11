@@ -1,26 +1,37 @@
-var modale = document.getElementById('modale');
+// ************************** fenetre d'erreur horrible
 
-// const screenLimit = {
-//     right: window.innerWidth,
-//     bottom: window.innerHeight
-// };
+var modale = document.getElementById('modale');
 
 const onMouseMove = (e) =>{
     modale.style.left = e.pageX + 150 + 'px';
-    // if (modale.style.left <= 0 || modale.style.left >= screenLimit.right) {
-    //     modale.style.left = e.pageX - 300 + 'px';
-    // }
     modale.style.top = e.pageY + 150 + 'px';
-    // if (modale.style.top <= 0 || modale.style.top >= screenLimit.bottom) {
-    //     modale.style.left = e.pageX - 300 + 'px';
-    // }
 }
-
-
-var canvas = document.createElement('canvas');
 
 window.addEventListener('DOMContentLoaded', function () {
     if (modale != null) {
         document.addEventListener('mousemove', onMouseMove)
     }
 })
+
+// ********************* sort tableau
+const allTables = document.querySelectorAll("table");
+
+for (const table of allTables) {
+    const tBody = table.tBodies[0];
+    const rows = Array.from(tBody.rows);
+    const headerCells = table.tHead.rows[0].cells;
+
+    for (const th of headerCells) {
+        const cellIndex = th.cellIndex;
+
+        th.addEventListener("click", () => {
+        rows.sort((tr1, tr2) => {
+            const tr1Text = tr1.cells[cellIndex].textContent;
+            const tr2Text = tr2.cells[cellIndex].textContent;
+            return tr1Text.localeCompare(tr2Text);
+        });
+
+        tBody.append(...rows);
+        });
+    }
+}

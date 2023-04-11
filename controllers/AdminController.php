@@ -6,6 +6,9 @@ class AdminController{
 
     public function displayDashboard()
     {
+        $modelNews = new \Models\News();
+        $news = $modelNews->getAllNews();
+
         $modelProduct = new \Models\Products();
         $products = $modelProduct->getAllProducts();
 

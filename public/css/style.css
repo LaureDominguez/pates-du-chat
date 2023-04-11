@@ -150,6 +150,10 @@ form div {
     -webkit-text-fill-color: transparent;
 }
 
+/******************* hidden *******************/
+.hidden{
+display: none;
+}
 
 /******************* timestamp *******************/
 .timestamp {
@@ -331,3 +335,118 @@ form div {
 
 /******************* dashboard *******************/
 
+.menu-tabs ul{
+padding-left:0;
+margin:0;
+list-style-type: none;
+border-radius: 10px;
+}	
+
+.menu-tabs{
+background-color: white;
+max-width: 960px;
+margin: 2rem auto;
+border-radius: 10px;
+}	
+
+.menu-tabs> ul {
+display: flex;
+/* overflow-x: auto; */
+/* scrollbar-width:thin; */
+/* overscroll-behavior-inline: contain; */
+/* scroll-snap-type: x mandatory; */
+/* scroll-snap-type: inline mandatory; */
+/* scroll-padding:3rem; */
+}
+
+.menu-tabs> ul li{
+	/* scroll-snap-align: start; */
+	flex: 0 0 25%;
+}
+
+.menu-tabs> ul li label{
+display: flex;
+position: relative;
+cursor: pointer;
+height: 4rem;
+align-items: center;
+justify-content:center;
+transition: background-color .4s;
+background-color: #e5e5e5;
+/* border-radius: 10px; */
+}
+
+.menu-tabs> ul li label span{
+	display:inline-block;
+	max-width:90%;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.menu-tabs> ul li label::before,
+.menu-tabs> ul li label::after{
+	position:absolute;
+	content:'';
+	height:4px;
+	width:100%;
+	top:0px;
+}
+
+.menu-tabs> ul li label::before{
+background-color: #d1d1d1;
+}
+
+.menu-tabs> ul li label::after{
+transform-origin: left;
+transition: transform .4s;
+transform: scalex(0)
+}	
+
+.menu-tabs input:nth-of-type(1):checked ~ ul li:nth-child(1) label::after,
+.menu-tabs input:nth-of-type(2):checked ~ ul li:nth-child(2) label::after,
+.menu-tabs input:nth-of-type(3):checked ~ ul li:nth-child(3) label::after,
+.menu-tabs input:nth-of-type(4):checked ~ ul li:nth-child(4) label::after{
+	transform:scalex(1);
+	background-color:#6753ea;
+}	
+
+.menu-tabs input:nth-of-type(1):checked ~ ul > li:nth-child(1) > label,
+.menu-tabs input:nth-of-type(2):checked ~ ul > li:nth-child(2) > label,
+.menu-tabs input:nth-of-type(3):checked ~ ul > li:nth-child(3) > label,
+.menu-tabs input:nth-of-type(4):checked ~ ul > li:nth-child(4) > label{
+	cursor: default;
+	background-color: initial;
+}		
+
+.menu-tabs input:nth-of-type(1):checked ~ .contenu-tabs > .section-tab:nth-child(1),
+.menu-tabs input:nth-of-type(2):checked ~ .contenu-tabs > .section-tab:nth-child(2),
+.menu-tabs input:nth-of-type(3):checked ~ .contenu-tabs > .section-tab:nth-child(3),
+.menu-tabs input:nth-of-type(4):checked ~ .contenu-tabs > .section-tab:nth-child(4){
+display:grid;
+}	
+
+.contenu-tabs{
+min-height:400px;
+padding:1rem;
+}	
+
+.section-tab{
+	display:none;
+	animation: anim-tabs .4s ease-in-out;
+	margin-top:2rem;
+}	
+
+@keyframes anim-tabs{
+	from{
+	opacity: 0;
+	transform: translatey(5%)
+}
+	to{
+		opacity:1
+    }
+}
+
+.dashboard table{
+    
+}
