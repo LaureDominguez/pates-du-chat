@@ -5,6 +5,7 @@ namespace Controllers;
 class HomeController{
     public function displayHomePage(){
         $template = "home.phtml";
+        $css = "public/css/home.css"; 
         include_once'views/layout.phtml';
     }
 

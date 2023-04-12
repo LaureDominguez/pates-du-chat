@@ -19,6 +19,8 @@ class AdminController{
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "dashboard.phtml";
+        $css = "public/css/dashboard.css"; 
+
         include_once'views/layout.phtml';
     }
 

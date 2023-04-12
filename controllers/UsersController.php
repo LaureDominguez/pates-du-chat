@@ -8,12 +8,14 @@ class UsersController{
     public function register()
     {
         $template = "register.phtml";
+        $css = "public/css/user.css"; 
         include_once'views/layout.phtml';
     }
 
     public function login()
     {
         $template = "users/login.phtml";
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
     }
 
@@ -23,6 +25,7 @@ class UsersController{
         $user = $model->getUser($_SESSION['user']['id']);
 
         $template = "users/profil.phtml";
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
     }
 
@@ -104,6 +107,7 @@ class UsersController{
             }
         }
         $template = "users/register.phtml";
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
     }
 
@@ -163,6 +167,7 @@ class UsersController{
                 }
             }
         $template = "users/login.phtml";
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
         }
     }
@@ -198,6 +203,7 @@ class UsersController{
                 $success[] = "Votre nom a bien été modifié !";
             }
         $template = "users/profil.phtml";
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
     }
 }

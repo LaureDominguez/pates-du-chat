@@ -1,0 +1,58 @@
+/******************* shop *******************/
+
+/* .shop-view{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shop-cat{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    grid-template-rows: repeat(auto-fill, 15rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+} */
+
+.shop-tuile{
+    height: 12rem;
+    width: 12rem;
+    overflow: hidden;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.shop-tuile img{
+    object-fit: cover;
+    height: 12rem;
+    width: 12rem;
+    position: relative;
+    transition: all .5s ease;
+}
+.shop-tuile:hover img{
+    transform: scale(1.2);
+}
+.shop-tuile figcaption{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    background-color: #ffffff86;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1rem;
+    text-align: justify;
+    opacity: 0;
+    transition: all .5s ease;
+}
+.shop-tuile:hover figcaption{
+    opacity: .9;
+}
+
