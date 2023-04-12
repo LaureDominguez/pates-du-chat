@@ -13,6 +13,7 @@ $controller->visitor();
 
 if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
+
         //pages
         case 'home':
             $controller = new Controllers\HomeController();
@@ -58,6 +59,7 @@ if (array_key_exists('route', $_GET)):
             $controller->displayDashboard();
             break;
 
+
         //login
         case 'login':
             $controller = new Controllers\UsersController();
@@ -79,8 +81,29 @@ if (array_key_exists('route', $_GET)):
             $controller->logout();
             break;
 
+
         //profil
         case 'myAccount':
+            $controller = new Controllers\UsersController();
+            $controller->profil();
+            break;
+
+        case 'changeNameForm':
+            $controller = new Controllers\UsersController();
+            $controller->updateUserName();
+            break;
+
+        case 'changeMailForm':
+            $controller = new Controllers\UsersController();
+            $controller->profil();
+            break;
+
+        case 'changePswdForm':
+            $controller = new Controllers\UsersController();
+            $controller->profil();
+            break;
+
+        case 'deleteUser':
             $controller = new Controllers\UsersController();
             $controller->profil();
             break;
@@ -93,7 +116,15 @@ if (array_key_exists('route', $_GET)):
             # code...
             break;
 
-            //form
+
+        //gestion du site
+        case 'changeNews':
+            // $id = $_GET['id'];
+            // $controller = new Controllers\AdminController();
+            // $controller->displayOneRecipe($id);
+            break;
+
+        //form
         case 'submitNewsForm':
             $controller = new Controllers\AdminController;
             $controller->isAdmin();

@@ -3,7 +3,8 @@
 namespace Controllers;
 
 class UsersController{
-    //routes
+
+////////////////////////// routes //////////////////////////
     public function register()
     {
         $template = "register.phtml";
@@ -18,6 +19,9 @@ class UsersController{
 
     public function profil()
     {
+        $model = new \Models\Users();
+        $user = $model->getUser($_SESSION['user']['id']);
+
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }
@@ -29,7 +33,7 @@ class UsersController{
         exit();
     }
 
-    //register
+////////////////////////// register //////////////////////////
     public function newUser()
     {
         $errors = $errors_pswd = $success = [];
@@ -103,7 +107,7 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
-    //connexion
+////////////////////////// connexion //////////////////////////
     public function checkUser(){
         $errors = $success = $userExist = [];
         $email = $pswd = $emailUsed  = "";
@@ -158,9 +162,42 @@ class UsersController{
                         $success [] = "Bienvenue, ". $user;
                 }
             }
-        // $modale = "users/login.phtml";
         $template = "users/login.phtml";
         include_once 'views/layout.phtml';
         }
     }
+
+    ////////////////////////// update //////////////////////////
+
+    public function replaceSpecialChar($string){
+        $string =  "";
+        return str_replace([",", "<", ">", "!"], "", $string);
     }
+
+    public function updateUserName()
+    {
+        $errors = $success = [];
+        $name = "";
+
+        if (array_key_exists('name', $_POST)) {
+
+            $name = trim($_POST['name']);
+            $this->replaceSpecialChar($name);
+
+            if (empty($name))
+                $errors[] = "Veuillez entrer votre nom";
+            }
+
+            if (count($errors) == 0) {
+                $model = new \Models\Users();
+                $model->updateUser($name);
+                $_SESSION['user'] = [
+                        'name' => $name
+                        ];
+
+                $success[] = "Votre nom a bien été modifié !";
+            }
+        $template = "users/profil.phtml";
+        include_once 'views/layout.phtml';
+    }
+}

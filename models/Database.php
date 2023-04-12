@@ -45,4 +45,25 @@ class Database {
         $query->closeCursor();
         // return $this->bdd->lastInsertId();
     }
+
+    protected function updateOne($table, $newData, $condition, $uniq)
+    {
+        $sets = '';
+
+        foreach ($newData as $key => $value) {
+            $sets .= "$key = :$key,";
+        }
+
+        $sets = substr($sets, 0, -1);
+        $query = $this->bdd->prepare("UPDATE $table SET $sets WHERE $condition = :$condition");
+
+        foreach ($newData as $key => $value) {
+            $query->bindvalue(":$key", $value);
+        }
+
+        $query->bindvalue(":$condition", $uniq);
+        $query->execute();
+    }
 }
+
+

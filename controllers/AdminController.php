@@ -29,7 +29,8 @@ class AdminController{
             exit;
         }
     }
-
+    
+/////////////////////// News ///////////////////////
     public function veriNewsForm()
     {
         $errors = [];
@@ -55,6 +56,7 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+/////////////////////// categories ///////////////////////
     public function verifCatForm()
     {
         $errors = [];
@@ -80,6 +82,7 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+/////////////////////// produits ///////////////////////
     public function verifProdForm()
     {
         $errors = [];
@@ -114,6 +117,7 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+/////////////////////// recettes ///////////////////////
     public function verifRecipeForm(){
         $errors = [];
         $success = [];

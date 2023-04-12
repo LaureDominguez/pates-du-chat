@@ -18,7 +18,7 @@
         <section class="section-tab">
             <h2>news</h2>
             <!-- display -->
-            <table class="dashboard">
+            <table class="dashboard-table">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -33,13 +33,15 @@
                             <td><?= $actu["id"] ?></td>
                             <td><?= $actu["title"] ?></td>
                             <td><?= $actu["created_at"] ?></td>
-                            <td>voir</td>
-                            <td>modifier</td>
-                            <td>supprimer</td>
+                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>">voir</a></td>
+                            <td><a href="index.php?route=changeNews&id=<?= $actu['id'] ?>">modifier</a></td>
+                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>">supprimer</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <hr>
 
             <!-- create -->
             <form action="index.php?route=submitNewsForm" method="post">

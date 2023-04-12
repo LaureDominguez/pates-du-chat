@@ -24,4 +24,14 @@ class Users extends Database {
         $params = ["id" => $id];
         return $this->findOne($req, $params);
     }
+
+    public function updateUser($name)
+    {
+        $newData = [
+            'name'  => $name
+        ];
+
+        $this->updateOne('users', $newData, 'id', $_SESSION['user']['id']);
+    }
+    
 }

@@ -45,6 +45,10 @@ main{
     border-radius: 10px;
 }
 
+hr{
+    margin: 3rem 10rem;
+}
+
 /******************* Fonts *******************/
 
 h1, h2, h3, h4, h5, nav, .btn {
@@ -165,18 +169,14 @@ display: none;
     bottom: 0.5rem;
 }
 
-/******************* prompt *******************/
-#modale{
-    position:absolute;
-    transform:translate(-50%,-50%);
-}
-.modale{
+/******************* alert *******************/
+
+.alert{
     width: 20vw;
     padding: 1rem;
     border-radius: 5px;
     background-color: var(--orange);
     box-shadow: 2px 2px 15px 2px #000000a3;
-    z-index: 200;
 }
 .error{
     color: red;
@@ -447,6 +447,7 @@ padding:1rem;
     }
 }
 
-.dashboard table{
-    
+.dashboard-table, th, td{
+    border: 1px solid rgb(200, 200, 200);
+    text-align: center;
 }

@@ -1,18 +1,3 @@
-// ************************** fenetre d'erreur horrible
-
-var modale = document.getElementById('modale');
-
-const onMouseMove = (e) =>{
-    modale.style.left = e.pageX + 150 + 'px';
-    modale.style.top = e.pageY + 150 + 'px';
-}
-
-window.addEventListener('DOMContentLoaded', function () {
-    if (modale != null) {
-        document.addEventListener('mousemove', onMouseMove)
-    }
-})
-
 // ********************* sort tableau
 const allTables = document.querySelectorAll("table");
 
@@ -35,3 +20,19 @@ for (const table of allTables) {
         });
     }
 }
+
+
+// ************************** fenetre d'erreur horrible
+
+// var modale = document.getElementById('modale');
+
+// const onMouseMove = (e) =>{
+//     modale.style.left = e.pageX + 150 + 'px';
+//     modale.style.top = e.pageY + 150 + 'px';
+// }
+
+// window.addEventListener('DOMContentLoaded', function () {
+//     if (modale != null) {
+//         document.addEventListener('mousemove', onMouseMove)
+//     }
+// })
