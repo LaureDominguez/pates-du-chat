@@ -18,6 +18,7 @@
         <section class="section-tab">
             <h2>news</h2>
             <!-- display -->
+            <h3>Toutes les actus</h3>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -34,7 +35,7 @@
                             <td><?= $actu["title"] ?></td>
                             <td><?= $actu["created_at"] ?></td>
                             <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>">voir</a></td>
-                            <td><a href="index.php?route=changeNews&id=<?= $actu['id'] ?>">modifier</a></td>
+                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>">modifier</a></td>
                             <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>">supprimer</a></td>
                         </tr>
                     <?php endforeach; ?>
@@ -43,18 +44,8 @@
 
             <hr>
 
-            <!-- create -->
-            <form action="index.php?route=submitNewsForm" method="post">
-                <div>
-                    <label for="title">titre</label>
-                    <input type="text" name="title" id="title" required>
-                </div>
-                <div>
-                    <label for="message">article</label>
-                    <textarea name="message" id="editor" cols="30" rows="10"></textarea>
-                </div>
-                <button type="submit" class="btn" value="submit">envoyer</button>
-            </form>
+            <a href="index.php?route=displayCreateNewsForm" class="btn">créer une nouvelle actu</a>
+
         </section>
 
         <!-- shop -->

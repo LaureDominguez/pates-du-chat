@@ -1,5 +1,10 @@
 /******************* shop *******************/
 
+:root{
+    --orange: rgb(242, 143, 24);
+    --vert: rgb(0, 79, 18);
+}
+
 /* .shop-view{
     display: flex;
     flex-wrap: wrap;

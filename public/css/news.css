@@ -1,5 +1,10 @@
 /******************* news *******************/
 
+:root{
+    --orange: rgb(242, 143, 24);
+    --vert: rgb(0, 79, 18);
+}
+
 .news-index{
     display: flex;
     flex-wrap: wrap;

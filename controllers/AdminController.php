@@ -31,9 +31,17 @@ class AdminController{
             exit;
         }
     }
-    
-/////////////////////// News ///////////////////////
-    public function veriNewsForm()
+
+    /////////////////////// News ///////////////////////
+    public function displayCreateNewsForm()
+    {
+        $template = "views/news/form.phtml";
+        $css = "public/css/dashboard.css";
+
+        include_once 'views/layout.phtml';
+    }
+
+    public function VerifCreatNewsForm()
     {
         $errors = [];
         $success = [];
@@ -56,6 +64,45 @@ class AdminController{
         }
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
+    }
+
+    public function displayUpdateNewsForm($id)
+    {
+        $id = $_GET['id'];
+        $modelNews = new \Models\News();
+        $actu = $modelNews->getOneActu($id);
+
+        $template = "views/news/form.phtml";
+        $css = "public/css/dashboard.css";
+
+        include_once 'views/layout.phtml';
+    }
+
+    public function VerifUpdateNewsForm($id)
+    {
+        $success = [];
+        if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
+            $id = $_GET['id'];
+            $newData = [
+                'id' => $id,
+                'title' => trim($_POST['title']),
+                'message' => trim($_POST['message'])
+            ];
+            $modelNews = new \Models\News();
+            $modelNews->updateNews($newData);
+            $success[] = "L'article a bien été modifié !";
+
+            $template = "dashboard.phtml";
+            $css = "public/css/dashboard.css";
+            include_once 'views/layout.phtml';
+
+        }
+    }
+
+    public function deleteNews($id){
+        $id = $_GET['id'];
+        $modelNews = new \Models\News();
+        $modelNews->deleteOneActu($id);
     }
 
 /////////////////////// categories ///////////////////////
@@ -81,6 +128,7 @@ class AdminController{
             }
         }
         $template = "dashboard.phtml";
+        $css = "public/css/dashboard.css";
         include_once 'views/layout.phtml';
     }
 

@@ -117,19 +117,42 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-        //gestion du site
-        case 'changeNews':
-            // $id = $_GET['id'];
-            // $controller = new Controllers\AdminController();
-            // $controller->displayOneRecipe($id);
+            //gestion du site
+            //news
+
+        case 'displayCreateNewsForm':
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayCreateNewsForm();
+            break;
+
+        case 'submitNews':
+            $controller = new Controllers\AdminController;
+            $controller->isAdmin();
+            $controller->VerifCreatNewsForm();
+            break;
+
+        case 'displayUpdateNewsForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayUpdateNewsForm($id);
+            break;
+
+        case 'updateNews':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->VerifUpdateNewsForm($id);
+            break;
+
+        case 'deleteNews':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->deleteNews($id);
+            header('Location: index.php?route=admin');
             break;
 
         //form
-        case 'submitNewsForm':
-            $controller = new Controllers\AdminController;
-            $controller->isAdmin();
-            $controller->veriNewsForm();
-            break;
 
         case 'submitCatForm':
             $controller = new Controllers\AdminController;

@@ -1,5 +1,10 @@
 /******************* dashboard *******************/
 
+:root{
+    --orange: rgb(242, 143, 24);
+    --vert: rgb(0, 79, 18);
+}
+
 .menu-tabs ul{
 padding-left:0;
 margin:0;
@@ -112,7 +117,18 @@ padding:1rem;
     }
 }
 
-.dashboard-table, th, td{
+
+/******** tableau ********/
+table, th, td{
     border: 1px solid rgb(200, 200, 200);
     text-align: center;
+}
+
+thead{
+	background-color: var(--orange);
+	color: #fff;
+}
+
+tbody>tr:hover {
+	background-color: rgb(255, 207, 149);
 }

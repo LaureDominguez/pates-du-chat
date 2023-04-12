@@ -24,7 +24,7 @@ class Database {
         ]);
     }
 
-    protected function findAll(string $req, array $params = []) :array
+    protected function findAll(string $req, array $params = []) : array | bool
     {
         $query = $this->bdd->prepare($req);
         $query->execute($params);
@@ -63,6 +63,14 @@ class Database {
 
         $query->bindvalue(":$condition", $uniq);
         $query->execute();
+        $query->closeCursor();
+    }
+
+    protected function deleteOne(string $table, int $uniq)
+    {
+        $query = $this->bdd->prepare("DELETE FROM $table WHERE id = $uniq");
+        $query->execute();
+        $query->closeCursor();
     }
 }
 
