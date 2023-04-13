@@ -5,9 +5,7 @@
     --vert: rgb(0, 79, 18);
 }
 
-/* .shop-view{
-    display: flex;
-    flex-wrap: wrap;
+.shop-view{
 }
 
 .shop-cat{
@@ -19,7 +17,7 @@
     justify-items: center;
     align-content: center;
     justify-content: center;
-} */
+}
 
 .shop-tuile{
     height: 12rem;
