@@ -5,6 +5,8 @@
     --vert: rgb(0, 79, 18);
 }
 
+/******************* index *******************/
+
 .news-index{
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +20,7 @@
     width: 80%;
     overflow: hidden;
     position: relative;
+    cursor: default;
 }
 
 .news-short img{
@@ -74,3 +77,26 @@
     transform: scale(1.5);
 }
 
+/******************* detail *******************/
+
+.article{
+    display: flex;
+    width: 100%;
+    background-color: #ffffff86;
+    border-radius: 10px;
+}
+
+.article img{
+    max-width: 50%;
+    margin: .5rem;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.article figcaption{
+    padding: 1rem;
+}
+
+.date{
+    display: flex;
+}

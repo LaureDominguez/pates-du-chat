@@ -165,8 +165,8 @@ display: none;
     font-weight: bold;
     color: var(--vert);
     margin: 0;
-    position: absolute;
-    bottom: 0.5rem;
+    /* position: absolute;
+    bottom: 0.5rem; */
 }
 
 /******************* alert *******************/

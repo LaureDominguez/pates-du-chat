@@ -1,15 +1,20 @@
 <section class="content">
     <h2>Toutes les news</h2>
-    <h4>trier les news</h4>
+
+    <ul>
+        <li>trier les news</li>
+        <li>update pas à jour</li>
+        <li>format de date</li>
+    </ul>
+
     <div class="news-index">
         <?php foreach ($news as $actu) : ?>
-            <figure class="news-short">
-                <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-                <!-- @if ($product->image)
-                            <img src="/images/{{$product->img}}" alt="">
-                            @else -->
-                <img src="public/img/Hades.jpg" alt="">
-                <!-- @endif -->
+            <figure class="news-short" onclick="location.href='index.php?route=newsDetail&id=<?= $actu['id'] ?>'">
+                <?php if (isset($product["img"])) : ?>
+                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                <?php else : ?>
+                    <img src="public/img/Hades.jpg" alt="">
+                <?php endif; ?>
                 <figcaption>
                     <h5><?= $actu["title"] ?></h5>
                     <div class="short"><?= $actu["message"] ?></div>
@@ -19,15 +24,13 @@
                         <p class="timestamp">créé le : <?= $actu["created_at"] ?></p>
                     <?php endif; ?>
                     <a href=" index.php?route=newsDetail&id=<?= $actu['id'] ?>" class="more">
-                    <div>
-                        <p>Lire la suite</p>
-                        <p><i class="fa-solid fa-arrow-right"></i></p>
-                    </div>
+                        <div>
+                            <p>Lire la suite</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
                     </a>
                 </figcaption>
-                <!-- </a> -->
             </figure>
         <?php endforeach; ?>
-        </article>
     </div>
 </section>

@@ -1,38 +1,40 @@
 <section class="content">
     <h2>Tous les articles</h2>
 
-    <div class="shop-view">
-        <?php foreach ($categories as $category) :
-            // arsort($category); 
-        ?>
-            <h3><?= $category["name"] ?></h3>
+    <ul>
+        <li>trier les catégories</li>
+        <li>rechercher un produit</li>
+        <li>afficher "pas de produit" quand une catégorie est vide</li>
+    </ul>
 
-            <article class="shop-cat">
-                <?php foreach ($products as $product) : ?>
-                    <?php if ($product["cat_id"] == $category["id"]) : ?>
-                        <figure class="shop-tuile">
-                            <a href="{{route('shopping.show', $product->id)}}">
-                                <?php if (isset($product["img"])) : ?>
-                                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                                <?php else : ?>
-                                    <img src="public/img/Hades.jpg" alt="">
-                                <?php endif; ?>
-                                    <figcaption>
-                                        <h5><?= $product["name"] ?></h5>
-                                        <p><?= $product["descript"] ?></p>
-                                        <p><?= $product["price"] ?>€</p>
-                                        <a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" class="btn">Voir plus</a>
-                                    </figcaption>
-                            </a>
-                        </figure>
-                    <?php endif; ?>
-                <?php endforeach; ?>
 
-                <//?php if (!isset($product)) : ?>
-                    <!-- <p>pas d'article</p> -->
-                <//?php endif; ?>
+    <?php foreach ($categories as $category) :
+        // arsort($category); 
+    ?>
+        <h3><?= $category["name"] ?></h3>
 
-            </article>
-        <?php endforeach; ?>
-    </div>
+        <article class="shop-cat">
+            <?php foreach ($products as $product) : ?>
+                <?php if ($product["cat_id"] == $category["id"]) : ?>
+                    <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= $product['id'] ?>'">
+                        <?php if (isset($product["img"])) : ?>
+                            <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                        <?php else : ?>
+                            <img src="public/img/Hades.jpg" alt="">
+                        <?php endif; ?>
+                        <figcaption>
+                            <h5><?= $product["name"] ?></h5>
+                            <p><?= $product["descript"] ?></p>
+                            <p><?= $product["price"] ?>€</p>
+                        </figcaption>
+                    </figure>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            </ /?php if (!isset($product)) : ?>
+            <!-- <p>pas d'article</p> -->
+            </ /?php endif; ?>
+
+        </article>
+    <?php endforeach; ?>
 </section>

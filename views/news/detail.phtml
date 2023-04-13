@@ -1,15 +1,26 @@
-<h2><?= $actu["title"] ?></h2>
-<figure class="">
-    <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-    <!-- @if ($product->image)
-    <img src="/images/{{$product->img}}" alt="">
-    @else -->
-    <img src="public/img/Hades.jpg" alt="">
-    <!-- @endif -->
-    <figcaption>
-        <p><?= $actu["message"] ?></p>
-        <p><?= $actu["created_at"] ?></p>
-        <p><?= $actu["updated_at"] ?></p>
-    </figcaption>
-    <!-- </a> -->
-</figure>
+<section class="content">
+    <article class="news-detail">
+        <h2><?= $actu["title"] ?></h2>
+
+        <figure class="article">
+            <?php if (isset($actu["img"])) : ?>
+                <!-- <img src="/images/{{$product->img}}" alt=""> -->
+            <?php else : ?>
+                <img src="public/img/Hades.jpg" alt="">
+            <?php endif; ?>
+
+            <figcaption>
+                <?= $actu["message"] ?>
+            </figcaption>
+        </figure>
+
+
+        <div class="date">
+            <?php if ($actu["created_at"] != $actu["updated_at"]) : ?>
+                <p class="timestamp">modifié le : <?= $actu["updated_at"] ?></p>
+            <?php else : ?>
+                <p class="timestamp">créé le : <?= $actu["created_at"] ?></p>
+            <?php endif; ?>
+        </div>
+    </article>
+</section>

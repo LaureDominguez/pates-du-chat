@@ -22,6 +22,7 @@ for (const table of allTables) {
 }
 
 
+
 // ************************** fenetre d'erreur horrible
 
 // var modale = document.getElementById('modale');

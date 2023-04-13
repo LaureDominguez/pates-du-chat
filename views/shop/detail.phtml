@@ -1,15 +1,15 @@
-<h2><?= $product["name"] ?></h2>
-<figure class="">
-    <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-    <!-- @if ($product->image)
-    <img src="/images/{{$product->img}}" alt="">
-    @else -->
-    <img src="public/img/Hades.jpg" alt="">
-    <!-- @endif -->
-    <figcaption>
-        <p><?= $category["name"] ?></p>
-        <p><?= $product["descript"] ?></p>
-        <p><?= $product["price"] ?>€</p>
-    </figcaption>
-    <!-- </a> -->
-</figure>
+<section class="content">
+    <figure class="shop-detail">
+        <?php if (isset($product["img"])) : ?>
+            <!-- <img src="/images/{{$product->img}}" alt=""> -->
+        <?php else : ?>
+            <img src="public/img/Hades.jpg" alt="">
+        <?php endif; ?>
+        <figcaption>
+            <h2><?= $product["name"] ?></h2>
+            <p><?= $product["descript"] ?></p>
+            <p><?= $product["price"] ?>€</p>
+            <button class="btn">Ajouter au panier</button>
+        </figcaption>
+    </figure>
+</section>
