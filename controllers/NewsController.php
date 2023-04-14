@@ -8,7 +8,9 @@ class NewsController{
         $news = $modelNews->getAllNews();
 
         $template = "news/index.phtml";
-        $css = "public/css/news.css"; 
+        $css = [
+            "public/css/news.css"
+        ];
         include_once'views/layout.phtml';
     }
 
@@ -18,7 +20,9 @@ class NewsController{
         $actu = $modelNews->getOneActu($id);
 
         $template = "news/detail.phtml";
-        $css = "public/css/news.css"; 
+        $css = [
+            "public/css/news.css"
+        ];
         
         include_once 'views/layout.phtml';
     }

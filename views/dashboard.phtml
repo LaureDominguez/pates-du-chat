@@ -1,7 +1,7 @@
 <div class="menu-tabs">
 
-    <input type="radio" class="hidden" id="tab1" name="tab-control" checked>
-    <input type="radio" class="hidden" id="tab2" name="tab-control">
+    <input type="radio" class="hidden" id="tab1" name="tab-control">
+    <input type="radio" class="hidden" id="tab2" name="tab-control" checked>
     <input type="radio" class="hidden" id="tab3" name="tab-control">
     <input type="radio" class="hidden" id="tab4" name="tab-control">
 
@@ -14,11 +14,17 @@
 
     <div class="contenu-tabs">
 
-        <!-- news -->
+        <!--------------- news --------------->
         <section class="section-tab">
             <h2>news</h2>
             <!-- display -->
             <h3>Toutes les actus</h3>
+            <ul>
+                <li>pagination</li>
+                <li>confirm avant suppression</li>
+                <li>truc over pour indiquer ce que fait le bouton</li>
+                <li>rester sur le bon onglet</li>
+            </ul>
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -34,9 +40,12 @@
                             <td><?= $actu["id"] ?></td>
                             <td><?= $actu["title"] ?></td>
                             <td><?= $actu["created_at"] ?></td>
-                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>">voir</a></td>
-                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>">modifier</a></td>
-                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>">supprimer</a></td>
+                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a></td>
+                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>"><i class="fa-solid fa-trash-can"></i></a></td>
+                            <!-- onclick="confirmDelete()" -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -44,56 +53,107 @@
 
             <hr>
 
-            <a href="index.php?route=displayCreateNewsForm" class="btn">créer une nouvelle actu</a>
+            <div class="buttons">
+                <a href="index.php?route=displayCreateNewsForm" class="btn">créer une nouvelle actu</a>
+            </div>
 
         </section>
 
-        <!-- shop -->
+        <!--------------- shop --------------->
         <section class="section-tab">
             <h2>boutique</h2>
+
+            <!-- produits -->
+            <h3>Tous les produits</h3>
+
+            <ul>
+                <li>pagination</li>
+                <li>confirm avant suppression</li>
+                <li>truc over pour indiquer ce que fait le bouton</li>
+                <li>activer/masquer un produit</li>
+            </ul>
+
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>produit</th>
+                        <th>categorie</th>
+                        <th>prix</th>
+                        <th>en ligne</th>
+                        <th colspan="2">actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($products as $product) : ?>
+                        <tr>
+                            <td><?= $product["id"] ?></td>
+                            <td><?= $product["name"] ?></td>
+                            <td><?= $product["cat_id"] ?></td>
+                            <td><?= $product["price"] ?>€</td>
+                            <td>
+                                <!-- ajax -->
+                                <form action="">
+                                    <label class="switch">
+                                        <input type="checkbox" <?php if ($product['active']) :
+                                                                    echo 'checked';
+                                                                endif; ?> />
+                                        <span></span>
+                                    </label>
+                                </form>
+                            </td>
+                            <td><a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" data-text="Voir le produit" class="aide">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a></td>
+                            <td><a href="" data-text="Modifier le produit" class="aide">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <hr>
+
             <!-- category -->
-            <form action="index.php?route=submitCatForm" method="post">
-                <h3>Créer une nouvelle catégorie</h3>
-                <div>
-                    <label for="name">nom</label>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div>
-                    <label for="descript">decription</label>
-                    <textarea name="descript" id="decript" cols="30" rows="10"></textarea>
-                </div>
-                <button type="submit" class="btn" value="submit">envoyer</button>
-            </form>
-            <!-- product -->
-            <form action="index.php?route=submitProdForm" method="post">
-                <h3>Créer un nouveau produit</h3>
-                <div>
-                    <label for="name">nom</label>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div>
-                    <label for="category">catégorie</label>
-                    <select name="category" id="category">
-                        <?php foreach ($categories as $category) : ?>
-                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="descript">decription</label>
-                    <textarea name="descript" id="descript" cols="30" rows="10"></textarea>
-                </div>
-                <div>
-                    <label for="price">prix</label>
-                    <input type="number" name="price" id="price" required>
-                </div>
-                <div>
-                    <label for="img">image</label>
-                    <input type="file" class="file" name="img" id="img">
-                </div>
-                <button type="submit" class="btn" value="submit">envoyer</button>
-            </form>
+            <h3>Toutes les catégories</h3>
+            <ul>
+                <li>pagination</li>
+                <li>confirm avant suppression</li>
+                <li>truc over pour indiquer ce que fait le bouton</li>
+            </ul>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>categorie</th>
+                        <th>nombre de produits</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($categories as $category) : ?>
+                        <tr>
+                            <td><?= $category["id"] ?></td>
+                            <td><?= $category["name"] ?></td>
+                            <td>
+                                </ /?=$product["cat_id"] ?>
+                            </td>
+                            <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <div class="buttons">
+                <a href="index.php?route=displayCreateProdForm" class="btn">créer un produit</a>
+                <a href="index.php?route=displayCreateCatForm" class="btn">créer une catégorie</a>
+            </div>
         </section>
+
+        <!--------------- recipes --------------->
 
         <section class="section-tab">
             <h2>recettes</h2>

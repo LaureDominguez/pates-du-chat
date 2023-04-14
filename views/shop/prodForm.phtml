@@ -1,0 +1,63 @@
+<?php if (isset($product['id'])) : ?>
+
+    <h3>modifier un produit</h3>
+    <form action="index.php?route=updateProdForm" method="post">
+        <div>
+            <label for="name">nom</label>
+            <input type="text" name="name" id="name" required value="<?= $product["name"] ?>">
+        </div>
+        <div>
+            <label for="category">catégorie</label>
+            <select name="category" id="category">
+                <?php foreach ($categories as $category) : ?>
+                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
+            <label for="descript">decription</label>
+            <textarea name="descript" id="descript" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="price">prix</label>
+            <input type="number" name="price" id="price" required value="<?= $product["price"] ?>">
+        </div>
+        <div>
+            <label for="img">image</label>
+            <input type="file" class="file" name="img" id="img">
+        </div>
+        <button type="submit" class="btn" value="submit">envoyer</button>
+    </form>
+
+<?php else : ?>
+
+    <h3>créer un produit</h3>
+    <form action="index.php?route=submitProdForm" method="post">
+        <div>
+            <label for="name">nom</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div>
+            <label for="category">catégorie</label>
+            <select name="category" id="category">
+                <?php foreach ($categories as $category) : ?>
+                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
+            <label for="descript">decription</label>
+            <textarea name="descript" id="descript" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="price">prix</label>
+            <input type="number" name="price" id="price" required>
+        </div>
+        <div>
+            <label for="img">image</label>
+            <input type="file" class="file" name="img" id="img">
+        </div>
+        <button type="submit" class="btn" value="submit">envoyer</button>
+    </form>
+
+<?php endif; ?>

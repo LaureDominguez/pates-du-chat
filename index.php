@@ -152,6 +152,19 @@ if (array_key_exists('route', $_GET)):
             header('Location: index.php?route=admin');
             break;
 
+            //shop
+        case 'displayCreateProdForm':
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayCreateProdForm();
+            break;
+
+        case 'displayCreateCatForm':
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayCreateCatForm();
+            break;
+
         //form
 
         case 'submitCatForm':

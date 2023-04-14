@@ -12,7 +12,9 @@ class ShopController{
         $categories = $model->getAllCategories();
 
         $template = "shop/index.phtml";
-        $css = "public/css/shop.css"; 
+        $css = [
+            "public/css/shop.css"
+        ];
         include_once'views/layout.phtml';
     }
 
@@ -25,7 +27,9 @@ class ShopController{
         $category = $modelCategories->getOneCategory($product['cat_id']);
 
         $template = "shop/detail.phtml";
-        $css = "public/css/shop.css"; 
+        $css = [
+            "public/css/shop.css"
+        ];
         include_once 'views/layout.phtml';
     }
 }

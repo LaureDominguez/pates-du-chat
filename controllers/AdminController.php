@@ -19,7 +19,11 @@ class AdminController{
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "dashboard.phtml";
-        $css = "public/css/dashboard.css"; 
+        $css = [
+            "public/css/dashboard.css",
+            "public/css/switch.css",
+            "public/css/tooltip.css"
+        ];
 
         include_once'views/layout.phtml';
     }
@@ -36,7 +40,9 @@ class AdminController{
     public function displayCreateNewsForm()
     {
         $template = "views/news/form.phtml";
-        $css = "public/css/dashboard.css";
+        $css = [
+            "public/css/dashboard.css"
+        ];
 
         include_once 'views/layout.phtml';
     }
@@ -73,7 +79,9 @@ class AdminController{
         $actu = $modelNews->getOneActu($id);
 
         $template = "views/news/form.phtml";
-        $css = "public/css/dashboard.css";
+        $css = [
+            "public/css/dashboard.css"
+        ];
 
         include_once 'views/layout.phtml';
     }
@@ -93,7 +101,9 @@ class AdminController{
             $success[] = "L'article a bien été modifié !";
 
             $template = "dashboard.phtml";
-            $css = "public/css/dashboard.css";
+            $css = [
+                "public/css/dashboard.css"
+            ];
             include_once 'views/layout.phtml';
 
         }
@@ -105,7 +115,22 @@ class AdminController{
         $modelNews->deleteOneActu($id);
     }
 
-/////////////////////// categories ///////////////////////
+    /////////////////////// categories ///////////////////////
+    public function displayCreateCatForm()
+    {
+        $modelProduct = new \Models\Products();
+        $products = $modelProduct->getAllProducts();
+
+        $modelCategory = new \Models\Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $template = "views/shop/catForm.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
     public function verifCatForm()
     {
         $errors = [];
@@ -128,11 +153,29 @@ class AdminController{
             }
         }
         $template = "dashboard.phtml";
-        $css = "public/css/dashboard.css";
+        $css = [
+            "public/css/dashboard.css"
+        ];
         include_once 'views/layout.phtml';
     }
 
-/////////////////////// produits ///////////////////////
+    /////////////////////// produits ///////////////////////
+    public function displayCreateProdForm()
+    {
+        $modelProduct = new \Models\Products();
+        $products = $modelProduct->getAllProducts();
+
+        $modelCategory = new \Models\Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $template = "views/shop/prodForm.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+
     public function verifProdForm()
     {
         $errors = [];

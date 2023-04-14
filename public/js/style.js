@@ -21,7 +21,16 @@ for (const table of allTables) {
     }
 }
 
+// ********************* confirm delete
 
+// confirmDelete(){
+//     // const id = id;
+//     // const route = route; 
+//     if (confirm("Voulez-vous supprimer cet élément ?") == true) {
+//         window.location.href = "index.php?route=deleteNews&id=<?= $actu['id'] ?>";
+//         // window.location.href = "index.php?route=".route."&id=".id."?>"
+//     }
+// }
 
 // ************************** fenetre d'erreur horrible
 

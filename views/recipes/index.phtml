@@ -1,32 +1,29 @@
 <section class="content">
     <h2>Toutes les recettes</h2>
-    <div class="">
-        <!-- <//?php foreach ($categories as $category) : ?>
-            <h3><//?= $category["name"] ?></h3>
-            <article class="shop-cat"> -->
+    <article class="recipe-index">
         <?php foreach ($recipes as $recipe) : ?>
-            <!-- <//?php if ($category["id"] == $product["cat_id"]) : ?> -->
-            <figure class="shop-tuile">
-                <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-                <!-- @if ($product->image)
-                            <img src="/images/{{$product->img}}" alt="">
-                            @else -->
-                <img src="public/img/Hades.jpg" alt="">
-                <!-- @endif -->
+            <figure class="recipe-tuile" onclick="location.href='index.php?route=recipeDetail&id=<?= $recipe['id'] ?>'">
+
+                <?php if (isset($recipe["img"])) : ?>
+                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                <?php else : ?>
+                    <img src="public/img/Hades.jpg" alt="">
+                <?php endif; ?>
+
                 <figcaption>
                     <h5><?= $recipe["name"] ?></h5>
-                    <!-- <p><//?= $recipe["time"] ?></p> -->
-                    <!-- <p><//?= $recipe["difficulty"] ?></p> -->
-                    <p>id = <?= $recipe["id"] ?></p>
-                    <a href="index.php?route=recipeDetail&id=<?= $recipe['id'] ?>" class="btn">Voir plus</a>
+                    <div class="infos">
+                        <p><?= $recipe["time"] ?></p>
+                        <input 
+                        class="rating"
+                        type="range" 
+                        min="1" 
+                        max="5" 
+                        value="<?php $recipe["difficulty"] ?>" 
+                        disabled>
+                    </div>
                 </figcaption>
-                <!-- </a> -->
             </figure>
-            <!-- <//?php else : ?> -->
-            <!-- <p>aucun produit dans ce rayon</p> -->
-            <!-- <//?php endif; ?> -->
         <?php endforeach; ?>
-        <!-- <//?php endforeach; ?> -->
-        </article>
-    </div>
+    </article>
 </section>

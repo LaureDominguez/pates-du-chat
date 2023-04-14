@@ -3,4 +3,54 @@
 :root{
     --orange: rgb(242, 143, 24);
     --vert: rgb(0, 79, 18);
+    
+    --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.25l-6.188 3.75 1.641-7.031-5.438-4.734 7.172-0.609 2.813-6.609 2.813 6.609 7.172 0.609-5.438 4.734 1.641 7.031z"/></svg>');
+}
+
+/******************* index *******************/
+
+.recipe-index{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    grid-template-rows: repeat(auto-fill, 20rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.recipe-tuile{
+    height: 18rem;
+    width: 12rem;
+    overflow: hidden;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+.recipe-tuile img{
+    object-fit: cover;
+    height: 12rem;
+    width: 12rem;
+    position: relative;
+}
+.recipe-tuile figcaption{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff86;
+    padding: 1rem;
+    text-align: justify;
+}
+.recipe-tuile:hover{
+    transform: translateY(-1rem);
+}
+
+.infos{
+    display: flex;
 }

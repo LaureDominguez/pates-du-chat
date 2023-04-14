@@ -122,6 +122,11 @@ padding:1rem;
 table, th, td{
     border: 1px solid rgb(200, 200, 200);
     text-align: center;
+	cursor: default;
+}
+
+table{
+	margin-bottom: 1rem;
 }
 
 thead{
@@ -131,4 +136,16 @@ thead{
 
 tbody>tr:hover {
 	background-color: rgb(255, 207, 149);
+}
+
+td a{
+	transition: all 1s ease-out;
+}
+td a:hover{
+	color: red;
+}
+
+.buttons{
+	display: flex;
+    justify-content: center;
 }
