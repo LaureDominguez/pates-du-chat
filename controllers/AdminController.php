@@ -14,6 +14,7 @@ class AdminController{
 
         $modelCategory = new \Models\Categories();
         $categories = $modelCategory->getAllCategories();
+        // $category = $modelCategory->getOneCategory($products['id']);
 
         $modelRecipes = new \Models\Recipes();
         $recipes = $modelRecipes->getAllRecipes();
@@ -176,6 +177,23 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    public function displayUpdateProdForm($id)
+    {
+        $id = $_GET['id'];
+        $modelNews = new \Models\Products();
+        $product = $modelNews->getOneProduct($id);
+
+        $modelCategory = new \Models\Categories();
+        $category = $modelCategory->getAllCategories();
+
+        $template = "views/shop/prodForm.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+
     public function verifProdForm()
     {
         $errors = [];
@@ -210,7 +228,41 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-/////////////////////// recettes ///////////////////////
+    /////////////////////// recettes ///////////////////////
+    public function displayCreateRecipesForm()
+    {
+        $modelRecipes = new \Models\Recipes();
+        $recipes = $modelRecipes->getAllRecipes();
+
+        $modelProducts = new \Models\Products();
+        $products = $modelProducts->getAllProducts();
+
+        $template = "views/recipes/form.phtml";
+        $css = [
+            "public/css/dashboard.css",
+            "public/css/rating.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+    public function displayUpdateRecipesForm($id)
+    {
+        $id = $_GET['id'];
+        $modelRecipes = new \Models\Recipes();
+        $recipe = $modelRecipes->getOneRecipe($id);
+
+        $modelProducts = new \Models\Products();
+        $products = $modelProducts->getAllProducts();
+
+        $template = "views/recipes/form.phtml";
+        $css = [
+            "public/css/dashboard.css",
+            "public/css/rating.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+
     public function verifRecipeForm(){
         $errors = [];
         $success = [];

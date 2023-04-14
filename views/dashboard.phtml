@@ -1,7 +1,7 @@
 <div class="menu-tabs">
 
-    <input type="radio" class="hidden" id="tab1" name="tab-control">
-    <input type="radio" class="hidden" id="tab2" name="tab-control" checked>
+    <input type="radio" class="hidden" id="tab1" name="tab-control" checked>
+    <input type="radio" class="hidden" id="tab2" name="tab-control">
     <input type="radio" class="hidden" id="tab3" name="tab-control">
     <input type="radio" class="hidden" id="tab4" name="tab-control">
 
@@ -22,7 +22,6 @@
             <ul>
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
-                <li>truc over pour indiquer ce que fait le bouton</li>
                 <li>rester sur le bon onglet</li>
             </ul>
             <table class="dashboard-table">
@@ -40,11 +39,15 @@
                             <td><?= $actu["id"] ?></td>
                             <td><?= $actu["title"] ?></td>
                             <td><?= $actu["created_at"] ?></td>
-                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>">
+                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>" data-text="Voir l'article" class="aide left">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a></td>
-                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>"><i class="fa-solid fa-trash-can"></i></a></td>
+                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>" data-text="Modifier l'article" class="aide left">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a></td>
+                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>" data-text="Supprimer l'article" class="aide left">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a></td>
                             <!-- onclick="confirmDelete()" -->
                         </tr>
                     <?php endforeach; ?>
@@ -69,8 +72,8 @@
             <ul>
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
-                <li>truc over pour indiquer ce que fait le bouton</li>
                 <li>activer/masquer un produit</li>
+                <li style="color:red">bug "catégorie" dans un produit modifié</li>
             </ul>
 
             <table class="dashboard-table">
@@ -89,7 +92,7 @@
                         <tr>
                             <td><?= $product["id"] ?></td>
                             <td><?= $product["name"] ?></td>
-                            <td><?= $product["cat_id"] ?></td>
+                            <td><?= $product["category"] ?></td>
                             <td><?= $product["price"] ?>€</td>
                             <td>
                                 <!-- ajax -->
@@ -105,7 +108,7 @@
                             <td><a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" data-text="Voir le produit" class="aide left">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a></td>
-                            <td><a href="" data-text="Modifier le produit" class="aide left">
+                            <td><a href="index.php?route=displayUpdateProdForm&id=<?= $product['id'] ?>" data-text="Modifier le produit" class="aide left">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a></td>
                         </tr>
@@ -120,7 +123,6 @@
             <ul>
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
-                <li>truc over pour indiquer ce que fait le bouton</li>
             </ul>
             <table class="dashboard-table">
                 <thead>
@@ -154,49 +156,54 @@
         </section>
 
         <!--------------- recipes --------------->
-
         <section class="section-tab">
             <h2>recettes</h2>
-            <form action="index.php?route=submitRecipeForm" method="post">
-                <div>
-                    <label for="name">nom</label>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div>
-                    <label for="product_id">inrédient principal</label>
-                    <select name="product_id" id="product_id">
-                        <option value="">---</option>
-                        <?php foreach ($products as $product) : ?>
-                            <option value="<?= $product['id'] ?>"><?= $product['name'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="difficulty">difficulté</label>
-                    <input type="range" name="difficulty" id="difficulty" min="1" max="5">
-                </div>
-                <div>
-                    <label for="time">temps</label>
-                    <input type="time" name="time" id="time">
-                </div>
-                <div>
-                    <label for="recipe">recette</label>
-                    <textarea name="recipe" id="recipe" cols="30" rows="10" required></textarea>
-                </div>
-                <div>
-                    <label for="thermostat">thermostat</label>
-                    <input type="number" name="thermostat" id="thermostat">
-                </div>
-                <div>
-                    <label for="portions">nombre de personnes</label>
-                    <input type="number" name="portions" id="portions">
-                </div>
-                <div>
-                    <label for="img">image</label>
-                    <input type="file" name="img" id="img">
-                </div>
-                <button type="submit" class="btn" value="">envoyer</button>
-            </form>
+
+            <ul>
+                <li>jointure sur le nom du produit (bug dans la modification de la recettte)</li>
+            </ul>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>recette</th>
+                        <th>produit</th>
+                        <th>difficulté</th>
+                        <th colspan="3">actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($recipes as $recipe) : ?>
+                        <tr>
+                            <td><?= $recipe["id"] ?></td>
+                            <td><?= $recipe["name"] ?></td>
+                            <td><?= $recipe["product_id"] ?></td>
+                            <td><?= $recipe["difficulty"] ?></td>
+                            <td>
+                                <a href="index.php?route=recipeDetail&id=<?= $recipe['id'] ?>" data-text="Voir la recette" class="aide left">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="index.php?route=displayUpdateRecipesForm&id=<?= $recipe['id'] ?>" data-text="Modifier la recette" class="aide left">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="" data-text="Supprimer la recette" class="aide left">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <div class="buttons">
+                <a href="index.php?route=displayCreateRecipesForm" class="btn">créer une recette</a>
+            </div>
         </section>
 
         <section class="section-tab">

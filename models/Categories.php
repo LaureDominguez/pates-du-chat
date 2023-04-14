@@ -20,4 +20,11 @@ class Categories extends Database {
     {
         $this->addOne("categories", "name, descript", "?, ?", $params);
     }
+    
+    public function countProducts(){
+        // $req = "SELECT products.id, products.name, products.descript, products.price, products.img, products.active, 
+        //     categories.name AS category FROM `products` 
+        //     INNER JOIN categories ON products.cat_id = categories.id";
+        // return $this->findAll($req);
+    }
 }

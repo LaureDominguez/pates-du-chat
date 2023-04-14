@@ -142,12 +142,14 @@ if (array_key_exists('route', $_GET)):
         case 'updateNews':
             $id = $_GET['id'];
             $controller = new Controllers\AdminController();
+            $controller->isAdmin();
             $controller->VerifUpdateNewsForm($id);
             break;
 
         case 'deleteNews':
             $id = $_GET['id'];
             $controller = new Controllers\AdminController();
+            $controller->isAdmin();
             $controller->deleteNews($id);
             header('Location: index.php?route=admin');
             break;
@@ -159,12 +161,33 @@ if (array_key_exists('route', $_GET)):
             $controller->displayCreateProdForm();
             break;
 
+        case 'displayUpdateProdForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayUpdateProdForm($id);
+            break;
+
         case 'displayCreateCatForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayCreateCatForm();
             break;
 
+            //shop
+        case 'displayCreateRecipesForm':
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayCreateRecipesForm();
+            break;
+
+        case 'displayUpdateRecipesForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayUpdateRecipesForm($id);
+            break;
+            
         //form
 
         case 'submitCatForm':

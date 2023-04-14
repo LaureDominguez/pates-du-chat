@@ -6,7 +6,6 @@ class ShopController{
     public function displayAllShop(){
         $model = new \Models\Products();
         $products = $model->getAllProducts();
-        $nbProducts = 0;
 
         $model = new \Models\Categories();
         $categories = $model->getAllCategories();
