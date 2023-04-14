@@ -1,3 +1,8 @@
+// ********************* tooltip
+const tooltip = document.getElementsByClassName("aide");
+const screenX = window.screenX;
+// if screenX est à +50%, alors add class "left" à "aide"
+
 // ********************* sort tableau
 const allTables = document.querySelectorAll("table");
 

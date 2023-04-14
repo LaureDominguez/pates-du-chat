@@ -22,9 +22,6 @@
 
     display:none;
 }
-.aide:hover:before {
-    display:block;
-}
 
 /* aide à gauche */
 .aide.left:before {
@@ -55,6 +52,16 @@
     border-color: transparent black transparent transparent;
     
     display:none;
+}
+.aide.left:after {
+  /* reset defaults */
+    left:initial;
+    margin-left:initial;
+
+  /* set new values */
+    right:100%;
+    margin-right:-5px;
+    border-color: transparent transparent transparent black;
 }
 .aide:hover:before, .aide:hover:after {
     display:block;
