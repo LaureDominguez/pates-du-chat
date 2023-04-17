@@ -8,7 +8,7 @@ class ShopController{
         $products = $model->getAllProducts();
 
         $model = new \Models\Categories();
-        $categories = $model->getAllCategories();
+        $categories = $model->getAllCategoriesWithProducts();
 
         $template = "shop/index.phtml";
         $css = [

@@ -8,11 +8,13 @@
 
 
     <?php foreach ($categories as $category) : ?>
+        <?php if ($category['active']) : ?>
+
         <h3><?= $category["name"] ?></h3>
 
         <article class="shop-cat">
             <?php foreach ($products as $product) : ?>
-                <?php if ($product["cat_id"] == $category["id"]) : ?>
+                <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
                     <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= $product['id'] ?>'">
                         <?php if (!empty($product["img"])) : ?>
                             <!-- <img src="/images/{{$product->img}}" alt=""> -->
@@ -30,5 +32,6 @@
             <?php endforeach; ?>
 
         </article>
+        <?php endif ?>
     <?php endforeach; ?>
 </section>
