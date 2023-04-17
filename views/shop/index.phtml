@@ -4,20 +4,17 @@
     <ul>
         <li>trier les catégories</li>
         <li>rechercher un produit</li>
-        <li>afficher "pas de produit" quand une catégorie est vide</li>
     </ul>
 
 
-    <?php foreach ($categories as $category) :
-        // arsort($category); 
-    ?>
+    <?php foreach ($categories as $category) : ?>
         <h3><?= $category["name"] ?></h3>
 
         <article class="shop-cat">
             <?php foreach ($products as $product) : ?>
                 <?php if ($product["cat_id"] == $category["id"]) : ?>
                     <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= $product['id'] ?>'">
-                        <?php if (isset($product["img"])) : ?>
+                        <?php if (!empty($product["img"])) : ?>
                             <!-- <img src="/images/{{$product->img}}" alt=""> -->
                         <?php else : ?>
                             <img src="public/img/Hades.jpg" alt="">
@@ -26,14 +23,11 @@
                             <h5><?= $product["name"] ?></h5>
                             <p><?= $product["descript"] ?></p>
                             <p><?= $product["price"] ?>€</p>
+
                         </figcaption>
                     </figure>
                 <?php endif; ?>
             <?php endforeach; ?>
-
-            </ /?php if (!isset($product)) : ?>
-            <!-- <p>pas d'article</p> -->
-            </ /?php endif; ?>
 
         </article>
     <?php endforeach; ?>

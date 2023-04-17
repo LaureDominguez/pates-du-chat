@@ -14,7 +14,6 @@ class AdminController{
 
         $modelCategory = new \Models\Categories();
         $categories = $modelCategory->getAllCategories();
-        // $category = $modelCategory->getOneCategory($products['id']);
 
         $modelRecipes = new \Models\Recipes();
         $recipes = $modelRecipes->getAllRecipes();
@@ -218,7 +217,6 @@ class AdminController{
                     trim($_POST['price']),
                     trim($_POST['img'])
                 ];
-
                 $modelProduct = new \Models\Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";

@@ -16,7 +16,8 @@ class UsersController{
 
     public function login()
     {
-        $template = "users/login.phtml";
+        $template = "page d'avant";
+        $ajax = "users/login.phtml";
         $css = [
             "public/css/user.css"
         ];  
