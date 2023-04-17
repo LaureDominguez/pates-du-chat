@@ -9,6 +9,8 @@ class Users extends Database {
     public function creatNew($params)
     {
         $this->addOne("users", "email, pswd", "?, ?", $params);
+        header('Location: index.php?route=login');
+        exit();
     }
 
     public function checkEmail($email): array | bool

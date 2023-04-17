@@ -5,7 +5,7 @@ namespace Models;
 class Products extends Database {
 
     public function getAllProducts(){
-        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active, 
+        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price,  products.img, products.active, 
             categories.name AS category FROM `products` 
             INNER JOIN categories ON products.cat_id = categories.id";
         return $this->findAll($req);
@@ -21,5 +21,7 @@ class Products extends Database {
     public function creatNew($params)
     {
         $this->addOne("products", "name, cat_id, descript, price, img", "?, ?, ?, ?, ?", $params);
+        header('Location: index.php?route=admin');
+        exit();
     }
 }

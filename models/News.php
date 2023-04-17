@@ -21,11 +21,15 @@ class News extends Database {
     public function creatNew($params)
     {
         $this->addOne("news", "title, message", "?, ?", $params);
+        header('Location: index.php?route=admin');
+        exit();
     }
 
     public function updateNews($newData)
     {
         $this->updateOne('news', $newData, 'id', $newData['id']);
+        header('Location: index.php?route=admin');
+        exit();
     }
 
     public function deleteOneActu($id)

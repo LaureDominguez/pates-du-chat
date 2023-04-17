@@ -38,6 +38,8 @@ class Categories extends Database {
     public function creatNewCat($params)
     {
         $this->addOne("categories", "name, descript", "?, ?", $params);
+        header('Location: index.php?route=admin');
+        exit();
     }
     
     public function countProducts(){
