@@ -6,7 +6,8 @@ class News extends Database {
 
     public function getAllNews(): array | bool
     {
-        $req = "SELECT * FROM news";
+        $req = "SELECT * FROM news
+        ORDER BY created_at DESC";
         return $this->findAll($req);
     }
 
