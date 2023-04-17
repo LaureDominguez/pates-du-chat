@@ -204,11 +204,16 @@ class UsersController{
             }
 
             if (count($errors) == 0) {
+
                 $model = new \Models\Users();
                 $model->updateUser($name);
-                $_SESSION['user']->bindvalue (':name', $name);
+
+                $_SESSION['user']['name']=$name;
                 $success[] = "Votre nom a bien été modifié !";
+            header('Location: index.php?route=myAccount');
+            exit();
             }
+
         $template = "users/profil.phtml";
         $css = [
             "public/css/user.css"

@@ -32,10 +32,8 @@ class Users extends Database {
         $newData = [
             'name'  => $name
         ];
-
         $this->updateOne('users', $newData, 'id', $_SESSION['user']['id']);
-        header('Location: index.php?route=myAccount');
-        exit();
+        return $name;
     }
     
 }
