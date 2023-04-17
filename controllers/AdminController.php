@@ -15,6 +15,13 @@ class AdminController{
         $modelCategory = new \Models\Categories();
         $categories = $modelCategory->getAllCategories();
 
+        foreach ($categories as $category):
+            $id = $category['id'];
+            $nbProducts = $modelCategory->countProductsFromCat($id);
+        endforeach;
+
+        // var_dump($nbProducts);
+
         $modelRecipes = new \Models\Recipes();
         $recipes = $modelRecipes->getAllRecipes();
 
@@ -88,24 +95,34 @@ class AdminController{
 
     public function VerifUpdateNewsForm($id)
     {
+        $errors = [];
         $success = [];
         if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
-            $id = $_GET['id'];
-            $newData = [
-                'id' => $id,
-                'title' => trim($_POST['title']),
-                'message' => trim($_POST['message'])
-            ];
-            $modelNews = new \Models\News();
-            $modelNews->updateNews($newData);
-            $success[] = "L'article a bien été modifié !";
 
-            $template = "dashboard.phtml";
-            $css = [
-                "public/css/dashboard.css"
-            ];
-            include_once 'views/layout.phtml';
+            if (empty($_POST['title']))
+                $errors[] = "Veuillez entrer un titre";
+            if (empty($_POST['message']))
+                $errors[] = "Veuillez entrer votre article";
 
+            if (count($errors) == 0) {
+
+                $id = $_GET['id'];
+                $newData = [
+                    'id' => $id,
+                    'title' => trim($_POST['title']),
+                    'message' => trim($_POST['message'])
+                ];
+                $modelNews = new \Models\News();
+                $modelNews->updateNews($newData);
+                $success[] = "L'article a bien été modifié !";
+
+                $template = "dashboard.phtml";
+                $css = [
+                    "public/css/dashboard.css"
+                ];
+                include_once 'views/layout.phtml';
+
+            }
         }
     }
 
@@ -118,9 +135,6 @@ class AdminController{
     /////////////////////// categories ///////////////////////
     public function displayCreateCatForm()
     {
-        $modelProduct = new \Models\Products();
-        $products = $modelProduct->getAllProducts();
-
         $modelCategory = new \Models\Categories();
         $categories = $modelCategory->getAllCategories();
 
@@ -159,8 +173,78 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    public function displayUploadCatForm($id)
+    {
+        $id = $_GET['id'];
+        $modelCategory = new \Models\Categories();
+        $category = $modelCategory->getOneCategory($id);
+
+        $template = "views/shop/catForm.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+
+    public function switchCat($id)
+    {
+        $success = [];
+        $id = $_GET['id'];
+        if(array_key_exists('switch', $_POST)){
+            var_dump($_POST);
+            die;
+        }
+    }
+
+    public function verifUpdateCatForm($id)
+    {
+        $errors = [];
+        $success = [];
+        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
+            if (empty($_POST['name']))
+            $errors[] = "Veuillez renseigner le nom de la catgéorie";
+            if (empty($_POST['descript']))
+            $errors[] = "Veuillez entrer une description";
+
+            if (count($errors) == 0) {
+                $id = $_GET['id'];
+                $newData = [
+                    'id' => $id,
+                    'name' => trim($_POST['name']),
+                    'descript' => trim($_POST['descript'])
+                ];
+
+                $modelCategory = new \Models\Categories();
+                $modelCategory->updateCategory($newData);
+                $success[] = "La catégorie a bien été modifiée !";
+            }
+        }
+        $template = "dashboard.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+        include_once 'views/layout.phtml';
+    }
+
     /////////////////////// produits ///////////////////////
     public function displayCreateProdForm()
+    {
+        $modelProducts = new \Models\Products();
+        $products = $modelProducts->getAllProducts();
+
+        $modelCategory = new \Models\Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $template = "views/shop/prodForm.phtml";
+        $css = [
+            "public/css/dashboard.css"
+        ];
+
+        include_once 'views/layout.phtml';
+    }
+
+    public function verifUpdateProdForm()
     {
         $modelProduct = new \Models\Products();
         $products = $modelProduct->getAllProducts();
@@ -266,9 +350,6 @@ class AdminController{
         $success = [];
 
         if (array_key_exists('name', $_POST)) {
-
-            // var_dump($_POST);
-            // die;
 
             if (empty($_POST['name']))
                 $errors[] = "Veuillez donner un nom à la recette";

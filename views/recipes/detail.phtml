@@ -1,18 +1,20 @@
-<h2><?= $recipe["name"] ?></h2>
-<figure class="">
-    <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
-    <!-- @if ($product->image)
+<section class="content">
+    <h2><?= $recipe["name"] ?></h2>
+    <figure class="">
+        <!-- <a href="{{route('shopping.show', $product->id)}}"> -->
+        <!-- @if ($product->image)
     <img src="/images/{{$product->img}}" alt="">
     @else -->
-    <img src="public/img/Hades.jpg" alt="">
-    <!-- @endif -->
-    <figcaption>
-        <p>ingrédient: <?= $product['name']?></p>
-        <p>difficulté: <?= $recipe["difficulty"] ?></p>
-        <p>temps: <?= $recipe["time"] ?></p>
-        <p>temperature: <?= $recipe["thermostat"] ?></p>
-        <p>portions: <?= $recipe["portions"] ?></p>
-        <p>recette: <?= $recipe["recipe"] ?></p>
-    </figcaption>
-    <!-- </a> -->
-</figure>
+        <img src="public/img/Hades.jpg" alt="">
+        <!-- @endif -->
+        <figcaption>
+            <p>ingrédient: <?= $product['name'] ?></p>
+            <p>difficulté: <?= $recipe["difficulty"] ?></p>
+            <p>temps: <?= $recipe["time"] ?></p>
+            <p>temperature: <?= $recipe["thermostat"] ?></p>
+            <p>portions: <?= $recipe["portions"] ?></p>
+            <p>recette: <?= $recipe["recipe"] ?></p>
+        </figcaption>
+        <!-- </a> -->
+    </figure>
+</section>

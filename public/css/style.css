@@ -122,6 +122,12 @@ a, a:active{
     background-color: var(--vert);
 }
 
+.buttons{
+	display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 /******************* form *******************/
 form label{
     text-transform: capitalize;

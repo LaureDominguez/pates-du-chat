@@ -73,6 +73,7 @@
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
                 <li>activer/masquer un produit</li>
+                <li>update form à faire</li>
                 <li style="color:red">bug "catégorie" dans un produit modifié</li>
             </ul>
 
@@ -89,29 +90,31 @@
                 </thead>
                 <tbody>
                     <?php foreach ($products as $product) : ?>
-                        <tr>
-                            <td><?= $product["id"] ?></td>
-                            <td><?= $product["name"] ?></td>
-                            <td><?= $product["category"] ?></td>
-                            <td><?= $product["price"] ?>€</td>
-                            <td>
-                                <!-- ajax -->
-                                <form action="">
-                                    <label class="switch">
-                                        <input type="checkbox" <?php if ($product['active']) :
-                                                                    echo 'checked';
-                                                                endif; ?> />
-                                        <span></span>
-                                    </label>
-                                </form>
-                            </td>
-                            <td><a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" data-text="Voir le produit" class="aide left">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a></td>
-                            <td><a href="index.php?route=displayUpdateProdForm&id=<?= $product['id'] ?>" data-text="Modifier le produit" class="aide left">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a></td>
-                        </tr>
+                        <?php if ($product['categoryActive']) : ?>
+                            <tr>
+                                <td><?= $product["id"] ?></td>
+                                <td><?= $product["name"] ?></td>
+                                <td><?= $product["category"] ?></td>
+                                <td><?= $product["price"] ?>€</td>
+                                <td>
+                                    <!-- ajax -->
+                                    <form action="">
+                                        <label class="switch">
+                                            <input type="checkbox" <?php if ($product['active']) :
+                                                                        echo 'checked';
+                                                                    endif; ?> />
+                                            <span></span>
+                                        </label>
+                                    </form>
+                                </td>
+                                <td><a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" data-text="Voir le produit" class="aide left">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </a></td>
+                                <td><a href="index.php?route=displayUpdateProdForm&id=<?= $product['id'] ?>" data-text="Modifier le produit" class="aide left">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a></td>
+                            </tr>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -123,6 +126,7 @@
             <ul>
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
+                <li>n'affiche toujours pas le bon nombre de produits</li>
             </ul>
             <table class="dashboard-table">
                 <thead>
@@ -130,7 +134,8 @@
                         <th>id</th>
                         <th>categorie</th>
                         <th>nombre de produits</th>
-                        <th>actions</th>
+                        <th>en ligne</th>
+                        <th>modifier</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,10 +143,20 @@
                         <tr>
                             <td><?= $category["id"] ?></td>
                             <td><?= $category["name"] ?></td>
+                            <td><?= $nbProducts['nbProducts'] ?></td>
                             <td>
-                                </ /?=$product["cat_id"] ?>
+                                <!-- ajax -->
+                                <form action="index.php?route=switchCat&id=<?= $category['id'] ?>" method="post">
+                                    <label class="switch">
+                                        <input type="checkbox" name="switch" class="switchCat" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne"
+                                        onclick="getValue()" 
+                                        <?php if ($category['active']) : echo 'checked'; endif; ?> />
+                                        <span></span>
+                                    </label>
+                                </form>
                             </td>
-                            <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td><a href=" index.php?route=displayUploadCatForm&id=<?= $category['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -159,6 +174,10 @@
         <section class="section-tab">
             <h2>recettes</h2>
 
+            <ul>
+                <li>updat form à faire</li>
+            </ul>
+            
             <table class="dashboard-table">
                 <thead>
                     <tr>

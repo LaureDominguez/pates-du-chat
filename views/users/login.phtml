@@ -6,7 +6,7 @@
         <li>verifier email</li>
         <li>verifier session à la connexion : conflit entre 2 sessions</li>
     </ul>
-    
+
     <form action="index.php?route=connect" method="post">
         <div>
             <label for="email">email</label>
@@ -16,6 +16,14 @@
             <label for="pswd">mot de passe</label>
             <input type="password" name="pswd" id="pswd">
         </div>
-        <input type="submit" class="btn" value="Valider">
+
+        <div class="buttons">
+            <button type="submit" class="btn">valider</button>
+            <a href="index.php?route=home" class="btn">annuler</a>
+        </div>
     </form>
+    <div>
+        <label>Pas de compte ?</label>
+        <a href="index.php?route=register" class="btn">Créer un compte</a>
+    </div>
 </div>

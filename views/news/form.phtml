@@ -1,31 +1,39 @@
-<?php if (isset($actu['id'])) : ?>
+<section class="content">
+    <?php if (isset($actu['id'])) : ?>
 
-    <h3>modifier une actu</h3>
-    <form action="index.php?route=updateNews&id=<?= $actu['id'] ?>" method="post">
-        <div>
-            <label for="title">titre</label>
-            <input type="text" name="title" id="title" required value="<?= $actu["title"] ?>">
-        </div>
-        <div>
-            <label for="message">article</label>
-            <textarea name="message" id="editor" cols="30" rows="10"><?= $actu["message"] ?></textarea>
-        </div>
-        <button type="submit" class="btn" value="submit">envoyer</button>
-    </form>
+        <h3>modifier une actu</h3>
+        <form action="index.php?route=updateNews&id=<?= $actu['id'] ?>" method="post">
+            <div>
+                <label for="title">titre</label>
+                <input type="text" name="title" id="title" required value="<?= $actu["title"] ?>">
+            </div>
+            <div>
+                <label for="message">article</label>
+                <textarea name="message" id="editor" cols="30" rows="10"><?= $actu["message"] ?></textarea>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn" value="submit">envoyer</button>
+                <button href="index.php?route=admin" class="btn">annuler</button>
+            </div>
+        </form>
 
-<?php else : ?>
+    <?php else : ?>
 
-    <h3>créer une actu</h3>
-    <form action="index.php?route=submitNews" method="post">
-        <div>
-            <label for="title">titre</label>
-            <input type="text" name="title" id="title" required>
-        </div>
-        <div>
-            <label for="message">article</label>
-            <textarea name="message" id="editor" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit" class="btn" value="submit">envoyer</button>
-    </form>
+        <h3>créer une actu</h3>
+        <form action="index.php?route=submitNews" method="post">
+            <div>
+                <label for="title">titre</label>
+                <input type="text" name="title" id="title" required>
+            </div>
+            <div>
+                <label for="message">article</label>
+                <textarea name="message" id="editor" cols="30" rows="10"></textarea>
+            </div>
+            <div class="buttons">
+                <button type=" submit" class="btn" value="submit">envoyer</button>
+                <a href="index.php?route=admin" class="btn">annuler</a>
+            </div>
+        </form>
 
-<?php endif ?>
+    <?php endif ?>
+</section>

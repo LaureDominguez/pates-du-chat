@@ -1,31 +1,41 @@
-<?php if (isset($category['id'])) : ?>
+<section class="content">
+    <?php if (isset($category['id'])) : ?>
 
-    <h3>modifier une catégorie</h3>
-    <form action="index.php?route=updateCatForm" method="post">
-        <div>
-            <label for="name">nom</label>
-            <input type="text" name="name" id="name" required value="<?= $category["name"] ?>">
-        </div>
-        <div>
-            <label for="descript">decription</label>
-            <textarea name="descript" id="decript" cols="30" rows="10"><?= $category["descript"] ?></textarea>
-        </div>
-        <button type="submit" class="btn" value="submit">envoyer</button>
-    </form>
+        <h3>modifier une catégorie</h3>
+        <form action="index.php?route=updateCatForm&id=<?= $category["id"] ?>" method="post">
+            <div>
+                <label for="name">nom</label>
+                <input type="text" name="name" id="name" required value="<?= $category["name"] ?>">
+            </div>
+            <div>
+                <label for="descript">decription</label>
+                <textarea name="descript" id="decript" cols="30" rows="10"><?= $category["descript"] ?></textarea>
+            </div>
 
-<?php else : ?>
+            <div class="buttons">
+                <button type="submit" class="btn" value="submit">envoyer</button>
+                <button href="index.php?route=admin" class="btn">annuler</button>
+            </div>
+        </form>
 
-    <h3>créer une catégorie</h3>
-    <form action="index.php?route=submitCatForm" method="post">
-        <div>
-            <label for="name">nom</label>
-            <input type="text" name="name" id="name" required>
-        </div>
-        <div>
-            <label for="descript">decription</label>
-            <textarea name="descript" id="decript" cols="30" rows="10"></textarea>
-        </div>
-        <button type="submit" class="btn" value="submit">envoyer</button>
-    </form>
+    <?php else : ?>
 
-<?php endif; ?>
+        <h3>créer une catégorie</h3>
+        <form action="index.php?route=submitCatForm" method="post">
+            <div>
+                <label for="name">nom</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div>
+                <label for="descript">decription</label>
+                <textarea name="descript" id="decript" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="btn" value="submit">envoyer</button>
+                <button href="index.php?route=admin" class="btn">annuler</button>
+            </div>
+        </form>
+
+    <?php endif; ?>
+</section>

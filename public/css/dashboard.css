@@ -144,8 +144,3 @@ td a{
 td a:hover{
 	color: red;
 }
-
-.buttons{
-	display: flex;
-    justify-content: center;
-}

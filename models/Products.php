@@ -6,7 +6,8 @@ class Products extends Database {
 
     public function getAllProducts(){
         $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price,  products.img, products.active, 
-            categories.name AS category FROM `products` 
+            categories.name AS category,
+            categories.active AS categoryActive FROM `products` 
             INNER JOIN categories ON products.cat_id = categories.id";
         return $this->findAll($req);
     }

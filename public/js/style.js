@@ -1,9 +1,23 @@
-// ********************* tooltip
-const tooltip = document.getElementsByClassName("aide");
-const screenX = window.screenX;
-// if screenX est à +50%, alors add class "left" à "aide"
+// ********************* switch active
+function getValue() {
+    var switchCat = document.getElementsByClassName('switchCat').data-toggle;
+    var toggle = switchCat ? 1 : 0;
+    if (toggle == 1) {
+        let.toggleOn()
+    } else {
+        let.toggleOff()
+    }
+}
 
-// ********************* sort tableau
+function toogleOn(){
+    console.log('toggle on !!')
+}
+
+function toogleOff(){
+    console.log('toggle off !!')
+}
+
+// ********************* sort tableau (marche pas bien)
 const allTables = document.querySelectorAll("table");
 
 for (const table of allTables) {
@@ -25,6 +39,12 @@ for (const table of allTables) {
         });
     }
 }
+
+
+// ********************* tooltip (marche pas)
+const tooltip = document.getElementsByClassName("aide");
+const screenX = window.screenX;
+// if screenX est à +50%, alors add class "left" à "aide"
 
 // ********************* confirm delete
 

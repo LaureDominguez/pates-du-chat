@@ -14,7 +14,7 @@ $controller->visitor();
 if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
 
-        //pages
+        ////pages
         case 'home':
             $controller = new Controllers\HomeController();
             $controller->displayHomePage();
@@ -60,7 +60,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-        //login
+            //login
         case 'login':
             $controller = new Controllers\UsersController();
             $controller->login();
@@ -82,7 +82,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-        //profil
+            //profil
         case 'myAccount':
             $controller = new Controllers\UsersController();
             $controller->profil();
@@ -117,7 +117,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-            //gestion du site
+        ////gestion du site
             //news
 
         case 'displayCreateNewsForm':
@@ -155,10 +155,17 @@ if (array_key_exists('route', $_GET)):
             break;
 
             //shop
+            //products
         case 'displayCreateProdForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayCreateProdForm();
+            break;
+
+        case 'submitProdForm':
+            $controller = new Controllers\AdminController;
+            $controller->isAdmin();
+            $controller->verifProdForm();
             break;
 
         case 'displayUpdateProdForm':
@@ -168,13 +175,43 @@ if (array_key_exists('route', $_GET)):
             $controller->displayUpdateProdForm($id);
             break;
 
+            //case 'updateProd'
+
+            //case 'switchProdOnOff
+
+            //categories
         case 'displayCreateCatForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayCreateCatForm();
             break;
 
-            //shop
+        case 'submitCatForm':
+            $controller = new Controllers\AdminController;
+            $controller->isAdmin();
+            $controller->verifCatForm();
+            break;
+
+        case 'displayUploadCatForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->displayUploadCatForm($id);
+            break;
+
+            case 'switchCat':
+                
+
+        case 'updateCatForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->verifUpdateCatForm($id);
+            break;
+
+            //case 'switchProdOnOff
+
+            //recipes
         case 'displayCreateRecipesForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
@@ -186,20 +223,6 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayUpdateRecipesForm($id);
-            break;
-            
-        //form
-
-        case 'submitCatForm':
-            $controller = new Controllers\AdminController;
-            $controller->isAdmin();
-            $controller->verifCatForm();
-            break;
-
-        case 'submitProdForm':
-            $controller = new Controllers\AdminController;
-            $controller->isAdmin();
-            $controller->verifProdForm();
             break;
 
         case 'submitRecipeForm':
