@@ -4,34 +4,34 @@
     <ul>
         <li>trier les catégories</li>
         <li>rechercher un produit</li>
+        <li>changer le onclick</li>
     </ul>
 
 
-    <?php foreach ($categories as $category) : ?>
-        <?php if ($category['active']) : ?>
+    <?php foreach ($categories as $category): ?>
+        <?php if ($category['active']): ?>
 
-        <h3><?= $category["name"] ?></h3>
+        <h3><?= htmlspecialchars($category["name"]) ?></h3>
 
         <article class="shop-cat">
-            <?php foreach ($products as $product) : ?>
-                <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
-                    <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= $product['id'] ?>'">
-                        <?php if (!empty($product["img"])) : ?>
+            <?php foreach ($products as $product): ?>
+                <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']): ?>
+                    <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']) ?>'">
+                        <?php if (!empty($product["img"])): ?>
                             <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                        <?php else : ?>
+                        <?php else: ?>
                             <img src="public/img/Hades.jpg" alt="">
                         <?php endif; ?>
                         <figcaption>
-                            <h5><?= $product["name"] ?></h5>
-                            <p><?= $product["descript"] ?></p>
-                            <p><?= $product["price"] ?>€</p>
-
+                            <h5><?= htmlspecialchars($product["name"]) ?></h5>
+                            <p><?= htmlspecialchars($product["descript"]) ?></p>
+                            <p><?= htmlspecialchars($product["price"]) ?>€</p>
                         </figcaption>
                     </figure>
                 <?php endif; ?>
             <?php endforeach; ?>
 
         </article>
-        <?php endif ?>
+        <?php endif; ?>
     <?php endforeach; ?>
 </section>

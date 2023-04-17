@@ -34,18 +34,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($news as $actu) : ?>
+                    <?php foreach ($news as $actu): ?>
                         <tr>
-                            <td><?= $actu["id"] ?></td>
-                            <td><?= $actu["title"] ?></td>
-                            <td><?= $actu["created_at"] ?></td>
-                            <td><a href="index.php?route=newsDetail&id=<?= $actu['id'] ?>" data-text="Voir l'article" class="aide left">
+                            <td><?= htmlspecialchars($actu["id"]) ?></td>
+                            <td><?= htmlspecialchars($actu["title"]) ?></td>
+                            <td><?= htmlspecialchars($actu["created_at"]) ?></td>
+                            <td><a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Voir l'article" class="aide left">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a></td>
-                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= $actu['id'] ?>" data-text="Modifier l'article" class="aide left">
+                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Modifier l'article" class="aide left">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a></td>
-                            <td><a href="index.php?route=deleteNews&id=<?= $actu['id'] ?>" data-text="Supprimer l'article" class="aide left">
+                            <td><a href="index.php?route=deleteNews&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Supprimer l'article" class="aide left">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a></td>
                             <!-- onclick="confirmDelete()" -->
@@ -89,28 +89,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($products as $product) : ?>
-                        <?php if ($product['categoryActive']) : ?>
+                    <?php foreach ($products as $product): ?>
+                        <?php if ($product['categoryActive']): ?>
                             <tr>
-                                <td><?= $product["id"] ?></td>
-                                <td><?= $product["name"] ?></td>
-                                <td><?= $product["category"] ?></td>
-                                <td><?= $product["price"] ?>€</td>
+                                <td><?= htmlspecialchars($product["id"]) ?></td>
+                                <td><?= htmlspecialchars($product["name"]) ?></td>
+                                <td><?= htmlspecialchars($product["category"]) ?></td>
+                                <td><?= htmlspecialchars($product["price"]) ?>€</td>
                                 <td>
                                     <!-- ajax -->
                                     <form action="">
                                         <label class="switch">
-                                            <input type="checkbox" <?php if ($product['active']) :
-                                                                        echo 'checked';
-                                                                    endif; ?> />
+                                            <input type="checkbox" 
+                                                <?php if ($product['active']) :echo 'checked'; endif; ?> />
                                             <span></span>
                                         </label>
                                     </form>
                                 </td>
-                                <td><a href="index.php?route=shopDetail&id=<?= $product['id'] ?>" data-text="Voir le produit" class="aide left">
+                                <td><a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']) ?>" data-text="Voir le produit" class="aide left">
                                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                     </a></td>
-                                <td><a href="index.php?route=displayUpdateProdForm&id=<?= $product['id'] ?>" data-text="Modifier le produit" class="aide left">
+                                <td><a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']) ?>" data-text="Modifier le produit" class="aide left">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a></td>
                             </tr>
@@ -139,23 +138,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categories as $category) : ?>
+                    <?php foreach ($categories as $category): ?>
                         <tr>
-                            <td><?= $category["id"] ?></td>
-                            <td><?= $category["name"] ?></td>
-                            <td><?= $nbProducts['nbProducts'] ?></td>
+                            <td><?= htmlspecialchars($category["id"]) ?></td>
+                            <td><?= htmlspecialchars($category["name"]) ?></td>
+                            <td><?= htmlspecialchars($nbProducts['nbProducts']) ?></td>
                             <td>
                                 <!-- ajax -->
-                                <form action="index.php?route=switchCat&id=<?= $category['id'] ?>" method="post">
+                                <form action="index.php?route=switchCat&id=<?= htmlspecialchars($category['id']) ?>" method="post">
                                     <label class="switch">
-                                        <input type="checkbox" name="switch" class="switchCat" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne"
-                                        onclick="getValue()" 
-                                        <?php if ($category['active']) : echo 'checked'; endif; ?> />
+                                        <input type="checkbox" name="switch" class="switchCat" id="switch_<?= htmlspecialchars($category['id']) ?>" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" <?php if ($category['active']): echo 'checked'; endif; ?> />
                                         <span></span>
                                     </label>
                                 </form>
                             </td>
-                            <td><a href=" index.php?route=displayUploadCatForm&id=<?= $category['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <td><a href=" index.php?route=displayUploadCatForm&id=<?= htmlspecialchars($category['id']) ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -177,7 +174,7 @@
             <ul>
                 <li>updat form à faire</li>
             </ul>
-            
+
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -189,19 +186,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($recipes as $recipe) : ?>
+                    <?php foreach ($recipes as $recipe): ?>
                         <tr>
-                            <td><?= $recipe["id"] ?></td>
-                            <td><?= $recipe["name"] ?></td>
-                            <td><?= $recipe["product_id"] ?></td>
-                            <td><?= $recipe["difficulty"] ?></td>
+                            <td><?= htmlspecialchars($recipe["id"]) ?></td>
+                            <td><?= htmlspecialchars($recipe["name"]) ?></td>
+                            <td><?= htmlspecialchars($recipe["product_id"]) ?></td>
+                            <td><?= htmlspecialchars($recipe["difficulty"]) ?></td>
                             <td>
-                                <a href="index.php?route=recipeDetail&id=<?= $recipe['id'] ?>" data-text="Voir la recette" class="aide left">
+                                <a href="index.php?route=recipeDetail&id=<?= htmlspecialchars($recipe['id']) ?>" data-text="Voir la recette" class="aide left">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="index.php?route=displayUpdateRecipesForm&id=<?= $recipe['id'] ?>" data-text="Modifier la recette" class="aide left">
+                                <a href="index.php?route=displayUpdateRecipesForm&id=<?= htmlspecialchars($recipe['id']) ?>" data-text="Modifier la recette" class="aide left">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
                             </td>

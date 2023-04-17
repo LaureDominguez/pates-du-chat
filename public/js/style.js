@@ -1,21 +1,24 @@
 // ********************* switch active
-function getValue() {
-    var switchCat = document.getElementsByClassName('switchCat').data-toggle;
-    var toggle = switchCat ? 1 : 0;
-    if (toggle == 1) {
-        let.toggleOn()
-    } else {
-        let.toggleOff()
-    }
+
+    let switchCat = document.querySelectorAll('.switchCat');
+console.log(switchCat);
+for (let i = 0; i < switchCat.length; i++){
+    switchCat[i].addEventListener('change', checked);
 }
 
-function toogleOn(){
-    console.log('toggle on !!')
+function checked(e) {
+    console.log(e.target.id.replace("switch_",""))
 }
 
-function toogleOff(){
-    console.log('toggle off !!')
-}
+let isChecked = new Request('getID.php', {
+    method: 'POST',
+    body: JSON.stringify({textToFind : checked})
+})
+
+fetch(isChecked)
+
+
+
 
 // ********************* sort tableau (marche pas bien)
 const allTables = document.querySelectorAll("table");

@@ -194,7 +194,6 @@ class UsersController{
     {
         $errors = $success = [];
         $name = "";
-
         if (array_key_exists('name', $_POST)) {
 
             $name = trim($_POST['name']);
@@ -207,10 +206,7 @@ class UsersController{
             if (count($errors) == 0) {
                 $model = new \Models\Users();
                 $model->updateUser($name);
-                $_SESSION['user'] = [
-                        'name' => $name
-                        ];
-
+                $_SESSION['user']->bindvalue (':name', $name);
                 $success[] = "Votre nom a bien été modifié !";
             }
         $template = "users/profil.phtml";

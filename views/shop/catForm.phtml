@@ -1,15 +1,15 @@
 <section class="content">
-    <?php if (isset($category['id'])) : ?>
+    <?php if (isset($category['id'])): ?>
 
         <h3>modifier une catégorie</h3>
-        <form action="index.php?route=updateCatForm&id=<?= $category["id"] ?>" method="post">
+        <form action="index.php?route=updateCatForm&id=<?= htmlspecialchars($category["id"]) ?>" method="post">
             <div>
                 <label for="name">nom</label>
-                <input type="text" name="name" id="name" required value="<?= $category["name"] ?>">
+                <input type="text" name="name" id="name" required value="<?= htmlspecialchars($category["name"]) ?>">
             </div>
             <div>
                 <label for="descript">decription</label>
-                <textarea name="descript" id="decript" cols="30" rows="10"><?= $category["descript"] ?></textarea>
+                <textarea name="descript" id="decript" cols="30" rows="10"><?= htmlspecialchars($category["descript"]) ?></textarea>
             </div>
 
             <div class="buttons">
@@ -18,7 +18,7 @@
             </div>
         </form>
 
-    <?php else : ?>
+    <?php else: ?>
 
         <h3>créer une catégorie</h3>
         <form action="index.php?route=submitCatForm" method="post">

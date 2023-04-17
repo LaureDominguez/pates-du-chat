@@ -4,7 +4,7 @@
     <form action="index.php?route=changeNameForm" method="post">
         <div>
             <label for="name">Nom</label>
-            <input type="text" name="name" id="name" placeholder="<?= $user['name'] ?>">
+            <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>">
         </div>
         <input type="submit" class="btn" value="Valider">
     </form>
@@ -12,7 +12,7 @@
     <form action="index.php?route=changeMailForm" method="post">
         <div>
             <label for="email">email</label>
-            <input type="email" name="email" id="email" placeholder="<?= $user['email'] ?>">
+            <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>">
         </div>
         <input type="submit" class="btn" value="Valider">
     </form>

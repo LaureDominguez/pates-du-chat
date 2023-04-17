@@ -2,10 +2,14 @@
     <article class="news-detail">
         <h2><?= $actu["title"] ?></h2>
 
+        <ul>
+            <li>ne peut pas utiliser "htmlspecialchars" sur $actu["message"]</li>
+        </ul>
+        
         <figure class="article">
-            <?php if (isset($actu["img"])) : ?>
+            <?php if (isset($actu["img"])): ?>
                 <!-- <img src="/images/{{$product->img}}" alt=""> -->
-            <?php else : ?>
+            <?php else: ?>
                 <img src="public/img/Hades.jpg" alt="">
             <?php endif; ?>
 
@@ -16,10 +20,10 @@
 
 
         <div class="date">
-            <?php if ($actu["created_at"] != $actu["updated_at"]) : ?>
-                <p class="timestamp">modifié le : <?= $actu["updated_at"] ?></p>
-            <?php else : ?>
-                <p class="timestamp">créé le : <?= $actu["created_at"] ?></p>
+            <?php if ($actu["created_at"] != $actu["updated_at"]): ?>
+                <p class="timestamp">modifié le : <?= htmlspecialchars($actu["updated_at"]) ?></p>
+            <?php else: ?>
+                <p class="timestamp">créé le : <?= htmlspecialchars($actu["created_at"]) ?></p>
             <?php endif; ?>
         </div>
     </article>

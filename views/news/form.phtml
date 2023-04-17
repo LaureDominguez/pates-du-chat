@@ -1,11 +1,11 @@
 <section class="content">
-    <?php if (isset($actu['id'])) : ?>
+    <?php if (isset($actu['id'])): ?>
 
         <h3>modifier une actu</h3>
-        <form action="index.php?route=updateNews&id=<?= $actu['id'] ?>" method="post">
+        <form action="index.php?route=updateNews&id=<?= htmlspecialchars($actu['id']) ?>" method="post">
             <div>
                 <label for="title">titre</label>
-                <input type="text" name="title" id="title" required value="<?= $actu["title"] ?>">
+                <input type="text" name="title" id="title" required value="<?= htmlspecialchars($actu["title"]) ?>">
             </div>
             <div>
                 <label for="message">article</label>
@@ -17,7 +17,7 @@
             </div>
         </form>
 
-    <?php else : ?>
+    <?php else: ?>
 
         <h3>créer une actu</h3>
         <form action="index.php?route=submitNews" method="post">
@@ -35,5 +35,5 @@
             </div>
         </form>
 
-    <?php endif ?>
+    <?php endif; ?>
 </section>

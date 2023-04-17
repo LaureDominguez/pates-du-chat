@@ -1,23 +1,23 @@
 <section class="content">
-    <?php if (isset($product['id'])) : ?>
+    <?php if (isset($product['id'])): ?>
 
         <h3>modifier un produit</h3>
         <form action="index.php?route=updateProdForm" method="post">
             <div>
                 <label for="name">nom</label>
-                <input type="text" name="name" id="name" required value="<?= $product["name"] ?>">
+                <input type="text" name="name" id="name" required value="<?= htmlspecialchars($product["name"]) ?>">
             </div>
             <div>
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
-                    <?php foreach ($categories as $category) : ?>
-                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['name']) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div>
                 <label for="descript">decription</label>
-                <textarea name="descript" id="descript" cols="30" rows="10"><?= $product["descript"] ?></textarea>
+                <textarea name="descript" id="descript" cols="30" rows="10"><?= htmlspecialchars($product["descript"]) ?></textarea>
             </div>
             <div>
                 <label for="price">prix</label>
@@ -34,7 +34,7 @@
             </div>
         </form>
 
-    <?php else : ?>
+    <?php else: ?>
 
         <h3>créer un produit</h3>
         <form action="index.php?route=submitProdForm" method="post">
@@ -45,8 +45,8 @@
             <div>
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
-                    <?php foreach ($categories as $category) : ?>
-                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['name']) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
