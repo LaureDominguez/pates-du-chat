@@ -1,21 +1,21 @@
 // ********************* switch active
 
     let switchCat = document.querySelectorAll('.switchCat');
-console.log(switchCat);
 for (let i = 0; i < switchCat.length; i++){
     switchCat[i].addEventListener('change', checked);
 }
 
 function checked(e) {
-    console.log(e.target.id.replace("switch_",""))
+    let catID = e.target.id.replace("switch_","")
 }
 
-let isChecked = new Request('getID.php', {
+let req = new Request('getID.php', {
     method: 'POST',
-    body: JSON.stringify({textToFind : checked})
+    body: JSON.stringify({id : catID})
 })
 
-fetch(isChecked)
+fetch(req)
+    .then(res => res.text())
 
 
 

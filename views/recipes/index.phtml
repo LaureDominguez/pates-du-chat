@@ -1,31 +1,48 @@
 <section class="content">
     <h2>Toutes les recettes</h2>
     <ul>
-        <li>changer le "onclick"</li>
+        <li>ajouter un formulaire de notation</li>
     </ul>
     <article class="recipe-index">
-        <?php foreach ($recipes as $recipe): ?>
-            <figure class="recipe-tuile" onclick="location.href='index.php?route=recipeDetail&id=<?= htmlspecialchars($recipe['id']) ?>'">
+        <?php foreach ($recipes as $recipe) : ?>
+            <figure class="recipe-tuile">
+                <a href="index.php?route=recipeDetail&id=<?= htmlspecialchars($recipe['id']) ?>">
 
-                <?php if (isset($recipe["img"])): ?>
-                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                <?php else: ?>
-                    <img src="public/img/Hades.jpg" alt="">
-                <?php endif; ?>
+                    <?php if (isset($recipe["img"])) : ?>
+                        <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                    <?php else : ?>
+                        <img src="public/img/Hades.jpg" alt="">
+                    <?php endif; ?>
 
-                <figcaption>
-                    <h5><?= htmlspecialchars($recipe["name"]) ?></h5>
-                    <div class="infos">
-                        <p><?= htmlspecialchars($recipe["time"]) ?></p>
-                        <input 
-                        class="rating"
-                        type="range" 
-                        min="1" 
-                        max="5" 
-                        value="<?php htmlspecialchars($recipe["difficulty"]) ?>" 
-                        disabled>
-                    </div>
-                </figcaption>
+                    <figcaption>
+                        <h5><?= htmlspecialchars($recipe["name"]) ?></h5>
+                        <div class="infos">
+                            <p><i class="fa-regular fa-clock"></i> : <?= htmlspecialchars($recipe['time']); ?> min</p>
+                            
+                            <form class="star-rating">
+                                <input name="stars" id="star-a_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="5" disabled 
+                                    <?php if ($recipe["note"] == 5) : echo ('checked="true"'); endif; ?>>
+                                <label for="star-a_<?= htmlspecialchars($recipe['id']) ?>"></label>
+
+                                <input name="stars" id="star-b_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="4" disabled 
+                                    <?php if ($recipe["note"] == 4) : echo ('checked="true"'); endif; ?>>
+                                <label for="star-b_<?= htmlspecialchars($recipe['id']) ?>"></label>
+
+                                <input name="stars" id="star-c_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="3" disabled 
+                                    <?php if ($recipe["note"] == 3) : echo ('checked="true"'); endif; ?>>
+                                <label for="star-c_<?= htmlspecialchars($recipe['id']) ?>"></label>
+
+                                <input name="stars" id="star-d_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="2" disabled 
+                                    <?php if ($recipe["note"] == 2) : echo ('checked="true"'); endif; ?>>
+                                <label for="star-d_<?= htmlspecialchars($recipe['id']) ?>"></label>
+
+                                <input name="stars" id="star-e_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="1" disabled 
+                                    <?php if ($recipe["note"] == 1) : echo ('checked="true"'); endif; ?>>
+                                <label for="star-e_<?= htmlspecialchars($recipe['id']) ?>"></label>
+                            </form>
+                        </div>
+                    </figcaption>
+                </a>
             </figure>
         <?php endforeach; ?>
     </article>

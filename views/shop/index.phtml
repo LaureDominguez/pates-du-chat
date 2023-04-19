@@ -4,34 +4,35 @@
     <ul>
         <li>trier les catégories</li>
         <li>rechercher un produit</li>
-        <li>changer le onclick</li>
     </ul>
 
 
-    <?php foreach ($categories as $category): ?>
-        <?php if ($category['active']): ?>
+    <?php foreach ($categories as $category) : ?>
+        <?php if ($category['active']) : ?>
 
-        <h3><?= htmlspecialchars($category["name"]) ?></h3>
+            <h3><?= htmlspecialchars($category["name"]) ?></h3>
 
-        <article class="shop-cat">
-            <?php foreach ($products as $product): ?>
-                <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']): ?>
-                    <figure class="shop-tuile" onclick="location.href='index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']) ?>'">
-                        <?php if (!empty($product["img"])): ?>
-                            <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                        <?php else: ?>
-                            <img src="public/img/Hades.jpg" alt="">
-                        <?php endif; ?>
-                        <figcaption>
-                            <h5><?= htmlspecialchars($product["name"]) ?></h5>
-                            <p><?= htmlspecialchars($product["descript"]) ?></p>
-                            <p><?= htmlspecialchars($product["price"]) ?>€</p>
-                        </figcaption>
-                    </figure>
-                <?php endif; ?>
-            <?php endforeach; ?>
+            <article class="shop-cat">
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
+                        <figure class="shop-tuile">
+                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']) ?>">
+                                <?php if (!empty($product["img"])) : ?>
+                                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                                <?php else : ?>
+                                    <img src="public/img/Hades.jpg" alt="">
+                                <?php endif; ?>
+                                <figcaption>
+                                    <h5><?= htmlspecialchars($product["name"]) ?></h5>
+                                    <p><?= htmlspecialchars($product["descript"]) ?></p>
+                                    <p><?= htmlspecialchars($product["price"]) ?>€</p>
+                                </figcaption>
+                            </a>
+                        </figure>
+                    <?php endif; ?>
+                <?php endforeach; ?>
 
-        </article>
+            </article>
         <?php endif; ?>
     <?php endforeach; ?>
 </section>

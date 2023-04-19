@@ -11,7 +11,6 @@ define('DB_DATABASE', 'projet-rattrapage');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
-
 class Database {
 
     protected $bdd;

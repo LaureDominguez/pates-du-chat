@@ -34,7 +34,7 @@
 }
 .recipe-tuile img{
     object-fit: cover;
-    height: 12rem;
+    height: 10rem;
     width: 12rem;
     position: relative;
 }
@@ -53,4 +53,11 @@
 
 .infos{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.infos p{
+    margin: 0;
+    
 }

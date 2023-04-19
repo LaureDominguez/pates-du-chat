@@ -218,6 +218,11 @@ if (array_key_exists('route', $_GET)):
             $controller->displayCreateRecipesForm();
             break;
 
+        case 'rateRecipes':
+            $controller = new Controllers\UsersController();
+            $controller->isConnected();
+            break;
+
         case 'displayUpdateRecipesForm':
             $id = $_GET['id'];
             $controller = new Controllers\AdminController();

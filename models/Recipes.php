@@ -11,7 +11,7 @@ class Recipes extends Database {
 
     public function getOneRecipe($id): array | bool
     {
-        $req = "SELECT recipes.id, recipes.product_id, recipes.name, recipes.difficulty, recipes.time, recipes.thermostat, recipes.portions, recipes.recipe, recipes.image, recipes.created_at, recipes.updated_at, products.id AS productID, products.name AS productName FROM `recipes`
+        $req = "SELECT recipes.id, recipes.product_id, recipes.name, recipes.note, recipes.difficulty, recipes.time, recipes.thermostat, recipes.portions, recipes.recipe, recipes.image, recipes.created_at, recipes.updated_at, products.id AS productID, products.name AS productName FROM `recipes`
         INNER JOIN products ON product_id = products.id
         WHERE recipes.id = :id";
         $params = ["id" => $id];

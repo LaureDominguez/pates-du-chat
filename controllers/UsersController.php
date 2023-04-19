@@ -183,6 +183,15 @@ class UsersController{
         }
     }
 
+    ////////////////////////// check session //////////////////////////
+
+    public function isConnected(){
+        var_dump($_SESSION);
+        if (!isset($_SESSION['user']))
+            header('Location: index.php?route=login');
+        var_dump('vous pouvez noter la recette');
+    }
+
     ////////////////////////// update //////////////////////////
 
     public function replaceSpecialChar($string){
