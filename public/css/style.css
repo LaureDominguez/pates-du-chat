@@ -15,21 +15,6 @@ body {
     background-color: var(--orange);
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-nav ul, nav li{
-    list-style: none;
-    display: flex;
-    padding: 0;
-}
-
-nav a{
-    padding: 1rem;
-}
-
 section{
     margin-bottom: 3rem ;
 }
@@ -103,6 +88,53 @@ h3{
 a, a:active{
     text-decoration: none;
     color: inherit;
+}
+
+/******************* navbar *******************/
+
+nav{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+nav ul, nav li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li{
+    padding: 1rem;
+    cursor: pointer;
+}
+
+nav .pages{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav .account{
+    width: 30%;  
+    display: flex;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: flex-end;
+}
+.dropdown{
+    width: 50%;
+}
+.dropdown-toggle::after{
+    content: '\2BC6';
+}
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    right: 1vw;
+    border-radius: 15px 0 15px 15px;
+    background-color: rgb(243, 164, 68);
 }
 
 /******************* boutton *******************/
@@ -196,6 +228,7 @@ display: none;
     width: 50vw;
     margin: auto;
     position: absolute;
+    top: 20%;
     left: 20%;
     right: 20%;
     font-size: 0.7rem;
@@ -207,4 +240,54 @@ display: none;
 }
 .log .btn{
     margin: 0 auto;
+}
+
+
+/******************* modal *******************/
+
+#modal{
+    background-color: #ffffff57;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    background-size: 200%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -10%;
+    z-index: 200;
+    display: none;
+}
+
+#log-window, #register-window{
+    display: none;
+}
+
+.log form{
+    width: 80%;
+    margin: auto;
+}
+
+.log form input:not(#pswd_confirm){
+    width: 80%;
+}
+#pswd_confirm{
+    width: 60%;
+}
+
+.log form div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.log form div div {
+    width: 50%;
+    margin: 0;
+}
+
+#close-log{
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

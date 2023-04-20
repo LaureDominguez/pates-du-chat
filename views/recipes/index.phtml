@@ -18,26 +18,37 @@
                         <h5><?= htmlspecialchars($recipe["name"]) ?></h5>
                         <div class="infos">
                             <p><i class="fa-regular fa-clock"></i> : <?= htmlspecialchars($recipe['time']); ?> min</p>
+                            <?php if($recipe["difficulty"] == 3): ?>
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                            <?php elseif($recipe["difficulty"] == 2): ?>
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                            <?php elseif($recipe["difficulty"] == 1): ?>
+                                <img src="./public/img/chef.png" alt="toque-chef" class="toque">
+                                <?php endif ?>
                             
+
                             <form class="star-rating">
                                 <input name="stars" id="star-a_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="5" disabled 
-                                    <?php if ($recipe["note"] == 5) : echo ('checked="true"'); endif; ?>>
+                                <?php if ($recipe["note"] == 5) : echo ('checked="true"'); endif; ?>>
                                 <label for="star-a_<?= htmlspecialchars($recipe['id']) ?>"></label>
 
                                 <input name="stars" id="star-b_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="4" disabled 
-                                    <?php if ($recipe["note"] == 4) : echo ('checked="true"'); endif; ?>>
+                                <?php if ($recipe["note"] == 4) : echo ('checked="true"'); endif; ?>>
                                 <label for="star-b_<?= htmlspecialchars($recipe['id']) ?>"></label>
 
                                 <input name="stars" id="star-c_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="3" disabled 
-                                    <?php if ($recipe["note"] == 3) : echo ('checked="true"'); endif; ?>>
+                                <?php if ($recipe["note"] == 3) : echo ('checked="true"'); endif; ?>>
                                 <label for="star-c_<?= htmlspecialchars($recipe['id']) ?>"></label>
 
                                 <input name="stars" id="star-d_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="2" disabled 
-                                    <?php if ($recipe["note"] == 2) : echo ('checked="true"'); endif; ?>>
+                                <?php if ($recipe["note"] == 2) : echo ('checked="true"'); endif; ?>>
                                 <label for="star-d_<?= htmlspecialchars($recipe['id']) ?>"></label>
 
                                 <input name="stars" id="star-e_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="1" disabled 
-                                    <?php if ($recipe["note"] == 1) : echo ('checked="true"'); endif; ?>>
+                                <?php if ($recipe["note"] == 1) : echo ('checked="true"'); endif; ?>>
                                 <label for="star-e_<?= htmlspecialchars($recipe['id']) ?>"></label>
                             </form>
                         </div>

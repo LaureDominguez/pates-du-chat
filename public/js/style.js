@@ -1,24 +1,72 @@
 // ********************* switch active
 
-    let switchCat = document.querySelectorAll('.switchCat');
-for (let i = 0; i < switchCat.length; i++){
-    switchCat[i].addEventListener('change', checked);
-}
+//     let switchCat = document.querySelectorAll('.switchCat');
+// for (let i = 0; i < switchCat.length; i++){
+//     switchCat[i].addEventListener('change', checked);
+// }
 
-function checked(e) {
-    let catID = e.target.id.replace("switch_","")
-}
+// function checked(e) {
+//     let catID = e.target.id.replace("switch_","")
+// }
 
-let req = new Request('getID.php', {
-    method: 'POST',
-    body: JSON.stringify({id : catID})
+// let req = new Request('getID.php', {
+//     method: 'POST',
+//     body: JSON.stringify({id : catID})
+// })
+
+// fetch(req)
+//     .then(res => res.text())
+
+// ********************* show/hide nav
+
+let dropdown = document.getElementById('dropdown-toggle');
+let menu = document.getElementById('dropdown-menu');
+
+window.addEventListener('click', function (e) {
+    if (dropdown.contains(e.target)) {
+        menu.style.display = "block";
+    }
+    else if (menu.style.display == "block") {
+        menu.style.display = "none";
+    }
 })
 
-fetch(req)
-    .then(res => res.text())
+// ********************* show/hide modal
+
+let loggin = document.getElementById('loggin');
+    let logWindow = document.getElementById('log-window');
+
+    let register = document.getElementById('register');
+    let registerWindow = document.getElementById('register-window');
+
+    let modal = document.getElementById('modal');
+
+    let closeLog = document.getElementById('close-log');
+    let validateLog = document.getElementById('validate-log');
+
+    let closeRegister = document.getElementById('close-register');
+    let validateRegister = document.getElementById('validate-register')
+    let cancelRegister = document.getElementById('cancel');
+
+window.addEventListener('click', function (e) {    
+        if (loggin.contains(e.target)){
+            modal.style.display = 'block';
+            logWindow.style.display = 'block';
+        }
+        else if (!logWindow.contains(e.target) || closeLog.contains(e.target)) {
+            modal.style.display = 'none';
+            logWindow.style.display = 'none';
+    }
+        else if (validateLog.contains(e.target)) {
+            logWindow.style.display = "none";
+            logWindow.style.display = 'none';
+            
+    }
+    })
 
 
-
+// import { modalLoggin } from "./loggin";
+// window.addEventListener('click', modalLoggin());
 
 // ********************* sort tableau (marche pas bien)
 const allTables = document.querySelectorAll("table");
@@ -59,18 +107,3 @@ const screenX = window.screenX;
 //         // window.location.href = "index.php?route=".route."&id=".id."?>"
 //     }
 // }
-
-// ************************** fenetre d'erreur horrible
-
-// var modale = document.getElementById('modale');
-
-// const onMouseMove = (e) =>{
-//     modale.style.left = e.pageX + 150 + 'px';
-//     modale.style.top = e.pageY + 150 + 'px';
-// }
-
-// window.addEventListener('DOMContentLoaded', function () {
-//     if (modale != null) {
-//         document.addEventListener('mousemove', onMouseMove)
-//     }
-// })

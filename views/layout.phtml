@@ -15,10 +15,10 @@
     <!--Font Awesome 6-->
     <script src="https://kit.fontawesome.com/267127ee95.js" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous"> -->
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <?php foreach ($css as $style): ?>
+    <?php foreach ($css as $style) : ?>
         <link rel="stylesheet" type="text/css" href="<?= htmlspecialchars($style); ?>">
     <?php endforeach; ?>
 </head>
@@ -29,22 +29,30 @@
     </header>
 
     <main>
+        <ul>
+            <li>passer css à sass</li>
+            <li>utiliser des modules pour js</li>
+        </ul>
         <aside class="prompt">
             <?php include_once('./views/errors.phtml') ?>
             <?php include_once('./views/success.phtml') ?>
         </aside>
-        
-        <?php if(isset($ajax)): ?>
+        <section class="modal-log" id="modal">
+            <?php include_once('users/login.phtml') ?>
+            <?php include_once('users/register.phtml') ?>
+        </section>
+
+        <!-- <//?php if (isset($ajax)) : ?>
             <aside class="ajax">
-                <?php include_once $ajax; ?>
+                <//?php include_once $ajax; ?>
             </aside>
-        <?php endif ?>
+        <//?php endif ?> -->
 
         <?php include $template; ?>
     </main>
 
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script> -->
     <!-- CKEditor 5 -->
     <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
     <script>

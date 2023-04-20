@@ -189,7 +189,6 @@ class UsersController{
         var_dump($_SESSION);
         if (!isset($_SESSION['user']))
             header('Location: index.php?route=login');
-        var_dump('vous pouvez noter la recette');
     }
 
     ////////////////////////// update //////////////////////////

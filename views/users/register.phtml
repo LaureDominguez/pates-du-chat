@@ -1,4 +1,5 @@
-<div class="log">
+<div class="log" id="register-window">
+    <button class="close" id="close-register">X</button>
     <h3>Nouveau compte</h3>
 
     <form action="index.php?route=register" method="post">
@@ -15,8 +16,8 @@
             <input type="password" name="pswd_confirm" id="pswd_confirm">
         </div>
         <div class="buttons">
-            <button type="submit" class="btn" value="Valider">valider</button>
-            <a href="index.php?route=login" class="btn">annuler</a>
+            <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
+            <a href=" index.php?route=login" class="btn" id="cancel">annuler</a>
         </div>
     </form>
 </div>
