@@ -1,0 +1,17 @@
+/******************* user *******************/
+@use 'base';
+
+.user-profil{
+    width: 80%;
+    margin: auto;
+}
+
+.user-profil form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profil form div{
+    width: 60%;
+}

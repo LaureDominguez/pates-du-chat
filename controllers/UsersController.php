@@ -5,34 +5,13 @@ namespace Controllers;
 class UsersController{
 
 ////////////////////////// routes //////////////////////////
-    // public function register()
-    // {
-    //     $template = "register.phtml";
-    //     $css = [
-    //         "public/css/user.css"
-    //     ];  
-    //     include_once'views/layout.phtml';
-    // }
-
-    // public function login()
-    // {
-    //     $template = "page d'avant";
-    //     $ajax = "users/login.phtml";
-    //     $css = [
-    //         "public/css/user.css"
-    //     ];  
-    //     include_once 'views/layout.phtml';
-    // }
-
     public function profil()
     {
         $model = new \Models\Users();
         $user = $model->getUser($_SESSION['user']['id']);
 
         $template = "users/profil.phtml";
-        $css = [
-            "public/css/user.css"
-        ]; 
+        $css = "public/css/user.css"; 
         include_once 'views/layout.phtml';
     }
 

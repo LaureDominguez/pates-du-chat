@@ -1,0 +1,58 @@
+/******************* recipes *******************/
+@use 'base';
+@use 'rating';
+
+/******************* index *******************/
+
+.recipe-index{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    grid-template-rows: repeat(auto-fill, 20rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.recipe-tuile{
+    height: 18rem;
+    width: 12rem;
+    overflow: hidden;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+.recipe-tuile img{
+    object-fit: cover;
+    height: 10rem;
+    width: 12rem;
+    position: relative;
+}
+.recipe-tuile figcaption{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff86;
+    padding: 1rem;
+    text-align: justify;
+}
+.recipe-tuile:hover{
+    transform: translateY(-1rem);
+}
+
+.infos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.infos p{
+    margin: 0;
+    
+}
