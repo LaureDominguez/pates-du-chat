@@ -61,10 +61,10 @@ if (array_key_exists('route', $_GET)):
 
 
             //login
-        case 'login':
-            $controller = new Controllers\UsersController();
-            $controller->login();
-            break;
+        // case 'login':
+        //     $controller = new Controllers\UsersController();
+        //     $controller->login();
+        //     break;
 
         case 'connect':
             $controller = new Controllers\UsersController();

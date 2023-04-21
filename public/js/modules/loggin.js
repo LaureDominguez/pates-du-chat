@@ -1,6 +1,6 @@
 // ********************* show/hide modal
-export function modalLoggin() {
-    let loggin = document.getElementById('loggin');
+
+let loggin = document.getElementById('loggin');
     let logWindow = document.getElementById('log-window');
 
     let register = document.getElementById('register');
@@ -15,7 +15,7 @@ export function modalLoggin() {
     let validateRegister = document.getElementById('validate-register')
     let cancelRegister = document.getElementById('cancel');
 
-    window.addEventListener('click', function(e){
+window.addEventListener('click', function (e) {    
         if (loggin.contains(e.target)){
             modal.style.display = 'block';
             logWindow.style.display = 'block';
@@ -23,6 +23,11 @@ export function modalLoggin() {
         else if (!logWindow.contains(e.target) || closeLog.contains(e.target)) {
             modal.style.display = 'none';
             logWindow.style.display = 'none';
-        }
+    }
+        else if (validateLog.contains(e.target)) {
+            logWindow.style.display = "none";
+            logWindow.style.display = 'none';
+            
+    }
     })
-}
+

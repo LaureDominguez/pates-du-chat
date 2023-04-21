@@ -1,21 +1,8 @@
-// ********************* switch active
+// import { modalLog } from "./modules/nav";
+// then(modalLog());
+// import { dropdownNav } from "./modules/nav";
+// then(dropdownNav());
 
-//     let switchCat = document.querySelectorAll('.switchCat');
-// for (let i = 0; i < switchCat.length; i++){
-//     switchCat[i].addEventListener('change', checked);
-// }
-
-// function checked(e) {
-//     let catID = e.target.id.replace("switch_","")
-// }
-
-// let req = new Request('getID.php', {
-//     method: 'POST',
-//     body: JSON.stringify({id : catID})
-// })
-
-// fetch(req)
-//     .then(res => res.text())
 
 // ********************* show/hide nav
 
@@ -31,42 +18,70 @@ window.addEventListener('click', function (e) {
     }
 })
 
+
 // ********************* show/hide modal
 
 let loggin = document.getElementById('loggin');
-    let logWindow = document.getElementById('log-window');
+let logWindow = document.getElementById('log-window');
 
-    let register = document.getElementById('register');
-    let registerWindow = document.getElementById('register-window');
+let register = document.getElementById('register');
+let registerWindow = document.getElementById('register-window');
 
-    let modal = document.getElementById('modal');
+let modal = document.getElementById('modal');
 
-    let closeLog = document.getElementById('close-log');
-    let validateLog = document.getElementById('validate-log');
+let closeLog = document.getElementById('close-log');
+let validateLog = document.getElementById('validate-log');
+let newAccount = document.getElementById('new-account');
 
-    let closeRegister = document.getElementById('close-register');
-    let validateRegister = document.getElementById('validate-register')
-    let cancelRegister = document.getElementById('cancel');
+let closeRegister = document.getElementById('close-register');
+let validateRegister = document.getElementById('validate-register')
+let cancelRegister = document.getElementById('cancel');
 
-window.addEventListener('click', function (e) {    
-        if (loggin.contains(e.target)){
-            modal.style.display = 'block';
-            logWindow.style.display = 'block';
-        }
-        else if (!logWindow.contains(e.target) || closeLog.contains(e.target)) {
-            modal.style.display = 'none';
-            logWindow.style.display = 'none';
+window.addEventListener('click', function (e) {
+    if (loggin.contains(e.target)) {
+        modal.style.display = 'block';
+        logWindow.style.display = 'block';
     }
-        else if (validateLog.contains(e.target)) {
-            logWindow.style.display = "none";
-            logWindow.style.display = 'none';
-            
+    else if (!logWindow.contains(e.target) || closeLog.contains(e.target) || validateLog.contains(e.target)){
+        modal.style.display = 'none';
+        logWindow.style.display = 'none';
     }
-    })
+    else if (newAccount.contains(e.target)) {
+        logWindow.style.display = "none";
+        registerWindow.style.display = "block";
+    }
+})
 
+//     window.addEventListener('click', function (e) {
+//         if (register.contains(e.target)) {
+//             modal.style.display = 'block';
+//             registerWindow.style.display = 'block';
+//         }
+//         else if (!registerWindow.contains(e.target) || closeRegister.contains(e.target) || cancelRegister.contains(e.target)) {
+//             modal.style.display = 'none';
+//             registerWindow.style.display = 'none';
+//         }
+// })
 
-// import { modalLoggin } from "./loggin";
-// window.addEventListener('click', modalLoggin());
+// ********************* switch active
+
+    let switchCat = document.querySelectorAll('.switchCat');
+for (let i = 0; i < switchCat.length; i++){
+    switchCat[i].addEventListener('change', checked);
+}
+
+function checked(e) {
+    let catID = e.target.id.replace("switch_","")
+}
+
+let req = new Request('getID.php', {
+    method: 'POST',
+    body: JSON.stringify({id : catID})
+})
+
+fetch(req)
+    .then(res => res.text())
+
 
 // ********************* sort tableau (marche pas bien)
 const allTables = document.querySelectorAll("table");

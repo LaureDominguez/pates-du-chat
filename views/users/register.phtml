@@ -1,23 +1,23 @@
 <div class="log" id="register-window">
-    <button class="close" id="close-register">X</button>
+    <button class="croix-btn" id="close-register">X</button>
     <h3>Nouveau compte</h3>
 
     <form action="index.php?route=register" method="post">
         <div>
-            <label for="email">email</label>
-            <input type="email" name="email" id="email">
+            <label for="email_new">email</label>
+            <input type="email" name="email" id="email_new">
         </div>
         <div>
-            <label for="pswd">mot de passe</label>
-            <input type="password" name="pswd" id="pswd">
+            <label for="pswd_new">mot de passe</label>
+            <input type="password" name="pswd" id="pswd_new">
         </div>
         <div>
-            <label for="pswd_confirm">confirmez votre mot de passe</label>
-            <input type="password" name="pswd_confirm" id="pswd_confirm">
+            <label for="pswd_confirm_new">confirmez votre mot de passe</label>
+            <input type="password" name="pswd_confirm" id="pswd_confirm_new">
         </div>
         <div class="buttons">
             <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
-            <a href=" index.php?route=login" class="btn" id="cancel">annuler</a>
+            <p class="btn" id="cancel">annuler</p>
         </div>
     </form>
 </div>

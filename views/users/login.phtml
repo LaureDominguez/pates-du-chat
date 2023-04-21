@@ -1,28 +1,28 @@
 <div class="log" id="log-window">
-    <button class="close" id="close-log">X</button>
+    <button class="croix-btn" id="close-log">X</button>
     <h3>Connexion</h3>
 
-    <ul>
+    <!-- <ul>
         <li>ne renvoi pas les messages d'erreur de connexion</li>
         <li>verifier email</li>
         <li>verifier session à la connexion : conflit entre 2 sessions</li>
-    </ul>
+    </ul> -->
 
     <form action="index.php?route=connect" method="post">
         <div>
-            <label for="email">email</label>
-            <input type="email" name="email" id="email">
+            <label for="email_log">email</label>
+            <input type="email" name="email" id="email_log">
         </div>
         <div>
-            <label for="pswd">mot de passe</label>
-            <input type="password" name="pswd" id="pswd">
+            <label for="pswd_log">mot de passe</label>
+            <input type="password" name="pswd" id="pswd_log">
         </div>
 
         <div class="buttons">
             <button type="submit" class="btn" id="validate-log">valider</button>
             <div>
                 <label>Pas de compte ?</label>
-                <a href="index.php?route=register" class="btn">Créer un compte</a>
+                <p class="btn" id="new-account">Créer un compte</p>
             </div>
         </div>
     </form>

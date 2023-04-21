@@ -5,24 +5,24 @@ namespace Controllers;
 class UsersController{
 
 ////////////////////////// routes //////////////////////////
-    public function register()
-    {
-        $template = "register.phtml";
-        $css = [
-            "public/css/user.css"
-        ];  
-        include_once'views/layout.phtml';
-    }
+    // public function register()
+    // {
+    //     $template = "register.phtml";
+    //     $css = [
+    //         "public/css/user.css"
+    //     ];  
+    //     include_once'views/layout.phtml';
+    // }
 
-    public function login()
-    {
-        $template = "page d'avant";
-        $ajax = "users/login.phtml";
-        $css = [
-            "public/css/user.css"
-        ];  
-        include_once 'views/layout.phtml';
-    }
+    // public function login()
+    // {
+    //     $template = "page d'avant";
+    //     $ajax = "users/login.phtml";
+    //     $css = [
+    //         "public/css/user.css"
+    //     ];  
+    //     include_once 'views/layout.phtml';
+    // }
 
     public function profil()
     {

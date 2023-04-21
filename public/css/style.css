@@ -137,8 +137,10 @@ nav .account{
     background-color: rgb(243, 164, 68);
 }
 
-/******************* boutton *******************/
-
+/******************* bouttons *******************/
+p .btn{
+    padding: 0;
+}
 .btn{
     padding: 0.5rem;
     margin: 1rem;
@@ -146,6 +148,7 @@ nav .account{
     border: solid var(--vert) 1px ;
     border-radius: 5px;
     transition: all, 0.2s ease-in;
+    cursor: pointer;
 }
 
 .btn:hover, .btn:active{
@@ -159,6 +162,36 @@ nav .account{
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+/******************* croix *******************/
+
+/* .croix{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+} */
+.croix-btn{
+    border: solid 1px #fff;
+    border-radius: 3px;
+    color: #fff;
+    background-color: red;
+    width: 1.2rem;
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all, 0.1s ease-in;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible{
+    color: red;
+    background-color: #fff;
+}
+/* .croix button:focus-visible{
+    display: inherit;
+} */
 
 /******************* form *******************/
 form label{
@@ -267,18 +300,13 @@ display: none;
     margin: auto;
 }
 
-.log form input:not(#pswd_confirm){
-    width: 80%;
-}
-#pswd_confirm{
-    width: 60%;
+.log form input{
+    width: 100%;
 }
 
-.log form div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.log form div:not(.buttons){
+    display: grid;
+    justify-content: center;
 }
 
 .log form div div {
@@ -286,8 +314,8 @@ display: none;
     margin: 0;
 }
 
-#close-log{
+/* #close-log{
     position: absolute;
     top: 10px;
     right: 10px;
-}
+} */
