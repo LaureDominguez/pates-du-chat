@@ -1,40 +1,44 @@
 import { toogleModal } from "./modules/loggin.js";
-// import { dropdownNav } from "./modules/nav.js";
+import { dropdownNav } from "./modules/dropdown.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     toogleModal();
-    // dropdownNav();
+    dropdownNav();
 })
-
-// if (window.location.toString().includes("addArticle")) {
-//         console.log("route1");
-//         formArticles();
-//     }
-
-
-
 
 
 // ********************* switch active
 
-//     let switchCat = document.querySelectorAll('.switchCat');
-// for (let i = 0; i < switchCat.length; i++){
-//     switchCat[i].addEventListener('change', checked);
-// }
+    let switchCat = document.querySelectorAll('.switchCat');
+    
+console.log(switchCat);
 
-// function checked(e) {
-//     let catID = e.target.id.replace("switch_","")
-// }
+for (let i = 0; i < switchCat.length; i++){
+    switchCat[i].addEventListener('change', checked);
+}
+
+function checked(e) {
+    let catID = e.target.id.replace("switch_","")
+}
 
 // let req = new Request('getID.php', {
 //     method: 'POST',
 //     body: JSON.stringify({id : catID})
 // })
 
-// fetch(req)
-//     .then(res => res.text())
+window.addEventListener("click", function (e) {
+    checked(e);
+});
+//fetch(req)
+//    .then(res => res.text())
 
-
+const shop = document.getElementById("shop-tab");
+console.log(shop)
+/*
+shop.addEventListener("click", function () {
+  document.getElementById("demo").innerHTML = "Hello World";
+});
+*/
 // // ********************* sort tableau (marche pas bien)
 // const allTables = document.querySelectorAll("table");
 

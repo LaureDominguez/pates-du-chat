@@ -21,33 +21,38 @@ export function toogleModal() {
 
     window.addEventListener('click', function (e) {
 
-        console.log(e.clientX + " " + e.clientY) 
-        console.log(e.target.id)
         switch (e.target.id) {
             case "loggin":
                 modal.style.display = 'block';
                 logWindow.style.display = 'block';
                 break;
-
+            
+            case "new-account":
+                logWindow.style.display = "none";
+                registerWindow.style.display = "block";
+                break;
+            
+            case "close-log":
+                modal.style.display = 'none';
+                logWindow.style.display = 'none';
+                break;
+            
             case "register":
                 modal.style.display = 'block';
                 registerWindow.style.display = 'block';
                 break;
             
-            case "close-log":
-                // console.log("CLOSEL")
-                modal.style.display = 'none';
-                logWindow.style.display = 'none';
+            case "cancel":
+                registerWindow.style.display = 'none';
+                logWindow.style.display = 'block';
                 break;
             
             case "close-register":
-                // console.log("CLOSER")
                 modal.style.display = 'none';
                 registerWindow.style.display = 'none';
                 break;
             
             case "modal":
-                // console.log("CLOSER")
                 modal.style.display = 'none';
                 registerWindow.style.display = 'none';
                 break;
@@ -57,28 +62,5 @@ export function toogleModal() {
             //     logWindow.style.display = 'none';
             //     registerWindow.style.display = "none";
         }
-
-        // if (loggin.contains(e.target)) {
-        //     modal.style.display = 'block';
-        //     logWindow.style.display = 'block';
-        // }
-        // else if (newAccount.contains(e.target)) {
-        //     logWindow.style.display = "none";
-        //     registerWindow.style.display = "block";
-        // }
-        
-        // else if (register.contains(e.target)) {
-        //         modal.style.display = 'block';
-        //         registerWindow.style.display = 'block';
-        // }
-            
-        // else if (closeLog.contains(e.target) || validateLog.contains(e.target)){
-        // modal.style.display = 'none';
-        // logWindow.style.display = 'none';
-        // }
-        // else if (closeRegister.contains(e.target) || cancelRegister.contains(e.target)) {
-        //         modal.style.display = 'none';
-        //         registerWindow.style.display = 'none';
-        //     }
     })
 }

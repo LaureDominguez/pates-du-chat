@@ -8,7 +8,6 @@ class RecipesController{
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "recipes/index.phtml";
-        $css = "public/css/recipes.css";
         include_once'views/layout.phtml';
     }
     public function displayOneRecipe($id)
@@ -20,7 +19,6 @@ class RecipesController{
         $product = $modelProducts->getOneProduct($recipe['product_id']);
 
         $template = "recipes/detail.phtml";
-        $css = "public/css/recipes.css";
         include_once 'views/layout.phtml';
     }
 }

@@ -381,28 +381,41 @@ form div {
   justify-content: space-between;
   margin: 2px auto;
 }
-
+.cook-rating input {
+  display: none;
+}
 .cook-rating input {
   display: none;
 }
 
 .cook-rating > label {
-  width: 30px;
-  height: 30px;
-  font-family: Verdana;
-  font-size: 30px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
   color: orange;
 }
 
 .cook-rating label::before {
-  content: url("/public/img/chef.png");
+  background-image: url("../img/chef.png");
+  background-size: 20px 20px;
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
   position: absolute;
   top: 0;
   line-height: 26px;
+  width: 20px;
+  height: 20px;
 }
 
 .cook-rating input:checked ~ label::before {
-  content: url("/public/img/chef_strong.png");
+  background-image: url("../img/chef_strong.png");
+  background-size: 20px 20px;
+  display: inline-block;
+  content: "";
+  width: 20px;
+  height: 20px;
 }
 
 /******************* switch toggle *******************/
@@ -655,6 +668,4 @@ td a {
 
 td a:hover {
   color: red;
-}
-
-/*# sourceMappingURL=dashboard.css.map */
+}/*# sourceMappingURL=dashboard.css.map */

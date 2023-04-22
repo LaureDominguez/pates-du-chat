@@ -20,14 +20,10 @@ class AdminController{
             $nbProducts = $modelCategory->countProductsFromCat($id);
         endforeach;
 
-        // var_dump($nbProducts);
-
         $modelRecipes = new \Models\Recipes();
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "dashboard.phtml";
-        $css = "public/css/dashboard.css";
-
         include_once'views/layout.phtml';
     }
 
@@ -43,10 +39,6 @@ class AdminController{
     public function displayCreateNewsForm()
     {
         $template = "views/news/form.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -82,10 +74,6 @@ class AdminController{
         $actu = $modelNews->getOneActu($id);
 
         $template = "views/news/form.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -113,9 +101,6 @@ class AdminController{
                 $success[] = "L'article a bien été modifié !";
 
                 $template = "dashboard.phtml";
-                $css = [
-                    "public/css/dashboard.css"
-                ];
                 include_once 'views/layout.phtml';
 
             }
@@ -135,10 +120,6 @@ class AdminController{
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/catForm.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
     public function verifCatForm()
@@ -163,9 +144,6 @@ class AdminController{
             }
         }
         $template = "dashboard.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
         include_once 'views/layout.phtml';
     }
 
@@ -176,10 +154,6 @@ class AdminController{
         $category = $modelCategory->getOneCategory($id);
 
         $template = "views/shop/catForm.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -217,9 +191,6 @@ class AdminController{
             }
         }
         $template = "dashboard.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
         include_once 'views/layout.phtml';
     }
 
@@ -233,10 +204,6 @@ class AdminController{
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -249,10 +216,6 @@ class AdminController{
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -266,10 +229,6 @@ class AdminController{
         $category = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
-        $css = [
-            "public/css/dashboard.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
@@ -316,11 +275,6 @@ class AdminController{
         $products = $modelProducts->getAllProducts();
 
         $template = "views/recipes/form.phtml";
-        $css = [
-            "public/css/dashboard.css",
-            "public/css/rating.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
     public function displayUpdateRecipesForm($id)
@@ -333,11 +287,6 @@ class AdminController{
         $products = $modelProducts->getAllProducts();
 
         $template = "views/recipes/form.phtml";
-        $css = [
-            "public/css/dashboard.css",
-            "public/css/rating.css"
-        ];
-
         include_once 'views/layout.phtml';
     }
 
