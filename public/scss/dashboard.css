@@ -396,7 +396,7 @@ form div {
 }
 
 .cook-rating label::before {
-  background-image: url("../img/chef.png");
+  background-image: url("../img/chef_strong.png");
   background-size: 20px 20px;
   display: inline-block;
   content: "";
@@ -418,59 +418,254 @@ form div {
   height: 20px;
 }
 
-/******************* recipes *******************/
-/******************* index *******************/
-.recipe-index {
-  margin: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 15rem);
-  grid-template-rows: repeat(auto-fill, 20rem);
-  align-items: center;
-  justify-items: center;
-  align-content: center;
-  justify-content: center;
+/******************* switch toggle *******************/
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  height: 20px;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.recipe-tuile {
-  height: 18rem;
-  width: 12rem;
+.switch input {
+  position: absolute;
+  top: -15px;
+  top: -15px;
+  width: 0;
+  height: 0;
+}
+
+.switch input + span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #99b4df;
   border-radius: 10px;
+}
+
+.switch input + span:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s;
+}
+
+.switch input:checked + span {
+  background: #346abf;
+}
+
+.switch input:checked + span:before {
+  left: 17px;
+}
+
+/******************* tooltip *******************/
+.aide {
+  position: relative;
+}
+
+.aide:before {
+  content: attr(data-text);
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
+  margin-left: 15px;
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  display: none;
+}
+
+/* aide à gauche */
+.aide.left:before {
+  /* reset defaults */
+  left: initial;
+  margin: initial;
+  /* set new values */
+  right: 100%;
+  margin-right: 15px;
+}
+
+/* fleche */
+.aide:after {
+  content: "";
+  position: absolute;
+  /* position tooltip correctly */
+  left: 100%;
+  margin-left: -5px;
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+  /* the arrow */
+  border: 10px solid #000;
+  border-color: transparent black transparent transparent;
+  display: none;
+}
+
+.aide.left:after {
+  /* reset defaults */
+  left: initial;
+  margin-left: initial;
+  /* set new values */
+  right: 100%;
+  margin-right: -5px;
+  border-color: transparent transparent transparent black;
+}
+
+.aide:hover:before, .aide:hover:after {
+  display: block;
+}
+
+/******************* dashboard *******************/
+.menu-tabs ul {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+  border-radius: 10px;
+}
+
+.menu-tabs {
+  background-color: white;
+  max-width: 960px;
+  margin: 2rem auto;
+  border-radius: 10px;
+}
+
+.menu-tabs > ul {
   display: flex;
-  flex-direction: column;
+  /* overflow-x: auto; */
+  /* scrollbar-width:thin; */
+  /* overscroll-behavior-inline: contain; */
+  /* scroll-snap-type: x mandatory; */
+  /* scroll-snap-type: inline mandatory; */
+  /* scroll-padding:3rem; */
+}
+
+.menu-tabs > ul li {
+  /* scroll-snap-align: start; */
+  flex: 0 0 25%;
+}
+
+.menu-tabs > ul li label {
+  display: flex;
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease-out;
-}
-.recipe-tuile img {
-  object-fit: cover;
-  height: 10rem;
-  width: 12rem;
-  position: relative;
-}
-.recipe-tuile figcaption {
-  display: flex;
-  flex-direction: column;
+  height: 4rem;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.5254901961);
+  transition: background-color 0.4s;
+  background-color: #e5e5e5;
+  /* border-radius: 10px; */
+}
+
+.menu-tabs > ul li label span {
+  display: inline-block;
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menu-tabs > ul li label::before,
+.menu-tabs > ul li label::after {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 100%;
+  top: 0px;
+}
+
+.menu-tabs > ul li label::before {
+  background-color: #d1d1d1;
+}
+
+.menu-tabs > ul li label::after {
+  transform-origin: left;
+  transition: transform 0.4s;
+  transform: scalex(0);
+}
+
+.menu-tabs input:nth-of-type(1):checked ~ ul li:nth-child(1) label::after,
+.menu-tabs input:nth-of-type(2):checked ~ ul li:nth-child(2) label::after,
+.menu-tabs input:nth-of-type(3):checked ~ ul li:nth-child(3) label::after,
+.menu-tabs input:nth-of-type(4):checked ~ ul li:nth-child(4) label::after {
+  transform: scalex(1);
+  background-color: #6753ea;
+}
+
+.menu-tabs input:nth-of-type(1):checked ~ ul > li:nth-child(1) > label,
+.menu-tabs input:nth-of-type(2):checked ~ ul > li:nth-child(2) > label,
+.menu-tabs input:nth-of-type(3):checked ~ ul > li:nth-child(3) > label,
+.menu-tabs input:nth-of-type(4):checked ~ ul > li:nth-child(4) > label {
+  cursor: default;
+  background-color: initial;
+}
+
+.menu-tabs input:nth-of-type(1):checked ~ .contenu-tabs > .section-tab:nth-child(1),
+.menu-tabs input:nth-of-type(2):checked ~ .contenu-tabs > .section-tab:nth-child(2),
+.menu-tabs input:nth-of-type(3):checked ~ .contenu-tabs > .section-tab:nth-child(3),
+.menu-tabs input:nth-of-type(4):checked ~ .contenu-tabs > .section-tab:nth-child(4) {
+  display: grid;
+}
+
+.contenu-tabs {
+  min-height: 400px;
   padding: 1rem;
-  text-align: justify;
 }
 
-.recipe-tuile:hover {
-  transform: translateY(-1rem);
+.section-tab {
+  display: none;
+  animation: anim-tabs 0.4s ease-in-out;
+  margin-top: 2rem;
 }
 
-.infos {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+@keyframes anim-tabs {
+  from {
+    opacity: 0;
+    transform: translatey(5%);
+  }
+  to {
+    opacity: 1;
+  }
+}
+/******** tableau ********/
+table, th, td {
+  border: 1px solid rgb(200, 200, 200);
+  text-align: center;
+  cursor: default;
 }
 
-.infos p {
-  margin: 0;
+table {
+  margin-bottom: 1rem;
 }
 
-/*# sourceMappingURL=recipes.css.map */
+thead {
+  background-color: var(--orange);
+  color: #fff;
+}
+
+tbody > tr:hover {
+  background-color: rgb(255, 207, 149);
+}
+
+td a {
+  transition: all 1s ease-out;
+}
+
+td a:hover {
+  color: red;
+}/*# sourceMappingURL=dashboard.css.map */

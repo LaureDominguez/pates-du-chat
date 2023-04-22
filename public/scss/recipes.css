@@ -396,7 +396,7 @@ form div {
 }
 
 .cook-rating label::before {
-  background-image: url("../img/chef.png");
+  background-image: url("../img/chef_strong.png");
   background-size: 20px 20px;
   display: inline-block;
   content: "";
@@ -471,6 +471,4 @@ form div {
 
 .infos p {
   margin: 0;
-}
-
-/*# sourceMappingURL=recipes.css.map */
+}/*# sourceMappingURL=recipes.css.map */

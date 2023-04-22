@@ -320,157 +320,82 @@ form div {
     top: 10px;
     right: 10px;
 } */
-/******************* Rating Stars *******************/
-@-moz-document url-prefix() {
-  .star-rating input:checked ~ label::before {
-    font-size: 36px;
-    line-height: 21px;
-  }
-}
-.star-rating {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 160px;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  margin: 2px auto;
-}
-
-.star-rating input {
-  display: none;
-}
-
-.star-rating > label {
-  width: 30px;
-  height: 30px;
-  font-family: Verdana;
-  font-size: 30px;
-  color: orange;
-  transition: 0.2s ease;
-}
-
-.star-rating label:hover {
-  color: orangered;
-  transition: 0.2s ease;
-}
-
-.star-rating label:active::before {
-  transform: scale(1.1);
-}
-
-.star-rating label::before {
-  content: "☆";
-  position: absolute;
-  top: 0;
-  line-height: 26px;
-}
-
-.star-rating input:checked ~ label::before {
-  content: "★";
-}
-
-/******************* Rating Cook *******************/
-/* Cook-hat Flaticon = https://www.flaticon.com/free-icons/chef */
-.cook-rating {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 160px;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  margin: 2px auto;
-}
-.cook-rating input {
-  display: none;
-}
-.cook-rating input {
-  display: none;
-}
-
-.cook-rating > label {
-  width: 20px;
-  height: 20px;
-  font-size: 10px;
-  color: orange;
-}
-
-.cook-rating label::before {
-  background-image: url("../img/chef.png");
-  background-size: 20px 20px;
-  display: inline-block;
-  content: "";
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  top: 0;
-  line-height: 26px;
-  width: 20px;
-  height: 20px;
-}
-
-.cook-rating input:checked ~ label::before {
-  background-image: url("../img/chef_strong.png");
-  background-size: 20px 20px;
-  display: inline-block;
-  content: "";
-  width: 20px;
-  height: 20px;
-}
-
-/******************* recipes *******************/
+/******************* shop *******************/
 /******************* index *******************/
-.recipe-index {
+.shop-cat {
   margin: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15rem);
-  grid-template-rows: repeat(auto-fill, 20rem);
+  grid-template-rows: repeat(auto-fill, 15rem);
   align-items: center;
   justify-items: center;
   align-content: center;
   justify-content: center;
 }
 
-.recipe-tuile {
-  height: 18rem;
+.shop-tuile {
+  height: 12rem;
   width: 12rem;
+  overflow: hidden;
+  border: solid 1px transparent;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
   cursor: pointer;
-  transition: all 0.2s ease-out;
 }
-.recipe-tuile img {
+
+.shop-tuile img {
   object-fit: cover;
-  height: 10rem;
+  height: 12rem;
   width: 12rem;
   position: relative;
+  transition: all 0.5s ease;
 }
-.recipe-tuile figcaption {
+
+.shop-tuile:hover img {
+  transform: scale(1.2);
+}
+
+.shop-tuile figcaption {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.5254901961);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   padding: 1rem;
   text-align: justify;
+  opacity: 0;
+  transition: all 0.5s ease;
 }
 
-.recipe-tuile:hover {
-  transform: translateY(-1rem);
+.shop-tuile:hover figcaption {
+  opacity: 0.9;
 }
 
-.infos {
+/******************* detail *******************/
+.shop-detail {
+  display: flex;
+}
+
+.shop-detail img {
+  width: 50%;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+.shop-detail figcaption {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
-
-.infos p {
-  margin: 0;
-}
-
-/*# sourceMappingURL=recipes.css.map */
+  padding: 1rem;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  border-radius: 0 10px 10px 0;
+}/*# sourceMappingURL=shop.css.map */

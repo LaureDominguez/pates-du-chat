@@ -2,11 +2,9 @@
     <button class="croix-btn" id="close-log">X</button>
     <h3>Connexion</h3>
 
-    <!-- <ul>
-        <li>ne renvoi pas les messages d'erreur de connexion</li>
-        <li>verifier email</li>
-        <li>verifier session à la connexion : conflit entre 2 sessions</li>
-    </ul> -->
+    <aside class="prompt">
+        <?php include_once('./views/errors.phtml') ?>
+    </aside>
 
     <form action="index.php?route=connect" method="post">
         <div>

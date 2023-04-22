@@ -47,6 +47,8 @@ class UsersController{
                         break;
                 }
 
+                // value       = "<?php if(isset($newOption) && !empty($newOption)) { echo $newOption['name']; } ?//>"
+
             //validation mot de passe
             $pswd = trim($_POST['pswd']);
 
@@ -93,9 +95,7 @@ class UsersController{
             }
         }
         $template = "users/register.phtml";
-        $css = [
-            "public/css/user.css"
-        ];
+        $css = "public/css/user.css";
         include_once 'views/layout.phtml';
     }
 
@@ -155,9 +155,7 @@ class UsersController{
                 }
             }
         $template = "users/login.phtml";
-        $css = [
-            "public/css/user.css"
-        ];
+        $css = "public/css/user.css";
         include_once 'views/layout.phtml';
         }
     }
@@ -202,9 +200,7 @@ class UsersController{
             }
 
         $template = "users/profil.phtml";
-        $css = [
-            "public/css/user.css"
-        ];
+        $css = "public/css/user.css";
         include_once 'views/layout.phtml';
     }
 }
