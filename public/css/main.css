@@ -5,14 +5,14 @@
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -341,7 +341,11 @@ form div {
   display: none;
 }
 
-.star-rating > label {
+.star-rating input:checked ~ label::before {
+  content: "★";
+}
+
+.star-rating label {
   width: 30px;
   height: 30px;
   font-family: Verdana;
@@ -366,10 +370,6 @@ form div {
   line-height: 26px;
 }
 
-.star-rating input:checked ~ label::before {
-  content: "★";
-}
-
 /******************* Rating Cook *******************/
 /* Cook-hat Flaticon = https://www.flaticon.com/free-icons/chef */
 .cook-rating {
@@ -382,15 +382,7 @@ form div {
   margin: 2px auto;
 }
 
-.cook-rating input {
-  display: none;
-}
-
-.cook-rating input {
-  display: none;
-}
-
-.cook-rating > label {
+.cook-rating label {
   width: 20px;
   height: 20px;
   font-size: 10px;
@@ -409,6 +401,10 @@ form div {
   line-height: 26px;
   width: 20px;
   height: 20px;
+}
+
+.cook-rating input {
+  display: none;
 }
 
 .cook-rating input:checked ~ label::before {
@@ -473,6 +469,8 @@ form div {
 /******************* tooltip *******************/
 .aide {
   position: relative;
+  /* aide à gauche */
+  /* fleche */
 }
 
 .aide:before {
@@ -492,7 +490,6 @@ form div {
   display: none;
 }
 
-/* aide à gauche */
 .aide.left:before {
   /* reset defaults */
   left: initial;
@@ -502,7 +499,6 @@ form div {
   margin-right: 15px;
 }
 
-/* fleche */
 .aide:after {
   content: "";
   position: absolute;
@@ -533,36 +529,22 @@ form div {
 }
 
 /******************* dashboard *******************/
-.menu-tabs ul {
-  padding-left: 0;
-  margin: 0;
-  list-style-type: none;
-  border-radius: 10px;
-}
-
+/******************* table à onglets *******************/
 .menu-tabs {
   background-color: white;
   max-width: 960px;
   margin: 2rem auto;
-  border-radius: 10px;
 }
-
-.menu-tabs > ul {
+.menu-tabs ul {
   display: flex;
-  /* overflow-x: auto; */
-  /* scrollbar-width:thin; */
-  /* overscroll-behavior-inline: contain; */
-  /* scroll-snap-type: x mandatory; */
-  /* scroll-snap-type: inline mandatory; */
-  /* scroll-padding:3rem; */
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
 }
-
-.menu-tabs > ul li {
-  /* scroll-snap-align: start; */
+.menu-tabs ul li {
   flex: 0 0 25%;
 }
-
-.menu-tabs > ul li label {
+.menu-tabs ul li label {
   display: flex;
   position: relative;
   cursor: pointer;
@@ -571,36 +553,29 @@ form div {
   justify-content: center;
   transition: background-color 0.4s;
   background-color: #e5e5e5;
-  /* border-radius: 10px; */
 }
-
-.menu-tabs > ul li label span {
-  display: inline-block;
-  max-width: 90%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.menu-tabs > ul li label::before,
-.menu-tabs > ul li label::after {
+.menu-tabs ul li label::before, .menu-tabs ul li label::after {
   position: absolute;
   content: "";
   height: 4px;
   width: 100%;
   top: 0px;
 }
-
-.menu-tabs > ul li label::before {
+.menu-tabs ul li label::before {
   background-color: #d1d1d1;
 }
-
-.menu-tabs > ul li label::after {
+.menu-tabs ul li label::after {
   transform-origin: left;
   transition: transform 0.4s;
   transform: scalex(0);
 }
-
+.menu-tabs ul li label span {
+  display: inline-block;
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .menu-tabs input:nth-of-type(1):checked ~ ul li:nth-child(1) label::after,
 .menu-tabs input:nth-of-type(2):checked ~ ul li:nth-child(2) label::after,
 .menu-tabs input:nth-of-type(3):checked ~ ul li:nth-child(3) label::after,
@@ -608,7 +583,6 @@ form div {
   transform: scalex(1);
   background-color: #6753ea;
 }
-
 .menu-tabs input:nth-of-type(1):checked ~ ul > li:nth-child(1) > label,
 .menu-tabs input:nth-of-type(2):checked ~ ul > li:nth-child(2) > label,
 .menu-tabs input:nth-of-type(3):checked ~ ul > li:nth-child(3) > label,
@@ -616,7 +590,6 @@ form div {
   cursor: default;
   background-color: initial;
 }
-
 .menu-tabs input:nth-of-type(1):checked ~ .contenu-tabs > .section-tab:nth-child(1),
 .menu-tabs input:nth-of-type(2):checked ~ .contenu-tabs > .section-tab:nth-child(2),
 .menu-tabs input:nth-of-type(3):checked ~ .contenu-tabs > .section-tab:nth-child(3),
@@ -644,7 +617,7 @@ form div {
     opacity: 1;
   }
 }
-/******** tableau ********/
+/******************* tabeaux *******************/
 table, th, td {
   border: 1px solid rgb(200, 200, 200);
   text-align: center;
@@ -667,7 +640,6 @@ tbody > tr:hover {
 td a {
   transition: all 1s ease-out;
 }
-
 td a:hover {
   color: red;
 }
@@ -678,14 +650,14 @@ td a:hover {
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -998,13 +970,11 @@ form div {
   width: 80%;
   margin: auto;
 }
-
 .user-profil form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .user-profil form div {
   width: 60%;
 }
@@ -1015,14 +985,14 @@ form div {
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -1336,14 +1306,14 @@ form div {
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -1666,20 +1636,17 @@ form div {
   width: 80%;
   overflow: hidden;
   position: relative;
-  cursor: default;
+  cursor: pointer;
   transition: all 0.5s ease;
 }
-
 .news-short:hover {
   transform: scale(1.01);
   box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.5254901961);
 }
-
 .news-short img {
   height: 20rem;
   border-radius: 10px 0 0 10px;
 }
-
 .news-short figcaption {
   padding: 1rem;
 }
@@ -1699,17 +1666,14 @@ form div {
   background-size: 150%;
   transition: all, 0.5s ease-out;
 }
-
 .more p {
   padding-right: 1rem;
   line-height: 2rem;
 }
-
 .more p:last-child {
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
-
 .more div {
   display: flex;
   flex-direction: column;
@@ -1719,12 +1683,10 @@ form div {
   overflow: hidden;
   transition: all, 0.5s ease-out;
 }
-
 .more:hover {
   background-position: left;
   width: 50%;
 }
-
 .more:hover > div > p:last-child {
   opacity: 1;
   transform: scale(1.5);
@@ -1733,24 +1695,26 @@ form div {
 /******************* detail *******************/
 .article {
   display: flex;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 10px;
 }
-
 .article img {
   max-width: 50%;
   margin: 0.5rem;
   object-fit: cover;
   border-radius: 5px;
 }
-
 .article figcaption {
   padding: 1rem;
 }
 
 .date {
   display: flex;
+  margin: auto;
+  margin-top: 0.5rem;
+  width: 95%;
 }
 
 /******************* general *******************/
@@ -1759,14 +1723,14 @@ form div {
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -2095,7 +2059,11 @@ form div {
   display: none;
 }
 
-.star-rating > label {
+.star-rating input:checked ~ label::before {
+  content: "★";
+}
+
+.star-rating label {
   width: 30px;
   height: 30px;
   font-family: Verdana;
@@ -2120,10 +2088,6 @@ form div {
   line-height: 26px;
 }
 
-.star-rating input:checked ~ label::before {
-  content: "★";
-}
-
 /******************* Rating Cook *******************/
 /* Cook-hat Flaticon = https://www.flaticon.com/free-icons/chef */
 .cook-rating {
@@ -2136,15 +2100,7 @@ form div {
   margin: 2px auto;
 }
 
-.cook-rating input {
-  display: none;
-}
-
-.cook-rating input {
-  display: none;
-}
-
-.cook-rating > label {
+.cook-rating label {
   width: 20px;
   height: 20px;
   font-size: 10px;
@@ -2163,6 +2119,10 @@ form div {
   line-height: 26px;
   width: 20px;
   height: 20px;
+}
+
+.cook-rating input {
+  display: none;
 }
 
 .cook-rating input:checked ~ label::before {
@@ -2188,8 +2148,9 @@ form div {
 }
 
 .recipe-tuile {
-  height: 18rem;
+  height: 20rem;
   width: 12rem;
+  overflow: hidden;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -2212,7 +2173,9 @@ form div {
   padding: 1rem;
   text-align: justify;
 }
-
+.recipe-tuile figcaption h5 {
+  margin: 0;
+}
 .recipe-tuile:hover {
   transform: translateY(-1rem);
 }
@@ -2224,7 +2187,6 @@ form div {
   justify-content: center;
   align-items: center;
 }
-
 .infos p {
   margin: 0;
 }
@@ -2235,14 +2197,14 @@ form div {
   --vert: rgb(0, 79, 18);
 }
 
-body * {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 section {
@@ -2574,7 +2536,6 @@ form div {
   position: relative;
   cursor: pointer;
 }
-
 .shop-tuile img {
   object-fit: cover;
   height: 12rem;
@@ -2582,11 +2543,9 @@ form div {
   position: relative;
   transition: all 0.5s ease;
 }
-
 .shop-tuile:hover img {
   transform: scale(1.2);
 }
-
 .shop-tuile figcaption {
   display: flex;
   flex-direction: column;
@@ -2603,7 +2562,6 @@ form div {
   opacity: 0;
   transition: all 0.5s ease;
 }
-
 .shop-tuile:hover figcaption {
   opacity: 0.9;
 }
@@ -2612,13 +2570,11 @@ form div {
 .shop-detail {
   display: flex;
 }
-
 .shop-detail img {
   width: 50%;
   object-fit: cover;
   border-radius: 10px 0 0 10px;
 }
-
 .shop-detail figcaption {
   display: flex;
   flex-direction: column;
@@ -2628,4 +2584,6 @@ form div {
   width: 50%;
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 0 10px 10px 0;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

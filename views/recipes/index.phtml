@@ -18,7 +18,7 @@
                         <h5><?= htmlspecialchars($recipe["name"]) ?></h5>
                         <div class="infos">
                             <p><i class="fa-regular fa-clock"></i> : <?= htmlspecialchars($recipe['time']); ?> min</p>
-                            <p class="difficulty">facilité : 
+                            <p class="difficulty">facilité :</p>
                                 <form class="cook-rating">
                                     <input name="cook" id="cook-a_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="3" disabled 
                                     <?php if ($recipe["difficulty"] == 3) : echo ('checked="true"'); endif; ?>>
@@ -32,20 +32,6 @@
                                     <?php if ($recipe["difficulty"] == 1) : echo ('checked="true"'); endif; ?>>
                                     <label for="cook-c_<?= htmlspecialchars($recipe['id']) ?>"></label>
                                 </form>
-                            <!-- <//?php if($recipe["difficulty"] == 3): ?>
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                            <//?php elseif($recipe["difficulty"] == 2): ?>
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                                <img src="./public/img/chef.png" alt="toque-chef" class="toque full">
-                            <//?php elseif($recipe["difficulty"] == 1): ?>
-                                <img src="./public/img/chef_strong.png" alt="toque-chef" class="toque">
-                                <img src="./public/img/chef.png" alt="toque-chef" class="toque full">
-                                <img src="./public/img/chef.png" alt="toque-chef" class="toque full">
-                                <//?php endif ?> -->
-                            </p>
 
                             <form class="star-rating">
                                 <input name="stars" id="star-a_<?= htmlspecialchars($recipe['id']) ?>" type="radio" value="5" disabled 

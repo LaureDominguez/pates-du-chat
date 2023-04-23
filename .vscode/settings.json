@@ -1,0 +1,6 @@
+{
+    "liveSassCompile.settings.showOutputWindowOn": "Error",
+    "liveSassCompile.settings.includeItems": [
+        "/public/sccs/main.scss"
+    ]
+}

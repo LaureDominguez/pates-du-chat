@@ -103,6 +103,7 @@ class UsersController{
         $email = $pswd = $emailUsed  = "";
         $model = new \Models\Users();
 
+
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
 
             $email = trim($_POST['email']);

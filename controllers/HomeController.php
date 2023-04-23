@@ -6,13 +6,15 @@ class HomeController{
     public function displayHomePage(){
         $template = "home.phtml";
         include_once'views/layout.phtml';
+        // var_dump($_GET['route']);
     }
 
     public function visitor(){
         if (!isset($_SESSION['visitor']))
         $_SESSION['visitor'] = [
-            'token' => $this->generateToken()
+            'token' => $this->generateToken(),
         ];
+        // var_dump($_SESSION);
     }
     
     function generateToken($length = 40)

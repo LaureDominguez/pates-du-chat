@@ -16,22 +16,23 @@
     width: 80%;
     overflow: hidden;
     position: relative;
-    cursor: default;
+    cursor: pointer;
     transition: all 0.5s ease;
-}
-.news-short:hover{
-    transform: scale(1.01);
-    box-shadow: 0px 0px 20px 5px #ffffff86;
+    &:hover{
+        transform: scale(1.01);
+        box-shadow: 0px 0px 20px 5px #ffffff86;
+    }
+
+    img{
+        height: 20rem;
+        border-radius: 10px 0 0 10px;
+    }
+
+    figcaption{
+        padding: 1rem;
+    }
 }
 
-.news-short img{
-    height: 20rem;
-    border-radius: 10px 0 0 10px;
-}
-
-.news-short figcaption{
-    padding: 1rem;
-}
 
 .more{
     position: absolute;
@@ -51,53 +52,57 @@
     width: 20%;
     background-size: 150%;
     transition: all, .5s ease-out;
+    p{
+        padding-right: 1rem;
+        line-height: 2rem;
+        &:last-child{
+            opacity: 0;
+            transition: all .5s ease-in-out;
+        }
+    }
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all, .5s ease-out;
+    }
+    &:hover{
+        background-position: left;
+        width: 50%;
+    }
+    &:hover > div > p:last-child{
+        opacity: 1;
+        transform: scale(1.5);
+    }
 }
-.more p{
-    padding-right: 1rem;
-    line-height: 2rem;
-}
-.more p:last-child{
-    opacity: 0;
-    transition: all .5s ease-in-out;
-}
-.more div{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    height: 5rem;
-    position: relative;
-    overflow: hidden;
-    transition: all, .5s ease-out;
-}
-.more:hover{
-    background-position: left;
-    width: 50%;
-}
-.more:hover > div > p:last-child{
-    opacity: 1;
-    transform: scale(1.5);
-}
+
 
 /******************* detail *******************/
 
 .article{
     display: flex;
-    width: 100%;
+    width: 95%;
+    margin: auto;
     background-color: #ffffff86;
     border-radius: 10px;
-}
+    img{
+        max-width: 50%;
+        margin: .5rem;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 
-.article img{
-    max-width: 50%;
-    margin: .5rem;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.article figcaption{
-    padding: 1rem;
+    figcaption{
+        padding: 1rem;
+    }
 }
 
 .date{
     display: flex;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 95%;
 }

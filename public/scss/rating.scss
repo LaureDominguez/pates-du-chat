@@ -14,38 +14,35 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     margin: 2px auto;
+    input {
+        display: none;
+        &:checked ~ label::before{
+            content: '\2605';
+        }
+    }
+    label {
+        width: 30px;
+        height: 30px;
+        font-family: Verdana;
+        font-size: 30px;
+        color: orange;
+        transition: 0.2s ease;
+        &:hover{
+            color: orangered;
+            transition: 0.2s ease;
+        }
+        &:active::before{
+            transform: scale(1.1);
+        }
+        &::before{
+            content: '\2606';
+            position: absolute;
+            top: 0;
+            line-height: 26px;
+        }
+    }
 }
 
-.star-rating input {
-    display: none;
-}
-
-.star-rating > label {
-    width: 30px;
-    height: 30px;
-    font-family: Verdana;
-    font-size: 30px;
-    color: orange;
-    transition: 0.2s ease;
-}
-.star-rating label:hover{
-    color: orangered;
-    transition: 0.2s ease;
-}
-.star-rating label:active::before{
-    transform: scale(1.1);
-}
-
-.star-rating label::before{
-    content: '\2606';
-    position: absolute;
-    top: 0;
-    line-height: 26px;
-}
-
-.star-rating input:checked ~ label::before{
-    content: '\2605';
-}
 
 
 /******************* Rating Cook *******************/
@@ -59,57 +56,34 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     margin: 2px auto;
-
+    label {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        color: orange;
+        &::before{
+            background-image: url('../img/chef.png');
+            background-size: 20px 20px ;
+            display: inline-block;
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+            line-height: 26px;
+            width: 20px;
+            height: 20px;
+        }
+    }
     input {
         display: none;
+        &:checked ~ label::before{
+            background-image: url('../img/chef_strong.png');
+            background-size: 20px 20px ;
+            display: inline-block;
+            content: "";
+            width: 20px;
+            height: 20px;
+        }
     }
-
-    input {
-        display: none;
-    }
 }
-
-.cook-rating > label {
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    color: orange;
-}
-
-.cook-rating label::before{
-    background-image: url('../img/chef.png');
-    background-size: 20px 20px ;
-    display: inline-block;
-    content: "";
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    line-height: 26px;
-    width: 20px;
-    height: 20px;
-}
-
-.cook-rating input:checked ~ label::before{
-    background-image: url('../img/chef_strong.png');
-    background-size: 20px 20px ;
-    display: inline-block;
-    content: "";
-    width: 20px;
-    height: 20px;
-}
-
-
-// .toque{
-//     width: 20px;
-//     height: 20px;
-// }
-
-// .full{
-//     color: orange;
-// }
-
-// .cook-rating{
-//     display: flex;
-//     align-content: center;
-// }

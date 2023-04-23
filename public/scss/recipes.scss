@@ -16,17 +16,15 @@
 }
 
 .recipe-tuile{
-    height: 18rem;
+    height: 20rem;
     width: 12rem;
-    // overflow: hidden;
-    // border: solid 1px transparent;
+    overflow: hidden;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     position: relative;
     cursor: pointer;
     transition: all .2s ease-out;
-
     img{
         object-fit: cover;
         height: 10rem;
@@ -41,10 +39,13 @@
         background-color: #ffffff86;
         padding: 1rem;
         text-align: justify;
+        h5{
+            margin: 0;
+        }
     }
-}
-.recipe-tuile:hover{
-    transform: translateY(-1rem);
+    &:hover{
+        transform: translateY(-1rem);
+    }
 }
 
 .infos{
@@ -53,8 +54,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
-.infos p{
-    margin: 0;
-    
+    p{
+        margin: 0;
+    }
 }
