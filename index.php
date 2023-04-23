@@ -53,6 +53,11 @@ if (array_key_exists('route', $_GET)):
             $controller->displayOneRecipe($id);
             break;
 
+        case 'contact':
+            $controller = new Controllers\ContactController();
+            $controller->displayContactPage();
+            break;
+
         case 'admin':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();

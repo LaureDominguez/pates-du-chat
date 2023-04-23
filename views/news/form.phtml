@@ -1,7 +1,7 @@
 <section class="content">
     <?php if (isset($actu['id'])): ?>
 
-        <h3>modifier une actu</h3>
+        <h2>modifier une actu</h2>
         <form action="index.php?route=updateNews&id=<?= htmlspecialchars($actu['id']) ?>" method="post">
             <div>
                 <label for="title">titre</label>
@@ -19,7 +19,7 @@
 
     <?php else: ?>
 
-        <h3>créer une actu</h3>
+        <h2>créer une actu</h2>
         <form action="index.php?route=submitNews" method="post">
             <div>
                 <label for="title">titre</label>

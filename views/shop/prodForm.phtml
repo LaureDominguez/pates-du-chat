@@ -1,7 +1,7 @@
 <section class="content">
     <?php if (isset($product['id'])): ?>
 
-        <h3>modifier un produit</h3>
+        <h2>modifier un produit</h2>
         <form action="index.php?route=updateProdForm" method="post">
             <div>
                 <label for="name">nom</label>
@@ -36,7 +36,7 @@
 
     <?php else: ?>
 
-        <h3>créer un produit</h3>
+        <h2>créer un produit</h2>
         <form action="index.php?route=submitProdForm" method="post">
             <div>
                 <label for="name">nom</label>

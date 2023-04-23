@@ -5,7 +5,7 @@
         <li><a href="index.php?route=news">news</a></li>
         <li><a href="index.php?route=shop">boutique</a></li>
         <li><a href="index.php?route=recipes">recettes</a></li>
-        <li><a href="#">contact</a></li>
+        <li><a href="index.php?route=contact">contact</a></li>
         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
             <li><a href="index.php?route=admin">tableau de bord</a></li>
         <?php endif; ?>
@@ -14,7 +14,7 @@
     <ul class="account">
         <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" role="button" id="dropdown-toggle">
+                <a class="dropdown-toggle" role="button" id="dropdown-toggle">
                     <?php if (isset($_SESSION['user']['name'])) : ?>
                         <?= htmlspecialchars($_SESSION['user']['name']) ?>
                     <?php else : ?>

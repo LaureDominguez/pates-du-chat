@@ -1,0 +1,62 @@
+/******************* contact *******************/
+@use 'base';
+
+/******************* index *******************/
+
+.contact{
+    width: 60%;
+    background-color: rgb(255, 207, 149);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 3rem;
+
+    table{
+        background-color: rgb(255, 242, 225);
+        text-align: center;
+        cursor: default;
+        table-layout: fixed;
+        border-collapse: collapse;
+        width: 100%;
+        &, td{
+            padding: 0.3rem;
+            border: 1px solid rgb(200, 200, 200);
+        }
+        tr:hover {
+            background-color: rgb(255, 207, 149);
+        }
+        td:first-child{
+            background-color: var(--orange);
+            color: #fff;
+            width: 15%;
+        }
+        td:nth-child(2){
+            width: 20%;
+        }
+        td:nth-child(3){
+            width: 20%;
+        }
+        td:nth-child(4){
+            width: 45%;
+        }
+    }
+
+    .btn{
+        margin: 0;
+        align-items: flex-end;
+    }
+
+    .map{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+        div{
+            padding: 2rem 2rem 4rem 2rem;
+            text-align: center;
+        }
+        iframe{
+            border-radius: 10px;
+        }
+    }
+}

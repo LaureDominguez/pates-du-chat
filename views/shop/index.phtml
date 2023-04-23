@@ -1,5 +1,5 @@
 <section class="content">
-    <h2>Tous les articles</h2>
+    <h1>Tous les articles</h1>
 
     <ul>
         <li>trier les catégories</li>
@@ -10,7 +10,7 @@
     <?php foreach ($categories as $category) : ?>
         <?php if ($category['active']) : ?>
 
-            <h3><?= htmlspecialchars($category["name"]) ?></h3>
+            <h2><?= htmlspecialchars($category["name"]) ?></h2>
 
             <article class="shop-cat">
                 <?php foreach ($products as $product) : ?>
@@ -23,7 +23,7 @@
                                     <img src="public/img/Hades.jpg" alt="">
                                 <?php endif; ?>
                                 <figcaption>
-                                    <h5><?= htmlspecialchars($product["name"]) ?></h5>
+                                    <h3><?= htmlspecialchars($product["name"]) ?></h3>
                                     <p><?= htmlspecialchars($product["descript"]) ?></p>
                                     <p><?= htmlspecialchars($product["price"]) ?>€</p>
                                 </figcaption>

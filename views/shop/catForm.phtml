@@ -1,7 +1,7 @@
 <section class="content">
     <?php if (isset($category['id'])): ?>
 
-        <h3>modifier une catégorie</h3>
+        <h2>modifier une catégorie</h2>
         <form action="index.php?route=updateCatForm&id=<?= htmlspecialchars($category["id"]) ?>" method="post">
             <div>
                 <label for="name">nom</label>
@@ -20,7 +20,7 @@
 
     <?php else: ?>
 
-        <h3>créer une catégorie</h3>
+        <h2>créer une catégorie</h2>
         <form action="index.php?route=submitCatForm" method="post">
             <div>
                 <label for="name">nom</label>

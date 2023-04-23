@@ -1,5 +1,5 @@
 <section class="content">
-    <h2>Toutes les news</h2>
+    <h1>Toutes les news</h1>
 
     <ul>
         <li>update pas à jour</li>
@@ -17,7 +17,7 @@
                         <img src="public/img/Hades.jpg" alt="">
                     <?php endif; ?>
                     <figcaption>
-                        <h5><?= htmlspecialchars($actu["title"]) ?></h5>
+                        <h2><?= htmlspecialchars($actu["title"]) ?></h2>
                         <div class="short"><?= $actu["message"] ?></div>
                         <?php if ($actu["created_at"] != $actu["updated_at"]) : ?>
                             <p class="timestamp">modifié le : <?= $actu["updated_at"] ?></p>

@@ -46,24 +46,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -100,7 +100,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -205,7 +205,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -618,29 +618,26 @@ form div {
   }
 }
 /******************* tabeaux *******************/
-table, th, td {
+.dashboard-table {
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+.dashboard-table, .dashboard-table th, .dashboard-table td {
   border: 1px solid rgb(200, 200, 200);
   text-align: center;
   cursor: default;
 }
-
-table {
-  margin-bottom: 1rem;
-}
-
-thead {
+.dashboard-table thead {
   background-color: var(--orange);
   color: #fff;
 }
-
-tbody > tr:hover {
+.dashboard-table tbody > tr:hover {
   background-color: rgb(255, 207, 149);
 }
-
-td a {
+.dashboard-table td a {
   transition: all 1s ease-out;
 }
-td a:hover {
+.dashboard-table td a:hover {
   color: red;
 }
 
@@ -691,24 +688,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -745,7 +742,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -850,7 +847,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -1026,24 +1023,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1080,7 +1077,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1185,7 +1182,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -1347,24 +1344,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1401,7 +1398,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1506,7 +1503,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -1764,24 +1761,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1818,7 +1815,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1923,7 +1920,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -2173,7 +2170,7 @@ form div {
   padding: 1rem;
   text-align: justify;
 }
-.recipe-tuile figcaption h5 {
+.recipe-tuile figcaption h2 {
   margin: 0;
 }
 .recipe-tuile:hover {
@@ -2238,24 +2235,24 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1 {
-  font-size: 2.5rem;
-  line-height: 8rem;
-  margin-bottom: 3rem;
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
+  font-stretch: expanded;
   overflow: hidden;
   text-align: center;
 }
 
-h2:first-child {
+h2:first-child::first-letter {
   text-transform: capitalize;
 }
 
-h2:before,
-h2:after {
+h2:before, h2:after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -2292,7 +2289,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul, nav li {
+nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -2397,7 +2394,7 @@ form label {
   font-weight: bold;
 }
 
-form input:not(.btn, .file), form textarea, form select {
+form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
@@ -2584,6 +2581,384 @@ form div {
   width: 50%;
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 0 10px 10px 0;
+}
+
+/******************* general *******************/
+:root {
+  --orange: rgb(242, 143, 24);
+  --vert: rgb(0, 79, 18);
+}
+
+body {
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--orange);
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.3411764706);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+hr {
+  margin: 3rem 10rem;
+}
+
+/******************* Fonts *******************/
+h1, h2, h3, h4, h5, nav, .btn {
+  font-family: "Pacifico", cursive;
+  color: var(--vert);
+  text-align: center;
+}
+
+*::first-letter {
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  font-stretch: expanded;
+  overflow: hidden;
+  text-align: center;
+}
+
+h2:first-child::first-letter {
+  text-transform: capitalize;
+}
+
+h2:before, h2:after {
+  background-color: var(--vert);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 10%;
+}
+
+h2:before {
+  right: 1rem;
+  margin-left: -10%;
+}
+
+h2:after {
+  left: 1rem;
+  margin-right: -10%;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+
+a, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/******************* navbar *******************/
+nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+nav ul, nav li, nav a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+nav .pages {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav .account {
+  width: 30%;
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.dropdown {
+  width: 50%;
+}
+
+.dropdown-toggle::after {
+  content: "⯆";
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 1vw;
+  border-radius: 15px 0 15px 15px;
+  background-color: rgb(243, 164, 68);
+}
+
+/******************* bouttons *******************/
+p .btn {
+  padding: 0;
+}
+
+.btn {
+  padding: 0.5rem;
+  margin: 1rem;
+  color: var(--vert);
+  border: solid var(--vert) 1px;
+  border-radius: 5px;
+  transition: all, 0.2s ease-in;
+  cursor: pointer;
+}
+
+.btn:hover, .btn:active {
+  color: #fff;
+  border: solid var(--orange) 1px;
+  background-color: var(--vert);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/******************* croix *******************/
+/* .croix{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+} */
+.croix-btn {
+  border: solid 1px #fff;
+  border-radius: 3px;
+  color: #fff;
+  background-color: red;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all, 0.1s ease-in;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
+  color: red;
+  background-color: #fff;
+}
+
+/* .croix button:focus-visible{
+    display: inherit;
+} */
+/******************* form *******************/
+form label {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+form input:not(.btn, .file), form form textarea, form form select {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
+}
+
+form div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/******************* short *******************/
+.short {
+  height: 13rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000 70%, transparent 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/******************* hidden *******************/
+.hidden {
+  display: none;
+}
+
+/******************* timestamp *******************/
+.timestamp {
+  font-size: smaller;
+  font-weight: bold;
+  color: var(--vert);
+  margin: 0;
+  /* position: absolute;
+  bottom: 0.5rem; */
+}
+
+/******************* alert *******************/
+.alert {
+  width: 20vw;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: var(--orange);
+  box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.6392156863);
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+
+.log {
+  width: 50vw;
+  margin: auto;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  font-size: 0.7rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: var(--orange);
+  box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.6392156863);
+  z-index: 100;
+}
+
+.log .btn {
+  margin: 0 auto;
+}
+
+/******************* modal *******************/
+#modal {
+  background-color: rgba(255, 255, 255, 0.3411764706);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  background-size: 200%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -10%;
+  z-index: 200;
+  display: none;
+}
+
+#log-window, #register-window {
+  display: none;
+}
+
+.log form {
+  width: 80%;
+  margin: auto;
+}
+
+.log form input {
+  width: 100%;
+}
+
+.log form div:not(.buttons) {
+  display: grid;
+  justify-content: center;
+}
+
+.log form div div {
+  width: 50%;
+  margin: 0;
+}
+
+/* #close-log{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+} */
+/******************* contact *******************/
+/******************* index *******************/
+.contact {
+  width: 60%;
+  background-color: rgb(255, 207, 149);
+  padding: 2rem;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+.contact table {
+  background-color: rgb(255, 242, 225);
+  text-align: center;
+  cursor: default;
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+.contact table, .contact table td {
+  padding: 0.3rem;
+  border: 1px solid rgb(200, 200, 200);
+}
+.contact table tr:hover {
+  background-color: rgb(255, 207, 149);
+}
+.contact table td:first-child {
+  background-color: var(--orange);
+  color: #fff;
+  width: 15%;
+}
+.contact table td:nth-child(2) {
+  width: 20%;
+}
+.contact table td:nth-child(3) {
+  width: 20%;
+}
+.contact table td:nth-child(4) {
+  width: 45%;
+}
+.contact .btn {
+  margin: 0;
+  align-items: flex-end;
+}
+.contact .map {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact .map div {
+  padding: 2rem 2rem 4rem 2rem;
+  text-align: center;
+}
+.contact .map iframe {
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */
