@@ -2,12 +2,15 @@
 
 namespace Controllers;
 
+use \Models\Categories;
+use \Models\Products;
+
 class ShopController{
     public function displayAllShop(){
-        $model = new \Models\Products();
+        $model = new Products();
         $products = $model->getAllProducts();
 
-        $model = new \Models\Categories();
+        $model = new Categories();
         $categories = $model->getAllCategoriesWithProducts();
 
         $template = "shop/index.phtml";
@@ -16,23 +19,14 @@ class ShopController{
 
     public function displayOneProduct($id)
     {
-        $modelProducts = new \Models\Products();
+        $modelProducts = new Products();
         $product = $modelProducts->getOneProduct($id);
 
-        $modelCategories = new \Models\Categories();
+        $modelCategories = new Categories();
         $category = $modelCategories->getOneCategory($product['cat_id']);
 
         $template = "shop/detail.phtml";
         include_once 'views/layout.phtml';
-    }
-
-    public function checkCart(){
-        // var_dump($_SESSION);
-        // 3 cas du cookie
-        // echo $_COOKIE['token'];
-        // switch($_COOKIE){
-        //     case ''
-        // }
     }
 
     public function addToCart($id)
@@ -41,7 +35,7 @@ class ShopController{
             $id = $_GET['id'];
             $quantity = $_POST['quantity'];
 
-            $modelProducts = new \Models\Products();
+            $modelProducts = new Products();
             $product = $modelProducts->getOneProduct($id);
             $price = $product['price'];
 
@@ -53,9 +47,6 @@ class ShopController{
                 $_COOKIE['price'] = $price, 
                 time() + 86400
             );
-
-            // var_dump($_COOKIE);
-            // die;
 
             $template = "shop/cart.phtml";
             include_once 'views/layout.phtml';

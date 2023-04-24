@@ -2,12 +2,14 @@
 
 namespace Controllers;
 
+use \Models\Users;
+
 class UsersController{
 
 ////////////////////////// routes //////////////////////////
     public function profil()
     {
-        $model = new \Models\Users();
+        $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
 
         $template = "users/profil.phtml";
@@ -15,7 +17,7 @@ class UsersController{
     }
     public function cart()
     {
-        $model = new \Models\Users();
+        $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
 
         $template = "users/cart.phtml";
@@ -34,7 +36,7 @@ class UsersController{
     {
         $errors = $errors_pswd = $success = [];
         $email = $pswd = $pswd_confirm = "";
-        $model = new \Models\Users();
+        $model = new Users();
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
             //validation email
@@ -109,7 +111,7 @@ class UsersController{
     public function checkUser(){
         $errors = $success = $userExist = [];
         $email = $pswd = $emailUsed  = "";
-        $model = new \Models\Users();
+        $model = new Users();
 
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
@@ -196,7 +198,7 @@ class UsersController{
 
             if (count($errors) == 0) {
 
-                $model = new \Models\Users();
+                $model = new Users();
                 $model->updateUser($name);
 
                 $_SESSION['user']['name']=$name;

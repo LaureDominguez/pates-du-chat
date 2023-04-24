@@ -2,9 +2,11 @@
 
 namespace Controllers;
 
+use \Models\News;
+
 class NewsController{
     public function displayAllNews(){
-        $modelNews = new \Models\News();
+        $modelNews = new News();
         $news = $modelNews->getAllNews();
 
         $template = "news/index.phtml";
@@ -13,7 +15,7 @@ class NewsController{
 
     public function displayOneActu($id)
     {
-        $modelNews = new \Models\News();
+        $modelNews = new News();
         $actu = $modelNews->getOneActu($id);
 
         $template = "news/detail.phtml";

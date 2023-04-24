@@ -66,8 +66,8 @@ if (array_key_exists('route', $_GET)):
         //// Panier
         case 'addToCart':
             $id = $_GET['id'];
-            $controller = new Controllers\ShopController();
-            $controller->addToCart($id);
+            $controller = new Controllers\ShopCartController();
+            $controller->addCartToCookie($id);
             break;
 
         case 'flushCart':
@@ -125,8 +125,8 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'myShopCart':
-            $controller = new Controllers\UsersController();
-            $controller->cart();
+            // $controller = new Controllers\UsersController();
+            // $controller->cart();
             break;
 
         case 'myShopHist':

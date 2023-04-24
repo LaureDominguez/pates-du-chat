@@ -2,17 +2,22 @@
 
 namespace Controllers;
 
+use \Models\News;
+use \Models\Categories;
+use \Models\Products;
+use \Models\Recipes;
+
 class AdminController{
 
     public function displayDashboard()
     {
-        $modelNews = new \Models\News();
+        $modelNews = new News();
         $news = $modelNews->getAllNews();
 
-        $modelProduct = new \Models\Products();
+        $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
 
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
         foreach ($categories as $category):
@@ -20,7 +25,7 @@ class AdminController{
             $nbProducts = $modelCategory->countProductsFromCat($id);
         endforeach;
 
-        $modelRecipes = new \Models\Recipes();
+        $modelRecipes = new Recipes();
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "dashboard.phtml";
@@ -58,7 +63,7 @@ class AdminController{
                     trim($_POST['message'])
                 ];
 
-                $modelNews = new \Models\News();
+                $modelNews = new News();
                 $modelNews->creatNew($addNew);
                 $success[] = "Le nouvel article a bien été créé !";
             }
@@ -70,7 +75,7 @@ class AdminController{
     public function displayUpdateNewsForm($id)
     {
         $id = $_GET['id'];
-        $modelNews = new \Models\News();
+        $modelNews = new News();
         $actu = $modelNews->getOneActu($id);
 
         $template = "views/news/form.phtml";
@@ -96,7 +101,7 @@ class AdminController{
                     'title' => trim($_POST['title']),
                     'message' => trim($_POST['message'])
                 ];
-                $modelNews = new \Models\News();
+                $modelNews = new News();
                 $modelNews->updateNews($newData);
                 $success[] = "L'article a bien été modifié !";
 
@@ -109,14 +114,14 @@ class AdminController{
 
     public function deleteNews($id){
         $id = $_GET['id'];
-        $modelNews = new \Models\News();
+        $modelNews = new News();
         $modelNews->deleteOneActu($id);
     }
 
     /////////////////////// categories ///////////////////////
     public function displayCreateCatForm()
     {
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/catForm.phtml";
@@ -138,7 +143,7 @@ class AdminController{
                     trim($_POST['descript'])
                 ];
 
-                $modelCategory = new \Models\Categories();
+                $modelCategory = new Categories();
                 $modelCategory->creatNewCat($addNew);
                 $success[] = "La nouvelle catégorie a bien été créée !";
             }
@@ -150,7 +155,7 @@ class AdminController{
     public function displayUploadCatForm($id)
     {
         $id = $_GET['id'];
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $category = $modelCategory->getOneCategory($id);
 
         $template = "views/shop/catForm.phtml";
@@ -185,7 +190,7 @@ class AdminController{
                     'descript' => trim($_POST['descript'])
                 ];
 
-                $modelCategory = new \Models\Categories();
+                $modelCategory = new Categories();
                 $modelCategory->updateCategory($newData);
                 $success[] = "La catégorie a bien été modifiée !";
             }
@@ -197,10 +202,10 @@ class AdminController{
     /////////////////////// produits ///////////////////////
     public function displayCreateProdForm()
     {
-        $modelProducts = new \Models\Products();
+        $modelProducts = new Products();
         $products = $modelProducts->getAllProducts();
 
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
@@ -209,10 +214,10 @@ class AdminController{
 
     public function verifUpdateProdForm()
     {
-        $modelProduct = new \Models\Products();
+        $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
 
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
@@ -222,10 +227,10 @@ class AdminController{
     public function displayUpdateProdForm($id)
     {
         $id = $_GET['id'];
-        $modelNews = new \Models\Products();
+        $modelNews = new Products();
         $product = $modelNews->getOneProduct($id);
 
-        $modelCategory = new \Models\Categories();
+        $modelCategory = new Categories();
         $category = $modelCategory->getAllCategories();
 
         $template = "views/shop/prodForm.phtml";
@@ -256,7 +261,7 @@ class AdminController{
                     trim($_POST['price']),
                     trim($_POST['img'])
                 ];
-                $modelProduct = new \Models\Products();
+                $modelProduct = new Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";
             }
@@ -268,10 +273,10 @@ class AdminController{
     /////////////////////// recettes ///////////////////////
     public function displayCreateRecipesForm()
     {
-        $modelRecipes = new \Models\Recipes();
+        $modelRecipes = new Recipes();
         $recipes = $modelRecipes->getAllRecipes();
 
-        $modelProducts = new \Models\Products();
+        $modelProducts = new Products();
         $products = $modelProducts->getAllProducts();
 
         $template = "views/recipes/form.phtml";
@@ -280,10 +285,10 @@ class AdminController{
     public function displayUpdateRecipesForm($id)
     {
         $id = $_GET['id'];
-        $modelRecipes = new \Models\Recipes();
+        $modelRecipes = new Recipes();
         $recipe = $modelRecipes->getOneRecipe($id);
 
-        $modelProducts = new \Models\Products();
+        $modelProducts = new Products();
         $products = $modelProducts->getAllProducts();
 
         $template = "views/recipes/form.phtml";
@@ -315,7 +320,7 @@ class AdminController{
                     trim($_POST['img'])
                 ];
 
-                $modelRecipes = new \Models\Recipes();
+                $modelRecipes = new Recipes();
                 $modelRecipes->creatNew($addNew);
                 $success[] = "La nouvelle recette a bien été créée !";
             }
