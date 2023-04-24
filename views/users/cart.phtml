@@ -1,0 +1,11 @@
+<section class="content">
+    <div class="user-cart">
+        <h1>mon panier</h1>
+
+        <?php foreach ($_COOKIE as $cookie) : ?>
+            <p><?= var_dump($_COOKIE) ?></p>
+        <?php endforeach; ?>
+
+        <a href="index.php?route=flushCart">vider le panier</a>
+    </div>
+</section>

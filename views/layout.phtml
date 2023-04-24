@@ -35,12 +35,9 @@
             <?php include_once('users/login.phtml') ?>
             <?php include_once('users/register.phtml') ?>
         </section>
-
-        <!-- <//?php if (isset($ajax)) : ?>
-            <aside class="ajax">
-                <//?php include_once $ajax; ?>
-            </aside>
-        <//?php endif ?> -->
+        <aside class="cart" id="shopping-cart">
+            <?php include_once('shop/cart.phtml') ?>
+        </aside>
 
         <?php include $template; ?>
     </main>

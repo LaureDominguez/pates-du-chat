@@ -13,6 +13,14 @@ class UsersController{
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }
+    public function cart()
+    {
+        $model = new \Models\Users();
+        $user = $model->getUser($_SESSION['user']['id']);
+
+        $template = "users/cart.phtml";
+        include_once 'views/layout.phtml';
+    }
 
     public function logout()
     {

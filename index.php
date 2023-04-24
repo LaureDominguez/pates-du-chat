@@ -5,7 +5,6 @@ session_start();
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
-// var_dump($_SESSION);
 //session visitor
 $controller = new Controllers\HomeController();
 $controller->visitor();
@@ -64,6 +63,18 @@ if (array_key_exists('route', $_GET)):
             $controller->displayDashboard();
             break;
 
+        //// Panier
+        case 'addToCart':
+            $id = $_GET['id'];
+            $controller = new Controllers\ShopController();
+            $controller->addToCart($id);
+            break;
+
+        case 'flushCart':
+            $controller = new Controllers\ShopController();
+            $controller->flushCart();
+            break;
+
 
             //login
         // case 'login':
@@ -114,7 +125,8 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'myShopCart':
-            # code...
+            $controller = new Controllers\UsersController();
+            $controller->cart();
             break;
 
         case 'myShopHist':
