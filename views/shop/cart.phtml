@@ -1,10 +1,7 @@
 <section class="content" id="cart-window">
     <?php if (!isset($_COOKIE['panier'])) : ?>
         <p>Le panier est vide</p>
-        <?php var_dump($_COOKIE) ?>
     <?php else : ?>
-
-        <?php var_dump($_COOKIE) ?>
         <table>
             <thead>
                 <th>ID</th>
@@ -19,8 +16,14 @@
                         <td><?= $cookie['id'] ?></td>
                         <td><?= $cookie['product'] ?></td>
                         <td><?= $cookie['price'] ?></td>
-                        <td><?= $cookie['quantity'] ?></td>
-                        <td>-</td>
+                        <td>
+                            <a href="" class="cart-btn">-</a>
+                            <?= $cookie['quantity'] ?>
+                            <a href="" class="cart-btn">+</a>
+                        </td>
+                        <td>
+                            <a href="" class="cart-btn">delete</a>
+                        </td>
                     </tr>
 
 

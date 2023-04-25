@@ -6,12 +6,6 @@ use \Models\Products;
 
 class ShopCartController{
 
-    public function saveCart()
-    {
-        global $panier;
-        setcookie(COOKIE_NAME, json_encode($panier), COOKIE_EXPIRE, '/');
-    }
-
     public function addCartToCookie($id)
     {
         define('COOKIE_NAME', 'panier');
@@ -34,7 +28,7 @@ class ShopCartController{
             }
 
             if (isset($panier[$id])) {
-                $panier[$id][$quantity] += $quantity;
+                $panier[$id]['quantity'] = $panier[$id]['quantity'] + $quantity;
             } else {
                 $panier[$id] = array(
                     'id' => $id,
@@ -44,9 +38,6 @@ class ShopCartController{
                 );
             }
             $this->saveCart();
-            // var_dump($panier[$id][$quantity]);
-            // die;
-
             $_SESSION['message'] = 'L\'article "' . $productName . '" a bien été ajouté !';
 
             header('Location: index.php?route=shopDetail&id=' . $id);
@@ -64,8 +55,14 @@ class ShopCartController{
 
     public function deleteItem($id){
         global $panier;
+        // setcookie($panier[$id], time() -3600);
         unset($panier[$id]);
         $this->saveCart();
+    }
+    public function saveCart()
+    {
+        global $panier;
+        setcookie(COOKIE_NAME, json_encode($panier), COOKIE_EXPIRE, true);
     }
 
     public function total(){
