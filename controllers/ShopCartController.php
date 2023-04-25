@@ -20,6 +20,7 @@ class ShopCartController{
             $price = $product['price'];
 
             global $panier;
+            $total = $this->total();
 
             if (isset($_COOKIE[COOKIE_NAME])) {
                 $panier = json_decode($_COOKIE[COOKIE_NAME], true);
@@ -34,10 +35,11 @@ class ShopCartController{
                     'id' => $id,
                     'product' => $productName,
                     'quantity' => $quantity,
-                    'price' => $price
+                    'price' => $price,
                 );
             }
             $this->saveCart();
+
             $_SESSION['message'] = 'L\'article "' . $productName . '" a bien été ajouté !';
 
             header('Location: index.php?route=shopDetail&id=' . $id);
@@ -59,16 +61,25 @@ class ShopCartController{
         unset($panier[$id]);
         $this->saveCart();
     }
+
+    public function flushCart(){
+        global $panier;
+        unset($panier);
+        header('Location: index.php?route=shop');
+        exit();
+    }
+
     public function saveCart()
     {
         global $panier;
         setcookie(COOKIE_NAME, json_encode($panier), COOKIE_EXPIRE, true);
     }
 
-    public function total(){
+    public function total()
+    {
         global $panier;
         $total = 0;
-        if(isset($panier)) {
+        if (isset($panier)) {
             foreach ($panier as $id => $article) {
                 $total += $article['quantity'] * $article['price'];
             }
@@ -78,6 +89,10 @@ class ShopCartController{
 
     public function displayCart(){
         global $panier;
+        $panier = json_decode($_COOKIE[COOKIE_NAME], true);
+        foreach($panier as $id => $article){
+            $article;
+        }
         $total = $this->total();
         $template = "shop/cart.phtml";
         include_once 'views/layout.phtml';

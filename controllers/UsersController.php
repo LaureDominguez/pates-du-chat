@@ -19,6 +19,8 @@ class UsersController{
     {
         $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
+        $model = new ShopCartController();
+        $cart = $model->displayCart();
 
         $template = "users/cart.phtml";
         include_once 'views/layout.phtml';

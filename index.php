@@ -70,8 +70,23 @@ if (array_key_exists('route', $_GET)):
             $controller->addCartToCookie($id);
             break;
 
+        case 'lessQuantity':
+            $id = $_GET['id'];
+            $quantity = $_GET['quantity'];
+            $controller = new Controllers\ShopCartController();
+            $controller->changeQuantity($id, $quantity);
+            break;
+
+        case 'addQuantity':
+            $id = $_GET['id'];
+            $quantity = $_GET['quantity'];
+            $controller = new Controllers\ShopCartController();
+            $controller->changeQuantity($id, $quantity);
+            break;
+
+
         case 'flushCart':
-            $controller = new Controllers\ShopController();
+            $controller = new Controllers\ShopCartController();
             $controller->flushCart();
             break;
 
@@ -125,8 +140,8 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'myShopCart':
-            // $controller = new Controllers\UsersController();
-            // $controller->cart();
+            $controller = new Controllers\UsersController();
+            $controller->cart();
             break;
 
         case 'myShopHist':
