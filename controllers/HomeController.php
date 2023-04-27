@@ -11,7 +11,7 @@ class HomeController{
     public function visitor(){
         if (!isset($_SESSION['visitor']))
         $_SESSION['visitor'] = [
-            'token' => $this->generateToken(),
+            'token' => $this->generateToken()
         ];
     }
     

@@ -8,6 +8,7 @@ export function toogleModal() {
     let registerWindow = document.getElementById('register-window');
 
     let modal = document.getElementById('modal');
+    let errorLog = document.getElementById('error-log');
 
     let closeLog = document.getElementById('close-log');
     let validateLog = document.getElementById('validate-log');
@@ -17,7 +18,11 @@ export function toogleModal() {
     let validateRegister = document.getElementById('validate-register')
     let cancelRegister = document.getElementById('cancel');
 
-    
+
+    if(errorLog !== null) {
+            modal.style.display = 'block';
+            logWindow.style.display = 'block';
+        }
 
     window.addEventListener('click', function (e) {
 

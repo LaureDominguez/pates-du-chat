@@ -1,7 +1,7 @@
 // ********************* show/hide modal
 export function toogleCart() {
         
-    let cart = document.getElementById('shopping-cart');
+    let cart = document.getElementById('shopping-icon');
     let cartWindow = document.getElementById('cart-window');
 
 

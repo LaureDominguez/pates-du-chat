@@ -111,7 +111,10 @@ class UsersController{
     public function checkUser(){
         $errors = $success = $userExist = [];
         $email = $pswd = $emailUsed  = "";
-        $model = new Users();
+        $currentPage = $_SERVER["HTTP_REFERER"];
+        $_SESSION['visitor']['currentPage'] = $currentPage;
+        $_SESSION['visitor']['message'] = [];
+
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
 
@@ -119,27 +122,28 @@ class UsersController{
             $email = trim($_POST['email']);
 
             if(empty($email))
-                $errors[] = "Veuillez renseigner le champs email";
+            $_SESSION['visitor']['message'][] = $errors[] = "Veuillez renseigner le champs email";
             else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-                        $errors[] = "Veuillez renseigner un email valide";
+                        $_SESSION['visitor']['message'][] = $errors[] = "Veuillez renseigner un email valide";
                         break;
                     case !empty($email):
+                        $model = new Users();
                         $emailUsed = $model->checkEmail($email);
                         if (empty($emailUsed))
-                            $errors[] = "Email inconnu";
+                            $_SESSION['visitor']['message'][] = $errors[] = "Email inconnu";
                         if (!empty($emailUsed))
+                            $model = new Users();
                             $userExist = $model->getUser($emailUsed['id']);
                         break;
-                }         
+                }
 
             //validation mot de passe
             if (empty($_POST['pswd']))
-                $errors[] = "Veuillez entrer votre mot de passe";
+            $_SESSION['visitor']['message'][] = $errors[] = "Veuillez entrer votre mot de passe";
             //stockage du mdp pour verification
             $pswd = trim($_POST['pswd']);
-
             if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
                     $_SESSION['user'] = [
@@ -157,13 +161,16 @@ class UsersController{
                     }
 
                     if($userExist['role']==1)
-                        $success[] = "Bienvenue admin " . $userExist['email'];
+                        $_SESSION['visitor']['message'] = $success[] = "Bienvenue admin " . $userExist['email'];
                     else
-                        $success [] = "Bienvenue, ". $user;
+                        $_SESSION['visitor']['message'] = $success [] = "Bienvenue, ". $user;
+
                 }
             }
-        $template = "users/login.phtml";
-        include_once 'views/layout.phtml';
+            header('Location: ' . $currentPage);
+            exit;
+        // $template = "users/login.phtml";
+        // include_once 'views/layout.phtml';
         // include_once '/views/errors.phtml';
         }
     }

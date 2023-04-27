@@ -2179,10 +2179,6 @@ form div {
 
 /******************* recipes *******************/
 /******************* index *******************/
-* {
-  color: red;
-}
-
 .recipe-index {
   margin: 1rem;
   display: grid;
@@ -3402,6 +3398,10 @@ form div {
   margin: 0;
 }
 
+.form-errors {
+  text-align: center;
+}
+
 /******************* panier *******************/
 #shopping-cart {
   position: fixed;
@@ -3415,7 +3415,7 @@ form div {
   width: 40px;
   height: 40px;
   padding: 1rem;
-  z-index: 500;
+  z-index: 100;
   border-radius: 100%;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.3411764706);

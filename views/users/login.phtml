@@ -2,21 +2,24 @@
     <button class="croix-btn" id="close-log">X</button>
     <h2>Connexion</h2>
 
-    <aside class="form-errrors">
-        <?php include('./views/errors.phtml'); var_dump('coucou') ?>
-    </aside>
-
     <form action="index.php?route=connect" method="post" id="loggin">
         <div>
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
-            <p class="form-message"></p>
         </div>
         <div>
             <label for="pswd_log">mot de passe</label>
             <input type="password" name="pswd" id="pswd_log">
-            <p class="form-message"></p>
         </div>
+
+        <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0) : ?>
+            <aside class="form-errors" id="error-log">
+                <p>Mécréaaaaant !!!</p>
+                <?php foreach ($_SESSION['visitor']['message'] as $alert) : ?>
+                    <p><?= $alert ?></p>
+                <?php endforeach; ?>
+            </aside>
+        <?php endif; ?>
 
         <div class="buttons">
 
