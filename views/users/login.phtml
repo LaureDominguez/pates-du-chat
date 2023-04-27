@@ -12,14 +12,14 @@
             <input type="password" name="pswd" id="pswd_log">
         </div>
 
-        <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0) : ?>
-            <aside class="form-errors" id="error-log">
-                <p>Mécréaaaaant !!!</p>
-                <?php foreach ($_SESSION['visitor']['message'] as $alert) : ?>
-                    <p><?= $alert ?></p>
-                <?php endforeach; ?>
-            </aside>
-        <?php endif; ?>
+            <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0) : ?>
+                <aside class="form-errors" id="error-log">
+                    <p>Mécréaaaaant !!!</p>
+                    <?php foreach ($_SESSION['visitor']['message'] as $alert) : ?>
+                        <p><?= $alert ?></p>
+                    <?php endforeach; ?>
+                </aside>
+            <?php endif; ?>
 
         <div class="buttons">
 

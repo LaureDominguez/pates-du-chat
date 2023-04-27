@@ -11,7 +11,6 @@ require('config/config.php');
 //session visitor
 $controller = new Controllers\HomeController();
 $controller->visitor();
-
 if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
 

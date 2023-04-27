@@ -27,16 +27,16 @@
 
         <aside class="prompt">
             <!-- <//?php include_once('./views/errors.phtml') ?> -->
-            <?php include_once('./views/success.phtml') ?>
+            <!-- <//?php include_once('./views/success.phtml') ?> -->
         </aside>
-
-        <section class="modal-log" id="modal">
-            <?php include_once('users/login.phtml') ?>
-            <?php include_once('users/register.phtml') ?>
-        </section>
-
+        <?php if(!isset($_SESSION['user'])): ?>
+            <section class="modal-log" id="modal">
+                <?php include('users/login.phtml') ?>
+                <?php include('users/register.phtml') ?>
+            </section>
+        <?php endif ?>
         <aside class="cart" id="shopping-cart">
-            <?php include_once('shop/cart.phtml') ?>
+            <?php include('shop/cart.phtml') ?>
         </aside>
 
         <?php include $template; ?>

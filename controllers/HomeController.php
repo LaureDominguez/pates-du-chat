@@ -8,11 +8,17 @@ class HomeController{
         include_once'views/layout.phtml';
     }
 
-    public function visitor(){
+    public function visitor()
+    {
+        $currentPage = $_SERVER["HTTP_REFERER"];
+
+
         if (!isset($_SESSION['visitor']))
-        $_SESSION['visitor'] = [
-            'token' => $this->generateToken()
-        ];
+            $_SESSION['visitor'] = [
+                'token' => $this->generateToken(),
+                'currentPage' => $currentPage,
+            ];
+        else $_SESSION['visitor']['currentPage'] = $currentPage;
     }
     
     function generateToken($length = 40)

@@ -165,9 +165,16 @@ class UsersController{
                     else
                         $_SESSION['visitor']['message'] = $success [] = "Bienvenue, ". $user;
 
+                    
+
+                    header('Location: index.php?route=home');
+                    exit;
+
                 }
             }
             header('Location: ' . $currentPage);
+            // var_dump($_SESSION);
+            // die;
             exit;
         // $template = "users/login.phtml";
         // include_once 'views/layout.phtml';
