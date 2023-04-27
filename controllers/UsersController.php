@@ -20,7 +20,7 @@ class UsersController{
         $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
         $model = new ShopCartController();
-        $cart = $model->displayCart();
+        // $cart = $model->displayCart();
 
         $template = "users/cart.phtml";
         include_once 'views/layout.phtml';
@@ -38,9 +38,9 @@ class UsersController{
     {
         $errors = $errors_pswd = $success = [];
         $email = $pswd = $pswd_confirm = "";
-        $model = new Users();
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
+
             //validation email
             $email = trim($_POST['email']);
 
@@ -52,13 +52,12 @@ class UsersController{
                         $errors[] = "Veuillez renseigner un email valide";
                         break;
                     case !empty($email):
+                        $model = new Users();
                         $isItFree = $model->checkEmail($email);
                         if (!empty($isItFree))
                             $errors[] = "Cet email est éjà utilisé";
                         break;
                 }
-
-                // value       = "<?php if(isset($newOption) && !empty($newOption)) { echo $newOption['name']; } ?//>"
 
             //validation mot de passe
             $pswd = trim($_POST['pswd']);
@@ -85,7 +84,6 @@ class UsersController{
                         $errors[] = "Le mot de passe doit inclure au moins un caractère spécial";
                         break;
                 }
-
 
             $pswd_confirm = trim($_POST['pswd_confirm']);
 
@@ -115,11 +113,11 @@ class UsersController{
         $email = $pswd = $emailUsed  = "";
         $model = new Users();
 
-
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
 
-            $email = trim($_POST['email']);
             //validation email
+            $email = trim($_POST['email']);
+
             if(empty($email))
                 $errors[] = "Veuillez renseigner le champs email";
             else
@@ -154,11 +152,10 @@ class UsersController{
                     $user = "";
                     if(isset($userExist['name'])) {
                         $user = $userExist['name'];
-                    }
-                    
-                    else {
+                    } else {
                         $user = $userExist['email'];
                     }
+
                     if($userExist['role']==1)
                         $success[] = "Bienvenue admin " . $userExist['email'];
                     else
@@ -167,6 +164,7 @@ class UsersController{
             }
         $template = "users/login.phtml";
         include_once 'views/layout.phtml';
+        // include_once '/views/errors.phtml';
         }
     }
 

@@ -2,22 +2,26 @@
     <button class="croix-btn" id="close-log">X</button>
     <h2>Connexion</h2>
 
-    <aside class="prompt">
-        <?php include_once('./views/errors.phtml') ?>
+    <aside class="form-errrors">
+        <?php include('./views/errors.phtml'); var_dump('coucou') ?>
     </aside>
 
-    <form action="index.php?route=connect" method="post">
+    <form action="index.php?route=connect" method="post" id="loggin">
         <div>
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
+            <p class="form-message"></p>
         </div>
         <div>
             <label for="pswd_log">mot de passe</label>
             <input type="password" name="pswd" id="pswd_log">
+            <p class="form-message"></p>
         </div>
 
         <div class="buttons">
+
             <button type="submit" class="btn" id="validate-log">valider</button>
+
             <div>
                 <label>Pas de compte ?</label>
                 <p class="btn" id="new-account">Créer un compte</p>

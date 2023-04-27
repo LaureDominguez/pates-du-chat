@@ -1,5 +1,5 @@
 <section class="content" id="cart-window">
-    <?php if (!isset($_COOKIE['panier'])) : ?>
+    <?php if ($_COOKIE['panier'] === 'null') : ?>
         <p>Le panier est vide</p>
     <?php else : ?>
         <table>
@@ -19,7 +19,7 @@
                         <td class="quantity">
                             <a href="index.php?route=lessQuantity&id='<?= $cookie['id'] ?>'&quantity='<?= -1 ?>'" class="cart-btn">-</a>
                             <?= $cookie['quantity'] ?>
-                            <a href="index.php?route=addQuantity&id='<?= $cookie['id'] ?>'&quantity='<?= -1 ?>'" class="cart-btn">+</a>
+                            <a href="index.php?route=addQuantity&id='<?= $cookie['id'] ?>'&quantity='<?= 1 ?>'" class="cart-btn">+</a>
                         </td>
                         <td>
                             <a href="" class="btn">supprimer</a>

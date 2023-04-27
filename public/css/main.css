@@ -963,17 +963,63 @@ form div {
     right: 10px;
 } */
 /******************* user *******************/
-.user-profil {
+.userProfil {
   width: 80%;
   margin: auto;
 }
-.user-profil form {
+.userProfil form {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.user-profil form div {
+.userProfil form div {
   width: 60%;
+}
+
+.userCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+.userCart table {
+  background-color: rgb(255, 242, 225);
+  border: 1px solid rgb(200, 200, 200);
+  text-align: center;
+  cursor: default;
+  border-collapse: collapse;
+  width: 80%;
+}
+.userCart table, .userCart table td {
+  padding: 0.3rem;
+}
+.userCart table th {
+  background-color: rgb(255, 207, 149);
+}
+.userCart .quantity {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+.userCart .btn {
+  padding: 0 0.2rem;
+  margin: 0;
+}
+
+.cart-btn {
+  border: solid var(--orange) 1px;
+  border-radius: 100%;
+  height: 1rem;
+  width: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-btn:hover {
+  background-color: var(--orange);
+  color: #fff;
 }
 
 /******************* general *******************/
@@ -2133,6 +2179,10 @@ form div {
 
 /******************* recipes *******************/
 /******************* index *******************/
+* {
+  color: red;
+}
+
 .recipe-index {
   margin: 1rem;
   display: grid;

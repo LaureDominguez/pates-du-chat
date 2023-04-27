@@ -1,4 +1,4 @@
-<?php 
+<!-- <//?php 
 
 namespace Models;
 
@@ -13,4 +13,4 @@ class getArticle extends Database{
 
 
         
-}
+} -->

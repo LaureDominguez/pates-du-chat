@@ -64,18 +64,22 @@
 
     <section class="contact">
         <h2>une question ? contactez-moi !</h2>
-        <form action="">
+        <form action="index.php?route=sendContactMail" method="post">
             <div>
-                <label for="">email</label>
-                <input type="email" name="" id="">
+                <label for="name-contact">nom</label>
+                <input type="text" name="name" id="name-contact">
             </div>
             <div>
-                <label for="">titre</label>
-                <input type="text" name="" id="">
+                <label for="email-contact">email</label>
+                <input type="email" name="email" id="email-contact">
             </div>
             <div>
-                <label for="">message</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <label for="phone-contact">téléphone</label>
+                <input type="tel" name="phone" id="phone-contact">
+            </div>
+            <div>
+                <label for="message-contact">message</label>
+                <textarea name="message" id="message-contact" cols="30" rows="10"></textarea>
             </div>
             <button class="btn" type="submit">Envoyer</button>
         </form>

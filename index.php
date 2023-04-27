@@ -5,6 +5,9 @@ session_start();
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
+// charge les configs du site
+require('config/config.php');
+
 //session visitor
 $controller = new Controllers\HomeController();
 $controller->visitor();
@@ -55,6 +58,11 @@ if (array_key_exists('route', $_GET)):
         case 'contact':
             $controller = new Controllers\ContactController();
             $controller->displayContactPage();
+            break;
+
+        case 'sendContactMail':
+            $controller = new Controllers\ContactController();
+            $controller->submitMessage();
             break;
 
         case 'admin':
@@ -231,7 +239,7 @@ if (array_key_exists('route', $_GET)):
             $controller->displayUploadCatForm($id);
             break;
 
-            case 'switchCat':
+            // case 'switchCat':
                 
 
         case 'updateCatForm':

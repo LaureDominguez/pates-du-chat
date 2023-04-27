@@ -49,8 +49,8 @@ class AdminController{
 
     public function VerifCreatNewsForm()
     {
-        $errors = [];
-        $success = [];
+        $errors = $success = [];
+        
         if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
             if (empty($_POST['title']))
             $errors[] = "Veuillez entrer un titre";

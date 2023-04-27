@@ -4,13 +4,10 @@ namespace Controllers;
 
 use \Models\Products;
 
-class ShopCartController{
+class ShopCartController  {
 
     public function addCartToCookie($id)
-    {
-        define('COOKIE_NAME', 'panier');
-        define('COOKIE_EXPIRE', time() + 86400); //expire dans 1 jour
-
+    { //expire dans 1 jour
         if (array_key_exists('quantity', $_POST)) {
             $quantity = $_POST['quantity'];
 
@@ -20,13 +17,13 @@ class ShopCartController{
             $price = $product['price'];
 
             global $panier;
-            $total = $this->total();
+            // $total = $this->total();
 
-            if (isset($_COOKIE[COOKIE_NAME])) {
-                $panier = json_decode($_COOKIE[COOKIE_NAME], true);
-            } else {
-                $panier = array();
-            }
+            // if (isset($_COOKIE[COOKIE_NAME])) {
+            //     $panier = json_decode($_COOKIE[COOKIE_NAME], true);
+            // } else {
+            //     $panier = array();
+            // }
 
             if (isset($panier[$id])) {
                 $panier[$id]['quantity'] = $panier[$id]['quantity'] + $quantity;
@@ -49,10 +46,15 @@ class ShopCartController{
 
     public function changeQuantity($id, $quantity){
         global $panier;
+        // var_dump($panier[$id]);
+        // die;
         if(isset($panier[$id])){
             $panier[$id]['quantity'] = $quantity;
         }
         $this->saveCart();
+
+        $template = "shop/cart.phtml";
+        include_once 'views/layout.phtml';
     }
 
     public function deleteItem($id){

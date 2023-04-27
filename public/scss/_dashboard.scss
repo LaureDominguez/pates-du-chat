@@ -1,8 +1,8 @@
 /******************* dashboard *******************/
-@use 'base';
-@use 'rating';
-@use 'switch';
-@use 'tooltip';
+@use '_base';
+@use '_rating';
+@use '_switch';
+@use '_tooltip';
 
 /******************* table à onglets *******************/
 .menu-tabs{
