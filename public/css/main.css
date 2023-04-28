@@ -41,6 +41,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -59,11 +63,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -73,12 +77,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -683,6 +687,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -701,11 +709,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -715,12 +723,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -1064,6 +1072,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -1082,11 +1094,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1096,12 +1108,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -1385,6 +1397,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -1403,11 +1419,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1417,12 +1433,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -1802,6 +1818,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -1820,11 +1840,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -1834,12 +1854,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -2276,6 +2296,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -2294,11 +2318,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -2308,12 +2332,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -2671,6 +2695,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -2689,11 +2717,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -2703,12 +2731,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }
@@ -3049,6 +3077,10 @@ h1, h2, h3, h4, h5, nav, .btn {
   text-align: center;
 }
 
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
 *::first-letter {
   text-transform: capitalize;
 }
@@ -3067,11 +3099,11 @@ h2 {
   text-align: center;
 }
 
-h2:first-child::first-letter {
+h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2:before, h2:after {
+h2::before, h2::after {
   background-color: var(--vert);
   content: "";
   display: inline-block;
@@ -3081,12 +3113,12 @@ h2:before, h2:after {
   width: 10%;
 }
 
-h2:before {
+h2::before {
   right: 1rem;
   margin-left: -10%;
 }
 
-h2:after {
+h2::after {
   left: 1rem;
   margin-right: -10%;
 }

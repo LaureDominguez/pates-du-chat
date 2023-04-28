@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use DateTime;
+use DateTimeInterface;
 use \Models\News;
 
 class NewsController{

@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use DateTimeImmutable;
 use \Models\News;
 use \Models\Categories;
 use \Models\Products;

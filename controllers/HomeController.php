@@ -11,8 +11,6 @@ class HomeController{
     public function visitor()
     {
         $currentPage = $_SERVER["HTTP_REFERER"];
-
-
         if (!isset($_SESSION['visitor']))
             $_SESSION['visitor'] = [
                 'token' => $this->generateToken(),

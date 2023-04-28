@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, nav, .btn {
     font-family: 'Pacifico', cursive;
     color: var(--vert);
     text-align: center;
+    &::first-letter{
+        text-transform: capitalize;
+    }
 }
 
 *::first-letter {
@@ -62,11 +65,13 @@ h2{
     font-stretch: expanded;
     overflow: hidden;
     text-align: center;
-    &:first-child::first-letter{
-        text-transform: capitalize;
+        &:nth-child(1){
+        &::first-letter{
+            text-transform: capitalize;
+        }
     }
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         background-color: var(--vert);
         content: "";
         display: inline-block;
@@ -75,11 +80,11 @@ h2{
         vertical-align: middle;
         width: 10%;
     }
-    &:before {
+    &::before {
         right: 1rem;
         margin-left: -10%;
     }
-    &:after {
+    &::after {
         left: 1rem;
         margin-right: -10%;
     }

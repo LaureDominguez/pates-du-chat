@@ -17,37 +17,47 @@
         <!--------------- news --------------->
         <section class="section-tab" id="news-tab">
             <h2>news</h2>
-            <!-- display -->
-            <h3>Toutes les actus</h3>
+
             <ul>
                 <li>pagination</li>
                 <li>confirm avant suppression</li>
                 <li>rester sur le bon onglet</li>
             </ul>
+            
+            <!-- display -->
+            <h3>Toutes les actus</h3>
             <table class="dashboard-table">
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>titre</th>
-                        <th>date de création</th>
+                        <th>créé le</th>
+                        <th>modifié le</th>
                         <th colspan="3">actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($news as $actu): ?>
+                    <?php foreach ($news as $actu) : ?>
                         <tr>
                             <td><?= htmlspecialchars($actu["id"]) ?></td>
                             <td><?= htmlspecialchars($actu["title"]) ?></td>
                             <td><?= htmlspecialchars($actu["created_at"]) ?></td>
-                            <td><a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Voir l'article" class="aide left">
+                            <td><?= htmlspecialchars($actu["updated_at"]) ?></td>
+                            <td>
+                                <a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Voir l'article" class="aide left">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a></td>
-                            <td><a href="index.php?route=displayUpdateNewsForm&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Modifier l'article" class="aide left">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="index.php?route=displayUpdateNewsForm&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Modifier l'article" class="aide left">
                                     <i class="fa-solid fa-pen-to-square"></i>
-                                </a></td>
-                            <td><a href="index.php?route=deleteNews&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Supprimer l'article" class="aide left">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="index.php?route=deleteNews&id=<?= htmlspecialchars($actu['id']) ?>" data-text="Supprimer l'article" class="aide left">
                                     <i class="fa-solid fa-trash-can"></i>
-                                </a></td>
+                                </a>
+                            </td>
                             <!-- onclick="confirmDelete()" -->
                         </tr>
                     <?php endforeach; ?>
@@ -89,8 +99,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($products as $product): ?>
-                        <?php if ($product['categoryActive']): ?>
+                    <?php foreach ($products as $product) : ?>
+                        <?php if ($product['categoryActive']) : ?>
                             <tr>
                                 <td><?= htmlspecialchars($product["id"]) ?></td>
                                 <td><?= htmlspecialchars($product["name"]) ?></td>
@@ -100,8 +110,8 @@
                                     <!-- ajax -->
                                     <form action="">
                                         <label class="switch">
-                                            <input type="checkbox" 
-                                                <?php if ($product['active']) :echo 'checked'; endif; ?> />
+                                            <input type="checkbox" <?php if ($product['active']) : echo 'checked';
+                                                                    endif; ?> />
                                             <span></span>
                                         </label>
                                     </form>
@@ -138,7 +148,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category) : ?>
                         <tr>
                             <td><?= htmlspecialchars($category["id"]) ?></td>
                             <td><?= htmlspecialchars($category["name"]) ?></td>
@@ -147,7 +157,8 @@
                                 <!-- ajax -->
                                 <form action="index.php?route=switchCat&id=<?= htmlspecialchars($category['id']) ?>" method="post">
                                     <label class="switch">
-                                        <input type="checkbox" name="switch" class="switchCat" id="switch_<?= htmlspecialchars($category['id']) ?>" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" <?php if ($category['active']): echo 'checked'; endif; ?> />
+                                        <input type="checkbox" name="switch" class="switchCat" id="switch_<?= htmlspecialchars($category['id']) ?>" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" <?php if ($category['active']) : echo 'checked';
+                                                                                                                                                                                                                    endif; ?> />
                                         <span></span>
                                     </label>
                                 </form>
@@ -186,7 +197,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($recipes as $recipe): ?>
+                    <?php foreach ($recipes as $recipe) : ?>
                         <tr>
                             <td><?= htmlspecialchars($recipe["id"]) ?></td>
                             <td><?= htmlspecialchars($recipe["name"]) ?></td>
