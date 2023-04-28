@@ -2,6 +2,12 @@
     <div class="userProfil">
         <h1>Mon compte</h1>
 
+        <ul>
+            <li>changer mot de passe</li>
+            <li>envoyer mail de confirmation d'adresse</li>
+            <li>récupérer mot de passe par email</li>
+        </ul>
+
         <form action="index.php?route=changeNameForm" method="post">
             <div>
                 <label for="name">Nom</label>
@@ -34,9 +40,9 @@
         </form>
 
 
-    <!-- if compte désactivé, on pourra demader à supprimer le compte de la db -->
+        <!-- if compte désactivé, on pourra demader à supprimer le compte de la db -->
 
-    <!-- <form action="index.php?route=deleteUser" method="post">
+        <!-- <form action="index.php?route=deleteUser" method="post">
             <div>
                 <label>Supprimer le compte</label>
             </div>
