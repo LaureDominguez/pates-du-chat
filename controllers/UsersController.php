@@ -38,6 +38,9 @@ class UsersController{
     {
         $errors = $errors_pswd = $success = [];
         $email = $pswd = $pswd_confirm = "";
+        $currentPage = $_SERVER["HTTP_REFERER"];
+        $_SESSION['visitor']['currentPage'] = $currentPage;
+        $_SESSION['visitor']['message'] = [];
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
 
@@ -103,8 +106,8 @@ class UsersController{
                 $success[] = "Votre compte a bien été créé !";
             }
         }
-        $template = "users/register.phtml";
-        include_once 'views/layout.phtml';
+
+        header('Location: ' . $currentPage);
     }
 
 ////////////////////////// connexion //////////////////////////

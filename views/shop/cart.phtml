@@ -1,5 +1,5 @@
 <section class="content" id="cart-window">
-    <?php if ($_COOKIE['panier'] === 'null') : ?>
+    <?php if (!isset($_COOKIE['panier']) || $_COOKIE['panier'] === 'null') : ?>
         <p>Le panier est vide</p>
     <?php else : ?>
         <table>

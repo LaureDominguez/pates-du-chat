@@ -3403,7 +3403,7 @@ form div {
 }
 
 /******************* panier *******************/
-#shopping-cart {
+#shopping-icon {
   position: fixed;
   top: 5rem;
   left: 15px;
@@ -3420,7 +3420,7 @@ form div {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.3411764706);
 }
-#shopping-cart:hover {
+#shopping-icon:hover {
   background-color: #fff;
 }
 
