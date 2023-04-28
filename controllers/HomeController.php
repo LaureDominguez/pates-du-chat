@@ -10,8 +10,9 @@ class HomeController{
 
     public function visitor()
     {
-        $currentPage = $_SERVER["HTTP_REFERER"];
-        if (!isset($_SESSION['visitor']))
+        if(isset($_SERVER["HTTP_REFERER"]))
+            $currentPage = $_SERVER["HTTP_REFERER"];
+        if(!isset($_SESSION['visitor']))
             $_SESSION['visitor'] = [
                 'token' => $this->generateToken(),
                 'currentPage' => $currentPage,

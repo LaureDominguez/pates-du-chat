@@ -25,7 +25,6 @@ class Categories extends Database {
             FROM `categories` 
             INNER JOIN products ON categories.id = products.cat_id
             WHERE categories.id = :id";
-
         $params = ["id" => $id];
         return $this->findOne($req, $params);
     }

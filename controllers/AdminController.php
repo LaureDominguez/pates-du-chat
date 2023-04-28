@@ -23,7 +23,8 @@ class AdminController{
 
         foreach ($categories as $category):
             $id = $category['id'];
-            $nbProducts = $modelCategory->countProductsFromCat($id);
+            $countProducts = $modelCategory->countProductsFromCat($id);
+            $nbProducts = $countProducts['nbProducts'];
         endforeach;
 
         $modelRecipes = new Recipes();

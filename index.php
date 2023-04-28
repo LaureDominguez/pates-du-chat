@@ -14,7 +14,7 @@ $controller->visitor();
 if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
 
-        ////pages
+/////////////////////// pages ///////////////////////
         case 'home':
             $controller = new Controllers\HomeController();
             $controller->displayHomePage();
@@ -69,7 +69,8 @@ if (array_key_exists('route', $_GET)):
             $controller->displayDashboard();
             break;
 
-        //// Panier
+
+/////////////////////// Panier ///////////////////////
         case 'addToCart':
             $id = $_GET['id'];
             $controller = new Controllers\ShopCartController();
@@ -97,7 +98,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-            //login
+/////////////////////// login ///////////////////////
         // case 'login':
         //     $controller = new Controllers\UsersController();
         //     $controller->login();
@@ -119,7 +120,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-            //profil
+/////////////////////// profil ///////////////////////
         case 'myAccount':
             $controller = new Controllers\UsersController();
             $controller->profil();
@@ -155,8 +156,8 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-        ////gestion du site
-            //news
+/////////////////////// gestion du site ///////////////////////
+///////////////////////news
 
         case 'displayCreateNewsForm':
             $controller = new Controllers\AdminController();
@@ -192,8 +193,8 @@ if (array_key_exists('route', $_GET)):
             header('Location: index.php?route=admin');
             break;
 
-            //shop
-            //products
+///////////////////////shop
+        //products
         case 'displayCreateProdForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
@@ -217,7 +218,7 @@ if (array_key_exists('route', $_GET)):
 
             //case 'switchProdOnOff
 
-            //categories
+        //categories
         case 'displayCreateCatForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
@@ -249,7 +250,7 @@ if (array_key_exists('route', $_GET)):
 
             //case 'switchProdOnOff
 
-            //recipes
+        //recipes
         case 'displayCreateRecipesForm':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
@@ -274,7 +275,9 @@ if (array_key_exists('route', $_GET)):
             $controller->verifRecipeForm();
             break;
 
-        //end
+///////////////////////contact
+
+/////////////////////// end ///////////////////////
         default:
             header('Location: index.php?route=home');
             exit;

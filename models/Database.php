@@ -33,7 +33,18 @@ class Database {
         $query = $this->bdd->prepare('INSERT INTO ' . $table . '(' . $columns . ') values (' . $values . ')');
         $query->execute($data);
         $query->closeCursor();
-        // return $this->bdd->lastInsertId();
+
+        $newID = $this->bdd->lastInsertId($id = null);
+
+        var_dump($_COOKIE['session']);
+        die;
+
+        global $session;
+        if (isset($_COOKIE['session']['id']))
+            $_COOKIE['session'][] = $newID;
+        // $newID = $this->bdd->lastInsertId($id = null);
+
+        // return $newID;
     }
 
     protected function updateOne($table, $newData, $condition, $uniq)

@@ -2,10 +2,6 @@
     <button class="croix-btn" id="close-register">X</button>
     <h2>Nouveau compte</h2>
 
-    <aside class="prompt">
-        <?php include('./views/errors.phtml'); ?>
-    </aside>
-
     <form action="index.php?route=register" method="post">
         <div>
             <label for="email_new">email</label>
@@ -19,6 +15,15 @@
             <label for="pswd_confirm_new">confirmez votre mot de passe</label>
             <input type="password" name="pswd_confirm" id="pswd_confirm_new">
         </div>
+
+        <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0) : ?>
+            <aside class="form-errors" id="error-register">
+                <?php foreach ($_SESSION['visitor']['message'] as $alert) : ?>
+                    <p><?= htmlspecialchars($alert); ?></p>
+                <?php endforeach; ?>
+            </aside>
+        <?php endif; ?>
+        
         <div class="buttons">
             <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
             <p class="btn" id="cancel">annuler</p>

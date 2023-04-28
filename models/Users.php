@@ -6,11 +6,20 @@ class Users extends Database {
     private string $email;
     private string $pswd;
 
+
     public function creatNew($params)
     {
-        $this->addOne("users", "email, pswd", "?, ?", $params);
-        header('Location: index.php?route=login');
-        exit();
+        global $session;
+        // var_dump('coucou4');
+        // var_dump($_GET);
+        // die;
+        return $this->addOne("users", "email, pswd", "?, ?", $params);
+        var_dump('coucou5');
+        var_dump($_COOKIE);
+        var_dump($session);
+        die;
+        // header('Location: index.php?route=login');
+        // exit();
     }
 
     public function checkEmail($email): array | bool

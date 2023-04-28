@@ -134,8 +134,6 @@
             <h3>Toutes les catégories</h3>
             <ul>
                 <li>pagination</li>
-                <li>confirm avant suppression</li>
-                <li>n'affiche toujours pas le bon nombre de produits</li>
             </ul>
             <table class="dashboard-table">
                 <thead>
@@ -148,11 +146,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <?php $id = $category['id'];
+                            $countProducts = $modelCategory->countProductsFromCat($id);
+                            $nbProducts = $countProducts['nbProducts']; ?>
+
                         <tr>
                             <td><?= htmlspecialchars($category["id"]); ?></td>
                             <td><?= htmlspecialchars($category["name"]); ?></td>
-                            <td><?= htmlspecialchars($nbProducts['nbProducts']); ?></td>
+                            <td><?= htmlspecialchars($nbProducts); ?></td>
                             <td>
                                 <!-- ajax -->
                                 <form action="index.php?route=switchCat&id=<?= htmlspecialchars($category['id']); ?>" method="post">

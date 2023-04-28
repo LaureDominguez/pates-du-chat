@@ -34,4 +34,14 @@ if (isset($_COOKIE[COOKIE_NAME])) {
 }
 
 
+// cookie session
+
+global $session;
+
+if (isset($_COOKIE['session'])){
+    $session = json_decode($_COOKIE['session'], true);
+} else {
+    $session = array();
+}
+
 // serveur mail
