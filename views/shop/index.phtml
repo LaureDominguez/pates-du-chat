@@ -10,25 +10,25 @@
     </ul>
 
 
-    <?php foreach ($categories as $category) : ?>
-        <?php if ($category['active']) : ?>
+    <?php foreach ($categories as $category): ?>
+        <?php if ($category['active']): ?>
 
-            <h2><?= htmlspecialchars($category["name"]) ?></h2>
+            <h2><?= htmlspecialchars($category["name"]); ?></h2>
 
             <article class="shop-cat">
-                <?php foreach ($products as $product) : ?>
-                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
+                <?php foreach ($products as $product): ?>
+                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']): ?>
                         <figure class="shop-tuile">
-                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']) ?>">
-                                <?php if (!empty($product["img"])) : ?>
+                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
+                                <?php if (!empty($product["img"])): ?>
                                     <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                                <?php else : ?>
+                                <?php else: ?>
                                     <img src="public/img/Hades.jpg" alt="">
                                 <?php endif; ?>
                                 <figcaption>
-                                    <h3><?= htmlspecialchars($product["name"]) ?></h3>
-                                    <p><?= htmlspecialchars($product["descript"]) ?></p>
-                                    <p><?= htmlspecialchars($product["price"]) ?>€</p>
+                                    <h3><?= htmlspecialchars($product["name"]); ?></h3>
+                                    <p><?= htmlspecialchars($product["descript"]); ?></p>
+                                    <p><?= htmlspecialchars($product["price"]); ?>€</p>
                                 </figcaption>
                             </a>
                         </figure>

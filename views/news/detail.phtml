@@ -21,9 +21,9 @@
 
         <div class="date">
             <?php if ($actu["created_at"] != $actu["updated_at"]): ?>
-                <p class="timestamp">modifié le : <?= htmlspecialchars($actu["updated_at"]) ?></p>
+                <p class="timestamp">modifié le : <?= htmlspecialchars($actu["updated_at"]); ?></p>
             <?php else: ?>
-                <p class="timestamp">créé le : <?= htmlspecialchars($actu["created_at"]) ?></p>
+                <p class="timestamp">créé le : <?= htmlspecialchars($actu["created_at"]); ?></p>
             <?php endif; ?>
         </div>
     </article>

@@ -1,7 +1,7 @@
-<?php if (isset($success) && count($success) > 0) : ?>
+<?php if (isset($success) && count($success) > 0): ?>
     <div class="alert success">
-        <?php foreach ($success as $message) : ?>
-            <p><?= htmlspecialchars($message) ?></p>
+        <?php foreach ($success as $message): ?>
+            <p><?= htmlspecialchars($message); ?></p>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>

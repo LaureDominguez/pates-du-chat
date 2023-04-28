@@ -1,16 +1,16 @@
 <section class="content">
     <figure class="shop-detail">
-        <?php if (isset($product["img"])) : ?>
+        <?php if (isset($product["img"])): ?>
             <!-- <img src="/images/{{$product->img}}" alt=""> -->
         <?php else : ?>
             <img src="public/img/Hades.jpg" alt="">
         <?php endif; ?>
         <figcaption>
-            <h1><?= htmlspecialchars($product["name"]) ?></h1>
-            <p><?= htmlspecialchars($product["descript"]) ?></p>
-            <p><?= htmlspecialchars($product["price"]) ?>€</p>
+            <h1><?= htmlspecialchars($product["name"]); ?></h1>
+            <p><?= htmlspecialchars($product["descript"]); ?></p>
+            <p><?= htmlspecialchars($product["price"]); ?>€</p>
 
-            <form method="post" action="index.php?route=addToCart&id=<?= htmlspecialchars($product['id']) ?>">
+            <form method="post" action="index.php?route=addToCart&id=<?= htmlspecialchars($product['id']); ?>">
                 <label for="quantity">quantité</label>
                 <input type="number" name="quantity" id="quantity" max="10" value="1">
                 <button type="submit">ajouter au panier</button>

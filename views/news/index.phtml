@@ -2,14 +2,13 @@
     <h1>Toutes les news</h1>
 
     <ul>
-        <li>update pas à jour</li>
         <li>format de date</li>
         <li>vidéo ne s'affichent pas</li>
     </ul>
 
     <div class="news-index">
-        <?php foreach ($news as $actu) : ?>
-            <a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']) ?>">
+        <?php foreach ($news as $actu): ?>
+            <a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']); ?>">
                 <figure class="news-short">
                     <?php if (isset($product["img"])) : ?>
                         <!-- <img src="/images/{{$product->img}}" alt=""> -->
@@ -17,14 +16,14 @@
                         <img src="public/img/Hades.jpg" alt="">
                     <?php endif; ?>
                     <figcaption>
-                        <h2><?= htmlspecialchars($actu["title"]) ?></h2>
+                        <h2><?= htmlspecialchars($actu["title"]); ?></h2>
                         <div class="short"><?= $actu["message"] ?></div>
                         <?php if ($actu["created_at"] != $actu["updated_at"]) : ?>
                             <p class="timestamp">modifié le : <?= $actu["updated_at"] ?></p>
                         <?php else : ?>
-                            <p class="timestamp">créé le : <?= htmlspecialchars($actu["created_at"]) ?></p>
+                            <p class="timestamp">créé le : <?= htmlspecialchars($actu["created_at"]); ?></p>
                         <?php endif; ?>
-                        <a href=" index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']) ?>" class="more">
+                        <a href=" index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']); ?>" class="more">
                             <div>
                                 <p>Lire la suite</p>
                                 <p><i class="fa-solid fa-arrow-right"></i></p>

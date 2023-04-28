@@ -1,4 +1,4 @@
-<?php require_once('./index.php') ?>
+<?php require_once('./index.php'); ?>
 <nav>
     <ul class="pages">
         <li><a href="index.php?route=home">accueil</a></li>
@@ -6,19 +6,19 @@
         <li><a href="index.php?route=shop">boutique</a></li>
         <li><a href="index.php?route=recipes">recettes</a></li>
         <li><a href="index.php?route=contact">contact</a></li>
-        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
+        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)): ?>
             <li><a href="index.php?route=admin">tableau de bord</a></li>
         <?php endif; ?>
     </ul>
 
     <ul class="account">
-        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
+        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
             <li class="dropdown">
                 <a class="dropdown-toggle" role="button" id="dropdown-toggle">
-                    <?php if (isset($_SESSION['user']['name'])) : ?>
-                        <?= htmlspecialchars($_SESSION['user']['name']) ?>
-                    <?php else : ?>
-                        <?= htmlspecialchars($_SESSION['user']['email']) ?>
+                    <?php if (isset($_SESSION['user']['name'])): ?>
+                        <?= htmlspecialchars($_SESSION['user']['name']); ?>
+                    <?php else: ?>
+                        <?= htmlspecialchars($_SESSION['user']['email']); ?>
                     <?php endif; ?>
                 </a>
                 <ul class="dropdown-menu" id="dropdown-menu">
@@ -28,7 +28,7 @@
                     <li><a href="index.php?route=logout">déconnexion</a></li>
                 </ul>
             </li>
-        <?php else : ?>
+        <?php else: ?>
             <li id="loggin">connexion</li>
             <li id="register">nouveau compte</li>
         <?php endif; ?>
