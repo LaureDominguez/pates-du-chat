@@ -48,11 +48,11 @@ class UsersController{
         $_SESSION['visitor']['currentPage'] = $currentPage;
         $_SESSION['visitor']['message'] = [];
         $this->saveSession();
-        $session = array(
+        $session = [
             'id',
             'errors' => [],
             'succes'
-        );
+        ];
 
         setcookie('session', json_encode($session), time() + 86400, true);
 
@@ -136,23 +136,31 @@ class UsersController{
                 // var_dump('coucou1');
                 // var_dump($_COOKIE);
                 // die;
+                $newID = $_COOKIE['session']['id'];
+
+                $this->saveSession();
+                // var_dump('ici');
+                // var_dump($newID);
+                // die;
+                $newUser = $model->getUser($newID);
+
+                // var_dump('coucou3');
+                // var_dump($newUser);
+                // die;
+                $_SESSION['user'] = [
+                    'id' => $newUser['id'],
+                    'email' => $newUser['email'],
+                    'name' => $newUser['name'],
+                    'role' => $newUser['role']
+                ];
 
                 $session['succes'] = "Votre compte a bien été créé !";
-                $this->saveSession();
-                var_dump('ici');
-                var_dump($_COOKIE);
-                die;
-                $model->checkEmail($newUser['email']);
 
-                var_dump('coucou3');
-                var_dump($_COOKIE);
-                die;
-                // $_SESSION['user'] = [
-                //     'id' => $userExist['id'],
-                //     'email' => $userExist['email'],
-                //     'name' => $userExist['name'],
-                //     'role' => $userExist['role']
-                // ];
+                $this->saveSession();
+
+                // var_dump($_SESSION);
+                // var_dump($_COOKIE);
+                // die;
             }
         }
 

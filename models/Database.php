@@ -36,12 +36,15 @@ class Database {
 
         $newID = $this->bdd->lastInsertId($id = null);
 
-        var_dump($_COOKIE['session']);
-        die;
 
-        global $session;
-        if (isset($_COOKIE['session']['id']))
-            $_COOKIE['session'][] = $newID;
+
+        if (isset($_COOKIE['session']))
+            $_COOKIE['session'] = [
+                'id' => $newID
+            ];
+
+        // var_dump($_COOKIE);
+        // die;
         // $newID = $this->bdd->lastInsertId($id = null);
 
         // return $newID;
