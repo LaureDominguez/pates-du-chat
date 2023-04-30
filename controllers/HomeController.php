@@ -17,7 +17,16 @@ class HomeController{
                 'token' => $this->generateToken(),
                 'currentPage' => $currentPage,
             ];
-        else $_SESSION['visitor']['currentPage'] = $currentPage;
+        else $_SESSION['visitor']['currentPage'] = $currentPage;         
+    }
+
+    public function clearMsg()
+    {
+        if (isset($_SESSION['visitor']['msg']))
+            $_SESSION['visitor']['msg'] = "";
+            
+        header('Location: ' . $_SESSION['visitor']['currentPage']);
+        exit;
     }
     
     function generateToken($length = 40)

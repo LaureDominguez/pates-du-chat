@@ -31,7 +31,7 @@ class UsersController{
         session_destroy();
         $currentPage = $_SESSION['visitor']['currentPage'];
 
-        if($currentPage = 'myAccount'){
+        if($currentPage = 'myAccount' || 'myShopCart' || 'admin'){
             // var_dump('coucou');
             // die;
             header('Location: index.php?route=home');
@@ -134,7 +134,7 @@ class UsersController{
 
                 $success = "Votre compte a bien été créé !";
                 $_SESSION['visitor']['msg'] = [
-                    'new_success' => $success
+                    'success' => $success
                 ];
             }
         }
@@ -198,12 +198,12 @@ class UsersController{
                     }
 
                     if($userExist['role']==1)
-                        $success[] = "Bienvenue admin " . $userExist['email'];
+                        $success = "Bienvenue admin " . $userExist['email'];
                     else
-                        $success [] = "Bienvenue, ". $user;
+                        $success = "Bienvenue, ". $user;
 
                     $_SESSION['visitor']['msg'] = [
-                        'log_success' => $success,
+                        'success' => $success,
                     ];
 
                     header('Location: index.php?route=home');

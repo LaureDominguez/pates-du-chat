@@ -1,7 +1,5 @@
-<?php if (isset($success) && count($success) > 0): ?>
-    <div class="alert success">
-        <?php foreach ($success as $message): ?>
-            <p><?= htmlspecialchars($message); ?></p>
-        <?php endforeach; ?>
-    </div>
+<?php if (isset($_SESSION['visitor']['msg']['success'])) : ?>
+        <div class="error">
+            <?= htmlspecialchars($_SESSION['visitor']['msg']['success']); ?>
+        </div>
 <?php endif; ?>

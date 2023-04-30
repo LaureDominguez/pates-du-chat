@@ -8,7 +8,7 @@
             <input type="email" name="email" id="email_new">
             <?php if (isset($_SESSION['visitor']['msg']['new_email_errors'])) : ?>
                 <?php foreach ($_SESSION['visitor']['msg']['new_email_errors'] as $error) : ?>
-                    <div class="error"><?= $error; ?></div>
+                    <div class="error" id="error_new_mail"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
@@ -17,7 +17,7 @@
             <input type="password" name="pswd" id="pswd_new">
             <?php if (isset($_SESSION['visitor']['msg']['new_pswd_errors'])) : ?>
                 <?php foreach ($_SESSION['visitor']['msg']['new_pswd_errors'] as $error) : ?>
-                    <div class="error"><?= $error; ?></div>
+                    <div class="error" id="error_new_pswd"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
@@ -26,7 +26,7 @@
             <input type="password" name="pswd_confirm" id="pswd_confirm_new">
             <?php if (isset($_SESSION['visitor']['msg']['new_verif_errors'])) : ?>
                 <?php foreach ($_SESSION['visitor']['msg']['new_verif_errors'] as $error) : ?>
-                    <div class="error"><?= $error; ?></div>
+                    <div class="error" id="error_new_verif"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>

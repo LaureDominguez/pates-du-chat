@@ -25,10 +25,10 @@
 
     <main>
 
-        <aside class="prompt">
-            <!-- <//?php include_once('./views/errors.phtml'); ?> -->
-            <!-- <//?php include_once('./views/success.phtml'); ?> -->
-        </aside>
+        <?php include_once('./views/success.phtml'); ?>
+
+        <?php var_dump($_SESSION) ?>
+
         <?php if(!isset($_SESSION['user'])): ?>
             <section class="modal-log" id="modal">
                 <?php include('users/login.phtml'); ?>
