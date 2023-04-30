@@ -34,20 +34,10 @@ class Database {
         $query->execute($data);
         $query->closeCursor();
 
+        //auto connexion pour les nouveaux users
         $newID = $this->bdd->lastInsertId($id = null);
-
-
-
-        if (isset($_COOKIE['session']))
-            $_COOKIE['session'] = [
-                'id' => $newID
-            ];
-
-        // var_dump($_COOKIE);
-        // die;
-        // $newID = $this->bdd->lastInsertId($id = null);
-
-        // return $newID;
+        if (isset($_SESSION['visitor']))
+            $_SESSION['visitor']['id'] = $newID;
     }
 
     protected function updateOne($table, $newData, $condition, $uniq)

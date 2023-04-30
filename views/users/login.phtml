@@ -6,20 +6,21 @@
         <div>
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
+            <?php if (isset($_SESSION['visitor']['msg']['log_email_errors'])) : ?>
+                <?php foreach ($_SESSION['visitor']['msg']['log_email_errors'] as $error) : ?>
+                    <div class="error"><?= $error; ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div>
             <label for="pswd_log">mot de passe</label>
             <input type="password" name="pswd" id="pswd_log">
-        </div>
-
-        <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0): ?>
-            <aside class="form-errors" id="error-log">
-                <p>Mécréaaaaant !!!</p>
-                <?php foreach ($_SESSION['visitor']['message'] as $alert): ?>
-                    <p><?= htmlspecialchars($alert); ?></p>
+            <?php if (isset($_SESSION['visitor']['msg']['log_pswd_errors'])) : ?>
+                <?php foreach ($_SESSION['visitor']['msg']['log_pswd_errors'] as $error) : ?>
+                    <div class="error"><?= $error; ?></div>
                 <?php endforeach; ?>
-            </aside>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
 
         <div class="buttons">
 

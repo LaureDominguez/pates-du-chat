@@ -29,34 +29,23 @@ class UsersController{
     public function logout()
     {
         session_destroy();
-        header('Location: '. $_SESSION['visitor']['currentPage']);
-        exit();
-    }
+        $currentPage = $_SESSION['visitor']['currentPage'];
 
-    public function saveSession()
-    {
-        global $session;
-        setcookie('session', json_encode($session), time() +86400, true);
+        if($currentPage = 'myAccount'){
+            // var_dump('coucou');
+            // die;
+            header('Location: index.php?route=home');
+            exit();
+        }
+        header('Location: ' . $currentPage);
+        exit();
     }
 
 ////////////////////////// register //////////////////////////
     public function newUser()
     {
-        $errors = $errors_pswd = $success = [];
-        $email = $pswd = $pswd_confirm = "";
-        $currentPage = $_SERVER["HTTP_REFERER"];
-        $_SESSION['visitor']['currentPage'] = $currentPage;
-        $_SESSION['visitor']['message'] = [];
-        $this->saveSession();
-        $session = [
-            'id',
-            'errors' => [],
-            'succes'
-        ];
-
-        setcookie('session', json_encode($session), time() + 86400, true);
-
-
+        $errors = $errors_email = $errors_pswd = $errors_verif = [];
+        $email = $pswd = $pswd_confirm = $success = "";
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
 
@@ -64,89 +53,78 @@ class UsersController{
             $email = trim($_POST['email']);
 
             if (empty($email)) {
-                $session['errors'][] = "Veuillez entrer une adresse mail";
-                $this->saveSession();
+                $errors[] = $errors_email[] = "Veuillez entrer une adresse mail";
+                // return $errors;
             }
+
             else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-                        $session['errors'][] = "Veuillez renseigner un email valide";
-                        $this->saveSession();
+                        $errors[] = $errors_email[] = "Veuillez renseigner un email valide";
                         break;
                     case !empty($email):
                         $model = new Users();
                         $isItFree = $model->checkEmail($email);
                         if (!empty($isItFree))
-                            $session['errors'][] = "Cet email est déjà utilisé";
-                            $this->saveSession();
+                            $errors[] = $errors_email[] = "Cet email est déjà utilisé";
                         break;
                 }
-            
+
             //validation mot de passe
             $pswd = trim($_POST['pswd']);
+            $numberMinimal = 8;
 
             if (empty($pswd)) {
-                $session['errors'][] = "Veuillez choisir un mot de passe";
-                $this->saveSession();
+                $errors[] = $errors_pswd[] = "Veuillez choisir un mot de passe";
             }
-            else 
-                $numberMinimal = 8;
-
+            else
                 switch ($pswd) {
                     case strlen($pswd) < $numberMinimal:
-                        $session['errors'][] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
-                        $this->saveSession();
+                        $errors[] = $errors_pswd [] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
                         break;
                     case preg_match('@[A-Z]@', $pswd)?:
-                        $session['errors'][] = "Le mot de passe doit inclure au moins une lettre majuscule";
-                        $this->saveSession();
+                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre majuscule";
                         break;
                     case preg_match('@[a-z]@', $pswd)?:
-                        $session['errors'][] = "Le mot de passe doit inclure au moins une lettre minuscule";
-                        $this->saveSession();
+                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre minuscule";
                         break;
                     case preg_match('@[0-9]@', $pswd)?:
-                        $session['errors'][] = "Le mot de passe doit inclure au moins un chiffre";
-                        $this->saveSession();
+                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un chiffre";
                         break;
                     case preg_match('@[^\w]@', $pswd)?:
-                        $session['errors'][] = "Le mot de passe doit inclure au moins un caractère spécial";
-                        $this->saveSession();   
+                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un caractère spécial";
                         break;
                 }
+
             
             $pswd_confirm = trim($_POST['pswd_confirm']);
 
             if (empty($_POST['pswd_confirm']))
-                $session['errors'][] = $errors_pswd[] = "Veuillez confirmer votre mot de passe";
-                $this->saveSession();
+                $errors[] = $errors_verif[] = "Veuillez confirmer votre mot de passe";
 
             if (empty($errors_pswd) && ($pswd != $pswd_confirm))
-                $session['errors'][] = $errors_pswd[] = "Les mots de passe ne correspondent pas";
-                $this->saveSession();
+                $errors[] = $errors_verif[] = "Les mots de passe ne correspondent pas";
+
+            $_SESSION['visitor']['msg'] = [
+                'new_email_errors' => $errors_email,
+                'new_pswd_errors' => $errors_pswd,
+                'new_verif_errors' => $errors_verif
+            ];
 
             if (count($errors) == 0) {
                 $newUser = [
                     $email,
                     password_hash($pswd, PASSWORD_DEFAULT),
                 ];
-                // var_dump($_GET);
-                // die;
-                $model->creatNew($newUser);
-                // var_dump('coucou1');
-                // var_dump($_COOKIE);
-                // die;
-                $newID = $_COOKIE['session']['id'];
 
-                $this->saveSession();
-                // var_dump('ici');
-                // var_dump($newID);
-                // die;
+                
+                $model = new Users();
+                $model->creatNew($newUser);
+
+                $newID = $_SESSION['visitor']['id'];
+
                 $newUser = $model->getUser($newID);
 
-                // var_dump('coucou3');
-                // var_dump($newUser);
-                // die;
                 $_SESSION['user'] = [
                     'id' => $newUser['id'],
                     'email' => $newUser['email'],
@@ -154,28 +132,19 @@ class UsersController{
                     'role' => $newUser['role']
                 ];
 
-                $session['succes'] = "Votre compte a bien été créé !";
-
-                $this->saveSession();
-
-                // var_dump($_SESSION);
-                // var_dump($_COOKIE);
-                // die;
+                $success = "Votre compte a bien été créé !";
+                $_SESSION['visitor']['msg'] = [
+                    'new_success' => $success
+                ];
             }
         }
-
-        header('Location: ' . $currentPage);
+        header('Location: ' . $_SESSION['visitor']['currentPage']);
     }
 
 ////////////////////////// connexion //////////////////////////
     public function checkUser(){
-        $errors = $success = $userExist = [];
-        $email = $pswd = $emailUsed  = "";
-        $currentPage = $_SERVER["HTTP_REFERER"];
-        $_SESSION['visitor']['currentPage'] = $currentPage;
-        $_SESSION['visitor']['message'] = [];
-        
-
+        $errors = $errors_email = $errors_pswd = $userExist = [];
+        $email = $pswd = $emailUsed  = $success = "";
 
         if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
 
@@ -183,17 +152,17 @@ class UsersController{
             $email = trim($_POST['email']);
 
             if(empty($email))
-            $_SESSION['visitor']['message'][] = $errors[] = "Veuillez renseigner le champs email";
+            $errors[] = $errors_email[] = "Veuillez saisir un email";
             else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-                        $_SESSION['visitor']['message'][] = $errors[] = "Veuillez renseigner un email valide";
+                        $errors[] = $errors_email[] = "Email ou mot de passe incconu";
                         break;
                     case !empty($email):
                         $model = new Users();
                         $emailUsed = $model->checkEmail($email);
                         if (empty($emailUsed))
-                            $_SESSION['visitor']['message'][] = $errors[] = "Email inconnu";
+                            $errors[] = $errors_email[] = "Email ou mot de passe incconu";
                         if (!empty($emailUsed))
                             $model = new Users();
                             $userExist = $model->getUser($emailUsed['id']);
@@ -202,7 +171,14 @@ class UsersController{
 
             //validation mot de passe
             if (empty($_POST['pswd']))
-            $_SESSION['visitor']['message'][] = $errors[] = "Veuillez entrer votre mot de passe";
+                $errors[] = $errors_pswd[] = "Veuillez entrer votre mot de passe";
+
+
+            $_SESSION['visitor']['msg'] = [
+                'log_email_errors' => $errors_email,
+                'log_pswd_errors' => $errors_pswd,
+            ];
+
             //stockage du mdp pour verification
             $pswd = trim($_POST['pswd']);
             if (count($errors) == 0) {
@@ -222,24 +198,26 @@ class UsersController{
                     }
 
                     if($userExist['role']==1)
-                        $_SESSION['visitor']['message'] = $success[] = "Bienvenue admin " . $userExist['email'];
+                        $success[] = "Bienvenue admin " . $userExist['email'];
                     else
-                        $_SESSION['visitor']['message'] = $success [] = "Bienvenue, ". $user;
+                        $success [] = "Bienvenue, ". $user;
 
-                    
+                    $_SESSION['visitor']['msg'] = [
+                        'log_success' => $success,
+                    ];
 
                     header('Location: index.php?route=home');
                     exit;
+                } else $errors[] = $errors_email[] = "Email ou mot de passe incconu";
 
-                }
+                $_SESSION['visitor']['msg'] = [
+                    'log_email_errors' => $errors_email,
+                    'log_pswd_errors' => $errors_pswd,
+                ];
             }
-            header('Location: ' . $currentPage);
-            // var_dump($_SESSION);
-            // die;
+
+            header('Location: ' . $_SESSION['visitor']['currentPage']);
             exit;
-        // $template = "users/login.phtml";
-        // include_once 'views/layout.phtml';
-        // include_once '/views/errors.phtml';
         }
     }
 

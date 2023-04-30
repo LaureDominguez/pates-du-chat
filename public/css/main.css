@@ -551,6 +551,7 @@ form div {
 .menu-tabs ul li label {
   display: flex;
   position: relative;
+  border: solid 1px transparent;
   cursor: pointer;
   height: 4rem;
   align-items: center;

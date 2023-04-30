@@ -6,24 +6,31 @@
         <div>
             <label for="email_new">email</label>
             <input type="email" name="email" id="email_new">
+            <?php if (isset($_SESSION['visitor']['msg']['new_email_errors'])) : ?>
+                <?php foreach ($_SESSION['visitor']['msg']['new_email_errors'] as $error) : ?>
+                    <div class="error"><?= $error; ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div>
             <label for="pswd_new">mot de passe</label>
             <input type="password" name="pswd" id="pswd_new">
+            <?php if (isset($_SESSION['visitor']['msg']['new_pswd_errors'])) : ?>
+                <?php foreach ($_SESSION['visitor']['msg']['new_pswd_errors'] as $error) : ?>
+                    <div class="error"><?= $error; ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div>
             <label for="pswd_confirm_new">confirmez votre mot de passe</label>
             <input type="password" name="pswd_confirm" id="pswd_confirm_new">
+            <?php if (isset($_SESSION['visitor']['msg']['new_verif_errors'])) : ?>
+                <?php foreach ($_SESSION['visitor']['msg']['new_verif_errors'] as $error) : ?>
+                    <div class="error"><?= $error; ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 
-        <?php if (isset($_SESSION['visitor']['message']) && count($_SESSION['visitor']['message']) > 0) : ?>
-            <aside class="form-errors" id="error-register">
-                <?php foreach ($_SESSION['visitor']['message'] as $alert) : ?>
-                    <p><?= htmlspecialchars($alert); ?></p>
-                <?php endforeach; ?>
-            </aside>
-        <?php endif; ?>
-        
         <div class="buttons">
             <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
             <p class="btn" id="cancel">annuler</p>

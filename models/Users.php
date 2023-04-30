@@ -9,17 +9,7 @@ class Users extends Database {
 
     public function creatNew($params)
     {
-        global $session;
-        // var_dump('coucou4');
-        // var_dump($_GET);
-        // die;
-        return $this->addOne("users", "email, pswd", "?, ?", $params);
-        var_dump('coucou5');
-        var_dump($_COOKIE);
-        var_dump($session);
-        die;
-        // header('Location: index.php?route=login');
-        // exit();
+        $this->addOne("users", "email, pswd", "?, ?", $params);
     }
 
     public function checkEmail($email): array | bool
