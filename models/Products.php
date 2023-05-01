@@ -26,4 +26,11 @@ class Products extends Database {
         header('Location: index.php?route=admin');
         exit();
     }
+
+    public function updateProduct($newData)
+    {
+        $this->updateOne('products', $newData, 'id', $newData['id']);
+        header('Location: index.php?route=admin');
+        exit();
+    }
 }

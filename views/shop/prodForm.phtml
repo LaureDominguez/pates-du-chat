@@ -1,8 +1,8 @@
 <section class="content">
-    <?php if (isset($product['id'])): ?>
+    <?php if (isset($product['id'])) : ?>
 
         <h2>modifier un produit</h2>
-        <form action="index.php?route=updateProdForm" method="post">
+        <form action="index.php?route=updateProdForm&id=<?= htmlspecialchars($product['id']); ?>" method="post">
             <div>
                 <label for="name">nom</label>
                 <input type="text" name="name" id="name" required value="<?= htmlspecialchars($product["name"]); ?>">
@@ -10,7 +10,8 @@
             <div>
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category) : ?>
+                        <?php var_dump($category) ?>
                         <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -34,7 +35,7 @@
             </div>
         </form>
 
-    <?php else: ?>
+    <?php else : ?>
 
         <h2>créer un produit</h2>
         <form action="index.php?route=submitProdForm" method="post">
@@ -45,7 +46,7 @@
             <div>
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category) : ?>
                         <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
                     <?php endforeach; ?>
                 </select>

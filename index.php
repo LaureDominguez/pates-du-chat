@@ -207,7 +207,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'submitProdForm':
-            $controller = new Controllers\AdminController;
+            $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->verifProdForm();
             break;
@@ -219,7 +219,12 @@ if (array_key_exists('route', $_GET)):
             $controller->displayUpdateProdForm($id);
             break;
 
-            //case 'updateProd'
+        case 'updateProdForm':
+            $id = $_GET['id'];
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->verifUpdateProdForm($id);
+            break;
 
             //case 'switchProdOnOff
 

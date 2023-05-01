@@ -123,9 +123,105 @@ class AdminController{
     }
 
     /////////////////////// Onglet Boutique ///////////////////////
+    /////////////////////// produits ///////////////////////
+    public function displayCreateProdForm()
+    {//affiche le form de création d'un nouveau produit
+        $modelProducts = new Products();
+        $products = $modelProducts->getAllProducts();
+
+        $modelCategory = new Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $template = "views/shop/prodForm.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    public function verifProdForm()
+    { // vérifie et créer le nouveau produit
+        $errors = [];
+        $success = [];
+
+        if (array_key_exists('name', $_POST)) {
+
+            if (empty($_POST['name']))
+            $errors[] = "Veuillez donner un nom au produit";
+            if (empty($_POST['category']))
+            $errors[] = "Veuillez selectionner une catégorie";
+            if (empty($_POST['descript']))
+            $errors[] = "Veuillez entrer une description";
+            if (empty($_POST['price']))
+            $errors[] = "Veuillez définir un prix";
+
+            if (count($errors) == 0) {
+                $addNew = [
+                    trim($_POST['name']),
+                    trim($_POST['category']),
+                    trim($_POST['descript']),
+                    trim($_POST['price']),
+                    trim($_POST['img'])
+                ];
+                $modelProduct = new Products();
+                $modelProduct->creatNew($addNew);
+                $success[] = "Le nouveau produit a bien été créé !";
+            }
+        }
+        $template = "views/shop/prodForm.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    //active ou désactive un produit //à faire
+
+    public function displayUpdateProdForm($id)
+    {//affiche form d'update d'un produit existant
+        $id = $_GET['id'];
+        $modelNews = new Products();
+        $product = $modelNews->getOneProduct($id);
+
+        $modelCategory = new Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $template = "views/shop/prodForm.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    public function verifUpdateProdForm($id)
+    { // vérifie et créer le produit 
+        $errors = [];
+        $success = [];
+
+        if (array_key_exists('name', $_POST)) {
+            if (empty($_POST['name']))
+                $errors[] = "Veuillez donner un nom au produit";
+            if (empty($_POST['category']))
+            $errors[] = "Veuillez selectionner une catégorie";
+            if (empty($_POST['descript']))
+            $errors[] = "Veuillez entrer une description";
+            if (empty($_POST['price']))
+                $errors[] = "Veuillez définir un prix";
+
+            if (count($errors) == 0) {
+                $id = $_GET['id'];
+                $newData = [
+                    'id' => $id,
+                    'name' => trim($_POST['name']),
+                    'cat_id' => trim($_POST['category']),
+                    'descript' => trim($_POST['descript']),
+                    'price' => trim($_POST['price']),
+                    'img' => trim($_POST['img'])
+                ];
+
+                $modelProduct = new Products();
+                $modelProduct->updateProduct($newData);
+                $success[] = "Le produit a bien été modifié !";
+            }
+        }
+        $template = "views/shop/prodForm.phtml";
+        include_once 'views/layout.phtml';
+    }
+
     /////////////////////// categories ///////////////////////
     public function displayCreateCatForm()
-    {// affiche form de création d'une nouvelle catégorie 
+    { // affiche form de création d'une nouvelle catégorie 
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
@@ -133,14 +229,15 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
     public function verifCatForm()
-    {// vérifie et créer la catégorie
+    { // vérifie et créer la catégorie
         $errors = [];
         $success = [];
-        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
+        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
+        ) {
             if (empty($_POST['name']))
-                $errors[] = "Veuillez renseigner le nom de la catgéorie";
+            $errors[] = "Veuillez renseigner le nom de la catgéorie";
             if (empty($_POST['descript']))
-                $errors[] = "Veuillez entrer une description";
+            $errors[] = "Veuillez entrer une description";
 
             if (count($errors) == 0) {
                 $addNew = [
@@ -157,7 +254,7 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-    public function switchCat($id)//à faire
+    public function switchCat($id) //à faire
     { //active ou déscative une catégorie
         $success = [];
         $id = $_GET['id'];
@@ -168,7 +265,7 @@ class AdminController{
     }
 
     public function displayUploadCatForm($id)
-    {//affiche le formulaire d'update d'une catégorie existante
+    { //affiche le formulaire d'update d'une catégorie existante
         $id = $_GET['id'];
         $modelCategory = new Categories();
         $category = $modelCategory->getOneCategory($id);
@@ -178,10 +275,11 @@ class AdminController{
     }
 
     public function verifUpdateCatForm($id)
-    {// vérifie et met à jour la catégorie 
+    { // vérifie et met à jour la catégorie 
         $errors = [];
         $success = [];
-        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
+        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
+        ) {
             if (empty($_POST['name']))
             $errors[] = "Veuillez renseigner le nom de la catgéorie";
             if (empty($_POST['descript']))
@@ -198,79 +296,6 @@ class AdminController{
                 $modelCategory = new Categories();
                 $modelCategory->updateCategory($newData);
                 $success[] = "La catégorie a bien été modifiée !";
-            }
-        }
-        $template = "dashboard.phtml";
-        include_once 'views/layout.phtml';
-    }
-
-    /////////////////////// produits ///////////////////////
-    public function displayCreateProdForm()
-    {//affiche le form de création d'un nouveau produit
-        $modelProducts = new Products();
-        $products = $modelProducts->getAllProducts();
-
-        $modelCategory = new Categories();
-        $categories = $modelCategory->getAllCategories();
-
-        $template = "views/shop/prodForm.phtml";
-        include_once 'views/layout.phtml';
-    }
-
-    public function verifUpdateProdForm()
-    {// vérifie et créer le produit 
-        $modelProduct = new Products();
-        $products = $modelProduct->getAllProducts();
-
-        $modelCategory = new Categories();
-        $categories = $modelCategory->getAllCategories();
-
-        $template = "views/shop/prodForm.phtml";
-        include_once 'views/layout.phtml';
-    }
-
-    //active ou désactive un produit //à faire
-
-    public function displayUpdateProdForm($id)
-    {//affiche form d'update d'un produit existant
-        $id = $_GET['id'];
-        $modelNews = new Products();
-        $product = $modelNews->getOneProduct($id);
-
-        $modelCategory = new Categories();
-        $category = $modelCategory->getAllCategories();
-
-        $template = "views/shop/prodForm.phtml";
-        include_once 'views/layout.phtml';
-    }
-
-    public function verifProdForm()
-    {// vérifie et met à jour le produit
-        $errors = [];
-        $success = [];
-
-        if (array_key_exists('name', $_POST)) {
-
-            if (empty($_POST['name']))
-                $errors[] = "Veuillez donner un nom au produit";
-            if (empty($_POST['category']))
-                $errors[] = "Veuillez selectionner une catégorie";
-            if (empty($_POST['descript']))
-                $errors[] = "Veuillez entrer une description";
-            if (empty($_POST['price']))
-                $errors[] = "Veuillez définir un prix";
-
-            if (count($errors) == 0) {
-                $addNew = [
-                    trim($_POST['name']),
-                    trim($_POST['category']),
-                    trim($_POST['descript']),
-                    trim($_POST['price']),
-                    trim($_POST['img'])
-                ];
-                $modelProduct = new Products();
-                $modelProduct->creatNew($addNew);
-                $success[] = "Le nouveau produit a bien été créé !";
             }
         }
         $template = "dashboard.phtml";
