@@ -1,5 +1,5 @@
-<section class="content">
-    <?php if (isset($category['id'])): ?>
+<section class="content dashboard-form">
+    <?php if (isset($category['id'])) : ?>
 
         <h2>modifier une catégorie</h2>
         <form action="index.php?route=updateCatForm&id=<?= htmlspecialchars($category["id"]); ?>" method="post">
@@ -18,7 +18,7 @@
             </div>
         </form>
 
-    <?php else: ?>
+    <?php else : ?>
 
         <h2>créer une catégorie</h2>
         <form action="index.php?route=submitCatForm" method="post">

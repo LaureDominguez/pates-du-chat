@@ -125,3 +125,23 @@
 		}
 	}
 }
+
+.dashboard-contact-table{
+	margin: 1rem auto;
+	&, th, td{
+		padding: 1rem;
+		border: 1px solid rgb(200, 200, 200);
+		text-align: center;
+	border-collapse: collapse;
+	}
+}
+
+/******************* formulaires *******************/
+
+.dashboard-form form{
+	width: 60%;
+	margin: auto;
+	textarea{
+		height: 15rem;
+	}
+}

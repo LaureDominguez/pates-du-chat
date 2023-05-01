@@ -1,4 +1,4 @@
-<section class="content">
+<section class="content dashboard-form">
     <?php if (isset($actu['id'])): ?>
 
         <h2>modifier une actu</h2>
@@ -9,7 +9,7 @@
             </div>
             <div>
                 <label for="message">article</label>
-                <textarea name="message" id="editor" cols="30" rows="10"><?= $actu["message"] ?></textarea>
+                <textarea name="message" id="editor" cols="30" rows="30"><?= $actu["message"] ?></textarea>
             </div>
             <div class="buttons">
                 <button type="submit" class="btn" value="submit">envoyer</button>
@@ -27,7 +27,7 @@
             </div>
             <div>
                 <label for="message">article</label>
-                <textarea name="message" id="editor" cols="30" rows="10"></textarea>
+                <textarea name="message" id="editor" cols="30" rows="30"></textarea>
             </div>
             <div class="buttons">
                 <button type=" submit" class="btn" value="submit">envoyer</button>

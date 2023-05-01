@@ -129,7 +129,7 @@
 
             <!-- category -->
             <h3>Toutes les catégories</h3>
-            
+
             <table class="dashboard-table">
                 <thead>
                     <tr>
@@ -143,8 +143,8 @@
                 <tbody>
                     <?php foreach ($categories as $category) : ?>
                         <?php $id = $category['id'];
-                            $countProducts = $modelCategory->countProductsFromCat($id);
-                            $nbProducts = $countProducts['nbProducts']; ?>
+                        $countProducts = $modelCategory->countProductsFromCat($id);
+                        $nbProducts = $countProducts['nbProducts']; ?>
 
                         <tr>
                             <td><?= htmlspecialchars($category["id"]); ?></td>
@@ -154,10 +154,9 @@
                                 <!-- ajax -->
                                 <form action="index.php?route=switchCat&id=<?= htmlspecialchars($category['id']); ?>" method="post">
                                     <label class="switch">
-                                        <input type="checkbox" name="switch" class="switchCat" 
-                                            id="switch_<?= htmlspecialchars($category['id']); ?> 
-                                            "data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" 
-                                            <?php if ($category['active']) : echo 'checked'; endif; ?> />
+                                        <input type="checkbox" name="switch" class="switchCat" id="switch_<?= htmlspecialchars($category['id']); ?> 
+                                            " data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" <?php if ($category['active']) : echo 'checked';
+                                                                                                            endif; ?> />
                                         <span></span>
                                     </label>
                                 </form>
@@ -180,10 +179,6 @@
         <!--------------- recipes --------------->
         <section class="section-tab" id="recipe-tab">
             <h2>recettes</h2>
-
-            <!-- <ul>
-                <li>update form à faire</li>
-            </ul> -->
 
             <table class="dashboard-table">
                 <thead>
@@ -229,9 +224,88 @@
             </div>
         </section>
 
+        <!--------------- contact --------------->
         <section class="section-tab" id="contact-tab">
             <h2>contact</h2>
 
+            <h3>emplacement sur les marchés :</h3>
+            <form action="">
+                <label for="">Semaine du</label>
+                <input type="week" name="" id="">
+
+                <table class="dashboard-contact-table">
+                    <tr>
+                        <th>jour</th>
+                        <th>heure</th>
+                        <th>ville</th>
+                        <th>emplacement</th>
+                    </tr>
+                    <tr>
+                        <td>lundi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>mardi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>mercredi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>jeudi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>vendredi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>samedi</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>dimanche</td>
+                        <td>
+                            de <input type="time">
+                            à <input type="time">
+                        </td>
+                        <td><input type="text"></td>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+                <button type="submit">Valider</button>
+            </form>
         </section>
 
     </div>
