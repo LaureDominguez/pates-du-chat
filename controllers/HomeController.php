@@ -9,7 +9,7 @@ class HomeController{
     }
 
     public function visitor()
-    {
+    {//stock la page actuelle et le token du visitor
         if(isset($_SERVER["HTTP_REFERER"]))
             $currentPage = $_SERVER["HTTP_REFERER"];
         if(!isset($_SESSION['visitor']))
@@ -21,7 +21,7 @@ class HomeController{
     }
 
     public function clearMsg()
-    {
+    {//efface les messages d'erreur stockés dans la session
         if (isset($_SESSION['visitor']['msg']))
             $_SESSION['visitor']['msg'] = "";
             

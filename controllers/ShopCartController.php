@@ -5,6 +5,19 @@ namespace Controllers;
 use \Models\Products;
 
 class ShopCartController  {
+//gestion du panier dans la fenetre modale 
+
+    public function displayCart()
+    {//affiche le panier dans la modale en haut à gauche
+        global $panier;
+        $panier = json_decode($_COOKIE[COOKIE_NAME], true);
+        foreach ($panier as $id => $article) {
+            $article;
+        }
+        $total = $this->total();
+        $template = "shop/cart.phtml";
+        include_once 'views/layout.phtml';
+    }
 
     public function addCartToCookie($id)
     { //expire dans 1 jour
@@ -87,16 +100,5 @@ class ShopCartController  {
             }
         }
         return $total;
-    }
-
-    public function displayCart(){
-        global $panier;
-        $panier = json_decode($_COOKIE[COOKIE_NAME], true);
-        foreach($panier as $id => $article){
-            $article;
-        }
-        $total = $this->total();
-        $template = "shop/cart.phtml";
-        include_once 'views/layout.phtml';
     }
 }

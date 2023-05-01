@@ -43,7 +43,6 @@ class Database {
     protected function updateOne($table, $newData, $condition, $uniq)
     {
         $sets = '';
-
         foreach ($newData as $key => $value) {
             $sets .= "$key = :$key,";
         }

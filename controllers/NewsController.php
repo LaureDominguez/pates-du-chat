@@ -6,7 +6,8 @@ use DateTime;
 use DateTimeInterface;
 use \Models\News;
 
-class NewsController{
+class NewsController
+{//affiche toutes les actus
     public function displayAllNews(){
         $modelNews = new News();
         $news = $modelNews->getAllNews();
@@ -16,7 +17,7 @@ class NewsController{
     }
 
     public function displayOneActu($id)
-    {
+    {//affiche une actu
         $modelNews = new News();
         $actu = $modelNews->getOneActu($id);
 

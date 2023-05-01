@@ -4,7 +4,8 @@ namespace Models;
 
 class Recipes extends Database {
 
-    public function getAllRecipes(){
+    public function getAllRecipes()
+    {
         $req = "SELECT * FROM recipes";
         return $this->findAll($req);
     }

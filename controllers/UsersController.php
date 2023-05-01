@@ -8,7 +8,7 @@ class UsersController{
 
 ////////////////////////// routes //////////////////////////
     public function profil()
-    {
+    {//affiche le compte user
         $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
 
@@ -16,24 +16,20 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
     public function cart()
-    {
+    {//affiche le panier de l'utilisateur (gestion dans ShopCartController)
         $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
         $model = new ShopCartController();
-        // $cart = $model->displayCart();
 
         $template = "users/cart.phtml";
         include_once 'views/layout.phtml';
     }
 
     public function logout()
-    {
+    {//deconnexion de la session 'user'
         session_destroy();
         $currentPage = $_SESSION['visitor']['currentPage'];
-
         if($currentPage = 'myAccount' || 'myShopCart' || 'admin'){
-            // var_dump('coucou');
-            // die;
             header('Location: index.php?route=home');
             exit();
         }
@@ -43,7 +39,7 @@ class UsersController{
 
 ////////////////////////// register //////////////////////////
     public function newUser()
-    {
+    {//création d'un nouveau compte user
         $errors = $errors_email = $errors_pswd = $errors_verif = [];
         $email = $pswd = $pswd_confirm = $success = "";
 
@@ -52,12 +48,10 @@ class UsersController{
             //validation email
             $email = trim($_POST['email']);
 
+            //si erreur, alors stock le message d'erreur
             if (empty($email)) {
                 $errors[] = $errors_email[] = "Veuillez entrer une adresse mail";
-                // return $errors;
-            }
-
-            else
+            } else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
                         $errors[] = $errors_email[] = "Veuillez renseigner un email valide";
@@ -76,8 +70,7 @@ class UsersController{
 
             if (empty($pswd)) {
                 $errors[] = $errors_pswd[] = "Veuillez choisir un mot de passe";
-            }
-            else
+            } else
                 switch ($pswd) {
                     case strlen($pswd) < $numberMinimal:
                         $errors[] = $errors_pswd [] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
@@ -95,16 +88,15 @@ class UsersController{
                         $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un caractère spécial";
                         break;
                 }
-
             
             $pswd_confirm = trim($_POST['pswd_confirm']);
 
             if (empty($_POST['pswd_confirm']))
                 $errors[] = $errors_verif[] = "Veuillez confirmer votre mot de passe";
-
             if (empty($errors_pswd) && ($pswd != $pswd_confirm))
                 $errors[] = $errors_verif[] = "Les mots de passe ne correspondent pas";
-
+            
+            //si erreur, alors stock dans la session visitor pour les afficher
             $_SESSION['visitor']['msg'] = [
                 'new_email_errors' => $errors_email,
                 'new_pswd_errors' => $errors_pswd,
@@ -117,12 +109,12 @@ class UsersController{
                     password_hash($pswd, PASSWORD_DEFAULT),
                 ];
 
-                
+                //si pas d'erreur, création du compte user
                 $model = new Users();
                 $model->creatNew($newUser);
 
+                //recupère l'id créé pour le connecter directement
                 $newID = $_SESSION['visitor']['id'];
-
                 $newUser = $model->getUser($newID);
 
                 $_SESSION['user'] = [
@@ -142,7 +134,8 @@ class UsersController{
     }
 
 ////////////////////////// connexion //////////////////////////
-    public function checkUser(){
+    public function checkUser()
+    {//connexion d'un compte user
         $errors = $errors_email = $errors_pswd = $userExist = [];
         $email = $pswd = $emailUsed  = $success = "";
 
@@ -150,7 +143,8 @@ class UsersController{
 
             //validation email
             $email = trim($_POST['email']);
-
+            
+            //si erreur, alors stock le message d'erreur
             if(empty($email))
             $errors[] = $errors_email[] = "Veuillez saisir un email";
             else
@@ -173,7 +167,7 @@ class UsersController{
             if (empty($_POST['pswd']))
                 $errors[] = $errors_pswd[] = "Veuillez entrer votre mot de passe";
 
-
+            //si erreur, alors stock dans la session visitor
             $_SESSION['visitor']['msg'] = [
                 'log_email_errors' => $errors_email,
                 'log_pswd_errors' => $errors_pswd,
@@ -181,6 +175,7 @@ class UsersController{
 
             //stockage du mdp pour verification
             $pswd = trim($_POST['pswd']);
+            //si pas d'erreur, alors créer la session user. else à la fin
             if (count($errors) == 0) {
                 if(password_verify($pswd, $userExist['pswd'])){
                     $_SESSION['user'] = [
@@ -191,12 +186,14 @@ class UsersController{
                         ];
                         
                     $user = "";
+                    //si user a un nom, alors on l'appelle par son nom, sinon par email
                     if(isset($userExist['name'])) {
                         $user = $userExist['name'];
                     } else {
                         $user = $userExist['email'];
                     }
 
+                    //si user a le role admin, alors on lui dit
                     if($userExist['role']==1)
                         $success = "Bienvenue admin " . $userExist['email'];
                     else
@@ -210,6 +207,7 @@ class UsersController{
                     exit;
                 } else $errors[] = $errors_email[] = "Email ou mot de passe incconu";
 
+                //sinon on affiche les erreurs
                 $_SESSION['visitor']['msg'] = [
                     'log_email_errors' => $errors_email,
                     'log_pswd_errors' => $errors_pswd,
@@ -223,7 +221,8 @@ class UsersController{
 
     ////////////////////////// check session //////////////////////////
 
-    public function isConnected(){
+    public function isConnected()
+    {
         var_dump($_SESSION);
         if (!isset($_SESSION['user']))
             header('Location: index.php?route=login');
@@ -231,15 +230,16 @@ class UsersController{
 
     ////////////////////////// update //////////////////////////
 
-    public function replaceSpecialChar($string){
+    public function replaceSpecialChar($string)
+    {
         $string =  "";
         return str_replace([",", "<", ">", "!"], "", $string);
     }
 
     public function updateUserName()
-    {
-        $errors = $success = [];
-        $name = "";
+    {//création ou modification du nom de user
+        $errors = [];
+        $name = $success = "";
         if (array_key_exists('name', $_POST)) {
 
             $name = trim($_POST['name']);
@@ -249,17 +249,28 @@ class UsersController{
                 $errors[] = "Veuillez entrer votre nom";
             }
 
+            $_SESSION['visitor']['msg'] = [
+                'name_error' => $errors,
+            ];
+
             if (count($errors) == 0) {
 
                 $model = new Users();
                 $model->updateUser($name);
 
                 $_SESSION['user']['name']=$name;
-                $success[] = "Votre nom a bien été modifié !";
-            header('Location: index.php?route=myAccount');
-            exit();
-            }
 
+                $success = "Votre nom a bien été modifié !";
+                $_SESSION['visitor']['msg'] = [
+                    'name_success' => $success,
+                ];
+                
+                header('Location: index.php?route=myAccount');
+                exit();
+            }
+        $_SESSION['visitor']['msg'] = [
+            'name_error' => $errors,
+        ];
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }

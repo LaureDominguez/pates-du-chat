@@ -9,9 +9,10 @@ use \Models\Products;
 use \Models\Recipes;
 
 class AdminController{
+//gère toutes les options de la page 'Tableau de bord' du site
 
     public function displayDashboard()
-    {
+    {//affiche la page admin, voir plus bas pour les options de chaque onglets
         $modelNews = new News();
         $news = $modelNews->getAllNews();
 
@@ -42,15 +43,15 @@ class AdminController{
         }
     }
 
-    /////////////////////// News ///////////////////////
+    /////////////////////// Onglet News ///////////////////////
     public function displayCreateNewsForm()
-    {
+    {//affiche le form pour créer des actus
         $template = "views/news/form.phtml";
         include_once 'views/layout.phtml';
     }
 
     public function VerifCreatNewsForm()
-    {
+    {// vérifie et créer la nouvelle actu
         $errors = $success = [];
         
         if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
@@ -75,7 +76,7 @@ class AdminController{
     }
 
     public function displayUpdateNewsForm($id)
-    {
+    {// affiche le form pour updater une actu existante
         $id = $_GET['id'];
         $modelNews = new News();
         $actu = $modelNews->getOneActu($id);
@@ -85,7 +86,7 @@ class AdminController{
     }
 
     public function VerifUpdateNewsForm($id)
-    {
+    {// vérifie et met à jour l'actu 
         $errors = [];
         $success = [];
         if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
@@ -114,15 +115,17 @@ class AdminController{
         }
     }
 
-    public function deleteNews($id){
+    public function deleteNews($id)
+    {//supprime l'actu
         $id = $_GET['id'];
         $modelNews = new News();
         $modelNews->deleteOneActu($id);
     }
 
+    /////////////////////// Onglet Boutique ///////////////////////
     /////////////////////// categories ///////////////////////
     public function displayCreateCatForm()
-    {
+    {// affiche form de création d'une nouvelle catégorie 
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
@@ -130,7 +133,7 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
     public function verifCatForm()
-    {
+    {// vérifie et créer la catégorie
         $errors = [];
         $success = [];
         if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
@@ -154,8 +157,18 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    public function switchCat($id)//à faire
+    { //active ou déscative une catégorie
+        $success = [];
+        $id = $_GET['id'];
+        if (array_key_exists('switch', $_POST)) {
+            var_dump($_POST);
+            die;
+        }
+    }
+
     public function displayUploadCatForm($id)
-    {
+    {//affiche le formulaire d'update d'une catégorie existante
         $id = $_GET['id'];
         $modelCategory = new Categories();
         $category = $modelCategory->getOneCategory($id);
@@ -164,18 +177,8 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-    public function switchCat($id)
-    {
-        $success = [];
-        $id = $_GET['id'];
-        if(array_key_exists('switch', $_POST)){
-            var_dump($_POST);
-            die;
-        }
-    }
-
     public function verifUpdateCatForm($id)
-    {
+    {// vérifie et met à jour la catégorie 
         $errors = [];
         $success = [];
         if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)) {
@@ -203,7 +206,7 @@ class AdminController{
 
     /////////////////////// produits ///////////////////////
     public function displayCreateProdForm()
-    {
+    {//affiche le form de création d'un nouveau produit
         $modelProducts = new Products();
         $products = $modelProducts->getAllProducts();
 
@@ -215,7 +218,7 @@ class AdminController{
     }
 
     public function verifUpdateProdForm()
-    {
+    {// vérifie et créer le produit 
         $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
 
@@ -226,8 +229,10 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    //active ou désactive un produit //à faire
+
     public function displayUpdateProdForm($id)
-    {
+    {//affiche form d'update d'un produit existant
         $id = $_GET['id'];
         $modelNews = new Products();
         $product = $modelNews->getOneProduct($id);
@@ -240,7 +245,7 @@ class AdminController{
     }
 
     public function verifProdForm()
-    {
+    {// vérifie et met à jour le produit
         $errors = [];
         $success = [];
 
@@ -274,7 +279,7 @@ class AdminController{
 
     /////////////////////// recettes ///////////////////////
     public function displayCreateRecipesForm()
-    {
+    {//affiche le form pour une nouvelle recette
         $modelRecipes = new Recipes();
         $recipes = $modelRecipes->getAllRecipes();
 
@@ -284,20 +289,9 @@ class AdminController{
         $template = "views/recipes/form.phtml";
         include_once 'views/layout.phtml';
     }
-    public function displayUpdateRecipesForm($id)
-    {
-        $id = $_GET['id'];
-        $modelRecipes = new Recipes();
-        $recipe = $modelRecipes->getOneRecipe($id);
 
-        $modelProducts = new Products();
-        $products = $modelProducts->getAllProducts();
-
-        $template = "views/recipes/form.phtml";
-        include_once 'views/layout.phtml';
-    }
-
-    public function verifRecipeForm(){
+    public function verifRecipeForm()
+    {// vérifie et créer la recette 
         $errors = [];
         $success = [];
 
@@ -330,4 +324,23 @@ class AdminController{
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
     }
+
+    //supprime la recette //à faire
+
+    public function displayUpdateRecipesForm($id)
+    { //affiche le form pour updater une recette existante
+        $id = $_GET['id'];
+        $modelRecipes = new Recipes();
+        $recipe = $modelRecipes->getOneRecipe($id);
+
+        $modelProducts = new Products();
+        $products = $modelProducts->getAllProducts();
+
+        $template = "views/recipes/form.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    //vérifie et met à jour la recette // à faire
+
+    /////////////////////// Onglet Boutique ///////////////////////
 }

@@ -4,7 +4,8 @@ namespace Models;
 
 class Products extends Database {
 
-    public function getAllProducts(){
+    public function getAllProducts()
+    {
         $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price,  products.img, products.active, 
             categories.name AS category,
             categories.active AS categoryActive FROM `products` 

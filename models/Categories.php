@@ -4,7 +4,8 @@ namespace Models;
 
 class Categories extends Database {
 
-    public function getAllCategories(){
+    public function getAllCategories()
+    {
         $req = "SELECT * FROM categories";
         return $this->findAll($req);
     }

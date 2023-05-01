@@ -10,7 +10,8 @@ class ContactController{
         include_once'views/layout.phtml';
     }
 
-    public function submitMessage(){
+    public function submitMessage()
+    {//vérifie et envoi le message du visitor sur l'adresse gmail du site
         $errors = $success = $getMessage = [];
         
         if(array_key_exists('message', $_POST) && array_key_exists('email', $_POST) && array_key_exists('email', $_POST)){
@@ -27,7 +28,6 @@ class ContactController{
             if (empty($_POST['message'])) {
                 $errors[] = "Veuillez écrire votre message";
             }
-
 
             if(count($errors) == 0){
                 $getMessage = [
