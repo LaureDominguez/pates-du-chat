@@ -1,91 +1,89 @@
-<section class="content">
-    <div class="userCart">
-        <h1>mon panier</h1>
+<section class="userCart">
+    <h1>mon panier</h1>
 
-        <?php if ($_COOKIE['panier'] === 'null'): ?>
-            <p>Le panier est vide</p>
-        <?php else: ?>
-            <table>
-                <thead>
-                    <!-- <th>ID</th> -->
-                    <th>article</th>
-                    <th>Prix</th>
-                    <th>quantité</th>
-                    <th>actions</th>
-                </thead>
-                <tbody>
-                    <?php foreach (json_decode($_COOKIE['panier'], true) as $cookie): ?>
-                        <tr>
-                            <!-- <td><//= $cookie['id'] ?></td> -->
-                            <td><?= $cookie['product'] ?></td>
-                            <td><?= $cookie['price'] ?>€</td>
-                            <td class="quantity">
-                                <a href="index.php?route=lessQuantity&id='<?= htmlspecialchars($cookie['id']); ?>'&quantity='<?= -1 ?>'" class="cart-btn">-</a>
-                                <?= $cookie['quantity'] ?>
-                                <a href="index.php?route=addQuantity&id='<?= htmlspecialchars($cookie['id']); ?>'&quantity='<?= 1 ?>'" class="cart-btn">+</a>
-                            </td>
-                            <td>
-                                <a href="" class="btn">supprimer</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-                <tfoot>
+    <?php if ($_COOKIE['panier'] === 'null') : ?>
+        <p>Le panier est vide</p>
+    <?php else : ?>
+        <table>
+            <thead>
+                <!-- <th>ID</th> -->
+                <th>article</th>
+                <th>Prix</th>
+                <th>quantité</th>
+                <th>actions</th>
+            </thead>
+            <tbody>
+                <?php foreach (json_decode($_COOKIE['panier'], true) as $cookie) : ?>
                     <tr>
-                        <td>total :</td>
-                        <td>-</td>
-                        <td colspan="2">
-                            <a href="" class="btn">valider</a>
-                            <!-- <a href="index.php?route=flushCart" class="btn">vider le panier</a> -->
+                        <!-- <td><//= $cookie['id'] ?></td> -->
+                        <td><?= $cookie['product'] ?></td>
+                        <td><?= $cookie['price'] ?>€</td>
+                        <td class="quantity">
+                            <a href="index.php?route=lessQuantity&id='<?= htmlspecialchars($cookie['id']); ?>'&quantity='<?= -1 ?>'" class="cart-btn">-</a>
+                            <?= $cookie['quantity'] ?>
+                            <a href="index.php?route=addQuantity&id='<?= htmlspecialchars($cookie['id']); ?>'&quantity='<?= 1 ?>'" class="cart-btn">+</a>
+                        </td>
+                        <td>
+                            <a href="" class="btn">supprimer</a>
                         </td>
                     </tr>
-                </tfoot>
-            </table>
-
-
-            <!-- <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Quantité</th>
-                <th>Prix</th>
-                <th>TVA</th>
-                <th>Prix total HT</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <//?php foreach (json_decode($_COOKIE['panier'], true) as $article): ?>
-            <//?php $total_ht = $article['quantity'] * $article['price']; ?>
-            <tr>
-                <td><//?php htmlspecialchars($id); ?></td>
-                <td><//?php htmlspecialchars($article['quantity']); ?></td>
-                <td><//?php htmlspecialchars($article['price']); ?> €</td>
-                <td><//?php htmlspecialchars($article['tva'] * 100); ?>%</td>
-                <td><//?php htmlspecialchars($total_ht); ?> €</td>
-                <td>
-                    <button onclick="index.php?route=moreQuantite('' $id . '\', ' . ($article['quantite'] - 1) . ')">-</button>
-                    <button onclick="index.php?route=lessQuantite(\'' . $id . '\', ' . ($article['quantite'] + 1) . ')">+</button>
-                    <button onclick="index.php?route=supprimer_article(\'' . $id . '\')">Supprimer</button>
+                <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>total :</td>
+                    <td>-</td>
+                    <td colspan="2">
+                        <a href="" class="btn">valider</a>
+                        <!-- <a href="index.php?route=flushCart" class="btn">vider le panier</a> -->
                     </td>
                 </tr>
-                <//?php endforeach; ?>
-            </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="4">Total HT :</td>
-                <td>' . htmlspecialchars($total_ht) . ' €</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="4">Total TTC :</td>
-                <td>' . htmlspecialchars($total_ttc) . ' €</td>
-                <td></td>
-            </tr>
             </tfoot>
-        </table>'; -->
+        </table>
 
-        <?php endif; ?>
-    </div>
+
+        <!-- <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>TVA</th>
+            <th>Prix total HT</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <//?php foreach (json_decode($_COOKIE['panier'], true) as $article): ?>
+        <//?php $total_ht = $article['quantity'] * $article['price']; ?>
+        <tr>
+            <td><//?php htmlspecialchars($id); ?></td>
+            <td><//?php htmlspecialchars($article['quantity']); ?></td>
+            <td><//?php htmlspecialchars($article['price']); ?> €</td>
+            <td><//?php htmlspecialchars($article['tva'] * 100); ?>%</td>
+            <td><//?php htmlspecialchars($total_ht); ?> €</td>
+            <td>
+                <button onclick="index.php?route=moreQuantite('' $id . '\', ' . ($article['quantite'] - 1) . ')">-</button>
+                <button onclick="index.php?route=lessQuantite(\'' . $id . '\', ' . ($article['quantite'] + 1) . ')">+</button>
+                <button onclick="index.php?route=supprimer_article(\'' . $id . '\')">Supprimer</button>
+                </td>
+            </tr>
+            <//?php endforeach; ?>
+        </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">Total HT :</td>
+            <td>' . htmlspecialchars($total_ht) . ' €</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="4">Total TTC :</td>
+            <td>' . htmlspecialchars($total_ttc) . ' €</td>
+            <td></td>
+        </tr>
+        </tfoot>
+    </table>'; -->
+
+    <?php endif; ?>
 </section>

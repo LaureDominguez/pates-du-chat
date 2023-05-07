@@ -2,8 +2,25 @@
 
 namespace Controllers;
 
+use \Models\News;
+use \Models\Categories;
+use \Models\Products;
+use \Models\Recipes;
+
 class HomeController{
     public function displayHomePage(){
+        $modelNews = new News();
+        $news = $modelNews->getAllNews();
+
+        $modelProduct = new Products();
+        $products = $modelProduct->getAllProducts();
+
+        $modelCategory = new Categories();
+        $categories = $modelCategory->getAllCategories();
+
+        $modelRecipes = new Recipes();
+        $recipes = $modelRecipes->getAllRecipes();
+
         $template = "home.phtml";
         include_once'views/layout.phtml';
     }

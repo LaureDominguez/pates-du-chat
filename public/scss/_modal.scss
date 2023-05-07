@@ -3,37 +3,19 @@
 
 /******************* alert *******************/
 
-.alert{
-    width: 20vw;
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: var(--orange);
-    box-shadow: 2px 2px 15px 2px #000000a3;
-}
+// .alert{
+//     width: 20vw;
+//     padding: 1rem;
+//     border-radius: 5px;
+//     background-color: var(--orange);
+//     box-shadow: 2px 2px 15px 2px #000000a3;
+// }
 .error{
     color: red;
 }
 
 .success{
     color: green;
-}
-
-.log{
-    width: 50vw;
-    margin: auto;
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    right: 20%;
-    font-size: 0.7rem;
-    padding: 1rem;
-    border-radius: 5px;
-    background-color: var(--orange);
-    box-shadow: 2px 2px 15px 2px #000000a3;
-    z-index: 100;
-    .btn{
-        margin: 0 auto;
-    }
 }
 
 
@@ -57,6 +39,21 @@
 }
 
 .log{
+    width: 50vw;
+    margin: auto;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    font-size: 0.7rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--orange);
+    box-shadow: 2px 2px 15px 2px #000000a3;
+    z-index: 100;
+    .btn{
+        margin: 0 auto;
+    }
     form{
         width: 80%;
         margin: auto;

@@ -1,12 +1,14 @@
 import { toogleModal } from "./modules/loggin.js";
 import { dropdownNav } from "./modules/dropdown.js";
 import { toogleCart } from "./modules/shopCart.js";
+import { revealOnScroll } from "./modules/anim-reveal.js";
 // import { dynamicFields } from "./modules/dynamicFields.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     toogleModal();
     dropdownNav();
     toogleCart();
+    revealOnScroll();
     // dynamicFields();
 })
 

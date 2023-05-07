@@ -24,21 +24,24 @@
     </header>
 
     <main>
-
-        <?php include_once('./views/success.phtml'); ?>
-
-        <?php if(!isset($_SESSION['user'])): ?>
+        <?php if (!isset($_SESSION['user'])) : ?>
             <section class="modal-log" id="modal">
                 <?php include('users/login.phtml'); ?>
                 <?php include('users/register.phtml'); ?>
             </section>
         <?php endif ?>
-        
+
         <aside class="cart" id="shopping-icon">
             <?php include('shop/cart.phtml'); ?>
         </aside>
 
-        <?php include $template; ?>
+        <aside class="info">
+            <?php include_once('./views/success.phtml'); ?>
+        </aside>
+
+        <section class="container">
+            <?php include $template; ?>
+        </section>
     </main>
 
     <!-- Bootstrap -->
