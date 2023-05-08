@@ -128,31 +128,37 @@ if (array_key_exists('route', $_GET)):
 /////////////////////// profil ///////////////////////
         case 'myAccount':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->profil();
             break;
 
         case 'changeNameForm':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->updateUserName();
             break;
 
         case 'changeMailForm':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->profil();
             break;
 
         case 'changePswdForm':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->profil();
             break;
 
         case 'deleteUser':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->profil();
             break;
 
         case 'myShopCart':
             $controller = new Controllers\UsersController();
+            $controller->isConnected();
             $controller->cart();
             break;
 

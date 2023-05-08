@@ -1,0 +1,26 @@
+<div class="title">
+    <h2>Boutique</h2>
+    <a href="index.php?route=shop" class="btn">afficher plus</a>
+</div>
+<div>
+    <article class="shop-cat">
+        <?php foreach ($products as $product) : ?>
+            <?php if ($product["active"]) : ?>
+                <figure class="shop-tuile">
+                    <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
+                        <?php if (!empty($product["img"])) : ?>
+                            <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                        <?php else : ?>
+                            <img src="public/img/Hades.jpg" alt="">
+                        <?php endif; ?>
+                        <figcaption>
+                            <h3><?= htmlspecialchars($product["name"]); ?></h3>
+                            <p><?= htmlspecialchars($product["descript"]); ?></p>
+                            <p><?= htmlspecialchars($product["price"]); ?>€</p>
+                        </figcaption>
+                    </a>
+                </figure>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </article>
+</div>

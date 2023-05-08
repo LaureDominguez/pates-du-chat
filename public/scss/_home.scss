@@ -1,3 +1,65 @@
 /******************* home *******************/
 @use '_base';
 
+.home{
+    background-color: var(--orange);
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 90vh;
+}
+
+.title{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: space-around;
+}
+
+#home{
+    background-image: url("../img/Daco_5697108.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    article{
+        padding: 3rem 1.5rem;
+        background-color: rgba(255, 207, 149, 0.648);
+        border-radius: 10px;
+        width: 60%;
+        height: 70%;
+        overflow: hidden;
+        p{
+            text-align: justify;
+            line-height: 2rem;
+        }
+    }
+}
+
+/******************* anim scroll *******************/
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.revealR{
+    position: relative;
+    transform: translateY(150px);
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.revealL{
+    position: relative;
+    transform: translateY(150px);
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal.active, .revealR.active, .revealL.active{
+    transform: translateY(0);
+    opacity: 1;
+}
