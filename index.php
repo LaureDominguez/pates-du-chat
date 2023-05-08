@@ -161,7 +161,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-/////////////////////// gestion du site ///////////////////////
+/////////////////////// Dashboard ///////////////////////
 ///////////////////////news
 
         case 'displayCreateNewsForm':
@@ -195,6 +195,12 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->deleteNews($id);
+            header('Location: index.php?route=admin');
+            break;
+
+        case 'checkboxProducts':
+            $controller = new Controllers\AdminController();
+            $controller->activeProduct($id);
             header('Location: index.php?route=admin');
             break;
 

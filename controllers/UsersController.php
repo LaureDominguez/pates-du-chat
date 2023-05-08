@@ -194,9 +194,17 @@ class UsersController{
                     }
 
                     //si user a le role admin, alors on lui dit
-                    if($userExist['role']==1)
+                    if($userExist['role']==1){
                         $success = "Bienvenue admin " . $userExist['email'];
-                    else
+                        $_SESSION['admin'] = [
+                            'dashboardPages' => [
+                                'tab1' => 'checked',
+                                'tab2' => '',
+                                'tab3' => '',
+                                'tab4' => '',
+                                ]
+                            ];
+                        } else
                         $success = "Bienvenue, ". $user;
 
                     $_SESSION['visitor']['msg'] = [
