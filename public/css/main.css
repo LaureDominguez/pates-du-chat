@@ -210,7 +210,7 @@ nav {
   height: 2.5rem;
   z-index: 100;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.9098039216);
 }
@@ -2806,6 +2806,7 @@ form div {
   top: 5rem;
   left: 15px;
   background-image: url("../img/basket-shopping-solid.svg");
+  fill: red;
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
@@ -2816,7 +2817,7 @@ form div {
   z-index: 100;
   border-radius: 100%;
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.3411764706);
+  background-color: var(--orange);
 }
 #shopping-icon:hover {
   background-color: #fff;

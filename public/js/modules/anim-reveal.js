@@ -1,8 +1,15 @@
 // ********************* anim reveal on scroll
 export function revealOnScroll(){
 
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("scroll", revealR);
+    window.addEventListener("scroll", revealL);
+    reveal();
+    revealR();
+    revealL();
+
     let section = document.querySelectorAll("section");
-    let menu = document.querySelectorAll("nav ul li a");
+    let menu = document.querySelectorAll("#nav ul li a");
 
     window.onscroll = ()=> {
         section.forEach(i =>{
@@ -14,7 +21,7 @@ export function revealOnScroll(){
             if (top >= offset && top < offset + height){
                 menu.forEach(link => {
                     link.classList.remove("active");
-                    document.querySelector("nav ul li a[href*=" + id + "]").classList.add("active");
+                    document.querySelector("#nav ul li a[href*=" + id + "]").classList.add("active");
                 })
             }
         })
@@ -22,7 +29,6 @@ export function revealOnScroll(){
 
     function reveal(){
         let reveals = document.querySelectorAll(".reveal");
-        let i = 0;
         for (i = 0; i < reveals.length; i++){
             let windowHeight = window.innerHeight;
             let elementTop = reveals[i].getBoundingClientRect().top;

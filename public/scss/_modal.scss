@@ -83,6 +83,7 @@
     top: 5rem;
     left: 15px;
     background-image: url('../img/basket-shopping-solid.svg');
+    fill: red;
     background-size: 20px 20px;
     background-repeat: no-repeat;
     background-position: center;
@@ -93,7 +94,7 @@
     z-index: 100;
     border-radius: 100%;
     cursor: pointer;
-    background-color: #ffffff57;
+    background-color: var(--orange);
     &:hover{
         background-color: #fff;
     }
