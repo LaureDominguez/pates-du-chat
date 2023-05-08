@@ -29,7 +29,7 @@ class Products extends Database {
 
     public function updateProduct($newData)
     {
-        $this->updateOne('products', $newData, 'id', $newData['id']);
+        $this->updateOne('products', $newData, 'id', $newData['id']);        
         header('Location: index.php?route=admin');
         exit();
     }

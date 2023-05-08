@@ -1,9 +1,9 @@
 <div class="menu-tabs">
 
-    <input type="radio" class="hidden" id="tab1" name="tab-control" checked>
-    <input type="radio" class="hidden" id="tab2" name="tab-control">
-    <input type="radio" class="hidden" id="tab3" name="tab-control">
-    <input type="radio" class="hidden" id="tab4" name="tab-control">
+    <input type="radio" class="hidden" id="tab1" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab1'] ?>>
+    <input type="radio" class="hidden" id="tab2" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab2'] ?>>
+    <input type="radio" class="hidden" id="tab3" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab3'] ?>>
+    <input type="radio" class="hidden" id="tab4" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab4'] ?>>
 
     <ul>
         <li tabindex="0"><label for="tab1" role="button"><span>news</span></label></li>
@@ -107,9 +107,8 @@
                                     <!-- ajax -->
                                     <form action="">
                                         <label class="switch">
-                                            <input type="checkbox" <?php if ($product['active']) : echo 'checked';
-                                                                    endif; ?> />
-                                            <span></span>
+                                                <input id="switchProducts" type="checkbox" <?php if ($product['active']) : echo 'checked'; endif; ?> value=<?= htmlspecialchars($product["id"]); ?>>
+                                                <span id="setSwitchProduct"></span>
                                         </label>
                                     </form>
                                 </td>

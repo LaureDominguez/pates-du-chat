@@ -32,7 +32,7 @@ class AdminController{
         $recipes = $modelRecipes->getAllRecipes();
 
         $template = "dashboard.phtml";
-        include_once'views/layout.phtml';
+        include'views/layout.phtml';
     }
 
     public function isAdmin()
@@ -368,4 +368,24 @@ class AdminController{
     //vérifie et met à jour la recette // à faire
 
     /////////////////////// Onglet Boutique ///////////////////////
+    public function activeProduct($id)
+    {
+        $id = $_GET['id'];
+        
+        $modelProduct = new Products();
+        $currentProduct = $modelProduct->getOneProduct($id);
+        $newData = [
+            'id' => $id,
+            'active' => ($currentProduct['active'] ? 0 : 1)
+        ];
+
+        $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';  
+        $_SESSION['admin']['dashboardPages']['tab3'] = '';  
+        $_SESSION['admin']['dashboardPages']['tab4'] = '';  
+        
+        $modelProduct = new Products();
+        $modelProduct->updateProduct($newData);
+        $success[] = "Le produit a bien été modifié !";
+    }
 }
