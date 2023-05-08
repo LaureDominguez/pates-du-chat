@@ -23,7 +23,7 @@ nav{
         border-radius: 10px;
         cursor: pointer;
         transition: all .2s ease-out;
-        &:hover{
+        &:hover:not(.dropdown, .dropdown-menu){
             color: var(--orange);
             border: 1px solid var(--orange-select);
         }
@@ -44,7 +44,7 @@ nav{
 }
 
 .dropdown{
-    width: 50%;
+    position: relative;
 }
 .dropdown-toggle::after{
     content: '\2BC6';
@@ -52,7 +52,13 @@ nav{
 .dropdown-menu{
     display: none;
     position: absolute;
-    right: 1vw;
-    border-radius: 15px 0 15px 15px;
-    background-color: rgb(243, 164, 68);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 10rem;
+    border: 1px solid var(--orange-clair);
+    background-color: #ffffffe8;
+    li:hover{
+        background-color: #fff;
+    }
 }
