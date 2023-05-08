@@ -1,0 +1,12 @@
+<div class="title">
+    <h2>Les dernières news</h2>
+    <a href="index.php?route=news" class="btn">afficher plus</a>
+</div>
+
+<div>
+    <?php foreach ($news as $actu) : ?>
+        <a href="index.php?route=newsDetail&id=<?= htmlspecialchars($actu['id']); ?>">
+            <p><?= htmlspecialchars($actu["title"]); ?></p>
+        </a>
+    <?php endforeach; ?>
+</div>

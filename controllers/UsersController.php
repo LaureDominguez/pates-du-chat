@@ -15,6 +15,7 @@ class UsersController{
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }
+
     public function cart()
     {//affiche le panier de l'utilisateur (gestion dans ShopCartController)
         $model = new Users();
@@ -231,7 +232,6 @@ class UsersController{
 
     public function isConnected()
     {
-        var_dump($_SESSION);
         if (!isset($_SESSION['user']))
             header('Location: index.php?route=login');
     }
