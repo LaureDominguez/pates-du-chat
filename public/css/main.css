@@ -237,6 +237,16 @@ nav .pages {
   align-items: center;
   justify-content: space-around;
 }
+nav .pages:before {
+  content: "";
+  background-image: url("../img/site/Logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  margin: 1rem;
+  height: 4rem;
+  width: 3rem;
+}
 nav .account {
   width: 30%;
   display: flex;
@@ -1282,6 +1292,11 @@ form div {
   background-color: var(--orange);
   padding: 1.5rem;
   border-radius: 10px;
+}
+.home:target {
+  scroll-margin-top: 5rem;
+}
+.home:not(:last-child) {
   height: 90vh;
 }
 
@@ -1293,22 +1308,43 @@ form div {
 }
 
 #home {
-  background-image: url("../img/Daco_5697108.png");
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: top right;
+  display: flex;
+}
+#home h1 {
+  margin: 0;
+}
+#home h1::after {
+  content: url("../img/site/Logo pate.png");
+}
+#home h2 {
+  margin-top: 0;
 }
 #home article {
-  padding: 3rem 1.5rem;
+  padding: 2rem 1.5rem;
   background-color: rgba(255, 207, 149, 0.648);
   border-radius: 10px;
-  width: 60%;
-  height: 70%;
-  overflow: hidden;
+  width: 95%;
 }
 #home article p {
   text-align: justify;
   line-height: 2rem;
+}
+#home article li {
+  line-height: 1.8rem;
+}
+#home article li:nth-child(odd) {
+  list-style-image: url("../img/site/pateL.png");
+  margin-right: 10px;
+}
+#home article li:nth-child(even) {
+  list-style-image: url("../img/site/pateR.png");
+  margin-left: 10px;
+}
+#home img {
+  width: 50%;
+  height: 100%;
+  border-radius: 10px;
+  margin-left: 1rem;
 }
 
 /******************* anim scroll *******************/
@@ -1555,7 +1591,8 @@ form div {
   display: flex;
   background-color: #fff;
   border-radius: 10px;
-  width: 80%;
+  margin: 0.5rem 0;
+  width: 90%;
   overflow: hidden;
   position: relative;
   cursor: pointer;
@@ -1569,8 +1606,15 @@ form div {
   height: 20rem;
   border-radius: 10px 0 0 10px;
 }
-.news-short figcaption {
+.news-short section {
+  height: 20rem;
   padding: 1rem;
+}
+.news-short section h2 {
+  width: 70%;
+}
+.news-short section p {
+  line-height: 2rem;
 }
 
 .more {
@@ -1628,7 +1672,7 @@ form div {
   object-fit: cover;
   border-radius: 5px;
 }
-.article figcaption {
+.article section {
   padding: 1rem;
 }
 
@@ -2809,7 +2853,7 @@ form div {
 /******************* panier *******************/
 #shopping-icon {
   position: fixed;
-  top: 5rem;
+  top: 10rem;
   left: 15px;
   background-image: url("../img/basket-shopping-solid.svg");
   fill: red;

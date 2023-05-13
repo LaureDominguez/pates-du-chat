@@ -33,7 +33,6 @@ if (isset($_COOKIE[COOKIE_NAME])) {
     $panier = array();
 }
 
-
 // cookie session
 
 global $session;

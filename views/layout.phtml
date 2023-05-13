@@ -31,9 +31,11 @@
             </section>
         <?php endif ?>
 
-        <aside class="cart" id="shopping-icon">
-            <?php include('shop/cart.phtml'); ?>
-        </aside>
+        <?php if (isset($_COOKIE['panier'])): ?>
+            <aside class="cart" id="shopping-icon">
+                <?php include('shop/cart.phtml'); ?>
+            </aside>
+        <?php endif ?>
 
         <aside class="info">
             <?php include_once('./views/success.phtml'); ?>

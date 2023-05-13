@@ -13,7 +13,8 @@
     display: flex;
     background-color: #fff;
     border-radius: 10px;
-    width: 80%;
+    margin: 0.5rem 0;
+    width: 90%;
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -22,14 +23,19 @@
         transform: scale(1.01);
         box-shadow: 0px 0px 20px 5px #ffffff86;
     }
-
     img{
         height: 20rem;
         border-radius: 10px 0 0 10px;
     }
-
-    figcaption{
+    section{
+        height: 20rem;
         padding: 1rem;
+        h2{
+            width: 70%;
+        }
+        p{
+            line-height: 2rem;
+        }
     }
 }
 
@@ -95,7 +101,7 @@
         border-radius: 5px;
     }
 
-    figcaption{
+    section{
         padding: 1rem;
     }
 }
