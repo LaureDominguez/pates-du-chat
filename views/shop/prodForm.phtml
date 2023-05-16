@@ -2,7 +2,7 @@
     <?php if (isset($product['id'])) : ?>
 
         <h2>modifier un produit</h2>
-        <form action="index.php?route=updateProdForm&id=<?= htmlspecialchars($product['id']); ?>" method="post">
+        <form action="index.php?route=updateProdForm&id=<?= htmlspecialchars($product['id']); ?>" method="post" enctype="multipart/form-data">
             <div>
                 <label for="name">nom</label>
                 <input type="text" name="name" id="name" required value="<?= htmlspecialchars($product["name"]); ?>">
@@ -38,7 +38,7 @@
     <?php else : ?>
 
         <h2>créer un produit</h2>
-        <form action="index.php?route=submitProdForm" method="post">
+        <form action="index.php?route=submitProdForm" method="post" enctype="multipart/form-data">
             <div>
                 <label for="name">nom</label>
                 <input type="text" name="name" id="name" required>

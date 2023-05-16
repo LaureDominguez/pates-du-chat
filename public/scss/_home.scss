@@ -21,10 +21,6 @@
 }
 
 #home{
-    // background-image: url("../img/Daco_5697108.png");
-    // background-size: 50%;
-    // background-repeat: no-repeat;
-    // background-position: top right;
     display: flex;
     h1{
         margin: 0;
@@ -35,6 +31,13 @@
     h2{
         margin-top: 0;
     }
+    h3{
+        text-align: left;
+    }
+    ul{
+        padding: 0 1rem;
+        margin: 0;
+    }
     article{
         padding: 2rem 1.5rem;
         background-color: rgba(255, 207, 149, 0.648);
@@ -42,54 +45,33 @@
         width: 95%;
         p{
             text-align: justify;
-            line-height: 2rem;
+            line-height: 1.5rem;
         }
         li{
             line-height: 1.8rem;
-        }
-        li:nth-child(odd){
+            &:nth-child(odd){
             list-style-image: url("../img/site/pateL.png");
             margin-right: 10px;
-        }
-        li:nth-child(even){
+            }
+            &:nth-child(even){
             list-style-image: url("../img/site/pateR.png");
             margin-left: 10px;
+            }
         }
     }
     img{
-        width: 50%;
+        max-width: 50%;
         height: 100%;
         border-radius: 10px;
         margin-left: 1rem;
     }
 }
 
-/******************* anim scroll *******************/
-
-.reveal{
-    position: relative;
-    transform: translateY(150px);
-    opacity: 0;
-    transition: 2s all ease;
-}
-
-.revealR{
-    position: relative;
-    transform: translateY(150px);
-    transform: translateX(-150px);
-    opacity: 0;
-    transition: 2s all ease;
-}
-
-.revealL{
-    position: relative;
-    transform: translateY(150px);
-    transform: translateX(150px);
-    opacity: 0;
-    transition: 2s all ease;
-}
-
-.reveal.active, .revealR.active, .revealL.active{
-    transform: translateY(0);
-    opacity: 1;
+.news-home{
+    color: purple;
+    img{
+        width: 40%;
+        height: 100%;
+        border-radius: 10px;
+    }
 }

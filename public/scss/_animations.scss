@@ -1,0 +1,31 @@
+/******************* animations *******************/
+@use '_base';
+/******************* anim scroll *******************/
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.revealR{
+    position: relative;
+    transform: translateY(150px);
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.revealL{
+    position: relative;
+    transform: translateY(150px);
+    transform: translateX(150px);
+    opacity: 0;
+    transition: 2s all ease;
+}
+
+.reveal.active, .revealR.active, .revealL.active{
+    transform: translateY(0);
+    opacity: 1;
+}

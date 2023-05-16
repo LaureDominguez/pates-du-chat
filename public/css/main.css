@@ -32,7 +32,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -207,17 +207,19 @@ form div {
 nav {
   position: fixed;
   width: 100%;
-  height: 2.5rem;
+  height: 3.2rem;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.9098039216);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 nav ul, nav li, nav a {
   list-style: none;
   padding: 0;
   margin: 0;
+  white-space: nowrap;
 }
 nav li {
   padding: 0.2rem 0.5rem;
@@ -239,13 +241,13 @@ nav .pages {
 }
 nav .pages:before {
   content: "";
-  background-image: url("../img/site/Logo.png");
+  background-image: url("../img/site/Logo-remake.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
   margin: 1rem;
-  height: 4rem;
-  width: 3rem;
+  height: 3rem;
+  width: 8rem;
 }
 nav .account {
   width: 30%;
@@ -310,7 +312,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -854,7 +856,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -1117,7 +1119,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -1319,6 +1321,13 @@ form div {
 #home h2 {
   margin-top: 0;
 }
+#home h3 {
+  text-align: left;
+}
+#home ul {
+  padding: 0 1rem;
+  margin: 0;
+}
 #home article {
   padding: 2rem 1.5rem;
   background-color: rgba(255, 207, 149, 0.648);
@@ -1327,7 +1336,7 @@ form div {
 }
 #home article p {
   text-align: justify;
-  line-height: 2rem;
+  line-height: 1.5rem;
 }
 #home article li {
   line-height: 1.8rem;
@@ -1341,39 +1350,19 @@ form div {
   margin-left: 10px;
 }
 #home img {
-  width: 50%;
+  max-width: 50%;
   height: 100%;
   border-radius: 10px;
   margin-left: 1rem;
 }
 
-/******************* anim scroll *******************/
-.reveal {
-  position: relative;
-  transform: translateY(150px);
-  opacity: 0;
-  transition: 2s all ease;
+.news-home {
+  color: purple;
 }
-
-.revealR {
-  position: relative;
-  transform: translateY(150px);
-  transform: translateX(-150px);
-  opacity: 0;
-  transition: 2s all ease;
-}
-
-.revealL {
-  position: relative;
-  transform: translateY(150px);
-  transform: translateX(150px);
-  opacity: 0;
-  transition: 2s all ease;
-}
-
-.reveal.active, .revealR.active, .revealL.active {
-  transform: translateY(0);
-  opacity: 1;
+.news-home img {
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
 }
 
 /******************* general *******************/
@@ -1409,7 +1398,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -1716,7 +1705,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -2072,7 +2061,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -2349,7 +2338,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -2615,7 +2604,7 @@ main {
 }
 
 .container {
-  padding: 3rem;
+  padding: 3.3rem 0;
 }
 
 hr {
@@ -2919,6 +2908,239 @@ form div {
 .cart-btn:hover {
   background-color: var(--orange);
   color: #fff;
+}
+
+/******************* general *******************/
+:root {
+  --orange: rgb(242, 143, 24);
+  --orange-select: rgb(255, 207, 149);
+  --orange-clair: rgb(255, 242, 225);
+  --vert: rgb(0, 79, 18);
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: var(--orange);
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.container {
+  padding: 3.3rem 0;
+}
+
+hr {
+  margin: 3rem 10rem;
+}
+
+/******************* Fonts *******************/
+h1, h2, h3, h4, h5, nav, .btn {
+  font-family: "Pacifico", cursive;
+  color: var(--vert);
+  text-align: center;
+}
+
+h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
+  text-transform: capitalize;
+}
+
+*::first-letter {
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 2.3rem;
+  line-height: 5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  font-stretch: expanded;
+  overflow: hidden;
+  text-align: center;
+}
+
+h2:nth-child(1)::first-letter {
+  text-transform: capitalize;
+}
+
+h2::before, h2::after {
+  background-color: var(--vert);
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 10%;
+}
+
+h2::before {
+  right: 1rem;
+  margin-left: -10%;
+}
+
+h2::after {
+  left: 1rem;
+  margin-right: -10%;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 2.5rem;
+}
+
+a, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+/******************* bouttons *******************/
+p .btn {
+  padding: 0;
+}
+
+.btn {
+  padding: 0.5rem;
+  margin: 1rem;
+  color: var(--vert);
+  border: solid var(--vert) 1px;
+  border-radius: 5px;
+  transition: all, 0.2s ease-in;
+  cursor: pointer;
+}
+
+.btn:hover, .btn:active {
+  color: #fff;
+  border: solid var(--orange) 1px;
+  background-color: var(--vert);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/******************* croix *******************/
+/* .croix{
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+} */
+.croix-btn {
+  border: solid 1px #fff;
+  border-radius: 3px;
+  color: #fff;
+  background-color: red;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all, 0.1s ease-in;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
+  color: red;
+  background-color: #fff;
+}
+
+/* .croix button:focus-visible{
+    display: inherit;
+} */
+/******************* form *******************/
+form label {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+form input:not(.btn, .file), form form textarea, form form select {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
+}
+
+form div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/******************* short *******************/
+.short {
+  height: 13rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000 70%, transparent 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/******************* hidden *******************/
+.hidden {
+  display: none;
+}
+
+/******************* timestamp *******************/
+.timestamp {
+  font-size: smaller;
+  font-weight: bold;
+  color: var(--vert);
+  margin: 0;
+  /* position: absolute;
+  bottom: 0.5rem; */
+}
+
+/******************* animations *******************/
+/******************* anim scroll *******************/
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealR {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(-150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealL {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active, .revealR.active, .revealL.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /*# sourceMappingURL=main.css.map */

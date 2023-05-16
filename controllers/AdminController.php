@@ -7,6 +7,7 @@ use \Models\News;
 use \Models\Categories;
 use \Models\Products;
 use \Models\Recipes;
+use \Models\Gallery;
 
 class AdminController{
 //gère toutes les options de la page 'Tableau de bord' du site
@@ -144,15 +145,60 @@ class AdminController{
         if (array_key_exists('name', $_POST)) {
 
             if (empty($_POST['name']))
-            $errors[] = "Veuillez donner un nom au produit";
+                $errors[] = "Veuillez donner un nom au produit";
             if (empty($_POST['category']))
-            $errors[] = "Veuillez selectionner une catégorie";
+                $errors[] = "Veuillez selectionner une catégorie";
             if (empty($_POST['descript']))
-            $errors[] = "Veuillez entrer une description";
+                $errors[] = "Veuillez entrer une description";
             if (empty($_POST['price']))
-            $errors[] = "Veuillez définir un prix";
+                $errors[] = "Veuillez définir un prix";
 
+            //si il y a une image à uploader :
+            if (!empty($_FILES['img'])) {
+                $imgFile = $_FILES['img']['name'];
+                $file = $_FILES['img']['tmp_name'];
+                $imgSize = $_FILES['img']['size'];
+
+                $folder = "./public/img/produits/";
+                $path = $folder . $imgFile;
+                $targetFile = $folder . basename($imgFile);
+
+                $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+
+                if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
+                    $errors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
+                if ($imgSize > 1000000)
+                    $errors[] = "L'image doit peser moins de 1 Mo"; 
+
+                // si l'image est conforme :
+                if (count($errors) == 0) {
+
+
+
+                    // var_dump($targetFile);
+                    // var_dump($path);
+                    // die;
+
+                    //on déplace l'image dans le dossier
+                    move_uploaded_file($file, $targetFile);
+                    $addNew = [
+                            trim($_POST['name']),
+                            $imgFile,
+                        ];
+                    $modelGallery = new Gallery();
+                    $modelGallery->creatNew($addNew);
+                    $success[] = "L'image a bien été envoyée !";
+
+                    var_dump($success);
+                    die;
+                }
+            }
+
+            else{
+
+            }
             if (count($errors) == 0) {
+
                 $addNew = [
                     trim($_POST['name']),
                     trim($_POST['category']),
