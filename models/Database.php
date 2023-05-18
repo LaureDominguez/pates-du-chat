@@ -35,9 +35,9 @@ class Database {
         $query->closeCursor();
 
         //auto connexion pour les nouveaux users
-        $newID = $this->bdd->lastInsertId($id = null);
-        if (isset($_SESSION['visitor']))
-            $_SESSION['visitor']['id'] = $newID;
+        return $this->bdd->lastInsertId($id = null);
+        // if (isset($_SESSION['visitor']) && !isset($_SESSION['user']))
+        //     $_SESSION['visitor']['id'] = $newID;
     }
 
     protected function updateOne($table, $newData, $condition, $uniq)

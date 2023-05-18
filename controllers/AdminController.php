@@ -16,6 +16,7 @@ class AdminController{
     {//affiche la page admin, voir plus bas pour les options de chaque onglets
         $modelNews = new News();
         $news = $modelNews->getAllNews();
+        var_dump($_SESSION);
 
         $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
@@ -72,6 +73,13 @@ class AdminController{
                 $success[] = "Le nouvel article a bien été créé !";
             }
         }
+
+        $_SESSION['admin']['dashboardPages'] = [
+            'tab1' => 'checked',
+            'tab2' => '',
+            'tab3' => '',
+            'tab4' => ''
+        ];  
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
     }
@@ -109,6 +117,12 @@ class AdminController{
                 $modelNews->updateNews($newData);
                 $success[] = "L'article a bien été modifié !";
 
+                $_SESSION['admin']['dashboardPages'] = [
+                    'tab1' => 'checked',
+                    'tab2' => '',
+                    'tab3' => '',
+                    'tab4' => ''
+                ];  
                 $template = "dashboard.phtml";
                 include_once 'views/layout.phtml';
 
@@ -139,8 +153,9 @@ class AdminController{
 
     public function verifProdForm()
     { // vérifie et créer le nouveau produit
-        $errors = [];
+        $errors = $imgErrors = [];
         $success = [];
+        $img = null;
 
         if (array_key_exists('name', $_POST)) {
 
@@ -153,69 +168,80 @@ class AdminController{
             if (empty($_POST['price']))
                 $errors[] = "Veuillez définir un prix";
 
-            //si il y a une image à uploader :
-            if (!empty($_FILES['img'])) {
-                $imgFile = $_FILES['img']['name'];
-                $file = $_FILES['img']['tmp_name'];
-                $imgSize = $_FILES['img']['size'];
+            if (count($errors) == 0){
+                //si il y a une image à uploader :
+                if (!empty($_FILES['img'])) {
+                    $imgFile = $_FILES['img']['name'];
+                    $file = $_FILES['img']['tmp_name'];
+                    $imgSize = $_FILES['img']['size'];
 
-                $folder = "./public/img/produits/";
-                $path = $folder . $imgFile;
-                $targetFile = $folder . basename($imgFile);
+                    $folder = "./public/img/produits/";
+                    $path = $folder . $imgFile;
+                    $targetFile = $folder . basename($imgFile);
 
-                $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+                    $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
 
-                if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
-                    $errors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
-                if ($imgSize > 1000000)
-                    $errors[] = "L'image doit peser moins de 1 Mo"; 
+                    if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
+                        $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
+                    if ($imgSize > 1000000)
+                        $imgErrors[] = "L'image doit peser moins de 1 Mo";
 
-                // si l'image est conforme :
-                if (count($errors) == 0) {
+                    // si l'image est conforme :
+                    if (count($imgErrors) == 0) {
 
-
-
-                    // var_dump($targetFile);
-                    // var_dump($path);
-                    // die;
-
-                    //on déplace l'image dans le dossier
-                    move_uploaded_file($file, $targetFile);
-                    $addNew = [
+                        //on déplace l'image dans le dossier
+                        move_uploaded_file($file, $targetFile);
+                        $addNew = [
                             trim($_POST['name']),
                             $imgFile,
                         ];
-                    $modelGallery = new Gallery();
-                    $modelGallery->creatNew($addNew);
-                    $success[] = "L'image a bien été envoyée !";
-
-                    var_dump($success);
-                    die;
+                        $modelGallery = new Gallery();
+                        $img = $modelGallery->creatNew($addNew);
+                        $success[] = "L'image a bien été envoyée !";
+                    }
                 }
-            }
 
-            else{
-
-            }
-            if (count($errors) == 0) {
-
+                //on créer le produit avec l'id de l'image si elle existe
                 $addNew = [
                     trim($_POST['name']),
                     trim($_POST['category']),
                     trim($_POST['descript']),
                     trim($_POST['price']),
-                    trim($_POST['img'])
+                    $img
                 ];
                 $modelProduct = new Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";
             }
         }
+        $_SESSION['admin']['dashboardPages'] = [
+            'tab1' => '',
+            'tab2' => 'checked',
+            'tab3' => '',
+            'tab4' => ''
+        ];  
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
 
-    //active ou désactive un produit //à faire
+    //active ou désactive un produit
+    public function activeProduct($id)
+    {
+        $id = $_GET['id'];
+
+        $modelProduct = new Products();
+        $currentProduct = $modelProduct->getOneProduct($id);
+        $newData = [
+            'id' => $id,
+            'active' => ($currentProduct['active'] ? 0 : 1)
+        ];
+        $modelProduct->updateProduct($newData);
+
+        $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
+        $_SESSION['admin']['dashboardPages']['tab3'] = '';
+        $_SESSION['admin']['dashboardPages']['tab4'] = '';
+    }
 
     public function displayUpdateProdForm($id)
     {//affiche form d'update d'un produit existant
@@ -261,6 +287,12 @@ class AdminController{
                 $success[] = "Le produit a bien été modifié !";
             }
         }
+        $_SESSION['admin']['dashboardPages'] = [
+            'tab1' => '',
+            'tab2' => 'checked',
+            'tab3' => '',
+            'tab4' => ''
+        ];  
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -274,6 +306,7 @@ class AdminController{
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
+
     public function verifCatForm()
     { // vérifie et créer la catégorie
         $errors = [];
@@ -296,18 +329,14 @@ class AdminController{
                 $success[] = "La nouvelle catégorie a bien été créée !";
             }
         }
+
+        $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
+        $_SESSION['admin']['dashboardPages']['tab3'] = '';
+        $_SESSION['admin']['dashboardPages']['tab4'] = '';
+        
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
-    }
-
-    public function switchCat($id) //à faire
-    { //active ou déscative une catégorie
-        $success = [];
-        $id = $_GET['id'];
-        if (array_key_exists('switch', $_POST)) {
-            var_dump($_POST);
-            die;
-        }
     }
 
     public function displayUploadCatForm($id)
@@ -344,8 +373,33 @@ class AdminController{
                 $success[] = "La catégorie a bien été modifiée !";
             }
         }
+        $_SESSION['admin']['dashboardPages'] = [
+            'tab1' => '',
+            'tab2' => 'checked',
+            'tab3' => '',
+            'tab4' => ''
+        ];  
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
+    }
+
+    public function activeCategory($id)
+    {
+        $id = $_GET['id'];
+
+        $modelCategory = new Categories();
+        $currentCategory = $modelCategory->getOneCategory($id);
+        $newData = [
+            'id' => $id,
+            'active' => ($currentCategory['active'] ? 0 : 1)
+        ];
+
+        $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
+        $_SESSION['admin']['dashboardPages']['tab3'] = '';
+        $_SESSION['admin']['dashboardPages']['tab4'] = '';
+
+        $modelCategory->updateCategory($newData);
     }
 
     /////////////////////// recettes ///////////////////////
@@ -392,6 +446,12 @@ class AdminController{
                 $success[] = "La nouvelle recette a bien été créée !";
             }
         }
+        $_SESSION['admin']['dashboardPages'] = [
+            'tab1' => '',
+            'tab2' => '',
+            'tab3' => 'checked',
+            'tab4' => ''
+        ];  
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
     }
@@ -413,25 +473,7 @@ class AdminController{
 
     //vérifie et met à jour la recette // à faire
 
-    /////////////////////// Onglet Boutique ///////////////////////
-    public function activeProduct($id)
-    {
-        $id = $_GET['id'];
-        
-        $modelProduct = new Products();
-        $currentProduct = $modelProduct->getOneProduct($id);
-        $newData = [
-            'id' => $id,
-            'active' => ($currentProduct['active'] ? 0 : 1)
-        ];
 
-        $_SESSION['admin']['dashboardPages']['tab1'] = '';
-        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';  
-        $_SESSION['admin']['dashboardPages']['tab3'] = '';  
-        $_SESSION['admin']['dashboardPages']['tab4'] = '';  
-        
-        $modelProduct = new Products();
-        $modelProduct->updateProduct($newData);
-        $success[] = "Le produit a bien été modifié !";
-    }
+    /////////////////////// Onglet Boutique ///////////////////////
+
 }

@@ -6,16 +6,26 @@ class Products extends Database {
 
     public function getAllProducts()
     {
-        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price,  products.img, products.active, 
+        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active, 
             categories.name AS category,
-            categories.active AS categoryActive FROM `products` 
-            INNER JOIN categories ON products.cat_id = categories.id";
+            categories.active AS categoryActive,
+            images.img AS image,
+            images.name AS imgTitle
+            FROM `products` 
+            INNER JOIN categories ON products.cat_id = categories.id
+            LEFT JOIN images ON products.img = images.id";
         return $this->findAll($req);
     }
 
     public function getOneProduct($id): array | bool
     {
-        $req = "SELECT * FROM products WHERE id = :id";
+        $req =
+        "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active,
+            images.img AS image,
+            images.name AS imgTitle 
+        FROM products
+        INNER JOIN images ON products.img = images.id
+        WHERE products.id = :id";
         $params = ["id" => $id];
         return $this->findOne($req, $params);
     }

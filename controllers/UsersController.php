@@ -114,6 +114,15 @@ class UsersController{
                 $model = new Users();
                 $model->creatNew($newUser);
 
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //MODIF DU NEW USER ID DANS DB
+
+                // if (isset($_SESSION['visitor']) && !isset($_SESSION['user']))
+                // $_SESSION['visitor']['id'] = $newID;
+
+                // A CORRIGER
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
                 //recupère l'id créé pour le connecter directement
                 $newID = $_SESSION['visitor']['id'];
                 $newUser = $model->getUser($newID);

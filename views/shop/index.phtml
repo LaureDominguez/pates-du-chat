@@ -10,21 +10,30 @@
     </ul>
 
 
-    <?php foreach ($categories as $category): ?>
-        <?php if ($category['active']): ?>
+    <?php foreach ($categories as $category) : ?>
+        <?php if ($category['active']) : ?>
 
             <h2><?= htmlspecialchars($category["name"]); ?></h2>
 
             <article class="shop-cat">
-                <?php foreach ($products as $product): ?>
-                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']): ?>
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
+                        <?= var_dump($product) ?>
                         <figure class="shop-tuile">
                             <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
-                                <?php if (!empty($product["img"])): ?>
-                                    <!-- <img src="/images/{{$product->img}}" alt=""> -->
-                                <?php else: ?>
+                                <!-- <//?php if (!empty($product["img"])): ?>
+                                    <img src="/images/{{$product->img}}" alt="">
+                                <//?php else: ?>
                                     <img src="public/img/Hades.jpg" alt="">
+                                <//?php endif; ?> -->
+
+
+                                <?php if (!empty($product["img"])) : ?>
+                                    <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                                <?php else : ?>
+                                    <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
                                 <?php endif; ?>
+
                                 <figcaption>
                                     <h3><?= htmlspecialchars($product["name"]); ?></h3>
                                     <p><?= htmlspecialchars($product["descript"]); ?></p>

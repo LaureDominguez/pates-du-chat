@@ -19,9 +19,7 @@ class Gallery extends Database {
 
     public function creatNew($params)
     {
-        $this->addOne("images", "name, img", "?, ?", $params);
-        // header('Location: index.php?route=admin');
-        // exit();
+        return $this->addOne("images", "name, img", "?, ?", $params);
     }
 
     public function updateImage($newData)
