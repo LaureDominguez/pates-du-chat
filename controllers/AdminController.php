@@ -254,15 +254,15 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-    public function switchCat($id) //à faire
-    { //active ou déscative une catégorie
-        $success = [];
-        $id = $_GET['id'];
-        if (array_key_exists('switch', $_POST)) {
-            var_dump($_POST);
-            die;
-        }
-    }
+    // public function switchCat($id) //à faire
+    // { //active ou déscative une catégorie
+    //     $success = [];
+    //     $id = $_GET['id'];
+    //     if (array_key_exists('switch', $_POST)) {
+    //         var_dump($_POST);
+    //         die;
+    //     }
+    // }
 
     public function displayUploadCatForm($id)
     { //affiche le formulaire d'update d'une catégorie existante
