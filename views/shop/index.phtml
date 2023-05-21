@@ -1,13 +1,10 @@
 <section class="content">
-    <h1>Tous les articles</h1>
+    <h1>Tous les produits</h1>
 
-    <ul>
+    <!-- <ul>
         <li>trier les catégories</li>
         <li>rechercher un produit</li>
-        <li>valider le panier</li>
-        <li>animation du panier quand on ajoute un article</li>
-        <li>envoi un mail de récap de la commande</li>
-    </ul>
+    </ul> -->
 
 
     <?php foreach ($categories as $category) : ?>
@@ -18,16 +15,8 @@
             <article class="shop-cat">
                 <?php foreach ($products as $product) : ?>
                     <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive']) : ?>
-                        <?= var_dump($product) ?>
                         <figure class="shop-tuile">
                             <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
-                                <!-- <//?php if (!empty($product["img"])): ?>
-                                    <img src="/images/{{$product->img}}" alt="">
-                                <//?php else: ?>
-                                    <img src="public/img/Hades.jpg" alt="">
-                                <//?php endif; ?> -->
-
-
                                 <?php if (!empty($product["img"])) : ?>
                                     <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
                                 <?php else : ?>

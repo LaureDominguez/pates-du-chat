@@ -1,5 +1,10 @@
 <section class="content" id="cart-window">
-    <?php if (!isset($_COOKIE['panier']) || $_COOKIE['panier'] === 'null'): ?>
+    <ul>
+        <li>valider le panier</li>
+        <li>animation du panier quand on ajoute un article</li>
+        <li>envoi un mail de récap de la commande</li>
+    </ul>
+    <?php if (!isset($_COOKIE['panier']) || $_COOKIE['panier'] === 'null') : ?>
         <p>Le panier est vide</p>
     <?php else : ?>
         <table>
@@ -11,7 +16,7 @@
                 <th>actions</th>
             </thead>
             <tbody>
-                <?php foreach (json_decode($_COOKIE['panier'], true) as $cookie): ?>
+                <?php foreach (json_decode($_COOKIE['panier'], true) as $cookie) : ?>
                     <tr>
                         <!-- <td><//= $cookie['id'] ?></td> -->
                         <td><?= htmlspecialchars($cookie['product']); ?></td>

@@ -21,7 +21,7 @@ class Products extends Database {
     {
         $req =
         "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active, 
-            categories.name AS category,
+            categories.name AS categoryProduct,
             categories.active AS categoryActive,
             images.img AS image,
             images.name AS imgTitle

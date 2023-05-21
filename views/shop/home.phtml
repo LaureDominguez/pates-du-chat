@@ -9,10 +9,11 @@
                 <figure class="shop-tuile">
                     <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
                         <?php if (!empty($product["img"])) : ?>
-                            <!-- <img src="/images/{{$product->img}}" alt=""> -->
+                            <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
                         <?php else : ?>
-                            <img src="public/img/Hades.jpg" alt="">
+                            <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
                         <?php endif; ?>
+
                         <figcaption>
                             <h3><?= htmlspecialchars($product["name"]); ?></h3>
                             <p><?= htmlspecialchars($product["descript"]); ?></p>

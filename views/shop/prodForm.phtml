@@ -10,8 +10,11 @@
             <div>
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
+                    <option value="<?= htmlspecialchars($product['cat_id']); ?>"><?= htmlspecialchars($product['categoryProduct']); ?></option>
                     <?php foreach ($categories as $category) : ?>
-                        <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
+                        <?php if($category['name'] != $product['categoryProduct']): ?>
+                            <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
+                        <?php endif ?>
                     <?php endforeach; ?>
                 </select>
             </div>
