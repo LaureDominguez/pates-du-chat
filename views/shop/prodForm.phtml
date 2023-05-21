@@ -11,7 +11,6 @@
                 <label for="category">catégorie</label>
                 <select name="category" id="category">
                     <?php foreach ($categories as $category) : ?>
-                        <?php var_dump($category) ?>
                         <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -27,6 +26,7 @@
             <div>
                 <label for="img">image</label>
                 <input type="file" class="file" name="img" id="img">
+                <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
             </div>
 
             <div class="buttons">
@@ -62,6 +62,7 @@
             <div>
                 <label for="img">image</label>
                 <input type="file" class="file" name="img" id="img">
+                <!-- afficher un apperçu -->
             </div>
 
             <div class="buttons">

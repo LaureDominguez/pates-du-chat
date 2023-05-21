@@ -26,8 +26,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -306,8 +306,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -822,6 +822,12 @@ form div {
 .dashboard-form form textarea {
   height: 15rem;
 }
+.dashboard-form form img {
+  width: 50%;
+  margin: 1rem 0;
+  border-radius: 10px;
+  background-color: #fff;
+}
 
 /******************* general *******************/
 :root {
@@ -850,8 +856,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -1113,8 +1119,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -1392,8 +1398,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -1699,8 +1705,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -2055,8 +2061,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -2332,8 +2338,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -2598,8 +2604,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 
@@ -2937,8 +2943,8 @@ main {
 }
 
 .content {
-  background-color: var(--orange);
-  padding: 1.5rem;
+  background-color: rgba(255, 207, 149, 0.648);
+  padding: 3.3rem 0;
   border-radius: 10px;
 }
 

@@ -16,7 +16,6 @@ class AdminController{
     {//affiche la page admin, voir plus bas pour les options de chaque onglets
         $modelNews = new News();
         $news = $modelNews->getAllNews();
-        var_dump($_SESSION);
 
         $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
@@ -171,9 +170,10 @@ class AdminController{
             if (count($errors) == 0){
                 //si il y a une image à uploader :
                 if (!empty($_FILES['img'])) {
-                    $imgFile = $_FILES['img']['name'];
+                    $imgFile = strtolower($_FILES['img']['name']);
                     $file = $_FILES['img']['tmp_name'];
                     $imgSize = $_FILES['img']['size'];
+
 
                     $folder = "./public/img/produits/";
                     $path = $folder . $imgFile;
@@ -195,6 +195,7 @@ class AdminController{
                             trim($_POST['name']),
                             $imgFile,
                         ];
+                        
                         $modelGallery = new Gallery();
                         $img = $modelGallery->creatNew($addNew);
                         $success[] = "L'image a bien été envoyée !";
@@ -220,6 +221,7 @@ class AdminController{
             'tab3' => '',
             'tab4' => ''
         ];  
+
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -258,8 +260,9 @@ class AdminController{
 
     public function verifUpdateProdForm($id)
     { // vérifie et créer le produit 
-        $errors = [];
+        $errors = $imgErrors = [];
         $success = [];
+        $img = null;
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -272,6 +275,38 @@ class AdminController{
                 $errors[] = "Veuillez définir un prix";
 
             if (count($errors) == 0) {
+
+                if (!empty($_FILES['img'])) {
+                    $imgFile = strtolower($_FILES['img']['name']);
+                    $file = $_FILES['img']['tmp_name'];
+                    $imgSize = $_FILES['img']['size'];
+
+                    $folder = "./public/img/produits/";
+                    $path = $folder . $imgFile;
+                    $targetFile = $folder . basename($imgFile);
+
+                    $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+
+                    if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
+                        $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
+                    if ($imgSize > 1000000)
+                        $imgErrors[] = "L'image doit peser moins de 1 Mo";
+
+                    // si l'image est conforme :
+                    if (count($imgErrors) == 0) {
+
+                        //on déplace l'image dans le dossier
+                        move_uploaded_file($file, $targetFile);
+                        $addNew = [
+                            trim($_POST['name']),
+                            $imgFile,
+                        ];
+                        $modelGallery = new Gallery();
+                        $img = $modelGallery->creatNew($addNew);
+                        $success[] = "L'image a bien été envoyée !";
+                    }
+                }
+
                 $id = $_GET['id'];
                 $newData = [
                     'id' => $id,
@@ -279,7 +314,7 @@ class AdminController{
                     'cat_id' => trim($_POST['category']),
                     'descript' => trim($_POST['descript']),
                     'price' => trim($_POST['price']),
-                    'img' => trim($_POST['img'])
+                    'img' => $img
                 ];
 
                 $modelProduct = new Products();
