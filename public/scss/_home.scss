@@ -1,8 +1,15 @@
 /******************* home *******************/
 @use '_base';
 
+body{
+    background-image: url("../img/chalet.jpg");
+    background-repeat: no-repeat;
+    background-position: top 0% right 0%;
+    background-size: 50%;
+}
+
 .home{
-    background-color: var(--orange);
+    // background-color: var(--orange);
     padding: 1.5rem;
     border-radius: 10px;
     &:target{
@@ -21,7 +28,7 @@
 }
 
 #home{
-    display: flex;
+    // display: flex;
     h1{
         margin: 0;
         &::after{
@@ -40,6 +47,7 @@
     }
     article{
         padding: 2rem 1.5rem;
+        display: flex;
         background-color: rgba(255, 207, 149, 0.648);
         border-radius: 10px;
         width: 95%;

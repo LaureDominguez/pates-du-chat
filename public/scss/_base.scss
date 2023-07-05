@@ -1,10 +1,16 @@
 /******************* general *******************/
 
 :root{
-    --orange: rgb(242, 143, 24);
+    --orange-charte: #f28f18;
     --orange-select: rgb(255, 207, 149);
     --orange-clair: rgb(255, 242, 225);
-    --vert: rgb(0, 79, 18);
+    --vert: #004f12;
+    // gradient for food
+    --red: #E25B45;
+    --orange: #FF8357;
+    --yellow: #FAC172;
+    --blue: #89D5C9;
+    --green: #ADC865;
 }
 
 body *{
@@ -14,6 +20,9 @@ body *{
 body{
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(217deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%),            
+                linear-gradient(336deg, #ADC865, rgba(0,255,0,0) 70.71%);
 }
 
 section:not(:last-child){
@@ -26,7 +35,7 @@ main{
 }
 
 .content{
-    background-color: rgba(255, 207, 149, 0.648);
+    // background-color: rgba(255, 207, 149, 0.648);
     padding: 3.3rem 0;
     border-radius: 10px;
 }

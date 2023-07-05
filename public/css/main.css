@@ -1,10 +1,15 @@
 @charset "UTF-8";
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -14,6 +19,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -26,7 +32,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -207,7 +212,7 @@ form div {
 nav {
   position: fixed;
   width: 100%;
-  height: 3.2rem;
+  height: 2rem;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -238,16 +243,6 @@ nav .pages {
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-nav .pages:before {
-  content: "";
-  background-image: url("../img/site/Logo-remake.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
-  margin: 1rem;
-  height: 3rem;
-  width: 8rem;
 }
 nav .account {
   width: 30%;
@@ -281,10 +276,15 @@ nav .account {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -294,6 +294,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -306,7 +307,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -831,10 +831,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -844,6 +849,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -856,7 +862,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -1094,10 +1099,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -1107,6 +1117,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1119,7 +1130,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -1296,8 +1306,14 @@ form div {
 }
 
 /******************* home *******************/
+body {
+  background-image: url("../img/chalet.jpg");
+  background-repeat: no-repeat;
+  background-position: top 0% right 0%;
+  background-size: 50%;
+}
+
 .home {
-  background-color: var(--orange);
   padding: 1.5rem;
   border-radius: 10px;
 }
@@ -1315,9 +1331,6 @@ form div {
   justify-content: space-around;
 }
 
-#home {
-  display: flex;
-}
 #home h1 {
   margin: 0;
 }
@@ -1336,6 +1349,7 @@ form div {
 }
 #home article {
   padding: 2rem 1.5rem;
+  display: flex;
   background-color: rgba(255, 207, 149, 0.648);
   border-radius: 10px;
   width: 95%;
@@ -1373,10 +1387,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -1386,6 +1405,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1398,7 +1418,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -1680,10 +1699,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -1693,6 +1717,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1705,7 +1730,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -2036,10 +2060,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -2049,6 +2078,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2061,7 +2091,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -2313,10 +2342,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -2326,6 +2360,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2338,7 +2373,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -2579,10 +2613,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -2592,6 +2631,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2604,7 +2644,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
@@ -2918,10 +2957,15 @@ form div {
 
 /******************* general *******************/
 :root {
-  --orange: rgb(242, 143, 24);
+  --orange-charte: #f28f18;
   --orange-select: rgb(255, 207, 149);
   --orange-clair: rgb(255, 242, 225);
-  --vert: rgb(0, 79, 18);
+  --vert: #004f12;
+  --red: #E25B45;
+  --orange: #FF8357;
+  --yellow: #FAC172;
+  --blue: #89D5C9;
+  --green: #ADC865;
 }
 
 body * {
@@ -2931,6 +2975,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2943,7 +2988,6 @@ main {
 }
 
 .content {
-  background-color: rgba(255, 207, 149, 0.648);
   padding: 3.3rem 0;
   border-radius: 10px;
 }
