@@ -19,7 +19,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -27,7 +27,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -294,7 +293,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -302,7 +301,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -849,7 +847,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -857,7 +855,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -1117,7 +1114,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1125,7 +1122,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -1306,17 +1302,6 @@ form div {
 }
 
 /******************* home *******************/
-body {
-  background-image: url("../img/chalet.jpg");
-  background-repeat: no-repeat;
-  background-position: top 0% right 0%;
-  background-size: 50%;
-}
-
-.home {
-  padding: 1.5rem;
-  border-radius: 10px;
-}
 .home:target {
   scroll-margin-top: 5rem;
 }
@@ -1331,6 +1316,12 @@ body {
   justify-content: space-around;
 }
 
+#home {
+  background: url("../img/photo/OIG.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
 #home h1 {
   margin: 0;
 }
@@ -1405,7 +1396,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1413,7 +1404,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -1717,7 +1707,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -1725,7 +1715,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -2078,7 +2067,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2086,7 +2075,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -2360,7 +2348,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2368,7 +2356,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -2631,7 +2618,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2639,7 +2626,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 
@@ -2975,7 +2961,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
 section:not(:last-child) {
@@ -2983,7 +2969,6 @@ section:not(:last-child) {
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
 }
 

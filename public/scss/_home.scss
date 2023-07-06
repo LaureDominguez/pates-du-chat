@@ -1,17 +1,10 @@
 /******************* home *******************/
 @use '_base';
 
-body{
-    background-image: url("../img/chalet.jpg");
-    background-repeat: no-repeat;
-    background-position: top 0% right 0%;
-    background-size: 50%;
-}
-
 .home{
     // background-color: var(--orange);
-    padding: 1.5rem;
-    border-radius: 10px;
+    // padding: 1.5rem;
+    // border-radius: 10px;
     &:target{
         scroll-margin-top: 5rem;
     }
@@ -28,6 +21,10 @@ body{
 }
 
 #home{
+    background: url("../img/photo/OIG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     // display: flex;
     h1{
         margin: 0;

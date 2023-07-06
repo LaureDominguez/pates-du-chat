@@ -20,9 +20,9 @@ body *{
 body{
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(217deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%),            
-                linear-gradient(336deg, #ADC865, rgba(0,255,0,0) 70.71%);
+    background: -webkit-linear-gradient(217deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%),            
+                -webkit-linear-gradient(336deg, #ADC865, rgba(0,255,0,0) 70.71%);
 }
 
 section:not(:last-child){
@@ -30,7 +30,7 @@ section:not(:last-child){
 }
 
 main{
-    width: 90%;
+    // width: 90%;
     margin: 0 auto;
 }
 

@@ -25,13 +25,13 @@
 
     <main>
         <?php if (!isset($_SESSION['user'])) : ?>
-            <section class="modal-log" id="modal">
+            <aside class="modal-log" id="modal">
                 <?php include('users/login.phtml'); ?>
                 <?php include('users/register.phtml'); ?>
-            </section>
+            </aside>
         <?php endif ?>
 
-        <?php if (isset($_COOKIE['panier'])): ?>
+        <?php if (isset($_COOKIE['panier'])) : ?>
             <aside class="cart" id="shopping-icon">
                 <?php include('shop/cart.phtml'); ?>
             </aside>
@@ -41,9 +41,13 @@
             <?php include_once('./views/success.phtml'); ?>
         </aside>
 
-        <section class="container">
-            <?php include $template; ?>
-        </section>
+        <?php if (isset($template) && $template == "home.phtml"): ?>
+            <section>
+        <?php else: ?>
+            <section class="container">
+        <?php endif ?>
+                <?php include $template; ?>
+            </section>
     </main>
 
     <!-- Bootstrap -->
