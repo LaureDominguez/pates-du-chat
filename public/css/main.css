@@ -217,7 +217,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.9098039216);
+  background-color: rgba(255, 255, 255, 0.1568627451);
+  backdrop-filter: blur(4px);
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 nav ul, nav li, nav a {
@@ -227,7 +228,7 @@ nav ul, nav li, nav a {
   white-space: nowrap;
 }
 nav li {
-  padding: 0.2rem 0.5rem;
+  padding: 0.1rem 0.2rem;
   margin: auto;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -239,10 +240,47 @@ nav li:hover:not(.dropdown, .dropdown-menu) {
   border: 1px solid var(--orange-select);
 }
 nav .pages {
-  width: 40%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+nav .title {
+  width: 40%;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .title::before, nav .title::after {
+  background-color: var(--vert);
+  content: "";
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 10%;
+}
+nav .title::before {
+  right: 1rem;
+  margin-left: -10%;
+}
+nav .title::after {
+  left: 1rem;
+  margin-right: -10%;
+}
+nav .title a {
+  display: flex;
+  white-space: nowrap;
+  align-items: baseline;
+}
+nav .title a::after {
+  content: "";
+  background-image: url("../img/site/Logo pate.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 0.5rem;
+  width: 0.8rem;
 }
 nav .account {
   width: 30%;
@@ -1307,7 +1345,7 @@ form div {
 
 /******************* home *******************/
 .home {
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 .home:target {
   scroll-margin-top: 5rem;
@@ -1334,11 +1372,21 @@ form div {
   padding: 0.8rem;
   background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
 }
+#home article {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#home #logo {
+  height: 10rem;
+  margin: 2rem;
+}
 #home table {
   background-color: rgba(255, 207, 149, 0.648);
   padding: 1rem;
-  margin: 2rem;
-  width: 30%;
+  margin: 0 2rem;
   border-collapse: collapse;
   border-radius: 10px;
 }

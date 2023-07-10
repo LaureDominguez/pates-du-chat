@@ -3,6 +3,7 @@ import { dropdownNav } from "./modules/dropdown.js";
 import { toogleCart } from "./modules/shopCart.js";
 import { checkboxProducts } from "./modules/switch.js";
 import { revealOnScroll } from "./modules/anim-reveal.js";
+import { titleOnNav } from "./modules/home-title.js";
 // import { dynamicFields } from "./modules/dynamicFields.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -11,6 +12,7 @@ window.addEventListener("DOMContentLoaded", function () {
     toogleCart();
     checkboxProducts();
     revealOnScroll();
+    titleOnNav();
     // dynamicFields();
 })
 
