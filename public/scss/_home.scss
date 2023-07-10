@@ -2,30 +2,19 @@
 @use '_base';
 
 .home{
-    // background-color: var(--orange);
-    // padding: 1.5rem;
-    // border-radius: 10px;
+    padding-top: 5rem;
     &:target{
         scroll-margin-top: 5rem;
     }
     &:not(:last-child){
-        height: 90vh;
+        height: 100vh;
     }
-}
-
-.title{
-    display: flex;
-    width: 50%;
-    margin: auto;
-    justify-content: space-around;
 }
 
 #home{
     background: url("../img/photo/OIG.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
-    // display: flex;
     h1{
         margin: 0;
         &::after{
@@ -35,40 +24,56 @@
     h2{
         margin-top: 0;
     }
-    h3{
-        text-align: left;
+
+    #title{
+        padding: 0.8rem;
+        background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
     }
-    ul{
-        padding: 0 1rem;
-        margin: 0;
-    }
-    article{
-        padding: 2rem 1.5rem;
-        display: flex;
+
+    table{
         background-color: rgba(255, 207, 149, 0.648);
+        padding: 1rem;
+        margin: 2rem;
+        width: 30%;
+        border-collapse: collapse;
         border-radius: 10px;
-        width: 95%;
-        p{
-            text-align: justify;
-            line-height: 1.5rem;
-        }
-        li{
+        tr{
+            height: 3rem;
             line-height: 1.8rem;
             &:nth-child(odd){
-            list-style-image: url("../img/site/pateL.png");
-            margin-right: 10px;
+                td{
+                    &:first-child{
+                        text-align: left;
+                    }
+                    &:last-child{
+                        text-align: right;
+                    }
+                }
             }
             &:nth-child(even){
-            list-style-image: url("../img/site/pateR.png");
-            margin-left: 10px;
+                td{
+                    &:first-child{
+                        text-align: right;
+                    }
+                    &:last-child{
+                        text-align: left;
+                    }
+                }
             }
         }
-    }
-    img{
-        max-width: 50%;
-        height: 100%;
-        border-radius: 10px;
-        margin-left: 1rem;
+        td{
+            padding: 0.5rem;
+            &:nth-child(2){
+            width: 80%;
+            font-family: var(--Pacifico);
+            font-size: 1.1rem;
+            color: var(--vert);
+            text-align: justify;
+            }
+            &:first-child, &:last-child{
+                width: 10%;
+            }
+        }
     }
 }
 

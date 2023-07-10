@@ -1,22 +1,25 @@
 <?php require_once('./index.php'); ?>
 <nav>
     <ul class="pages">
-        <li><a href="index.php?route=home">accueil</a></li>
+        <!-- <li><a href="index.php?route=home">accueil</a></li> -->
         <li><a href="index.php?route=home#shop">produits</a></li>
         <li><a href="index.php?route=home#news">actus</a></li>
         <li><a href="index.php?route=home#recipes">recettes</a></li>
-        <li><a href="index.php?route=home#contact">contact</a></li>
-        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
-            <li><a href="index.php?route=admin">tableau de bord</a></li>
-        <?php endif; ?>
     </ul>
 
     <!-- <ul>
-        <h1>Les Pâtes du Chat</h1>
-        <h2>Artisan pastier de l’avant-pays Savoyard</h2>
+        <a href="index.php?route=home">Les Pâtes du Chat</a>
     </ul> -->
 
     <ul class="account">
+        <li><a href="index.php?route=home#contact">contact</a></li>
+        
+        <!-- accès gestion du site -->
+        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
+            <li><a href="index.php?route=admin">tableau de bord</a></li>
+        <?php endif; ?>
+
+        <!-- accès gestion du compte -->
         <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
             <li class="dropdown">
                 <a class="dropdown-toggle" role="button" id="dropdown-toggle">
@@ -35,7 +38,7 @@
             </li>
         <?php else : ?>
             <li id="loggin">connexion</li>
-            <li id="register">nouveau compte</li>
+            <!-- <li id="register">nouveau compte</li> -->
         <?php endif; ?>
     </ul>
 </nav>
