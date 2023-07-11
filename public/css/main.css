@@ -109,24 +109,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -145,7 +139,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -158,7 +152,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -174,14 +168,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -422,24 +408,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -458,7 +438,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -471,7 +451,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -487,14 +467,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -978,24 +950,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -1014,7 +980,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -1027,7 +993,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -1043,14 +1009,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -1247,24 +1205,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -1283,7 +1235,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -1296,7 +1248,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -1312,14 +1264,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -1347,6 +1291,10 @@ form div {
 }
 
 /******************* home *******************/
+main {
+  overflow: hidden;
+}
+
 .home {
   padding-top: 4rem;
 }
@@ -1555,24 +1503,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -1591,7 +1533,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -1604,7 +1546,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -1620,14 +1562,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -1868,24 +1802,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -1904,7 +1832,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -1917,7 +1845,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -1933,14 +1861,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -2230,24 +2150,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -2266,7 +2180,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -2279,7 +2193,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -2295,14 +2209,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -2513,24 +2419,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -2549,7 +2449,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -2562,7 +2462,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -2578,14 +2478,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -2785,24 +2677,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -2821,7 +2707,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -2834,7 +2720,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -2850,14 +2736,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/
@@ -2886,10 +2764,6 @@ form div {
 
 /******************* general *******************/
 /******************* alert *******************/
-.error {
-  color: red;
-}
-
 .success {
   color: green;
 }
@@ -2913,7 +2787,9 @@ form div {
 }
 
 .log {
-  width: 50vw;
+  width: 30vw;
+  flex-direction: column;
+  align-items: center;
   margin: auto;
   position: absolute;
   top: 20%;
@@ -2927,26 +2803,42 @@ form div {
   z-index: 100;
 }
 .log .btn {
-  margin: 0 auto;
+  width: 100%;
+  margin: auto;
 }
 .log form {
   width: 80%;
-  margin: auto;
 }
-.log form input {
+.log form input:not(.checkbox) {
   width: 100%;
 }
-.log form div:not(.buttons) {
-  display: grid;
-  justify-content: center;
-}
-.log form div div {
-  width: 50%;
-  margin: 0;
+.log form label {
+  color: #fff;
 }
 
-.form-errors {
+.error {
+  color: #fff;
+  background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #E25B45 50%, rgba(255, 0, 0, 0) 90%);
   text-align: center;
+}
+
+.password {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.password div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.password div input {
+  width: fit-content;
+}
+
+.flex {
+  display: flex;
 }
 
 /******************* panier *******************/
@@ -3130,24 +3022,18 @@ a, a:active {
 }
 
 /******************* bouttons *******************/
-p .btn {
-  padding: 0;
-}
-
 .btn {
-  padding: 0.5rem;
-  margin: 1rem;
-  color: var(--vert);
-  border: solid var(--vert) 1px;
-  border-radius: 5px;
-  transition: all, 0.2s ease-in;
+  padding: 0.1rem 0.4rem;
+  margin: auto;
+  border: 1px solid transparent;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 }
 
-.btn:hover, .btn:active {
+.btn:hover {
+  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-  border: solid var(--orange) 1px;
-  background-color: var(--vert);
 }
 
 .buttons {
@@ -3166,7 +3052,7 @@ p .btn {
   border: solid 1px #fff;
   border-radius: 3px;
   color: #fff;
-  background-color: red;
+  background-color: var(--orange);
   width: 1.2rem;
   height: 1.2rem;
   display: flex;
@@ -3179,7 +3065,7 @@ p .btn {
 }
 
 .croix-btn:hover, .croix-btn:active, .croix-btn:focus-visible {
-  color: red;
+  color: var(--orange);
   background-color: #fff;
 }
 
@@ -3195,14 +3081,6 @@ form label {
 form input:not(.btn, .file), form form textarea, form form select {
   border: none;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5215686275);
-}
-
-form div {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 /******************* short *******************/

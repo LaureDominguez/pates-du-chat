@@ -114,22 +114,21 @@ a, a:active{
 }
 
 /******************* bouttons *******************/
-p .btn{
-    padding: 0;
-}
+// p .btn{
+//     padding: 0;
+// }
 .btn{
-    padding: 0.5rem;
-    margin: 1rem;
-    color: var(--vert);
-    border: solid var(--vert) 1px ;
-    border-radius: 5px;
-    transition: all, 0.2s ease-in;
-    cursor: pointer;
-    &:hover, &:active{
-        color: #fff;
-        border: solid var(--orange) 1px ;
-        background-color: var(--vert);
-    }
+    padding: 0.1rem 0.4rem;
+        margin: auto;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all .2s ease-out;
+        &:hover{
+            background: -webkit-linear-gradient(308deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+            color: #fff;
+        }
 }
 
 .buttons{
@@ -149,7 +148,7 @@ p .btn{
     border: solid 1px #fff;
     border-radius: 3px;
     color: #fff;
-    background-color: red;
+    background-color: var(--orange);
     width: 1.2rem;
     height: 1.2rem;
     display: flex;
@@ -160,7 +159,7 @@ p .btn{
     top: 10px;
     right: 10px;
     &:hover, &:active, &:focus-visible{
-        color: red;
+        color: var(--orange);
         background-color: #fff;
     }
 }
@@ -177,14 +176,14 @@ form{
     input:not(.btn, .file), form textarea, form select{
         border: none;
         border-radius: 5px;
-        box-shadow: 0px 0px 5px 1px #00000085;
+        // box-shadow: 0px 0px 5px 1px #00000085;
     }
-    div {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        margin-bottom: 1rem;
-    }
+    // div:not(.log) {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     flex-direction: column;
+    //     margin-bottom: 1rem;
+    // }
 }
 
 /******************* short *******************/

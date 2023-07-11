@@ -26,14 +26,14 @@
     <main>
         <?php if (!isset($_SESSION['user'])) : ?>
             <aside class="modal-log" id="modal">
-                <?php include('users/login.phtml'); ?>
-                <?php include('users/register.phtml'); ?>
+                <?php include_once('users/login.phtml'); ?>
+                <?php include_once('users/register.phtml'); ?>
             </aside>
         <?php endif ?>
 
         <?php if (isset($_COOKIE['panier'])) : ?>
             <aside class="cart" id="shopping-icon">
-                <?php include('shop/cart.phtml'); ?>
+                <?php include_once('shop/cart.phtml'); ?>
             </aside>
         <?php endif ?>
 

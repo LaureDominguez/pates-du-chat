@@ -10,9 +10,9 @@
 //     background-color: var(--orange);
 //     box-shadow: 2px 2px 15px 2px #000000a3;
 // }
-.error{
-    color: red;
-}
+// .error{
+//     color: red;
+// }
 
 .success{
     color: green;
@@ -39,7 +39,9 @@
 }
 
 .log{
-    width: 50vw;
+    width: 30vw;
+    flex-direction: column;
+    align-items: center;
     margin: auto;
     position: absolute;
     top: 20%;
@@ -52,27 +54,47 @@
     box-shadow: 2px 2px 15px 2px #000000a3;
     z-index: 100;
     .btn{
-        margin: 0 auto;
+        width: 100%;
+        margin: auto;
     }
     form{
         width: 80%;
-        margin: auto;
-        input{
+        input:not(.checkbox){
             width: 100%;
         }
-        div:not(.buttons){
-            display: grid;
-            justify-content: center;
-        }
-        div div {
-            width: 50%;
-            margin: 0;
+        label{
+            color: #fff;
         }
     }
 }
 
-.form-errors{
+
+
+.error{
+    color: #fff;
+    background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
     text-align: center;
+}
+
+.password{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        input{
+            width: fit-content;
+        }
+    }
+}
+
+
+
+.flex{
+    display: flex;
 }
 
 

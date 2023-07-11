@@ -1,6 +1,10 @@
 /******************* home *******************/
 @use '_base';
 
+main{
+    overflow: hidden;
+}
+
 .home{
     padding-top: 4rem;
     &:target{
@@ -107,6 +111,8 @@
         }
     }
 }
+
+// Slide Shop
 
 // Slide News
 .news-home{

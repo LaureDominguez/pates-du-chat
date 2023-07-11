@@ -6,7 +6,6 @@ export function toogleModal() {
     let errorLogMail = document.getElementById('error_log_mail'); //msgs d'erreur
     let errorLogPswd = document.getElementById('error_log_pswd');
 
-    let register = document.getElementById('register'); //bouton de la nav 'nouveau compte'
     let registerWindow = document.getElementById('register-window'); //fenetre de formulaire
     let errorNewMail = document.getElementById('error_new_mail'); // msgs d'erreur
     let errorNewPswd = document.getElementById('error_new_pswd');
@@ -28,13 +27,13 @@ export function toogleModal() {
     //s'il y a une erreur dans le formulaire de connexion, affiche la fenetre avec les erreurs
     if(errorLogMail || errorLogPswd !== null) {
             modal.style.display = 'block';
-            logWindow.style.display = 'block';
+            logWindow.style.display = 'flex';
     }
     
     //pareil avec le formulaire de connexion
     if(errorNewMail || errorNewPswd || errorNewVerif !== null) {
             modal.style.display = 'block';
-            registerWindow.style.display = 'block';
+            registerWindow.style.display = 'flex';
     }
     
     //affiche ou masque les fenetres en fonction du clic
@@ -42,42 +41,42 @@ export function toogleModal() {
         switch (e.target.id) {
             case "loggin":
                 modal.style.display = 'block';
-                logWindow.style.display = 'block';
+                logWindow.style.display = 'flex';
                 break;
             
             case "new-account":
                 logWindow.style.display = "none";
-                registerWindow.style.display = "block";
-                window.location.href = "index.php?route=clearMsg";
+                registerWindow.style.display = "flex";
                 break;
             
             case "close-log":
                 modal.style.display = 'none';
                 logWindow.style.display = 'none';
-                window.location.href = "index.php?route=clearMsg";
+                // window.location.href = "index.php?route=clearMsg";
                 break;
             
             case "register":
                 modal.style.display = 'block';
-                registerWindow.style.display = 'block';
+                registerWindow.style.display = 'flex';
                 break;
             
-            case "cancel":
-                registerWindow.style.display = 'none';
-                logWindow.style.display = 'block';
-                window.location.href = "index.php?route=clearMsg";
-                break;
+            // case "cancel":
+            //     modal.style.display = 'none';
+            //     registerWindow.style.display = 'none';
+            //     logWindow.style.display = 'none';
+            //     // window.location.href = "index.php?route=clearMsg";
+            //     break;
             
             case "close-register":
                 modal.style.display = 'none';
                 registerWindow.style.display = 'none';
-                window.location.href = "index.php?route=clearMsg";
+                // window.location.href = "index.php?route=clearMsg";
                 break;
             
             case "modal":
                 modal.style.display = 'none';
                 registerWindow.style.display = 'none';
-                window.location.href = "index.php?route=clearMsg";
+                // window.location.href = "index.php?route=clearMsg";
                 break;
         }
     })

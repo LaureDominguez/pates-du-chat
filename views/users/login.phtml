@@ -1,5 +1,7 @@
 <div class="log" id="log_window">
-    <button class="croix-btn" id="close-log">X</button>
+    <button class="croix-btn" id="close-log">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
     <h2>Connexion</h2>
 
     <form action="index.php?route=connect" method="post" id="loggin">
@@ -20,16 +22,20 @@
                     <div class="error" id="error_log_pswd"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
-        </div>
-
-        <div class="buttons">
-
-            <button type="submit" class="btn" id="validate-log">valider</button>
-
-            <div>
-                <label>Pas de compte ?</label>
-                <p class="btn" id="new-account">Créer un compte</p>
+            <div class="password">
+                <div>
+                    <input type="checkbox" name="show_pass" class="checkbox" id="show_pass">
+                    <label for="show_pass">Afficher le mot de passe</label>
+                </div>
+                <a href="">Mot de passe oublié ?</a>
             </div>
         </div>
+
+        <button type="submit" class="btn" id="validate-log">valider</button>
     </form>
+
+    <div class="flex">
+        <p>Pas de compte ?</p>
+        <a class="btn" id="new-account">Créer un compte</a>
+    </div>
 </div>
