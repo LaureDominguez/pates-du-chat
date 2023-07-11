@@ -20,6 +20,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -228,16 +229,15 @@ nav ul, nav li, nav a {
   white-space: nowrap;
 }
 nav li {
-  padding: 0.1rem 0.2rem;
+  padding: 0.1rem 0.4rem;
   margin: auto;
-  border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease-out;
 }
 nav li:hover:not(.dropdown, .dropdown-menu) {
-  color: var(--orange);
-  border: 1px solid var(--orange-select);
+  background: -webkit-linear-gradient(40deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+  color: #fff;
 }
 nav .pages {
   width: 30%;
@@ -249,7 +249,7 @@ nav .title {
   width: 40%;
   overflow: hidden;
   text-align: center;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -333,6 +333,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -888,6 +889,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -1156,6 +1158,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -1371,6 +1374,17 @@ form div {
 #home #title {
   padding: 0.8rem;
   background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
+  position: relative;
+}
+#home #title:hover:before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+  top: 0;
+  left: -100px;
+  animation: shine 5s infinite linear; /* Animation */
 }
 #home article {
   width: 40%;
@@ -1389,6 +1403,7 @@ form div {
   margin: 0 2rem;
   border-collapse: collapse;
   border-radius: 10px;
+  box-shadow: -4px 13px 15px 7px rgba(0, 0, 0, 0.27);
 }
 #home table tr {
   height: 3rem;
@@ -1413,6 +1428,7 @@ form div {
   width: 80%;
   font-family: var(--Pacifico);
   font-size: 1.1rem;
+  letter-spacing: 1px;
   color: var(--vert);
   text-align: justify;
 }
@@ -1450,6 +1466,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -1762,6 +1779,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -2123,6 +2141,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -2405,6 +2424,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -2676,6 +2696,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -3020,6 +3041,7 @@ body * {
 body {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
+  cursor: default;
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
@@ -3208,7 +3230,7 @@ form div {
 }
 
 /******************* animations *******************/
-/******************* anim scroll *******************/
+/******************* sliders animation on scrolling *******************/
 .reveal {
   position: relative;
   transform: translateY(150px);
@@ -3235,6 +3257,90 @@ form div {
 .reveal.active, .revealR.active, .revealL.active {
   transform: translateY(0);
   opacity: 1;
+}
+
+/******************* title move through nav *******************/
+.move-up {
+  animation: move-up 0.8s both;
+}
+
+@keyframes move-up {
+  0% {
+    transform: translateY(6px);
+    scale: 2;
+    animation-timing-function: ease-in;
+    opacity: 0.1;
+  }
+  10% {
+    transform: translateY(5px);
+    scale: 1.9;
+    animation-timing-function: ease-in;
+  }
+  20% {
+    transform: translateY(4px);
+    scale: 1.8;
+    animation-timing-function: ease-in;
+    opacity: 0.2;
+  }
+  30% {
+    transform: translateY(3px);
+    scale: 1.7;
+    animation-timing-function: ease-in;
+    opacity: 0.3;
+  }
+  40% {
+    transform: translateY(2px);
+    scale: 1.6;
+    animation-timing-function: ease-in;
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(1px);
+    scale: 1.5;
+    animation-timing-function: ease-in;
+    opacity: 0.5;
+  }
+  60% {
+    transform: translateY(0px);
+    scale: 1.4;
+    animation-timing-function: ease-in;
+    opacity: 0.6;
+  }
+  70% {
+    scale: 1.3;
+    animation-timing-function: ease-in;
+    opacity: 0.7;
+  }
+  80% {
+    scale: 1.2;
+    animation-timing-function: ease-in;
+    opacity: 0.8;
+  }
+  90% {
+    scale: 1.1;
+    animation-timing-function: ease-in;
+    opacity: 0.9;
+  }
+  100% {
+    scale: 1;
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+}
+/******************* shiny effect *******************/
+@keyframes shine {
+  0% {
+    left: -100px;
+    opacity: 0.1;
+  }
+  20% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.1;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
