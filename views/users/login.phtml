@@ -2,27 +2,20 @@
     <i class="fa-solid fa-xmark croix-btn" id="close-log"></i>
     <h2>Connexion</h2>
 
-    <form action="index.php?route=connect" method="post">
+    <form action="index.php?route=connect" method="post" id="login-form">
         <div class="champs">
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
-            <?php if (isset($_SESSION['visitor']['msg']['log_email_errors'])) : ?>
-                <?php foreach ($_SESSION['visitor']['msg']['log_email_errors'] as $error) : ?>
-                    <div class="error" id="error_log_mail"><?= $error; ?></div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+            <div class="error" id="error_log_mail"></div>
         </div>
         <div class="champs password">
             <label for="pswd_log">mot de passe</label>
             <div>
                 <input type="password" name="pswd" id="pswd_log">
-                <i class="fa-solid fa-eye"></i>
+                <i class="fa-solid fa-eye" id="login-show"></i>
+                <i class="fa-regular fa-eye hidden" id="login-hide"></i>
             </div>
-            <?php if (isset($_SESSION['visitor']['msg']['log_pswd_errors'])) : ?>
-                <?php foreach ($_SESSION['visitor']['msg']['log_pswd_errors'] as $error) : ?>
-                    <div class="error" id="error_log_pswd"><?= $error; ?></div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+            <div class="error" id="error_log_pswd"></div>
 
             <a href="">Mot de passe oublié ?</a>
             <!-- texte qui change en hover -->

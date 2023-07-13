@@ -2845,7 +2845,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
-.password i:hover {
+.password i:hover, .password i:active {
   background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #FAC172 25%);
 }
 .password a {
