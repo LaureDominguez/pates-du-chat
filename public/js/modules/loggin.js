@@ -20,21 +20,6 @@ export function toogleModal() {
 
     // general
     let modal = document.getElementById('modal'); //div de flou sur tout l'ecran
-    // let clearMsg = "index.php?route=clearMsg" //methode pour effacer les messages d'erreur
-
-
-    // Requete AJAX vers le script PHP
-    // fetch('./config/ajax.php', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ nouvelleValeur: 'variable modifiée avec AJAX'})
-    // })
-    //     .then(response => response.text())
-    //     .then(result => {
-    //         console.log(result);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    // })
 
 
     //s'il y a une erreur dans le formulaire de connexion, affiche la fenetre avec les erreurs
@@ -59,9 +44,6 @@ export function toogleModal() {
                 break;
             
             case "new-account":
-                // sessionStorage.setItem('test', 1);
-                // alert(sessionStorage.getItem('msg'));
-                
                 logWindow.style.display = "none";
                 registerWindow.style.display = "flex";
                 break;
@@ -81,87 +63,17 @@ export function toogleModal() {
             case "close-log":
                 modal.style.display = 'none';
                 logWindow.style.display = 'none';
-
-
-
-
-                console.log('avant fetch');
-
-                const options = {
-                    method: 'POST',
-
-                    headers: {
-                        // Nous n'accepterons que le JSON en résultat.
-                        'Accept': 'application/json',
-                        // Dans le cas d'une requête contenant un body,
-                        // par exemple une POST ou PUT, on définit le format du body.
-                        'Content-Type': 'application/json',
-                        // Cas d'usage courant pour gérer l'authentification avec une API REST.
-                        // 'Authorization': 'Bearer ${token}'
-                    },
-
-                    body: JSON.stringify({
-                        title: 'Un post',
-                        content: 'Contenu de mon post'
-                    })
-                }
-
-
-                fetch("./config/ajax.php", options)
-                    .then(response => response.text())
-                    .then(result => {
-                        console.log(result);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-                console.log('après fetch');
-
-
-
-
-
-
-
-
-                // window.location.href = "index.php?route=clearMsg";
                 break;
             
             case "close-register":
                 modal.style.display = 'none';
                 registerWindow.style.display = 'none';
-
-                console.log('avant fetch');
-                fetch("./config/ajax.php", {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        nouvelleValeur: 'variable modifiée avec AJAX',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    
-                })
-                    .then(response => response.text())
-                    .then(result => {
-                        console.log(result);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-                console.log('après fetch');
-
-
-
-                // sessionStorage.removeItem('visitor','msg');
-                // window.location.href = "index.php?route=clearMsg";
                 break;
             
             case "modal":
                 modal.style.display = 'none';
                 logWindow.style.display = 'none';
                 registerWindow.style.display = 'none';
-                // sessionStorage.removeItem('visitor','msg');
                 // window.location.href = "index.php?route=clearMsg";
                 break;
         }

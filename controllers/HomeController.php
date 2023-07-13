@@ -9,7 +9,7 @@ use \Models\Recipes;
 
 class HomeController{
     public function displayHomePage(){
-        var_dump($_SESSION);
+
         
         $modelNews = new News();
         $news = $modelNews->getAllNews();
@@ -39,14 +39,14 @@ class HomeController{
         else $_SESSION['visitor']['currentPage'] = $currentPage;         
     }
 
-    public function clearMsg()
-    {//efface les messages d'erreur stockés dans la session
-        if (isset($_SESSION['visitor']['msg']))
-            $_SESSION['visitor']['msg'] = "";
+    // public function clearMsg()
+    // {//efface les messages d'erreur stockés dans la session
+    //     if (isset($_SESSION['visitor']['msg']))
+    //         $_SESSION['visitor']['msg'] = "";
             
-        header('Location: ' . $_SESSION['visitor']['currentPage']);
-        exit;
-    }
+    //     header('Location: ' . $_SESSION['visitor']['currentPage']);
+    //     exit;
+    // }
     
     function generateToken($length = 40)
     {

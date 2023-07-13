@@ -55,8 +55,7 @@ class UsersController{
             } else
                 switch ($email) {
                     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-                        $errors[] = $errors_email[] = "Veuillez renseigner un email valide";
-                        break;
+                        $errors[] = $errors_email[] = "Veuillez renseigner un email valide";;
                     case !empty($email):
                         $model = new Users();
                         $isItFree = $model->checkEmail($email);
@@ -98,11 +97,11 @@ class UsersController{
                 $errors[] = $errors_verif[] = "Les mots de passe ne correspondent pas";
             
             //si erreur, alors stock dans la session visitor pour les afficher
-            $_SESSION['visitor']['msg'] = [
-                'new_email_errors' => $errors_email,
-                'new_pswd_errors' => $errors_pswd,
-                'new_verif_errors' => $errors_verif
-            ];
+            // $_SESSION['visitor']['msg'] = [
+            //     'new_email_errors' => $errors_email,
+            //     'new_pswd_errors' => $errors_pswd,
+            //     'new_verif_errors' => $errors_verif
+            // ];
 
             if (count($errors) == 0) {
                 $newUser = [
@@ -135,12 +134,15 @@ class UsersController{
                 ];
 
                 $success = "Votre compte a bien été créé !";
-                $_SESSION['visitor']['msg'] = [
-                    'success' => $success
-                ];
+                // $_SESSION['visitor']['msg'] = [
+                //     'success' => $success
+                // ];
             }
+            var_dump($errors_email);
+            // die;
+            // return $errors_email;
         }
-        header('Location: ' . $_SESSION['visitor']['currentPage']);
+        // header('Location: ' . $_SESSION['visitor']['currentPage']);
     }
 
 ////////////////////////// connexion //////////////////////////

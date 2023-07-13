@@ -2848,6 +2848,11 @@ form input:not(.btn, .file), form form textarea, form form select {
 .password i:hover {
   background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #FAC172 25%);
 }
+.password a {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
 
 .flex {
   display: flex;
