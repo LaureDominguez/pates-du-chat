@@ -1,11 +1,9 @@
 <div class="log" id="log_window">
-    <button class="croix-btn" id="close-log">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
+    <i class="fa-solid fa-xmark croix-btn" id="close-log"></i>
     <h2>Connexion</h2>
 
-    <form action="index.php?route=connect" method="post" id="loggin">
-        <div>
+    <form action="index.php?route=connect" method="post">
+        <div class="champs">
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
             <?php if (isset($_SESSION['visitor']['msg']['log_email_errors'])) : ?>
@@ -14,21 +12,25 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <div>
+        <div class="champs password">
             <label for="pswd_log">mot de passe</label>
-            <input type="password" name="pswd" id="pswd_log">
+            <div>
+                <input type="password" name="pswd" id="pswd_log">
+                <i class="fa-solid fa-eye"></i>
+            </div>
             <?php if (isset($_SESSION['visitor']['msg']['log_pswd_errors'])) : ?>
                 <?php foreach ($_SESSION['visitor']['msg']['log_pswd_errors'] as $error) : ?>
                     <div class="error" id="error_log_pswd"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <div class="password">
+            <!-- <div class="password">
                 <div>
                     <input type="checkbox" name="show_pass" class="checkbox" id="show_pass">
                     <label for="show_pass">Afficher le mot de passe</label>
                 </div>
                 <a href="">Mot de passe oublié ?</a>
-            </div>
+            </div> -->
+            <a href="">Mot de passe oublié ?</a>
         </div>
 
         <button type="submit" class="btn" id="validate-log">valider</button>

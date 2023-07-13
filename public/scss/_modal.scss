@@ -40,6 +40,7 @@
 
 .log{
     width: 30vw;
+    height: 50vh;
     flex-direction: column;
     align-items: center;
     margin: auto;
@@ -59,15 +60,21 @@
     }
     form{
         width: 80%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         input:not(.checkbox){
             width: 100%;
         }
         label{
             color: #fff;
         }
+        .champs{
+            margin-bottom: 1rem;
+        }
     }
 }
-
 
 
 .error{
@@ -77,16 +84,22 @@
 }
 
 .password{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     div{
-        display: flex;
-        flex-direction: row;
+        position: relative;
+        overflow: hidden;
+    }
+    i{
+        position: absolute;
+        right: 0;
+        width: 10%;
+        height: 100%;
+        display: inline-flex;
         align-items: center;
-        input{
-            width: fit-content;
+        justify-content: center;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        &:hover{
+            background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #FAC172 25%);
         }
     }
 }
@@ -95,6 +108,10 @@
 
 .flex{
     display: flex;
+    width: 80%;
+    p, a{
+        width: 100%;
+    }
 }
 
 

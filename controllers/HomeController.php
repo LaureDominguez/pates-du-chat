@@ -9,6 +9,8 @@ use \Models\Recipes;
 
 class HomeController{
     public function displayHomePage(){
+        var_dump($_SESSION);
+        
         $modelNews = new News();
         $news = $modelNews->getAllNews();
 

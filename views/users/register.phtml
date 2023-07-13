@@ -1,11 +1,9 @@
 <div class="log" id="register-window">
-    <button class="croix-btn" id="close-register">
-        <i class="fa-solid fa-xmark"></i>
-    </button>
+    <i class="fa-solid fa-xmark croix-btn" id="close-register"></i>
     <h2>Nouveau compte</h2>
 
     <form action="index.php?route=register" method="post">
-        <div>
+        <div class="champs">
             <label for="email_new">email</label>
             <input type="email" name="email" id="email_new">
             <?php if (isset($_SESSION['visitor']['msg']['new_email_errors'])) : ?>
@@ -14,16 +12,23 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <div>
+        <div class="champs password">
             <label for="pswd_new">mot de passe</label>
-            <input type="password" name="pswd" id="pswd_new">
+            <div>
+                <input type="password" name="pswd" id="pswd_new">
+                <i class="fa-solid fa-eye"></i>
+            </div>
             <?php if (isset($_SESSION['visitor']['msg']['new_pswd_errors'])) : ?>
-                <?php foreach ($_SESSION['visitor']['msg']['new_pswd_errors'] as $error) : ?>
+                <?php foreach ($errors as $error) : ?>
                     <div class="error" id="error_new_pswd"><?= $error; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <!-- <div>
+                <input type="checkbox" name="show_pass" class="checkbox" id="show_pass">
+                <label for="show_pass">Afficher le mot de passe</label>
+            </div> -->
         </div>
-        <div>
+        <div class="champs">
             <label for="pswd_confirm_new">confirmez votre mot de passe</label>
             <input type="password" name="pswd_confirm" id="pswd_confirm_new">
             <?php if (isset($_SESSION['visitor']['msg']['new_verif_errors'])) : ?>
@@ -33,9 +38,11 @@
             <?php endif; ?>
         </div>
 
-        <div class="buttons">
-            <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
-            <p class="btn" id="cancel">annuler</p>
-        </div>
+        <button type="submit" class="btn" value="Valider" id="validate-register">valider</button>
     </form>
+
+    <div class="flex">
+        <p>Déjà un compte ?</p>
+        <a class="btn" id="connexion">Connexion</a>
+    </div>
 </div>

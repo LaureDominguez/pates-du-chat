@@ -119,10 +119,10 @@ if (array_key_exists('route', $_GET)):
             $controller->logout();
             break;
 
-        case 'clearMsg':
-            $controller = new Controllers\HomeController();
-            $controller->clearMsg();
-            break;
+        // case 'clearMsg':
+        //     $controller = new Controllers\HomeController();
+        //     $controller->clearMsg();
+        //     break;
 
 
 /////////////////////// profil ///////////////////////

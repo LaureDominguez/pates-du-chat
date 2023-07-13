@@ -2788,6 +2788,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 
 .log {
   width: 30vw;
+  height: 50vh;
   flex-direction: column;
   align-items: center;
   margin: auto;
@@ -2808,12 +2809,19 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .log form {
   width: 80%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .log form input:not(.checkbox) {
   width: 100%;
 }
 .log form label {
   color: #fff;
+}
+.log form .champs {
+  margin-bottom: 1rem;
 }
 
 .error {
@@ -2822,23 +2830,31 @@ form input:not(.btn, .file), form form textarea, form form select {
   text-align: center;
 }
 
-.password {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
 .password div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-.password div input {
-  width: fit-content;
+.password i {
+  position: absolute;
+  right: 0;
+  width: 10%;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+.password i:hover {
+  background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #FAC172 25%);
 }
 
 .flex {
   display: flex;
+  width: 80%;
+}
+.flex p, .flex a {
+  width: 100%;
 }
 
 /******************* panier *******************/

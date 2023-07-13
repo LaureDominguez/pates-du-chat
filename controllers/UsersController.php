@@ -173,15 +173,17 @@ class UsersController{
                         break;
                 }
 
+
             //validation mot de passe
             if (empty($_POST['pswd']))
                 $errors[] = $errors_pswd[] = "Veuillez entrer votre mot de passe";
 
             //si erreur, alors stock dans la session visitor
-            $_SESSION['visitor']['msg'] = [
-                'log_email_errors' => $errors_email,
-                'log_pswd_errors' => $errors_pswd,
-            ];
+            var_dump($errors);
+            // $_SESSION['visitor']['msg'] = [
+            //     'log_email_errors' => $errors_email,
+            //     'log_pswd_errors' => $errors_pswd,
+            // ];
 
             //stockage du mdp pour verification
             $pswd = trim($_POST['pswd']);
