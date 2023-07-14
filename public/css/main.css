@@ -115,10 +115,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -414,10 +414,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -956,10 +956,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -1211,10 +1211,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -1509,10 +1509,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -1808,10 +1808,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -2156,10 +2156,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -2425,10 +2425,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -2683,10 +2683,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -2835,6 +2835,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   overflow: hidden;
 }
 .password i {
+  color: var(--vert);
   position: absolute;
   right: 0;
   width: 10%;
@@ -2854,12 +2855,25 @@ form input:not(.btn, .file), form form textarea, form form select {
   width: 100%;
 }
 
-.flex {
-  display: flex;
-  width: 80%;
+#forgot:hover {
+  background: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
-.flex p, .flex a {
-  width: 100%;
+
+.trans-btn {
+  width: 80%;
+  transition: all 0.5s ease-out;
+}
+.trans-btn p {
+  display: block;
+}
+.trans-btn a {
+  display: none;
+}
+.trans-btn:hover p {
+  display: none;
+}
+.trans-btn:hover a {
+  display: block;
 }
 
 /******************* panier *******************/
@@ -3049,10 +3063,10 @@ a, a:active {
   border: 1px solid transparent;
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.btn:hover {
+.btn:hover:not(#forgot) {
   background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }

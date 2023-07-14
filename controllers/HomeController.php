@@ -9,7 +9,6 @@ use \Models\Recipes;
 
 class HomeController{
     public function displayHomePage(){
-
         
         $modelNews = new News();
         $news = $modelNews->getAllNews();

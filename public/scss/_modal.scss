@@ -89,6 +89,7 @@
         overflow: hidden;
     }
     i{
+        color: var(--vert);
         position: absolute;
         right: 0;
         width: 10%;
@@ -109,13 +110,28 @@
     }
 }
 
+#forgot:hover{
+    background:-webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+}
 
 
-.flex{
-    display: flex;
+
+.trans-btn{
     width: 80%;
-    p, a{
-        width: 100%;
+    transition: all .5s ease-out;
+    p{
+        display: block;
+    }
+    a{
+        display: none;
+    }
+    &:hover{
+        p{
+            display: none;
+        }
+        a{
+            display: block;
+        }
     }
 }
 

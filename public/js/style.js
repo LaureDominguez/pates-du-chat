@@ -1,6 +1,6 @@
 import { toogleModal } from "./modules/loggin.js";
 import { dropdownNav } from "./modules/dropdown.js";
-import { toogleCart } from "./modules/shopCart.js";
+// import { toogleCart } from "./modules/shopCart.js";
 import { checkboxProducts } from "./modules/switch.js";
 import { revealOnScroll } from "./modules/anim-reveal.js";
 import { titleOnNav } from "./modules/home-title.js";
@@ -10,7 +10,7 @@ import { checkErrors } from "./modules/errors.js";
 window.addEventListener("DOMContentLoaded", function () {
     toogleModal();
     dropdownNav();
-    toogleCart();
+    // toogleCart();
     checkboxProducts();
     revealOnScroll();
     titleOnNav();
