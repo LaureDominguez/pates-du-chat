@@ -1,78 +1,56 @@
 <?php
 
-// JS
-// console.log('avant fetch');
-//                 fetch("./config/ajax.php", {
-//                     method: 'POST',
-//                     body: JSON.stringify({
-//                         nouvelleValeur: 'variable modifiée avec AJAX',
-//                         headers: {
-//                             'Content-Type': 'application/json'
-//                         }
-//                     })
-                    
-//                 })
-//                     .then(response => response.text())
-//                     .then(result => {
-//                         console.log(result);
-//                     })
-//                     .catch(error => {
-//                         console.log(error);
-//                     })
-//                 console.log('après fetch');
-
-
-
-                // console.log('avant fetch');
-
-                // const options = {
-                //     method: 'POST',
-
-                //     headers: {
-                //         // Nous n'accepterons que le JSON en résultat.
-                //         'Accept': 'application/json',
-                //         // Dans le cas d'une requête contenant un body,
-                //         // par exemple une POST ou PUT, on définit le format du body.
-                //         'Content-Type': 'application/json',
-                //         // Cas d'usage courant pour gérer l'authentification avec une API REST.
-                //         // 'Authorization': 'Bearer ${token}'
-                //     },
-
-                //     body: JSON.stringify({
-                //         title: 'Un post',
-                //         content: 'Contenu de mon post'
-                //     })
-                // }
-
-
-                // fetch("./config/ajax.php", options)
-                //     .then(response => response.text())
-                //     .then(result => {
-                //         console.log(result);
-                //     })
-                //     .catch(error => {
-                //         console.log(error);
-                //     })
-                // console.log('après fetch');
-// end JS
-
 $input = json_decode(file_get_contents('php://input'), true);
+$errors = [];
+// var_dump($input);
+// var_dump($errors);
 
-var_dump('resultat du ajax : ');
-var_dump($input);
-echo json_encode($_POST);
-die;
-// Récupère la nouvelle valeur envoyée depuis JavaScript
-$nouvelleValeur = $_POST['nouvelleValeur'];
-var_dump('variable nouvelleValeur :');
-var_dump($nouvelleValeur);
-// Modifie la variable $_SESSION avec la nouvelle valeur
-$_SESSION['maVariable'] = $nouvelleValeur;
+$email = $input['email'];
+// var_dump($email);
 
-// if (isset($_SESSION['visitor']['msg']))
-// $_SESSION['visitor']['msg'] = "";
+use Models\Users;
 
-// Réponse de retour (optionnelle)
-echo 'Variable $_SESSION modifiée avec succès.';
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Email ou mot de passe inconnu 1";
+        echo json_encode($errors);
+        exit;
+} else {
+        $model = new Users();
+        $emailUsed = $model->checkEmail($email);
+        if (empty($emailUsed)) {
+                $errors[] = "Email ou mot de passe inconnu 2";
+                echo json_encode($errors);
+                exit;
+        }
+        if (!empty($emailUsed)) {
+                $model = new Users();
+                $userExist = $model->getUser($emailUsed['id']);
 
-var_dump($_SESSION);
+                // Validation du mot de passe
+
+                // Stockage du mdp pour vérification
+                $pswd = trim($input['pswd']);
+                // Si pas d'erreur, alors créer la session utilisateur. Sinon à la fin
+                if (count($errors) == 0) {
+                        if (password_verify($pswd, $userExist['pswd'])) {
+                                var_dump("c'est gagné");
+                                die;
+                                // header('Location: index.php?route=home');
+                                // exit;
+                        } else {
+                                $errors[] = "Email ou mot de passe inconnu 3";
+                                echo json_encode($errors);
+                                var_dump('chiant1');
+                                exit;
+                        }
+                } else {
+                        // Sinon on affiche les erreurs
+                        echo json_encode($errors);
+                        var_dump('chiant1');
+                        exit;
+                }
+        }
+}
+
+// header('Location: ' . $_SESSION['visitor']['currentPage']);
+// exit;

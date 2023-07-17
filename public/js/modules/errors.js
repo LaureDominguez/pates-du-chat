@@ -65,40 +65,70 @@ export function checkErrors() {
         console.log(jsonData);
 
     // Envoyez la requête POST au fichier PHP
-    fetch('./controllers/UsersController.php', {
+    // fetch('./controllers/UsersController.php', {
+    fetch('./config/ajax.php', {
         method: 'POST',
         body: jsonData
     })
-    .then(response => response.text())
+        .then(response => {
+    if (!response.ok) {
+        throw new Error('Erreur de requête : ' + response.status);
+        }
+        return response.text();
+    })
     .then(errors => {
-        // Traitez les erreurs renvoyées
-        if (Object.keys(errors).length > 0) {
-        // Affichez les erreurs à l'utilisateur
-        for (let field in errors) {
-            // Exemple : Afficher les erreurs à côté des champs correspondants
-            console.log('ya des erreurs');
-            // const errorContainer = document.getElementById(`${field}-error`);
-            // errorContainer.textContent = errors[field];
-            console.log(field)
+        // Traitez les données de réponse ici
+        if (errors.length > 0) {
+            console.log('liste des erreurs :')
+            console.log(errors);
+            console.log('fin del iste');
         }
-        } else {
-        // Les données du formulaire sont valides, effectuez l'action souhaitée
-        // Exemple : Redirigez l'utilisateur vers une autre page
-        // window.location.href = 'succes.html';
-            console.log('succès ?')
+        else {
+            console.log('pas d\'erreur');
+            window.location.href = 'index.php?route=connect';
         }
+        console.log("pouet");
+
+        
     })
     .catch(error => {
         // Traitez les erreurs de la requête Fetch
         console.error('Erreur de requête Fetch :', error);
     });
+        
+        
+        // errorMail.innerHTML = data;
+    // .then(response => response.blob())
+    // .then(errors => {
+    //     // Traitez les erreurs renvoyées
+    //     console.log(Object);
+    //     if (Object.keys(errors).length > 0) {
+    //     // Affichez les erreurs à l'utilisateur
+    //     for (let field in errors) {
+    //         // Exemple : Afficher les erreurs à côté des champs correspondants
+    //         console.log('ya des erreurs');
+    //         // const errorContainer = document.getElementById(`${field}-error`);
+    //         // errorContainer.textContent = errors[field];
+    //         console.log(field)
+    //     }
+    //     } else {
+    //     // Les données du formulaire sont valides, effectuez l'action souhaitée
+    //     // Exemple : Redirigez l'utilisateur vers une autre page
+    //     // window.location.href = 'succes.html';
+    //         console.log('succès ?')
+    //     }
+    // })
+    // .catch(error => {
+    //     // Traitez les erreurs de la requête Fetch
+    //     console.error('Erreur de requête Fetch :', error);
+    // });
 
 
         
-        // data.get('pswd').setAttribute('type') === 'password';
-        // if ("pas d'errreurs") {
-        //     loginForm.submit();
-        // }
+    //     data.get('pswd').setAttribute('type') === 'password';
+    //     if ("pas d'errreurs") {
+    //         loginForm.submit();
+    //     }
     }
 
 
