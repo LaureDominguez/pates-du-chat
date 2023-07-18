@@ -2,6 +2,8 @@
 
 namespace Models;
 
+require_once __DIR__ . "/../config/config.php";
+
 class Database {
 
     protected $bdd;
@@ -21,7 +23,7 @@ class Database {
         return $query->fetchAll(); // Récupérer les enregistrements
     }
 
-    protected function findOne(string $req, array $params = []): array | bool
+    public function findOne(string $req, array $params = []): array | bool
     {
         $query = $this->bdd->prepare($req);
         $query->execute($params);

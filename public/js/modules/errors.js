@@ -199,19 +199,23 @@ function fetchData(data) {
 
     fetch('./config/ajax.php', {
         method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+    },
         body: jsonData
     })
-        .then(response => {
-    if (!response.ok) {
-        throw new Error('Erreur de requête : ' + response.status);
-        }
-        return response.text();
+    .then(response => {
+        if (!response.ok) {
+                throw new Error('Erreur de requête : ' + response.status);
+            }
+            return response.text();
     })
-    .then(errors => {
+        
+    .then(data => {
         // Traitez les données de réponse ici
-        if (errors.length > 0) {
-            console.log('liste des erreurs register :')
-            console.log(errors);
+        if (data.length > 0) {
+            console.log('liste des erreurs :')
+            console.log(data);
             console.log('fin de liste');
         }
         else {
