@@ -2,18 +2,25 @@
 
 use Models\Users;
 
-// require_once '../models/Users.php';
-// require_once '../models/Database.php';
+require_once('../models/Users.php');
+require_once('../models/Database.php');
+require_once('config.php');
+
+header("Content-Type: application/json");
+// header("Access-Control-Allow-Methods : *");
 
 $input = json_decode(file_get_contents('php://input'), true);
 $errors = [];
 $email = $input['email'];
+
+var_dump("j'en ai raz le cul");
 
 if(isset($input['pswd_confirm'])){ // check for register ///////////////////////
         var_dump('nouveau compte');
 
         $model = new Users();
         $isItFree = $model->checkEmail($email);
+
         if (!empty($isItFree)){
                 $errors[] = "Cet email est déjà utilisé";
                 return json_encode($errors);
