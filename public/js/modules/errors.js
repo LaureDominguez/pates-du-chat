@@ -19,12 +19,17 @@ export function checkErrors() {
         const errorChk = document.getElementById('error_new_verif')
         let errors = false;
 
+
         if (!email) {
+            errorMail.style.display = 'block';
             errorMail.innerHTML = 'entrer une adresse email';
             errors = true;
             return;
         }
+        errorMail.style.display = 'none';
+
         if (!isValidEmail(email)) {
+            errorMail.style.display = 'block';
             errorMail.innerHTML = 'entrer une adresse email valide';
             errors = true;
             return;
@@ -33,6 +38,7 @@ export function checkErrors() {
 
 
         if (!pswd) {
+            errorPswd.style.display = 'block';
             errorPswd.innerHTML = 'entrer un mot de passe';
             errors = true;
             return;
@@ -40,6 +46,7 @@ export function checkErrors() {
         errorPswd.style.display = 'none';
 
         if (pswd.length > 1 && !pswd_confirm) {
+            error_new_verif.style.display = 'block';
             error_new_verif.innerHTML = 'confirmer le mot de passe';
             errors = true;
             return;
@@ -47,17 +54,69 @@ export function checkErrors() {
         error_new_verif.style.display = 'none';
 
 
-        // console.error(error);
-        console.log('renvois les erreurs ?')
-        if (errors == false) {
-            console.log('squalala');
-            fetchData(newData);
+        if (errors === false) {
+            fetchData(newData)
+                // .then(response => {
+                //     if (!response.ok) {
+                //         throw new Error('Erreur de requête : ' + response.status);
+                //     }
+                //     console.log(response.status);
+                //     return response.json(); // Analyser les données JSON renvoyées par le serveur
+                // })
+                // .then(data => {
+                //     console.log(data);
+                //     const parsedData = JSON.parse(data);
+                //     console.log(parsedData);
+                    
+                //     // Traitez les erreurs ici
+                //     if (parsedData.mail) {
+                //         console.log("pouet 1");
+                //         errorMail.style.display = 'block'
+                //         errorMail.innerHTML = parsedData.mail;
+                //         return;
+                //     }
+                //     errorMail.style.display = 'none'
+
+                //     if (parsedData.pswd) {
+                //         console.log("pouet 2");
+                //         errorPswd.style.display = 'block'
+                //         errorPswd.innerHTML = parsedData.pswd;
+                //         return;
+                //     }
+                //     errorPswd.style.display = 'none'
+
+                //     if (parsedData.pswd_confirm) {
+                //         console.log("pouet 3");
+                //         error_new_verif.style.display = 'block'
+                //         error_new_verif.innerHTML = parsedData.pswd_confirm;
+                //         return;
+                //     }
+                //     error_new_verif.style.display = 'none'
+
+                //     // Si pas d'erreur, alors on envoi le formlaire
+                //     registerForm.submit();
+                // })
+                .then(data => {
+                // Traitez les erreurs ici
+                if (data.mail) {
+                    errorMail.style.display = 'block';
+                    errorMail.innerHTML = data.mail;
+                } else if (data.pswd) {
+                    errorPswd.style.display = 'block';
+                    errorPswd.innerHTML = data.pswd;
+                } else if (data.pswd_confirm) {
+                    error_new_verif.style.display = 'block';
+                    error_new_verif.innerHTML = data.pswd_confirm;
+                } else {
+                    // Si pas d'erreur, alors on envoie le formulaire
+                    registerForm.submit();
+                }
+            })
+                .catch(error => {
+                    console.error('Erreur lors de la requête POST', error);
+                });
             return;
         }
-
-        // if ("pas d'errreurs") {
-        //     registerForm.submit();
-        // }
     }
 
 ////////////////////////////////////////////////////////////////////
@@ -77,29 +136,60 @@ export function checkErrors() {
         let errors = false;
 
         if (!email) {
+            errorMail.style.display = 'block'
             errorMail.innerHTML = 'entrer une adresse email';
             errors = true;
             return;
         }
         if (!isValidEmail(email)) {
+            errorMail.style.display = 'block'
             errorMail.innerHTML = 'entrer une adresse email valide';
             errors = true;
             return;
         }
         errorMail.style.display = 'none'
 
-        console.log(errors);
-
         if (!logData.get('pswd')) {
-            errorPswd.innerHTML = 'entrer votre mot de passe';
+            errorPswd.style.display = 'block'
+            errorPswd.innerHTML = data;
+            // errorPswd.innerHTML = 'entrer votre mot de passe';
             errors = true;
             return;
         }
         errorPswd.style.display = 'none';
 
         if (errors === false) {
-            console.log('nous sommes partis');
-            fetchData(logData);
+            fetchData(logData)
+                // .then(response => {
+                //     if (!response.ok) {
+                //         throw new Error('Erreur de requête : ' + response.status);
+                //     }
+                //     console.log(response);
+                //     return response.json(); // Analyser les données JSON renvoyées par le serveur
+                // })
+                // .then(data => {
+                //     // Traitez les erreurs ici
+                //     console.log(data);
+                //     if (data.error) {
+                //         // const parsedData = JSON.parse(data);
+                //         // console.log(parsedData);
+                //         errorMail.style.display = 'block'
+                //         errorMail.innerHTML = data.error;
+                //     }
+                // })
+                .then(data => {
+                    // Traitez les erreurs ici
+                    if (data.pswd) {
+                        errorMail.style.display = 'block';
+                        errorMail.innerHTML = data.pswd;
+                    } else {
+                        // Aucune erreur, vous pouvez envoyer le formulaire de connexion ici
+                        loginForm.submit();
+                    }
+                })
+                .catch(error => {
+                console.error('Erreur lors de la requête POST', error);
+                });
             return;
         }
         
@@ -194,41 +284,24 @@ function encryptPassword(password) {
 // });
 
 function fetchData(data) {
-    const jsonData = JSON.stringify(Object.fromEntries(data))
+    const jsonData = JSON.stringify(Object.fromEntries(data));
     // console.log(jsonData);
 
-    fetch('./config/ajax.php', {
+    return fetch('./config/ajax.php', {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json',
-    },
-        body: jsonData
+            'Content-Type': 'application/json',
+        },
+        body: jsonData,
     })
     .then(response => {
         if (!response.ok) {
-                throw new Error('Erreur de requête : ' + response.status);
-            }
-            return response.text();
-    })
-        
-    .then(data => {
-        // Traitez les données de réponse ici
-        if (data.length > 0) {
-            console.log('liste des erreurs :')
-            console.log(data);
-            console.log('fin de liste');
+            throw new Error('Erreur de requête : ' + response.status);
         }
-        else {
-            console.log('ca passe');
-            // window.location.href = 'index.php?route=connect';
-            loginForm.submit();
-        }
-        console.log("pouet 1");
-        
+        return response.json();
     })
     .catch(error => {
-        // Traitez les erreurs de la requête Fetch
-        console.error('Erreur de requête Fetch :', error);
+        console.error('Erreur lors de la requête POST', error);
     });
 }
 
