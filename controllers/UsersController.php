@@ -41,63 +41,66 @@ class UsersController{
 ////////////////////////// register //////////////////////////
     public function newUser()
     {//création d'un nouveau compte user
-        $errors = $errors_email = $errors_pswd = $errors_verif = [];
-        $email = $pswd = $pswd_confirm = $success = "";
 
-        if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
+        // var_dump($_POST);
+        // die;
+        // $errors = $errors_email = $errors_pswd = $errors_verif = [];
+        // $email = $pswd = $pswd_confirm = $success = "";
+
+        // if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)&& array_key_exists('pswd_confirm', $_POST)) {
 
             //validation email
             $email = trim($_POST['email']);
 
             //si erreur, alors stock le message d'erreur
-            if (empty($email)) {
-                $errors[] = $errors_email[] = "Veuillez entrer une adresse mail";
-            } else
-                switch ($email) {
-                    case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-                        $errors[] = $errors_email[] = "Veuillez renseigner un email valide";;
-                    case !empty($email):
-                        $model = new Users();
-                        $isItFree = $model->checkEmail($email);
-                        if (!empty($isItFree))
-                            $errors[] = $errors_email[] = "Cet email est déjà utilisé";
-                        break;
-                }
+            // if (empty($email)) {
+            //     $errors[] = $errors_email[] = "Veuillez entrer une adresse mail";
+            // } else
+                // switch ($email) {
+                //     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
+                //         $errors[] = $errors_email[] = "Veuillez renseigner un email valide";;
+                //     case !empty($email):
+                //         $model = new Users();
+                //         $isItFree = $model->checkEmail($email);
+                //         if (!empty($isItFree))
+                //             $errors[] = $errors_email[] = "Cet email est déjà utilisé";
+                //         break;
+                // }
 
             //validation mot de passe
             $pswd = trim($_POST['pswd']);
-            $numberMinimal = 8;
+            // $numberMinimal = 8;
 
-            if (empty($pswd)) {
-                $errors[] = $errors_pswd[] = "Veuillez choisir un mot de passe";
-            } else
-                switch ($pswd) {
-                    case strlen($pswd) < $numberMinimal:
-                        $errors[] = $errors_pswd [] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
-                        break;
-                    case preg_match('@[A-Z]@', $pswd)?:
-                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre majuscule";
-                        break;
-                    case preg_match('@[a-z]@', $pswd)?:
-                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre minuscule";
-                        break;
-                    case preg_match('@[0-9]@', $pswd)?:
-                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un chiffre";
-                        break;
-                    case preg_match('@[^\w]@', $pswd)?:
-                        $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un caractère spécial";
-                        break;
-                }
+            // if (empty($pswd)) {
+            //     $errors[] = $errors_pswd[] = "Veuillez choisir un mot de passe";
+            // } else
+            //     switch ($pswd) {
+            //         case strlen($pswd) < $numberMinimal:
+            //             $errors[] = $errors_pswd [] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
+            //             break;
+            //         case preg_match('@[A-Z]@', $pswd)?:
+            //             $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre majuscule";
+            //             break;
+            //         case preg_match('@[a-z]@', $pswd)?:
+            //             $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins une lettre minuscule";
+            //             break;
+            //         case preg_match('@[0-9]@', $pswd)?:
+            //             $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un chiffre";
+            //             break;
+            //         case preg_match('@[^\w]@', $pswd)?:
+            //             $errors[] = $errors_pswd[] = "Le mot de passe doit inclure au moins un caractère spécial";
+            //             break;
+            //     }
             
-            $pswd_confirm = trim($_POST['pswd_confirm']);
+            // $pswd_confirm = trim($_POST['pswd_confirm']);
 
-            if (empty($_POST['pswd_confirm']))
-                $errors[] = $errors_verif[] = "Veuillez confirmer votre mot de passe";
-            if (empty($errors_pswd) && ($pswd != $pswd_confirm))
-                $errors[] = $errors_verif[] = "Les mots de passe ne correspondent pas";
+            // if (empty($_POST['pswd_confirm']))
+            //     $errors[] = $errors_verif[] = "Veuillez confirmer votre mot de passe";
+            // if (empty($errors_pswd) && ($pswd != $pswd_confirm))
+            //     $errors[] = $errors_verif[] = "Les mots de passe ne correspondent pas";
             
             //si erreur, alors stock dans la session visitor pour les afficher
-            echo json_encode($errors);
+            // echo json_encode($errors);
             // echo json_encode($errors_email);
             // echo json_encode($errors_pswd);
             // echo json_encode($errors_verif);
@@ -108,7 +111,7 @@ class UsersController{
             //     'new_verif_errors' => $errors_verif
             // ];
 
-            if (count($errors) == 0) {
+            // if (count($errors) == 0) {
                 $newUser = [
                     $email,
                     password_hash($pswd, PASSWORD_DEFAULT),
@@ -139,12 +142,12 @@ class UsersController{
                 ];
 
                 $success = "Votre compte a bien été créé !";
-                // $_SESSION['visitor']['msg'] = [
-                //     'success' => $success
-                // ];
-            }
-        }
-        // header('Location: ' . $_SESSION['visitor']['currentPage']);
+                $_SESSION['visitor']['msg'] = [
+                    'success' => $success
+                ];
+            // }
+        // }
+        header('Location: ' . $_SESSION['visitor']['currentPage']);
     }
 
 ////////////////////////// connexion //////////////////////////

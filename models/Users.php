@@ -2,7 +2,7 @@
 
 namespace Models;
 
-require_once('../models/Database.php');
+// require_once('../models/Database.php');
 
 class Users extends Database {
     private string $email;

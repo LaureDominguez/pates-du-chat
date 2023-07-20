@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
                 $match = !!$result;
                 if (!$match) {
-                        $errors['pswd'] = "L'email ou le mot de passe sont incorrects";
+                        $errors['pswd'] = "L'email ou le mot de passe est incorrect";
                 }
         }
 

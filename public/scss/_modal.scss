@@ -15,7 +15,15 @@
 // }
 
 .success{
-    color: green;
+    position: fixed;
+    top: 2.2rem;
+    left: 40%;
+    right: 40%;
+    text-align: center;
+    color: #fff;
+    background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #ADC865 50%,  rgba(255,0,0,0) 100%);
+    text-align: center;
+    padding: 0.2rem;
 }
 
 

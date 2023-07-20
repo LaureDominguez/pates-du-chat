@@ -200,7 +200,7 @@ export function checkErrors() {
 
 
 
-    // button toggle show/hide password :
+    ///////////// button toggle show/hide password //////////////////
     // register form
     const registerShow = document.getElementById('register-show')
     const registerHide = document.getElementById('register-hide')
@@ -237,6 +237,15 @@ export function checkErrors() {
                 loginHide.style.display = 'none';
                 loginPswd.setAttribute('type', 'password');
                 break;
+            default:
+                registerShow.style.display = 'inline-flex';
+                registerHide.style.display = 'none';
+                registerPswd.setAttribute('type', 'password');
+                pswdConfirm.setAttribute('type', 'password');
+                
+                loginShow.style.display = 'inline-flex';
+                loginHide.style.display = 'none';
+                loginPswd.setAttribute('type', 'password');
         }
     });
 }
