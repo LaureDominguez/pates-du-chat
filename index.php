@@ -1,5 +1,7 @@
 <?php
 
+$delaiExpirationSession = 3600; // 1 heure en secondes
+session_set_cookie_params($delaiExpirationSession);
 session_start();
 
 spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
