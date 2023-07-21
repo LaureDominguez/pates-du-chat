@@ -2,205 +2,193 @@
 
 export function checkErrors() {
 
-    // register form ///////////////////
-
+/////////// register form ///////////////////
     const registerForm = document.querySelector('#register-form');
-    registerForm.addEventListener("submit", handleSubmitRegister);
+    if (registerForm) {
+        registerForm.addEventListener("submit", handleSubmitRegister);
 
-    function handleSubmitRegister(e) {
-        e.preventDefault(); //bloque l'envoi du formulaire
+        async function handleSubmitRegister(e) {
+            e.preventDefault(); //bloque l'envoi du formulaire
 
-        const newData = new FormData(registerForm);
-        const email = newData.get('email');
-        const pswd = newData.get('pswd');
-        const pswd_confirm = newData.get('pswd_confirm');
-        const errorMail = document.getElementById('error_new_mail')
-        const errorPswd = document.getElementById('error_new_pswd')
-        const errorChk = document.getElementById('error_new_verif')
-        let errors = false;
-
-
-        if (!email) {
-            errorMail.style.display = 'block';
-            errorMail.innerHTML = 'entrer une adresse email';
-            errors = true;
-            return;
-        }
-        errorMail.style.display = 'none';
-
-        if (!isValidEmail(email)) {
-            errorMail.style.display = 'block';
-            errorMail.innerHTML = 'entrer une adresse email valide';
-            errors = true;
-            return;
-        }
-        errorMail.style.display = 'none';
+            const newData = new FormData(registerForm);
+            const email = newData.get('email');
+            const pswd = newData.get('pswd');
+            const pswd_confirm = newData.get('pswd_confirm');
+            const errorMail = document.getElementById('error_new_mail')
+            const errorPswd = document.getElementById('error_new_pswd')
+            const errorChk = document.getElementById('error_new_verif')
+            let errorFound = false;
 
 
-        if (!pswd) {
-            errorPswd.style.display = 'block';
-            errorPswd.innerHTML = 'entrer un mot de passe';
-            errors = true;
-            return;
-        }
-        errorPswd.style.display = 'none';
+            // Tests
+            if (!email) {
+                errorMail.style.display = 'block';
+                errorMail.innerHTML = 'entrer une adresse email';
+                errorFound = true;
+                return;
+            }
+            errorMail.style.display = 'none';
 
-        if (pswd.length > 1 && !pswd_confirm) {
-            error_new_verif.style.display = 'block';
-            error_new_verif.innerHTML = 'confirmer le mot de passe';
-            errors = true;
-            return;
-        }
-        error_new_verif.style.display = 'none';
+            if (!isValidEmail(email)) {
+                errorMail.style.display = 'block';
+                errorMail.innerHTML = 'entrer une adresse email valide';
+                errorFound = true;
+                return;
+            }
+            errorMail.style.display = 'none';
 
+            if (!pswd) {
+                errorPswd.style.display = 'block';
+                errorPswd.innerHTML = 'entrer un mot de passe';
+                errorFound = true;
+                return;
+            }
 
-        if (errors === false) {
-            fetchData(newData)
-                // .then(response => {
-                //     if (!response.ok) {
-                //         throw new Error('Erreur de requête : ' + response.status);
-                //     }
-                //     console.log(response.status);
-                //     return response.json(); // Analyser les données JSON renvoyées par le serveur
-                // })
-                // .then(data => {
-                //     console.log(data);
-                //     const parsedData = JSON.parse(data);
-                //     console.log(parsedData);
-                    
-                //     // Traitez les erreurs ici
-                //     if (parsedData.mail) {
-                //         console.log("pouet 1");
-                //         errorMail.style.display = 'block'
-                //         errorMail.innerHTML = parsedData.mail;
-                //         return;
-                //     }
-                //     errorMail.style.display = 'none'
+            if (pswd.length > 1 && !pswd_confirm) {
+                error_new_verif.style.display = 'block';
+                error_new_verif.innerHTML = 'confirmer le mot de passe';
+                errorFound = true;
+                return;
+            }
+            error_new_verif.style.display = 'none';
 
-                //     if (parsedData.pswd) {
-                //         console.log("pouet 2");
-                //         errorPswd.style.display = 'block'
-                //         errorPswd.innerHTML = parsedData.pswd;
-                //         return;
-                //     }
-                //     errorPswd.style.display = 'none'
+            //Tests supplémentaires du mot de passe
+            const numberMinimal = 8;
+            let errorMessage = '';
 
-                //     if (parsedData.pswd_confirm) {
-                //         console.log("pouet 3");
-                //         error_new_verif.style.display = 'block'
-                //         error_new_verif.innerHTML = parsedData.pswd_confirm;
-                //         return;
-                //     }
-                //     error_new_verif.style.display = 'none'
+            switch (true) {
+                case pswd.length < numberMinimal:
+                    errorMessage = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
+                    errorFound = true;
+                    break;
+                case !/[A-Z]/.test(pswd):
+                    errorMessage = "Le mot de passe doit inclure au moins une lettre majuscule";
+                    errorFound = true;
+                    break;
+                case !/[a-z]/.test(pswd):
+                    errorMessage = "Le mot de passe doit inclure au moins une lettre minuscule";
+                    errorFound = true;
+                    break;
+                case !/\d/.test(pswd):
+                    errorMessage = "Le mot de passe doit inclure au moins un chiffre";
+                    errorFound = true;
+                    break;
+                case !/\W/.test(pswd):
+                    errorMessage = "Le mot de passe doit inclure au moins un caractère spécial";
+                    errorFound = true;
+                    break;
+                case pswd !== pswd_confirm:
+                    errorMessage = "Les mots de passe ne correspondent pas";
+                    errorFound = true;
+                    break;
+            }
 
-                //     // Si pas d'erreur, alors on envoi le formlaire
-                //     registerForm.submit();
-                // })
-                .then(data => {
-                // Traitez les erreurs ici
-                if (data.mail) {
-                    errorMail.style.display = 'block';
-                    errorMail.innerHTML = data.mail;
-                } else if (data.pswd) {
-                    errorPswd.style.display = 'block';
-                    errorPswd.innerHTML = data.pswd;
-                } else if (data.pswd_confirm) {
-                    error_new_verif.style.display = 'block';
-                    error_new_verif.innerHTML = data.pswd_confirm;
-                } else {
-                    // Si pas d'erreur, alors on envoie le formulaire
-                    registerForm.submit();
-                }
-            })
-                .catch(error => {
-                    console.error('Erreur lors de la requête POST', error);
-                });
-            return;
+            // Affiche les erreurs si besoin
+            if (errorFound) {
+                errorPswd.style.display = 'block';
+                errorPswd.innerHTML = errorMessage;
+                return;
+            }
+            errorPswd.style.display = 'none';
+
+            // Sinon envoi requête fetch pour vérifier la db
+            if (errorFound === false) {
+                try {
+                    const hashedPassword = await encryptPassword(pswd);
+                    console.log(hashedPassword);
+                    newData.set('pswd', hashedPassword);
+                    fetchData(newData)
+                        .then(data => {
+                            // Affiche les erreurs si besoin
+                            console.log(data);
+                            if (data.mail) {
+                                errorMail.style.display = 'block';
+                                errorMail.innerHTML = data.mail;
+                            } else {
+                                // Si pas d'erreur, alors on envoie le formulaire
+                                registerForm.submit();
+                            }
+                        })
+                    .catch(error => {
+                            console.error('Erreur lors de la requête POST', error);
+                        });
+                } catch (error) {
+                    console.error('Erreur lors du hachage du mot de passe', error);
+                    }
+                return;
+            }
         }
     }
 
 ////////////////////////////////////////////////////////////////////
 
-    // login form
-
+////////// login form //////////
     const loginForm = document.querySelector('#login-form');
-    loginForm.addEventListener("submit", handleSubmitLogin);
+    if (loginForm) {
+        loginForm.addEventListener("submit", handleSubmitLogin);
 
-    function handleSubmitLogin(e) {
-        e.preventDefault(); //bloque l'envoi du formulaire
+        async function handleSubmitLogin(e) {
+            e.preventDefault(); //bloque l'envoi du formulaire
 
-        const logData = new FormData(loginForm);
-        const errorMail = document.getElementById('error_log_mail')
-        const errorPswd = document.getElementById('error_log_pswd')
-        const email = logData.get('email');
-        let errors = false;
+            const logData = new FormData(loginForm);
+            const errorMail = document.getElementById('error_log_mail')
+            const errorPswd = document.getElementById('error_log_pswd')
+            const email = logData.get('email');
+            const pswd = logData.get('pswd');
+            let errors = false;
 
-        if (!email) {
-            errorMail.style.display = 'block'
-            errorMail.innerHTML = 'entrer une adresse email';
-            errors = true;
-            return;
-        }
-        if (!isValidEmail(email)) {
-            errorMail.style.display = 'block'
-            errorMail.innerHTML = 'entrer une adresse email valide';
-            errors = true;
-            return;
-        }
-        errorMail.style.display = 'none'
+            // Tests
+            if (!email) {
+                errorMail.style.display = 'block'
+                errorMail.innerHTML = 'entrer une adresse email';
+                errors = true;
+            } else if (!isValidEmail(email)) {
+                errorMail.style.display = 'block'
+                errorMail.innerHTML = 'entrer une adresse email valide';
+                errors = true;
+            } else {
+                errorMail.style.display = 'none'
+            }
 
-        if (!logData.get('pswd')) {
-            errorPswd.style.display = 'block'
-            errorPswd.innerHTML = data;
-            // errorPswd.innerHTML = 'entrer votre mot de passe';
-            errors = true;
-            return;
-        }
-        errorPswd.style.display = 'none';
+            if (!logData.get('pswd')) {
+                errorPswd.style.display = 'block'
+                errorPswd.innerHTML = data;
+                errorPswd.innerHTML = 'entrer votre mot de passe';
+                errors = true;
+            } else {
+                errorPswd.style.display = 'none';
+            }
 
-        if (errors === false) {
-            fetchData(logData)
-                // .then(response => {
-                //     if (!response.ok) {
-                //         throw new Error('Erreur de requête : ' + response.status);
-                //     }
-                //     console.log(response);
-                //     return response.json(); // Analyser les données JSON renvoyées par le serveur
-                // })
-                // .then(data => {
-                //     // Traitez les erreurs ici
-                //     console.log(data);
-                //     if (data.error) {
-                //         // const parsedData = JSON.parse(data);
-                //         // console.log(parsedData);
-                //         errorMail.style.display = 'block'
-                //         errorMail.innerHTML = data.error;
-                //     }
-                // })
-                .then(data => {
-                    // Traitez les erreurs ici
-                    if (data.pswd) {
-                        errorMail.style.display = 'block';
-                        errorMail.innerHTML = data.pswd;
-                    } else {
-                        // Aucune erreur, vous pouvez envoyer le formulaire de connexion ici
-                        loginForm.submit();
+            // Sinon envoi requête fetch pour vérifier la db
+            if (errors === false) {
+                try {
+                    const hashedPassword = await encryptPassword(pswd);
+                    console.log(hashedPassword);
+                    logData.set('pswd', hashedPassword);
+                    fetchData(logData)
+                        .then(data => {
+                            // Affiche les erreurs si besoin
+                            if (data.pswd) {
+                                errorMail.style.display = 'block';
+                                errorMail.innerHTML = data.pswd;
+                            } else {
+                                // Si pas d'erreur, alors on envoie le formulaire
+                                loginForm.submit();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Erreur lors de la requête POST', error);
+                        });
+                    } catch (error) {
+                        console.error('Erreur lors du hachage du mot de passe', error);
                     }
-                })
-                .catch(error => {
-                console.error('Erreur lors de la requête POST', error);
-                });
-            return;
+                return;
+            }
         }
-        
-        // if ("pas d'errreurs") {
-        //     loginForm.submit();
-        // }
     }
 
 
-
-    ///////////// button toggle show/hide password //////////////////
+///////////// button toggle show/hide password //////////////////
     // register form
     const registerShow = document.getElementById('register-show')
     const registerHide = document.getElementById('register-hide')
@@ -213,6 +201,7 @@ export function checkErrors() {
     const loginPswd = document.getElementById('pswd_log');
 
 
+    // actions des bouttons
     window.addEventListener('click', function (e) {
         switch (e.target.id) {
             case "register-show":
@@ -248,7 +237,21 @@ export function checkErrors() {
                 loginPswd.setAttribute('type', 'password');
         }
     });
+
+    // empêche les champs de repasser en masqué lorsqu'on tape le mot de passe
+    if (registerPswd) {
+        registerPswd.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
+    if (pswdConfirm) {
+        pswdConfirm.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
 }
+
+///////////// Différentes fonctions nécessaires aux formulaires ////////
 
 function isValidEmail(email) {
   // Expression régulière pour valider le format d'une adresse e-mail
@@ -257,40 +260,14 @@ function isValidEmail(email) {
 }
 
 // Fonction pour crypter le mot de passe côté client
-function encryptPassword(password) {
+async function encryptPassword(password) {
     const encoder = new TextEncoder();
     const data = encoder.encode(password);
-    return window.crypto.subtle.digest('SHA-256', data).then(buffer => {
-        const hexCodes = [];
-        const view = new DataView(buffer);
-        for (let i = 0; i < view.byteLength; i += 4) {
-        const value = view.getUint32(i);
-        const stringValue = value.toString(16);
-        const padding = '00000000';
-        const paddedValue = (padding + stringValue).slice(-padding.length);
-        hexCodes.push(paddedValue);
-        }
-        return hexCodes.join('');
-    });
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashedPassword = hashArray.map(byte => ('00' + byte.toString(16)).slice(-2)).join('');
+    return hashedPassword;
 }
-
-//     // Exemple d'utilisation :
-//     const password = 'mon_mot_de_passe';
-//     encryptPassword(password).then(encryptedPassword => {
-//     // Utilisez l'encryptedPassword pour l'envoyer au serveur avec fetch.
-//     // Par exemple :
-//     fetch('votre_script_de_verification.php', {
-//         method: 'POST',
-//         body: JSON.stringify({ password: encryptedPassword }),
-//         headers: {
-//         'Content-Type': 'application/json'
-//         }
-//     }).then(response => {
-//         // Gérer la réponse du serveur ici.
-//     }).catch(error => {
-//         console.error('Erreur lors de l\'envoi du mot de passe :', error);
-//     });
-// });
 
 function fetchData(data) {
     const jsonData = JSON.stringify(Object.fromEntries(data));

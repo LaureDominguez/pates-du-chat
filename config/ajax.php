@@ -10,6 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors = [];
         $email = $input['email'];
 
+        $newUser = [
+                trim($input['email']),
+                password_hash(trim($input['pswd']), PASSWORD_DEFAULT),
+        ];
+
         if (isset($input['pswd_confirm'])) { 
 
                 ////////////////// check for register ///////////////////////
@@ -17,67 +22,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($checkEmail === true) {
                         $errors['mail'] = "Cet email est déjà utilisé";
-                        // echo json_encode($errors);
-                        // exit;
-                } else {
-                        //validation mot de passe
-                        $pswd = trim($input['pswd']);
-                        $numberMinimal = 8;
-                        // var_dump('check 2');
-
-                        if (strlen($pswd) < $numberMinimal) {
-                                $errors['pswd'] = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
-                        } else if (!preg_match('@[A-Z]@', $pswd)) {
-                                $errors['pswd'] = "Le mot de passe doit inclure au moins une lettre majuscule";
-                        } else if (!preg_match('@[a-z]@', $pswd)) {
-                                $errors['pswd'] = "Le mot de passe doit inclure au moins une lettre minuscule";
-                        } else if (!preg_match('@[0-9]@', $pswd)) {
-                                $errors['pswd'] = "Le mot de passe doit inclure au moins un chiffre";
-                        } else if (!preg_match('@[^\w]@', $pswd)) {
-                                $errors['pswd'] = "Le mot de passe doit inclure au moins un caractère spécial";
-                        } else if ($pswd !== trim($input['pswd_confirm'])) {
-                                $errors['pswd'] = "Les mots de passe ne correspondent pas";
-                        }
-
-                        // switch (true) {
-                        //         case strlen($pswd) < $numberMinimal:
-                        //                 $error = "Le mot de passe doit contenir au minimum $numberMinimal caractères";
-                        //                 break;
-                        //         case !preg_match('@[A-Z]@', $pswd):
-                        //                 $error = "Le mot de passe doit inclure au moins une lettre majuscule";
-                        //                 break;
-                        //         case !preg_match('@[a-z]@', $pswd):
-                        //                 $error = "Le mot de passe doit inclure au moins une lettre minuscule";
-                        //                 break;
-                        //         case !preg_match('@[0-9]@', $pswd):
-                        //                 $error = "Le mot de passe doit inclure au moins un chiffre";
-                        //                 break;
-                        //         case !preg_match('@[^\w]@', $pswd):
-                        //                 $error = "Le mot de passe doit inclure au moins un caractère spécial";
-                        //                 break;
-                        //         case $pswd !== trim($input['pswd_confirm']):
-                        //                 $error = "Les mots de passe ne correspondent pas";
-                        //                 break;
-                        // }
-
-                        // if ($error !== null) {
-                        //         echo json_encode(['pswd' => $error]);
-                        // } else {
-                        //         // Aucune erreur, renvoyer une réponse 'OK'
-                        //         echo json_encode(['OK']);
-                        // }
                 }
 
         } else {
                 /////////////////// check for login ////////////////////////////////
 
-                $result = $database->findOne("SELECT * FROM users WHERE email = :email AND pswd = :pswd", $input
-                );
-                $match = !!$result;
-                if (!$match) {
+                // Récupérer l'utilisateur à partir de son email
+                $user = $database->findOne("SELECT * FROM users WHERE email = :email", ['email' => $input['email']]);
+                if ($user) {
+                        // Vérifier si le mot de passe fourni correspond au hachage stocké dans la base de données
+                        $hashedPassword = $user['pswd'];
+                        $pswd = trim($input['pswd']);
+                        if (password_verify($pswd, $hashedPassword)) {
+                                // Mot de passe correct
+                                // Vous pouvez effectuer d'autres actions, par exemple, créer une session utilisateur ici
+                                // Par exemple :
+                                // session_start();
+                                // $_SESSION['user_id'] = $user['id'];
+                        } else {
+                                $errors['pswd'] = "L'email ou le mot de passe est incorrect";
+                        }
+                } else {
                         $errors['pswd'] = "L'email ou le mot de passe est incorrect";
                 }
+                // $user = $database->findOne("SELECT * FROM users WHERE email = :email AND pswd = :pswd", $input
+                // );
+                // // $match = !!$user;
+                // if ($user) {
+                //         $errors['pswd'] = "L'email ou le mot de passe est incorrect";
+                // }
         }
 
-        echo json_encode($errors);
+        // Renvoyer "ok" si aucune erreur n'a été trouvée
+        if (empty($errors)) {
+                echo json_encode("ok");
+        } else {
+                echo json_encode($errors);
+        }
 }
