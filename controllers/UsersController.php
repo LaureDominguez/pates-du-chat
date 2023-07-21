@@ -48,20 +48,10 @@ class UsersController{
         ];
 
         $model = new Users();
-        $model->creatNew($newUser);
-
-
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //MODIF DU NEW USER ID DANS DB
-
-        // if (isset($_SESSION['visitor']) && !isset($_SESSION['user']))
-        // $_SESSION['visitor']['id'] = $newID;
-
-        // A CORRIGER
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        $newID = $model->creatNew($newUser);
 
         //recupère l'id créé pour le connecter directement
-        $newID = $_SESSION['visitor']['id'];
+
         $newUser = $model->getUser($newID);
 
         $_SESSION['user'] = [
@@ -83,105 +73,55 @@ class UsersController{
 ////////////////////////// connexion //////////////////////////
     public function checkUser()
     { //connexion d'un compte user
-        // $input = json_decode(file_get_contents('php://input'), true);
+        $errors = [];
+        $email = trim($_POST['email']);
+        $pswd = trim($_POST['pswd']);
 
-        $errors = $errors_email = $errors_pswd = $userExist = [];
-        $email = $pswd = $emailUsed  = $success = "";
+        $model = new Users();
 
-        // if (array_key_exists('email', $_POST) && array_key_exists('pswd', $_POST)) {
+        $userExist = $model->checkEmail($email);
+        $user = $model->getUser($userExist['id']);
 
-            //validation email
-            $email = trim($_POST['email']);
+        if (!$user || !password_verify($pswd, $user['pswd'])) {
+            $errors[] = "Email ou mot de passe incorrect";
+        }
 
-            //si erreur, alors stock le message d'erreur
-            // if (empty($email))
-            // $errors[] = $errors_email[] = "Veuillez saisir un email";
-            // else
-            // switch ($email) {
-            //     case !filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL):
-            //         $errors[] = $errors_email[] = "Email ou mot de passe incconu";
-            //         break;
-            //     case !empty($email):
-                    $model = new Users();
-                    $emailUsed = $model->checkEmail($email);
-                    // if (empty($emailUsed))
-                    //     $errors[] = $errors_email[] = "Email ou mot de passe incconu";
-                    // if (!empty($emailUsed))
-                        // $model = new Users();
-                    $userExist = $model->getUser($emailUsed['id']);
-                    // break;
-            // }
+        if (count($errors) > 0) {
+            $_SESSION['visitor']['msg'] = [
+                'log_email_errors' => $errors,
+            ];
+        } else {
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'name' => $user['name'],
+                'role' => $user['role']
+            ];
 
+            //si user a un nom, alors on l'appelle par son nom, sinon par email
+            $userName = isset($user['name']) ? $user['name'] : $user['email'];
 
-            //validation mot de passe
-            // if (empty($_POST['pswd']))
-            // $errors[] = $errors_pswd[] = "Veuillez entrer votre mot de passe";
-
-            //si erreur, alors stock dans la session visitor
-            // echo json_encode($errors);
-            // echo json_encode($errors_email);
-            // echo json_encode($errors_pswd);
-            // echo json_encode($errors_verif);
-
-            // $_SESSION['visitor']['msg'] = [
-            //     'log_email_errors' => $errors_email,
-            //     'log_pswd_errors' => $errors_pswd,
-            // ];
-
-            //stockage du mdp pour verification
-            $pswd = trim($_POST['pswd']);
-            //si pas d'erreur, alors créer la session user. else à la fin
-            if (count($errors) == 0) {
-                if (password_verify($pswd, $userExist['pswd'])) {
-                    $_SESSION['user'] = [
-                        'id' => $userExist['id'],
-                        'email' => $userExist['email'],
-                        'name' => $userExist['name'],
-                        'role' => $userExist['role']
-                    ];
-
-                    $user = "";
-                    //si user a un nom, alors on l'appelle par son nom, sinon par email
-                    if (isset($userExist['name'])) {
-                        $user = $userExist['name'];
-                    } else {
-                        $user = $userExist['email'];
-                    }
-
-                    //si user a le role admin, alors on lui dit
-                    if ($userExist['role'] == 1) {
-                        $success = "Bienvenue admin " . $userExist['email'];
-                        $_SESSION['admin'] = [
-                            'dashboardPages' => [
-                                'tab1' => 'checked',
-                                'tab2' => '',
-                                'tab3' => '',
-                                'tab4' => '',
-                            ]
-                        ];
-                    } else
-                        $success = "Bienvenue, " . $user;
-
-                    // $_SESSION['visitor']['msg'] = [
-                    //     'success' => $success,
-                    // ];
-
-                    header('Location: index.php?route=home');
-                    exit;
-                } else $errors[] = $errors_email[] = "Email ou mot de passe incconu";
-
-                //sinon on affiche les erreurs
-                // echo json_encode($errors);
-                // return json_encode($errors);
-                // $_SESSION['visitor']['msg'] = [
-                //     'log_email_errors' => $errors_email,
-                //     'log_pswd_errors' => $errors_pswd,
-                // ];
+            //si user a le role admin, alors on lui dit
+            if ($user['role'] == 1) {
+                $success = "Bienvenue admin " . $userName;
+                $_SESSION['admin'] = [
+                    'dashboardPages' => [
+                        'tab1' => 'checked',
+                        'tab2' => '',
+                        'tab3' => '',
+                        'tab4' => '',
+                    ]
+                ];
+            } else {
+                $success = "Bienvenue, " . $userName;
             }
 
-            header('Location: ' . $_SESSION['visitor']['currentPage']);
-            exit;
-        // }
+            $_SESSION['visitor']['msg'] = [
+                'success' => $success,
+            ];
+        }
+        header('Location: ' . $_SESSION['visitor']['currentPage']);
+        exit();
     }
 
     ////////////////////////// check session //////////////////////////
@@ -190,6 +130,7 @@ class UsersController{
     {
         if (!isset($_SESSION['user']))
             header('Location: index.php?route=login');
+            exit();
     }
 
     ////////////////////////// update //////////////////////////
@@ -203,7 +144,15 @@ class UsersController{
     public function updateUserName()
     {//création ou modification du nom de user
         $errors = [];
-        $name = $success = "";
+        $success = "";
+
+        $name = trim($_POST['name']);
+
+        if (empty($name)) {
+            $errors[] = "Veuillez entrer votre nom";
+        }
+
+
         if (array_key_exists('name', $_POST)) {
 
             $name = trim($_POST['name']);
@@ -212,10 +161,6 @@ class UsersController{
             if (empty($name))
                 $errors[] = "Veuillez entrer votre nom";
             }
-
-            $_SESSION['visitor']['msg'] = [
-                'name_error' => $errors,
-            ];
 
             if (count($errors) == 0) {
 
