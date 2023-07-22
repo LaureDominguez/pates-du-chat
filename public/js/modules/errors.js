@@ -207,41 +207,44 @@ export function checkErrors() {
 
 
     // actions des bouttons
-    window.addEventListener('click', function (e) {
-        switch (e.target.id) {
-            case "register-show":
-                registerShow.style.display = 'none';
-                registerHide.style.display = 'inline-flex';
-                registerPswd.setAttribute('type', 'text');
-                pswdConfirm.setAttribute('type', 'text');
-                break;
-            case "register-hide":
-                registerShow.style.display = 'inline-flex';
-                registerHide.style.display = 'none';
-                registerPswd.setAttribute('type', 'password');
-                pswdConfirm.setAttribute('type', 'password');
-                break;
-            case "login-show":
-                loginShow.style.display = 'none';
-                loginHide.style.display = 'inline-flex';
-                loginPswd.setAttribute('type', 'text');
-                break;
-            case "login-hide":
-                loginShow.style.display = 'inline-flex';
-                loginHide.style.display = 'none';
-                loginPswd.setAttribute('type', 'password');
-                break;
-            default:
-                registerShow.style.display = 'inline-flex';
-                registerHide.style.display = 'none';
-                registerPswd.setAttribute('type', 'password');
-                pswdConfirm.setAttribute('type', 'password');
-                
-                loginShow.style.display = 'inline-flex';
-                loginHide.style.display = 'none';
-                loginPswd.setAttribute('type', 'password');
-        }
-    });
+    if (loginForm || registerForm) {
+        window.addEventListener('click', function (e) {
+            switch (e.target.id) {
+                case "register-show":
+                    registerShow.style.display = 'none';
+                    registerHide.style.display = 'inline-flex';
+                    registerPswd.setAttribute('type', 'text');
+                    pswdConfirm.setAttribute('type', 'text');
+                    break;
+                case "register-hide":
+                    registerShow.style.display = 'inline-flex';
+                    registerHide.style.display = 'none';
+                    registerPswd.setAttribute('type', 'password');
+                    pswdConfirm.setAttribute('type', 'password');
+                    break;
+                case "login-show":
+                    loginShow.style.display = 'none';
+                    loginHide.style.display = 'inline-flex';
+                    loginPswd.setAttribute('type', 'text');
+                    break;
+                case "login-hide":
+                    loginShow.style.display = 'inline-flex';
+                    loginHide.style.display = 'none';
+                    loginPswd.setAttribute('type', 'password');
+                    break;
+                default:
+                    registerShow.style.display = 'inline-flex';
+                    registerHide.style.display = 'none';
+                    registerPswd.setAttribute('type', 'password');
+                    pswdConfirm.setAttribute('type', 'password');
+                    
+                    loginShow.style.display = 'inline-flex';
+                    loginHide.style.display = 'none';
+                    loginPswd.setAttribute('type', 'password');
+            }
+        });
+    }
+    
 
     // empêche les champs de repasser en masqué lorsqu'on tape le mot de passe
     if (registerPswd) {

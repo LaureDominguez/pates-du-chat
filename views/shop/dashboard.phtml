@@ -1,0 +1,104 @@
+<h2>boutique</h2>
+
+<!-- produits -->
+<h3>Tous les produits</h3>
+
+<!-- <ul>
+                <li>pagination</li>
+                <li>activer/masquer un produit</li>
+            </ul> -->
+
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>produit</th>
+            <th>categorie</th>
+            <th>prix</th>
+            <th>en ligne</th>
+            <th colspan="2">actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($products as $product) : ?>
+            <?php if ($product['categoryActive']) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($product["id"]); ?></td>
+                    <td><?= htmlspecialchars($product["name"]); ?></td>
+                    <td><?= htmlspecialchars($product["category"]); ?></td>
+                    <td><?= htmlspecialchars($product["price"]); ?>€</td>
+                    <td>
+                        <!-- fetch -->
+                        <form action="">
+                            <label class="switch">
+                                <input id="switchProducts" type="checkbox" <?php if ($product['active']) : echo 'checked';
+                                                                            endif; ?> value=<?= htmlspecialchars($product["id"]); ?>>
+                                <span id="setSwitchProduct"></span>
+                            </label>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']); ?>" data-text="Modifier le produit" class="aide left">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>" data-text="Voir le produit" class="aide left">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- category -->
+<h3>Toutes les catégories</h3>
+
+<table class="dashboard-table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>categorie</th>
+            <th>nombre de produits</th>
+            <th>en ligne</th>
+            <th>modifier</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($categories as $category) : ?>
+            <?php $id = $category['id'];
+            $countProducts = $modelCategory->countProductsFromCat($id);
+            $nbProducts = $countProducts['nbProducts']; ?>
+
+            <tr>
+                <td><?= htmlspecialchars($category["id"]); ?></td>
+                <td><?= htmlspecialchars($category["name"]); ?></td>
+                <td><?= htmlspecialchars($nbProducts); ?></td>
+                <td>
+                    <!-- fetch -->
+                    <form action="index.php?route=switchCat&id=<?= htmlspecialchars($category['id']); ?>" method="post">
+                        <label class="switch">
+                            <input type="checkbox" name="switch" class="switchCat" id="switch_<?= htmlspecialchars($category['id']); ?>" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" <?php if ($category['active']) : echo 'checked';
+                                                                                                                                                                                                        endif; ?> />
+                            <span></span>
+                        </label>
+                    </form>
+                </td>
+                <td>
+                    <a href=" index.php?route=displayUploadCatForm&id=<?= htmlspecialchars($category['id']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<hr>
+
+<div class="buttons">
+    <a href="index.php?route=displayCreateProdForm" class="btn">créer un produit</a>
+    <a href="index.php?route=displayCreateCatForm" class="btn">créer une catégorie</a>
+</div>

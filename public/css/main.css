@@ -794,7 +794,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     opacity: 1;
   }
 }
-/******************* tabeaux *******************/
+/******************* tableaux *******************/
 .dashboard-table {
   margin-bottom: 1rem;
   border-collapse: collapse;
@@ -818,10 +818,13 @@ form input:not(.btn, .file), form form textarea, form form select {
   color: red;
 }
 
-.dashboard-contact-table {
+#contact-tab .editable {
+  color: red;
+}
+#contact-tab table {
   margin: 1rem auto;
 }
-.dashboard-contact-table, .dashboard-contact-table th, .dashboard-contact-table td {
+#contact-tab table, #contact-tab table th, #contact-tab table td {
   padding: 1rem;
   border: 1px solid rgb(200, 200, 200);
   text-align: center;

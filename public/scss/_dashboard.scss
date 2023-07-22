@@ -98,7 +98,7 @@
 }
 
 
-/******************* tabeaux *******************/
+/******************* tableaux *******************/
 .dashboard-table{
 	margin-bottom: 1rem;
 	border-collapse: collapse;
@@ -126,13 +126,19 @@
 	}
 }
 
-.dashboard-contact-table{
-	margin: 1rem auto;
-	&, th, td{
-		padding: 1rem;
-		border: 1px solid rgb(200, 200, 200);
-		text-align: center;
-	border-collapse: collapse;
+#contact-tab{
+	.editable{
+		color: red;
+		
+	}
+	table{
+		margin: 1rem auto;
+		&, th, td{
+			padding: 1rem;
+			border: 1px solid rgb(200, 200, 200);
+			text-align: center;
+		border-collapse: collapse;
+		}
 	}
 }
 

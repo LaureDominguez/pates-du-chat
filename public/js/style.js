@@ -6,6 +6,7 @@ import { revealOnScroll } from "./modules/anim-reveal.js";
 import { titleOnNav } from "./modules/home-title.js";
 import { checkErrors } from "./modules/errors.js";
 import { cookieSession } from "./modules/cookie.js";
+import { editContact } from "./modules/horaires.js";
 // import { dynamicFields } from "./modules/dynamicFields.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -17,6 +18,7 @@ window.addEventListener("DOMContentLoaded", function () {
     titleOnNav();
     checkErrors();
     cookieSession();
+    editContact();
     // dynamicFields();
 })
 

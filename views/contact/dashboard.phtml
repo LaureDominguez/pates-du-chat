@@ -1,0 +1,64 @@
+<h2>contact</h2>
+<h3>les marchés où me trouver :</h3>
+
+<?php
+$daysData = array(
+    'lundi' => array(),
+    'mardi' => array(),
+    'mercredi' => array(),
+    'jeudi' => array(),
+    'vendredi' => array(),
+    'samedi' => array(),
+    'dimanche' => array()
+);
+
+foreach ($dates as $date) {
+    switch ($date['id']) {
+        case 1:
+            $daysData['lundi'] = $date;
+            break;
+        case 2:
+            $daysData['mardi'] = $date;
+            break;
+        case 3:
+            $daysData['mercredi'] = $date;
+            break;
+        case 4:
+            $daysData['jeudi'] = $date;
+            break;
+        case 5:
+            $daysData['vendredi'] = $date;
+            break;
+        case 6:
+            $daysData['samedi'] = $date;
+            break;
+        case 7:
+            $daysData['dimanche'] = $date;
+            break;
+        case 8:
+            $semaineData = $date;
+            break;
+    }
+}
+?>
+
+<?php if (isset($semaineData)) : ?>
+    <h4 class="editable" data-field="semaine">Semaine du : <?= $semaineData['time']; ?></h4>
+<?php endif; ?>
+
+<table>
+    <tr>
+        <th></th>
+        <th>heure</th>
+        <th>ville</th>
+        <th>emplacement</th>
+    </tr>
+    <?php foreach ($daysData as $day => $data) : ?>
+        <tr>
+            <td><?= $day; ?></td>
+            <td class="editable" data-field="heure"><?= $data['time']; ?></td>
+            <td class="editable" data-field="ville"><?= $data['city']; ?></td>
+            <td class="editable" data-field="emplacement"><?= $data['place']; ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

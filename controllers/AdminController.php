@@ -8,6 +8,7 @@ use \Models\Categories;
 use \Models\Products;
 use \Models\Recipes;
 use \Models\Gallery;
+use \Models\Horaires;
 
 class AdminController{
 //gère toutes les options de la page 'Tableau de bord' du site
@@ -31,6 +32,9 @@ class AdminController{
 
         $modelRecipes = new Recipes();
         $recipes = $modelRecipes->getAllRecipes();
+
+        $modelDate = new Horaires;
+        $dates = $modelDate->getAllDates();
 
         $template = "dashboard.phtml";
         include'views/layout.phtml';
