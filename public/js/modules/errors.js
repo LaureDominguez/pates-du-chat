@@ -93,10 +93,10 @@ export function checkErrors() {
 
             // Sinon envoi requête fetch pour vérifier la db
             if (errorFound === false) {
-                try {
-                    const hashedPassword = await encryptPassword(pswd);
-                    console.log(hashedPassword);
-                    newData.set('pswd', hashedPassword);
+                // try {
+                //     const hashedPassword = await encryptPassword(pswd);
+                //     console.log(hashedPassword);
+                //     newData.set('pswd', hashedPassword);
                     fetchData(newData)
                         .then(data => {
                             // Affiche les erreurs si besoin
@@ -112,9 +112,9 @@ export function checkErrors() {
                     .catch(error => {
                             console.error('Erreur lors de la requête POST', error);
                         });
-                } catch (error) {
-                    console.error('Erreur lors du hachage du mot de passe', error);
-                    }
+                // } catch (error) {
+                //     console.error('Erreur lors du hachage du mot de passe', error);
+                    // }
                 return;
             }
         }
@@ -131,57 +131,62 @@ export function checkErrors() {
             e.preventDefault(); //bloque l'envoi du formulaire
 
             const logData = new FormData(loginForm);
-            const errorMail = document.getElementById('error_log_mail')
-            const errorPswd = document.getElementById('error_log_pswd')
             const email = logData.get('email');
             const pswd = logData.get('pswd');
-            let errors = false;
+            const errorMail = document.getElementById('error_log_mail')
+            const errorPswd = document.getElementById('error_log_pswd')
 
-            // Tests
+            console.log(email);
+            console.log(pswd);
+
+            // Test email
+            let emailIsValid = false;
             if (!email) {
                 errorMail.style.display = 'block'
                 errorMail.innerHTML = 'entrer une adresse email';
-                errors = true;
             } else if (!isValidEmail(email)) {
                 errorMail.style.display = 'block'
                 errorMail.innerHTML = 'entrer une adresse email valide';
-                errors = true;
             } else {
+                emailIsValid = true;
                 errorMail.style.display = 'none'
             }
 
-            if (!logData.get('pswd')) {
-                errorPswd.style.display = 'block'
-                errorPswd.innerHTML = data;
+            // Test pswd
+            let pswdIsValid = false;
+            if (!pswd) {
+                errorPswd.style.display = 'block';
                 errorPswd.innerHTML = 'entrer votre mot de passe';
-                errors = true;
             } else {
+                pswdIsValid = true;
                 errorPswd.style.display = 'none';
             }
 
-            // Sinon envoi requête fetch pour vérifier la db
-            if (errors === false) {
-                try {
-                    const hashedPassword = await encryptPassword(pswd);
-                    console.log(hashedPassword);
-                    logData.set('pswd', hashedPassword);
+            // Si ok, on envoi la requête fetch pour vérifier avec la db
+            if (emailIsValid && pswdIsValid) {
+                // try {
+                //     const hashedPassword = await encryptPassword(pswd);
+                //     logData.set('pswd', hashedPassword);
+                //     console.log(hashedPassword);
                     fetchData(logData)
                         .then(data => {
                             // Affiche les erreurs si besoin
                             if (data.pswd) {
+                                console.log(data.pswd);
                                 errorMail.style.display = 'block';
                                 errorMail.innerHTML = data.pswd;
                             } else {
                                 // Si pas d'erreur, alors on envoie le formulaire
+                                console.log('envoyé au serveur');
                                 loginForm.submit();
                             }
                         })
                         .catch(error => {
                             console.error('Erreur lors de la requête POST', error);
                         });
-                    } catch (error) {
-                        console.error('Erreur lors du hachage du mot de passe', error);
-                    }
+                    // } catch (error) {
+                    //     console.error('Erreur lors du hachage du mot de passe', error);
+                    // }
                 return;
             }
         }
@@ -249,6 +254,11 @@ export function checkErrors() {
             e.stopPropagation();
         });
     }
+    if (loginPswd) {
+        loginPswd.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
 }
 
 ///////////// Différentes fonctions nécessaires aux formulaires ////////
@@ -260,14 +270,14 @@ function isValidEmail(email) {
 }
 
 // Fonction pour crypter le mot de passe côté client
-async function encryptPassword(password) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashedPassword = hashArray.map(byte => ('00' + byte.toString(16)).slice(-2)).join('');
-    return hashedPassword;
-}
+// async function encryptPassword(password) {
+//     const encoder = new TextEncoder();
+//     const data = encoder.encode(password);
+//     const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+//     const hashArray = Array.from(new Uint8Array(hashBuffer));
+//     const hashedPassword = hashArray.map(byte => ('00' + byte.toString(16)).slice(-2)).join('');
+//     return hashedPassword;
+// }
 
 function fetchData(data) {
     const jsonData = JSON.stringify(Object.fromEntries(data));

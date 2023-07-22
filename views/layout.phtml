@@ -37,30 +37,33 @@
             </aside>
         <?php endif ?>
 
-        <aside class="info">
-            <?php include_once('./views/success.phtml'); ?>
-        </aside>
 
-        <?php if (isset($template) && $template == "home.phtml"): ?>
-            <section>
-        <?php else: ?>
-            <section class="container">
+        <?php if (isset($_SESSION['visitor']['flash_message'])) : ?>
+            <aside>
+                <?php include_once('./views/flash_msg.phtml'); ?>
+            </aside>
         <?php endif ?>
+
+        <?php if (isset($template) && $template == "home.phtml") : ?>
+            <section>
+            <?php else : ?>
+                <section class="container">
+                <?php endif ?>
                 <?php include $template; ?>
-            </section>
+                </section>
     </main>
 
     <!-- Bootstrap -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script> -->
     <!-- CKEditor 5 -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'))
             .catch(error => {
                 console.error();
             });
-    </script>
+    </script> -->
     <!-- Style -->
     <script type="module" src="public/js/style.js"></script>
 </body>

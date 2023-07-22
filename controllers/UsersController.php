@@ -10,7 +10,7 @@ class UsersController{
     public function profil()
     {//affiche le compte user
         $model = new Users();
-        // $user = $model->getUser($_SESSION['user']['id']);
+        $user = $model->getUser($_SESSION['user']['id']);
 
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
@@ -26,32 +26,19 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
-    public function logout()
-    {//deconnexion de la session 'user'
-        session_destroy();
-        $currentPage = $_SESSION['visitor']['currentPage'];
-        if($currentPage = 'myAccount' || 'myShopCart' || 'admin'){
-            header('Location: index.php?route=home');
-            exit();
-        }
-        header('Location: ' . $currentPage);
-        exit();
-    }
-
 ////////////////////////// register //////////////////////////
     public function newUser()
     {//création d'un nouveau compte user
-            
         $newUser = [
             trim($_POST['email']),
-            password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
+            trim($_POST['pswd'])
+            // password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
         ];
 
         $model = new Users();
         $newID = $model->creatNew($newUser);
 
         //recupère l'id créé pour le connecter directement
-
         $newUser = $model->getUser($newID);
 
         $_SESSION['user'] = [
@@ -62,33 +49,35 @@ class UsersController{
         ];
 
         $success = "Votre compte a bien été créé !";
-        $_SESSION['visitor']['msg'] = [
+        $_SESSION['visitor']['flash_message'] = [
             'success' => $success
         ];
-            // }
-        // }
+
         header('Location: ' . $_SESSION['visitor']['currentPage']);
     }
 
 ////////////////////////// connexion //////////////////////////
-    public function checkUser()
-    { //connexion d'un compte user
+    public function loginUser()
+    { //connexion à un compte
         $errors = [];
         $email = trim($_POST['email']);
         $pswd = trim($_POST['pswd']);
+        // $pswd = password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT);
 
+        // var_dump($pswd);
+        // die;
         $model = new Users();
 
         $userExist = $model->checkEmail($email);
         $user = $model->getUser($userExist['id']);
 
-        if (!$user || !password_verify($pswd, $user['pswd'])) {
-            $errors[] = "Email ou mot de passe incorrect";
-        }
+        // if (!$user || !password_verify($pswd, $user['pswd'])) {
+        //     $errors[] = "Email ou mot de passe incorrect";
+        // }
 
         if (count($errors) > 0) {
-            $_SESSION['visitor']['msg'] = [
-                'log_email_errors' => $errors,
+            $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
             ];
         } else {
             $_SESSION['user'] = [
@@ -116,8 +105,8 @@ class UsersController{
                 $success = "Bienvenue, " . $userName;
             }
 
-            $_SESSION['visitor']['msg'] = [
-                'success' => $success,
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
             ];
         }
         header('Location: ' . $_SESSION['visitor']['currentPage']);
@@ -170,17 +159,34 @@ class UsersController{
                 $_SESSION['user']['name']=$name;
 
                 $success = "Votre nom a bien été modifié !";
-                $_SESSION['visitor']['msg'] = [
-                    'name_success' => $success,
-                ];
+                $_SESSION['visitor']['flash_message'] = [
+                        'success' => $success
+                    ];
                 
                 header('Location: index.php?route=myAccount');
                 exit();
             }
-        $_SESSION['visitor']['msg'] = [
-            'name_error' => $errors,
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $errors
         ];
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
+    }
+
+    ////////////////////////// logout //////////////////////////
+    public function logout()
+    { //deconnexion de la session 'user'
+        session_destroy();
+        $currentPage = $_SESSION['visitor']['currentPage'];
+        // var_dump($currentPage);
+        // var_dump($_SESSION);
+        // var_dump($_SERVER);
+        // die;
+
+        if ($currentPage == 'myAccount' || 'myShopCart' || '=admin') {
+            header('Location: index.php?route=home');
+        } else {
+            header('Location: ' . $currentPage);
+        }
     }
 }

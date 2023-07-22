@@ -8,42 +8,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $users = new Models\Users();
         $input = json_decode(file_get_contents('php://input'), true);
         $errors = [];
-        $email = $input['email'];
 
-        $newUser = [
-                trim($input['email']),
-                password_hash(trim($input['pswd']), PASSWORD_DEFAULT),
-        ];
-
-        if (isset($input['pswd_confirm'])) { 
-
-                ////////////////// check for register ///////////////////////
+        if (isset($input['pswd_confirm'])) 
+        { ////////////////// check for register ///////////////////////
                 $checkEmail = $users->checkEmail("SELECT id FROM users WHERE email = :email");
-
                 if ($checkEmail === true) {
                         $errors['mail'] = "Cet email est déjà utilisé";
                 }
+        } 
+        else 
 
-        } else {
-                /////////////////// check for login ////////////////////////////////
+        { ///////////////// check for login ////////////////////////////////
 
-                // Récupérer l'utilisateur à partir de son email
+                // Récupère user avec son email
                 $user = $database->findOne("SELECT * FROM users WHERE email = :email", ['email' => $input['email']]);
                 if ($user) {
-                        // Vérifier si le mot de passe fourni correspond au hachage stocké dans la base de données
-                        $hashedPassword = $user['pswd'];
-                        $pswd = trim($input['pswd']);
-                        if (password_verify($pswd, $hashedPassword)) {
+                        // Test si les mots de passe matchent
+                        $stockedPaswd = $user['pswd'];
+                        $pswd = $input['pswd'];
+                        // $pswd = password_hash(trim($input['pswd']), PASSWORD_DEFAULT);
+                        if ($pswd === $stockedPaswd) {
+                        // if (password_verify($pswd, $stockedPaswd)) {
                                 // Mot de passe correct
                                 // Vous pouvez effectuer d'autres actions, par exemple, créer une session utilisateur ici
                                 // Par exemple :
                                 // session_start();
                                 // $_SESSION['user_id'] = $user['id'];
                         } else {
-                                $errors['pswd'] = "L'email ou le mot de passe est incorrect";
+                                $errors['pswd'] = $pswd;
                         }
                 } else {
-                        $errors['pswd'] = "L'email ou le mot de passe est incorrect";
+                        $errors['pswd'] = "L'email est incorrect 2";
                 }
                 // $user = $database->findOne("SELECT * FROM users WHERE email = :email AND pswd = :pswd", $input
                 // );

@@ -1,17 +1,39 @@
 // ********************* home title move to nav on scroll
 export function titleOnNav() {
 
-    const title = document.querySelector("#title");
+    if (window.location.search === "?route=home") {
+        const title = document.getElementById("title");
+        let lastScrollPosition = window.scrollY;
 
-    window.addEventListener("scroll", () => { 
-        let scrollPosition = window.scrollY + 80;
+        // window.addEventListener("scroll", () => {
+        //     let scrollPosition = window.scrollY + 80;
+            
+        //     if (scrollPosition >= 500) {
+        //         title.style.display = "flex";
+        //         title.classList.add ("move-up");
+        //     } else {
+        //         title.style.display = "none";
+        //         title.classList.remove ("move-up");
+        //     }
+        // });
+        window.addEventListener("scroll", () => {
+            let scrollPosition = window.scrollY;
+
+            if (scrollPosition > lastScrollPosition) {
+                // Scroll vers le bas
+                title.classList.remove("move-out");
+                title.classList.add("move-up");
+            } else {
+                // Scroll vers le haut
+                title.classList.remove("move-up");
+                title.classList.add("move-out");
+            }
+
+            lastScrollPosition = scrollPosition;
+        });
         
-        if (scrollPosition >= 500) {
-            title.style.display = "flex";
-            title.classList.add ("move-up");
-        } else {
-            title.style.display = "none";
-            title.classList.remove ("move-up");
-        }
-    });
+    } else {
+        title.style.display = "flex";
+        title.style.opacity= 1;
+    }
 }

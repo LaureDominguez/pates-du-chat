@@ -4,7 +4,8 @@ $delaiExpirationSession = 3600; // 1 heure en secondes
 session_set_cookie_params($delaiExpirationSession);
 session_start();
 
-spl_autoload_register(function ($class) {                            // $class = new Controllers\HomeController
+spl_autoload_register(function ($class) {                            
+    // $class = new Controllers\HomeController
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
 // charge les configs du site
@@ -109,7 +110,7 @@ if (array_key_exists('route', $_GET)):
 
         case 'connect':
             $controller = new Controllers\UsersController();
-            $controller->checkUser();
+            $controller->loginUser();
             break;
 
         case 'register':

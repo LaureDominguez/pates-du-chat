@@ -1,0 +1,11 @@
+<?php if (isset($_SESSION['visitor']['flash_message']['success'])) : ?>
+    <div class="success">
+        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['success']); ?>
+    </div>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['visitor']['flash_message']['error'])) : ?>
+    <div class="error">
+        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['success']); ?>
+    </div>
+<?php endif; ?>
