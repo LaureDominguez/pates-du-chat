@@ -42,6 +42,7 @@
             <aside>
                 <?php include_once('./views/flash_msg.phtml'); ?>
             </aside>
+            <?php unset($_SESSION['visitor']['flash_message']); ?>
         <?php endif ?>
 
         <?php if (isset($template) && $template == "home.phtml") : ?>

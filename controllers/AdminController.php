@@ -70,15 +70,18 @@ class AdminController{
                 $modelNews = new News();
                 $modelNews->creatNew($addNew);
                 $success[] = "Le nouvel article a bien été créé !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
             }
         }
 
-        $_SESSION['admin']['dashboardPages'] = [
-            'tab1' => 'checked',
-            'tab2' => '',
-            'tab3' => '',
-            'tab4' => ''
-        ];  
+        // $_SESSION['admin']['dashboardPages'] = [
+        //     'tab1' => 'checked',
+        //     'tab2' => '',
+        //     'tab3' => '',
+        //     'tab4' => ''
+        // ];  
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
     }
@@ -115,13 +118,16 @@ class AdminController{
                 $modelNews = new News();
                 $modelNews->updateNews($newData);
                 $success[] = "L'article a bien été modifié !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
 
-                $_SESSION['admin']['dashboardPages'] = [
-                    'tab1' => 'checked',
-                    'tab2' => '',
-                    'tab3' => '',
-                    'tab4' => ''
-                ];  
+                // $_SESSION['admin']['dashboardPages'] = [
+                //     'tab1' => 'checked',
+                //     'tab2' => '',
+                //     'tab3' => '',
+                //     'tab4' => ''
+                // ];  
                 $template = "dashboard.phtml";
                 include_once 'views/layout.phtml';
 
@@ -199,6 +205,9 @@ class AdminController{
                         $modelGallery = new Gallery();
                         $img = $modelGallery->creatNew($addNew);
                         $success[] = "L'image a bien été envoyée !";
+                        $_SESSION['visitor']['flash_message'] = [
+                            'success' => $success
+                        ];
                     }
                 }
 
@@ -213,14 +222,17 @@ class AdminController{
                 $modelProduct = new Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
             }
         }
-        $_SESSION['admin']['dashboardPages'] = [
-            'tab1' => '',
-            'tab2' => 'checked',
-            'tab3' => '',
-            'tab4' => ''
-        ];  
+        // $_SESSION['admin']['dashboardPages'] = [
+        //     'tab1' => '',
+        //     'tab2' => 'checked',
+        //     'tab3' => '',
+        //     'tab4' => ''
+        // ];  
 
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
@@ -239,10 +251,10 @@ class AdminController{
         ];
         $modelProduct->updateProduct($newData);
 
-        $_SESSION['admin']['dashboardPages']['tab1'] = '';
-        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
-        $_SESSION['admin']['dashboardPages']['tab3'] = '';
-        $_SESSION['admin']['dashboardPages']['tab4'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
+        // $_SESSION['admin']['dashboardPages']['tab3'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab4'] = '';
     }
 
     public function displayUpdateProdForm($id)

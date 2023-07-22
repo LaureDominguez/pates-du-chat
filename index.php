@@ -1,7 +1,7 @@
 <?php
 
-$delaiExpirationSession = 3600; // 1 heure en secondes
-session_set_cookie_params($delaiExpirationSession);
+$ExpirationTime = 3600; // 1h
+session_set_cookie_params($ExpirationTime);
 session_start();
 
 spl_autoload_register(function ($class) {                            
@@ -15,7 +15,7 @@ require('config/config.php');
 $controller = new Controllers\HomeController();
 $controller->visitor();
 if (array_key_exists('route', $_GET)):
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
     switch ($_GET['route']) {
 
 /////////////////////// pages ///////////////////////

@@ -38,29 +38,6 @@ class HomeController{
             ];
         else $_SESSION['visitor']['currentPage'] = $currentPage;         
     }
-
-    // public function flash_msg()
-    // { //crée une session flash pour stocker les messages temporaires
-    //     if (!isset($_SESSION['flash_message']))
-    //     $_SESSION['flash_message'] = [];
-    //     // else unset($_SESSION['flash_message']);
-    // }
-
-    // public function clearMsg()
-    // {//efface les messages d'erreur stockés dans la session
-    //     if (isset($_SESSION['visitor']['msg']))
-    //         $_SESSION['visitor']['msg'] = "";
-
-    //     header('Location: ' . $_SESSION['visitor']['currentPage']);
-    //     exit;
-    // }
-
-    // public function clearMsg()
-    // { //efface les messages stockés dans la session
-    //     if (isset($_SESSION['flash_message']))
-    //         unset($_SESSION['flash_message']);
-    //     return;
-    // }
     
     function generateToken($length = 40)
     {
