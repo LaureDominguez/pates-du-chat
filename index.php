@@ -1,7 +1,7 @@
 <?php
 
-$ExpirationTime = 3600; // 1h
-session_set_cookie_params($ExpirationTime);
+// $ExpirationTime = 3600; // 1h
+// session_set_cookie_params($ExpirationTime);
 session_start();
 
 spl_autoload_register(function ($class) {                            
@@ -57,10 +57,10 @@ if (array_key_exists('route', $_GET)):
             $controller->displayOneRecipe($id);
             break;
 
-        case 'contact':
-            $controller = new Controllers\ContactController();
-            $controller->displayContactPage();
-            break;
+        // case 'contact':
+        //     $controller = new Controllers\ContactController();
+        //     $controller->displayContactPage();
+        //     break;
 
         case 'sendContactMail':
             $controller = new Controllers\ContactController();

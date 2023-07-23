@@ -7,6 +7,7 @@ import { titleOnNav } from "./modules/home-title.js";
 import { checkErrors } from "./modules/errors.js";
 import { cookieSession } from "./modules/cookie.js";
 import { editContact } from "./modules/horaires.js";
+import { sortTable } from "./modules/sort-table.js";
 // import { dynamicFields } from "./modules/dynamicFields.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -19,6 +20,7 @@ window.addEventListener("DOMContentLoaded", function () {
     checkErrors();
     cookieSession();
     editContact();
+    sortTable();
     // dynamicFields();
 })
 

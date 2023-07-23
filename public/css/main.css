@@ -195,6 +195,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0.5rem; */
 }
 
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
+}
+
 /******************* general *******************/
 /******************* navbar *******************/
 nav {
@@ -222,7 +230,7 @@ nav li {
   cursor: pointer;
   transition: all 0.2s ease-out;
 }
-nav li:hover:not(.dropdown, .dropdown-menu) {
+nav li:hover:not(.dropdown, .dropdown-menu, .disabled) {
   background: -webkit-linear-gradient(40deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
 }
@@ -496,6 +504,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0.5rem; */
 }
 
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
+}
+
 /******************* Rating Stars *******************/
 @-moz-document url-prefix() {
   .star-rating input:checked ~ label::before {
@@ -723,6 +739,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .menu-tabs ul li label {
   display: flex;
   position: relative;
+  outline: none;
   border: solid 1px transparent;
   cursor: pointer;
   height: 4rem;
@@ -745,6 +762,10 @@ form input:not(.btn, .file), form form textarea, form form select {
   transform-origin: left;
   transition: transform 0.4s;
   transform: scalex(0);
+}
+.menu-tabs ul li label:hover:not(.disabled, :checked) {
+  background-color: #eeecec;
+  background: linear-gradient(200deg, #eeecec 45%, #fff 95%);
 }
 .menu-tabs ul li label span {
   display: inline-block;
@@ -835,6 +856,11 @@ form input:not(.btn, .file), form form textarea, form form select {
 .dashboard-form form {
   width: 60%;
   margin: auto;
+}
+.dashboard-form form div:not(.buttons) {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
 }
 .dashboard-form form textarea {
   height: 15rem;
@@ -1040,6 +1066,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 0;
   /* position: absolute;
   bottom: 0.5rem; */
+}
+
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
 }
 
 /******************* user *******************/
@@ -1296,6 +1330,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 0;
   /* position: absolute;
   bottom: 0.5rem; */
+}
+
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
 }
 
 /******************* home *******************/
@@ -1597,6 +1639,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0.5rem; */
 }
 
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
+}
+
 /******************* news *******************/
 /******************* index *******************/
 .news-index {
@@ -1895,6 +1945,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 0;
   /* position: absolute;
   bottom: 0.5rem; */
+}
+
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
 }
 
 /******************* Rating Stars *******************/
@@ -2246,6 +2304,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0.5rem; */
 }
 
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
+}
+
 /******************* shop *******************/
 /******************* index *******************/
 .shop-cat {
@@ -2516,6 +2582,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0.5rem; */
 }
 
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
+}
+
 /******************* contact *******************/
 /******************* index *******************/
 .contact {
@@ -2773,6 +2847,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 0;
   /* position: absolute;
   bottom: 0.5rem; */
+}
+
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
 }
 
 /******************* general *******************/
@@ -3162,6 +3244,14 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 0;
   /* position: absolute;
   bottom: 0.5rem; */
+}
+
+.disabled {
+  color: transparent;
+}
+
+.disabled:hover {
+  cursor: default;
 }
 
 /******************* animations *******************/

@@ -49,6 +49,7 @@ class AdminController{
     }
 
     /////////////////////// Onglet News ///////////////////////
+    // en construction
     public function displayCreateNewsForm()
     {//affiche le form pour créer des actus
         $template = "views/news/form.phtml";
@@ -147,7 +148,7 @@ class AdminController{
     }
 
     /////////////////////// Onglet Boutique ///////////////////////
-    /////////////////////// produits ///////////////////////
+    /////////////////////// shop - produits ///////////////////////
     public function displayCreateProdForm()
     {//affiche le form de création d'un nouveau produit
         $modelProducts = new Products();
@@ -279,6 +280,7 @@ class AdminController{
         $errors = $imgErrors = [];
         $success = [];
         $img = null;
+        $id = $_GET['id'];
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -291,7 +293,25 @@ class AdminController{
                 $errors[] = "Veuillez définir un prix";
 
             if (count($errors) == 0) {
+                // Récupère les données actuelles du produit
+                $modelProduct = new Products();
+                $currentProductData = $modelProduct->getOneProduct($id);
 
+                // Compare les données
+                if ($_POST['name'] !== $currentProductData['name']) {
+                    $newData['name'] = trim($_POST['name']);
+                }
+                if ($_POST['category'] !== $currentProductData['cat_id']) {
+                    $newData['cat_id'] = trim($_POST['category']);
+                }
+                if ($_POST['descript'] !== $currentProductData['descript']) {
+                    $newData['descript'] = trim($_POST['descript']);
+                }
+                if ($_POST['price'] !== $currentProductData['price']) {
+                    $newData['price'] = trim($_POST['price']);
+                }
+
+                //si nouvelle image, on l'upload et l'enregistre à la db
                 if (!empty($_FILES['img'])) {
                     $imgFile = strtolower($_FILES['img']['name']);
                     $file = $_FILES['img']['tmp_name'];
@@ -319,36 +339,29 @@ class AdminController{
                         ];
                         $modelGallery = new Gallery();
                         $img = $modelGallery->creatNew($addNew);
-                        $success[] = "L'image a bien été envoyée !";
+                        $success[] = "L'image a bien été enregistrée !";
+                        $newData['img'] = $img;
                     }
+                } else {
+                    $newData['img'] = $currentProductData['img'];
                 }
 
-                $id = $_GET['id'];
-                $newData = [
-                    'id' => $id,
-                    'name' => trim($_POST['name']),
-                    'cat_id' => trim($_POST['category']),
-                    'descript' => trim($_POST['descript']),
-                    'price' => trim($_POST['price']),
-                    'img' => $img
-                ];
-
-                $modelProduct = new Products();
+                $newData['id'] = $id;
                 $modelProduct->updateProduct($newData);
                 $success[] = "Le produit a bien été modifié !";
             }
         }
-        $_SESSION['admin']['dashboardPages'] = [
-            'tab1' => '',
-            'tab2' => 'checked',
-            'tab3' => '',
-            'tab4' => ''
-        ];  
+        // $_SESSION['admin']['dashboardPages'] = [
+        //     'tab1' => '',
+        //     'tab2' => 'checked',
+        //     'tab3' => '',
+        //     'tab4' => ''
+        // ];  
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
 
-    /////////////////////// categories ///////////////////////
+    /////////////////////// shop - categories ///////////////////////
     public function displayCreateCatForm()
     { // affiche form de création d'une nouvelle catégorie 
         $modelCategory = new Categories();
@@ -381,10 +394,10 @@ class AdminController{
             }
         }
 
-        $_SESSION['admin']['dashboardPages']['tab1'] = '';
-        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
-        $_SESSION['admin']['dashboardPages']['tab3'] = '';
-        $_SESSION['admin']['dashboardPages']['tab4'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab1'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
+        // $_SESSION['admin']['dashboardPages']['tab3'] = '';
+        // $_SESSION['admin']['dashboardPages']['tab4'] = '';
         
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
@@ -404,6 +417,7 @@ class AdminController{
     { // vérifie et met à jour la catégorie 
         $errors = [];
         $success = [];
+        $id = $_GET['id'];
         if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
         ) {
             if (empty($_POST['name']))
@@ -412,24 +426,34 @@ class AdminController{
             $errors[] = "Veuillez entrer une description";
 
             if (count($errors) == 0) {
-                $id = $_GET['id'];
+                // Récupère les données actuelles
+                $modelCategory = new Categories();
+                $currentCatData = $modelCategory->getOneCategory($id);
+
+                // Compare les données
+                $newData = ['id' => $id]; 
+                if ($_POST['name'] !== $currentCatData['name']) {
+                    $newData['name'] = trim($_POST['name']);
+                }
+                if ($_POST['descript'] !== $currentCatData['descript']) {
+                    $newData['descript'] = trim($_POST['descript']);
+                }
                 $newData = [
                     'id' => $id,
                     'name' => trim($_POST['name']),
                     'descript' => trim($_POST['descript'])
                 ];
 
-                $modelCategory = new Categories();
                 $modelCategory->updateCategory($newData);
                 $success[] = "La catégorie a bien été modifiée !";
             }
         }
-        $_SESSION['admin']['dashboardPages'] = [
-            'tab1' => '',
-            'tab2' => 'checked',
-            'tab3' => '',
-            'tab4' => ''
-        ];  
+        // $_SESSION['admin']['dashboardPages'] = [
+        //     'tab1' => '',
+        //     'tab2' => 'checked',
+        //     'tab3' => '',
+        //     'tab4' => ''
+        // ];  
         $template = "dashboard.phtml";
         include_once 'views/layout.phtml';
     }
@@ -454,6 +478,7 @@ class AdminController{
     }
 
     /////////////////////// recettes ///////////////////////
+    // à faire
     public function displayCreateRecipesForm()
     {//affiche le form pour une nouvelle recette
         $modelRecipes = new Recipes();
@@ -525,6 +550,7 @@ class AdminController{
     //vérifie et met à jour la recette // à faire
 
 
-    /////////////////////// Onglet Boutique ///////////////////////
+    /////////////////////// Onglet Contact ///////////////////////
+    // en cours
 
 }

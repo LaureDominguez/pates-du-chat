@@ -286,7 +286,7 @@ function fetchData(data) {
     const jsonData = JSON.stringify(Object.fromEntries(data));
     // console.log(jsonData);
 
-    return fetch('./config/ajax.php', {
+    return fetch('./config/conexionFetch.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,14 +1,14 @@
 <div class="menu-tabs">
 
-    <input type="radio" class="hidden" id="tab1" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab1'] ?>>
-    <input type="radio" class="hidden" id="tab2" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab2'] ?>>
-    <input type="radio" class="hidden" id="tab3" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab3'] ?>>
+    <input type="radio" class="hidden" id="tab1" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab1'] ?> disabled>
+    <input type="radio" class="hidden" id="tab2" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab2'] ?> checked>
+    <input type="radio" class="hidden" id="tab3" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab3'] ?> disabled>
     <input type="radio" class="hidden" id="tab4" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab4'] ?>>
 
     <ul>
-        <li tabindex="0"><label for="tab1" role="button"><span>news</span></label></li>
+        <li tabindex="0"><label for="tab1" role="button" class="disabled"><span>news</span></label></li>
         <li tabindex="0"><label for="tab2" role="button"><span>boutique</span></label></li>
-        <li tabindex="0"><label for="tab3" role="button"><span>recettes</span></label></li>
+        <li tabindex="0"><label for="tab3" role="button" class="disabled"><span>recettes</span></label></li>
         <li tabindex="0"><label for="tab4" role="button"><span>contact</span></label></li>
     </ul>
 

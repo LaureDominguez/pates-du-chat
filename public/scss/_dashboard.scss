@@ -20,6 +20,7 @@
 		label{
 			display: flex;
 			position: relative;
+			outline: none;
 			border: solid 1px transparent;
 			cursor: pointer;
 			height: 4rem;
@@ -42,7 +43,12 @@
 				transform-origin: left;
 				transition: transform .4s;
 				transform: scalex(0)
-			}	
+			}
+			&:hover:not(.disabled, :checked){
+				background-color: #eeecec;
+				background: linear-gradient(200deg, #eeecec 45%, #fff 95%);
+
+			}
 		}
 		label span{
 			display:inline-block;
@@ -147,6 +153,11 @@
 .dashboard-form form{
 	width: 60%;
 	margin: auto;
+	div:not(.buttons){
+		display: flex;
+		flex-direction: column;
+		margin: 1rem;
+	}
 	textarea{
 		height: 15rem;
 	}
