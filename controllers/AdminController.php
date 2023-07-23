@@ -244,23 +244,18 @@ class AdminController{
     }
 
     //active ou désactive un produit
-    public function activeProduct($id)
-    {
-        $id = $_GET['id'];
+    // public function activeProduct($id)
+    // {
+    //     $id = $_GET['id'];
 
-        $modelProduct = new Products();
-        $currentProduct = $modelProduct->getOneProduct($id);
-        $newData = [
-            'id' => $id,
-            'active' => ($currentProduct['active'] ? 0 : 1)
-        ];
-        $modelProduct->updateProduct($newData);
-
-        // $_SESSION['admin']['dashboardPages']['tab1'] = '';
-        // $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
-        // $_SESSION['admin']['dashboardPages']['tab3'] = '';
-        // $_SESSION['admin']['dashboardPages']['tab4'] = '';
-    }
+    //     $modelProduct = new Products();
+    //     $currentProduct = $modelProduct->getOneProduct($id);
+    //     $newData = [
+    //         'id' => $id,
+    //         'active' => ($currentProduct['active'] ? 0 : 1)
+    //     ];
+    //     $modelProduct->updateProduct($newData);
+    // }
 
     public function displayUpdateProdForm($id)
     {//affiche form d'update d'un produit existant

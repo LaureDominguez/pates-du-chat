@@ -208,11 +208,11 @@ if (array_key_exists('route', $_GET)):
             header('Location: index.php?route=admin');
             break;
 
-        case 'checkboxProducts':
-            $controller = new Controllers\AdminController();
-            $controller->activeProduct($id);
-            header('Location: index.php?route=admin');
-            break;
+        // case 'checkboxProducts':
+        //     $controller = new Controllers\AdminController();
+        //     $controller->activeProduct($id);
+        //     header('Location: index.php?route=admin');
+        //     break;
 
 ///////////////////////shop
         //products
