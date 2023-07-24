@@ -4,14 +4,13 @@
 // session_set_cookie_params($ExpirationTime);
 session_start();
 
-spl_autoload_register(function ($class) {                            
-    // $class = new Controllers\HomeController
+spl_autoload_register(function ($class) {       
     require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
 });
 // charge les configs du site
 require('config/config.php');
 
-//session visitor
+//session visiteur
 $controller = new Controllers\HomeController();
 $controller->visitor();
 if (array_key_exists('route', $_GET)):
@@ -24,16 +23,17 @@ if (array_key_exists('route', $_GET)):
             $controller->displayHomePage();
             break;
 
-        case 'news':
-            $controller = new Controllers\NewsController();
-            $controller->displayAllNews();
-            break;
+        // partie en construction
+        // case 'news':
+        //     $controller = new Controllers\NewsController();
+        //     $controller->displayAllNews();
+        //     break;
 
-        case 'newsDetail':
-            $id = $_GET['id'];
-            $controller = new Controllers\NewsController();
-            $controller->displayOneActu($id);
-            break;
+        // case 'newsDetail':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\NewsController();
+        //     $controller->displayOneActu($id);
+        //     break;
 
         case 'shop':
             $controller = new Controllers\ShopController();
@@ -46,20 +46,16 @@ if (array_key_exists('route', $_GET)):
             $controller->displayOneProduct($id);
             break;
             
-        case 'recipes':
-            $controller = new Controllers\RecipesController();
-            $controller->displayAllRecipes();
-            break;
+        // partie en construction
+        // case 'recipes':
+        //     $controller = new Controllers\RecipesController();
+        //     $controller->displayAllRecipes();
+        //     break;
 
-        case 'recipeDetail':
-            $id = $_GET['id'];
-            $controller = new Controllers\RecipesController();
-            $controller->displayOneRecipe($id);
-            break;
-
-        // case 'contact':
-        //     $controller = new Controllers\ContactController();
-        //     $controller->displayContactPage();
+        // case 'recipeDetail':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\RecipesController();
+        //     $controller->displayOneRecipe($id);
         //     break;
 
         case 'sendContactMail':
@@ -123,11 +119,6 @@ if (array_key_exists('route', $_GET)):
             $controller->logout();
             break;
 
-        // case 'clearMsg':
-        //     $controller = new Controllers\HomeController();
-        //     $controller->clearMsg();
-        //     break;
-
 
 /////////////////////// profil ///////////////////////
         case 'myAccount':
@@ -173,44 +164,38 @@ if (array_key_exists('route', $_GET)):
 
 /////////////////////// Dashboard ///////////////////////
 ///////////////////////news
-
-        case 'displayCreateNewsForm':
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->displayCreateNewsForm();
-            break;
-
-        case 'submitNews':
-            $controller = new Controllers\AdminController;
-            $controller->isAdmin();
-            $controller->VerifCreatNewsForm();
-            break;
-
-        case 'displayUpdateNewsForm':
-            $id = $_GET['id'];
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->displayUpdateNewsForm($id);
-            break;
-
-        case 'updateNews':
-            $id = $_GET['id'];
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->VerifUpdateNewsForm($id);
-            break;
-
-        case 'deleteNews':
-            $id = $_GET['id'];
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->deleteNews($id);
-            header('Location: index.php?route=admin');
-            break;
-
-        // case 'checkboxProducts':
+// partie en construction
+        // case 'displayCreateNewsForm':
         //     $controller = new Controllers\AdminController();
-        //     $controller->activeProduct($id);
+        //     $controller->isAdmin();
+        //     $controller->displayCreateNewsForm();
+        //     break;
+
+        // case 'submitNews':
+        //     $controller = new Controllers\AdminController;
+        //     $controller->isAdmin();
+        //     $controller->VerifCreatNewsForm();
+        //     break;
+
+        // case 'displayUpdateNewsForm':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\AdminController();
+        //     $controller->isAdmin();
+        //     $controller->displayUpdateNewsForm($id);
+        //     break;
+
+        // case 'updateNews':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\AdminController();
+        //     $controller->isAdmin();
+        //     $controller->VerifUpdateNewsForm($id);
+        //     break;
+
+        // case 'deleteNews':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\AdminController();
+        //     $controller->isAdmin();
+        //     $controller->deleteNews($id);
         //     header('Location: index.php?route=admin');
         //     break;
 
@@ -242,8 +227,6 @@ if (array_key_exists('route', $_GET)):
             $controller->verifUpdateProdForm($id);
             break;
 
-            //case 'switchProdOnOff
-
         //categories
         case 'displayCreateCatForm':
             $controller = new Controllers\AdminController();
@@ -264,9 +247,6 @@ if (array_key_exists('route', $_GET)):
             $controller->displayUploadCatForm($id);
             break;
 
-            // case 'switchCat':
-                
-
         case 'updateCatForm':
             $id = $_GET['id'];
             $controller = new Controllers\AdminController();
@@ -274,32 +254,31 @@ if (array_key_exists('route', $_GET)):
             $controller->verifUpdateCatForm($id);
             break;
 
-            //case 'switchProdOnOff
-
         //recipes
-        case 'displayCreateRecipesForm':
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->displayCreateRecipesForm();
-            break;
+        // partie en construction
+        // case 'displayCreateRecipesForm':
+        //     $controller = new Controllers\AdminController();
+        //     $controller->isAdmin();
+        //     $controller->displayCreateRecipesForm();
+        //     break;
 
-        case 'rateRecipes':
-            $controller = new Controllers\UsersController();
-            $controller->isConnected();
-            break;
+        // case 'rateRecipes':
+        //     $controller = new Controllers\UsersController();
+        //     $controller->isConnected();
+        //     break;
 
-        case 'displayUpdateRecipesForm':
-            $id = $_GET['id'];
-            $controller = new Controllers\AdminController();
-            $controller->isAdmin();
-            $controller->displayUpdateRecipesForm($id);
-            break;
+        // case 'displayUpdateRecipesForm':
+        //     $id = $_GET['id'];
+        //     $controller = new Controllers\AdminController();
+        //     $controller->isAdmin();
+        //     $controller->displayUpdateRecipesForm($id);
+        //     break;
 
-        case 'submitRecipeForm':
-            $controller = new Controllers\AdminController;
-            $controller->isAdmin();
-            $controller->verifRecipeForm();
-            break;
+        // case 'submitRecipeForm':
+        //     $controller = new Controllers\AdminController;
+        //     $controller->isAdmin();
+        //     $controller->verifRecipeForm();
+        //     break;
 
 ///////////////////////contact
 

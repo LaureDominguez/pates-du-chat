@@ -49,103 +49,103 @@ class AdminController{
     }
 
     /////////////////////// Onglet News ///////////////////////
-    // en construction
-    public function displayCreateNewsForm()
-    {//affiche le form pour créer des actus
-        $template = "views/news/form.phtml";
-        include_once 'views/layout.phtml';
-    }
+    // partie en construction
+    // public function displayCreateNewsForm()
+    // {//affiche le form pour créer des actus
+    //     $template = "views/news/form.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    public function VerifCreatNewsForm()
-    {// vérifie et créer la nouvelle actu
-        $errors = $success = [];
+    // public function VerifCreatNewsForm()
+    // {// vérifie et créer la nouvelle actu
+    //     $errors = $success = [];
         
-        if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
-            if (empty($_POST['title']))
-            $errors[] = "Veuillez entrer un titre";
-            if (empty($_POST['message']))
-            $errors[] = "Veuillez entrer votre article";
+    //     if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
+    //         if (empty($_POST['title']))
+    //         $errors[] = "Veuillez entrer un titre";
+    //         if (empty($_POST['message']))
+    //         $errors[] = "Veuillez entrer votre article";
 
-            if (count($errors) == 0) {
-                $addNew = [
-                    trim($_POST['title']),
-                    trim($_POST['message'])
-                ];
+    //         if (count($errors) == 0) {
+    //             $addNew = [
+    //                 trim($_POST['title']),
+    //                 trim($_POST['message'])
+    //             ];
 
-                $modelNews = new News();
-                $modelNews->creatNew($addNew);
-                $success[] = "Le nouvel article a bien été créé !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-            }
-        }
+    //             $modelNews = new News();
+    //             $modelNews->creatNew($addNew);
+    //             $success[] = "Le nouvel article a bien été créé !";
+    //             $_SESSION['visitor']['flash_message'] = [
+    //                 'success' => $success
+    //             ];
+    //         }
+    //     }
 
-        // $_SESSION['admin']['dashboardPages'] = [
-        //     'tab1' => 'checked',
-        //     'tab2' => '',
-        //     'tab3' => '',
-        //     'tab4' => ''
-        // ];  
-        $template = "dashboard.phtml";
-        include_once 'views/layout.phtml';
-    }
+    //     // $_SESSION['admin']['dashboardPages'] = [
+    //     //     'tab1' => 'checked',
+    //     //     'tab2' => '',
+    //     //     'tab3' => '',
+    //     //     'tab4' => ''
+    //     // ];  
+    //     $template = "dashboard.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    public function displayUpdateNewsForm($id)
-    {// affiche le form pour updater une actu existante
-        $id = $_GET['id'];
-        $modelNews = new News();
-        $actu = $modelNews->getOneActu($id);
+    // public function displayUpdateNewsForm($id)
+    // {// affiche le form pour updater une actu existante
+    //     $id = $_GET['id'];
+    //     $modelNews = new News();
+    //     $actu = $modelNews->getOneActu($id);
 
-        $template = "views/news/form.phtml";
-        include_once 'views/layout.phtml';
-    }
+    //     $template = "views/news/form.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    public function VerifUpdateNewsForm($id)
-    {// vérifie et met à jour l'actu 
-        $errors = [];
-        $success = [];
-        if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
+    // public function VerifUpdateNewsForm($id)
+    // {// vérifie et met à jour l'actu 
+    //     $errors = [];
+    //     $success = [];
+    //     if (array_key_exists('title', $_POST) && array_key_exists('message', $_POST)) {
 
-            if (empty($_POST['title']))
-                $errors[] = "Veuillez entrer un titre";
-            if (empty($_POST['message']))
-                $errors[] = "Veuillez entrer votre article";
+    //         if (empty($_POST['title']))
+    //             $errors[] = "Veuillez entrer un titre";
+    //         if (empty($_POST['message']))
+    //             $errors[] = "Veuillez entrer votre article";
 
-            if (count($errors) == 0) {
+    //         if (count($errors) == 0) {
 
-                $id = $_GET['id'];
-                $newData = [
-                    'id' => $id,
-                    'title' => trim($_POST['title']),
-                    'message' => trim($_POST['message'])
-                ];
-                $modelNews = new News();
-                $modelNews->updateNews($newData);
-                $success[] = "L'article a bien été modifié !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
+    //             $id = $_GET['id'];
+    //             $newData = [
+    //                 'id' => $id,
+    //                 'title' => trim($_POST['title']),
+    //                 'message' => trim($_POST['message'])
+    //             ];
+    //             $modelNews = new News();
+    //             $modelNews->updateNews($newData);
+    //             $success[] = "L'article a bien été modifié !";
+    //             $_SESSION['visitor']['flash_message'] = [
+    //                 'success' => $success
+    //             ];
 
-                // $_SESSION['admin']['dashboardPages'] = [
-                //     'tab1' => 'checked',
-                //     'tab2' => '',
-                //     'tab3' => '',
-                //     'tab4' => ''
-                // ];  
-                $template = "dashboard.phtml";
-                include_once 'views/layout.phtml';
+    //             // $_SESSION['admin']['dashboardPages'] = [
+    //             //     'tab1' => 'checked',
+    //             //     'tab2' => '',
+    //             //     'tab3' => '',
+    //             //     'tab4' => ''
+    //             // ];  
+    //             $template = "dashboard.phtml";
+    //             include_once 'views/layout.phtml';
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 
-    public function deleteNews($id)
-    {//supprime l'actu
-        $id = $_GET['id'];
-        $modelNews = new News();
-        $modelNews->deleteOneActu($id);
-    }
+    // public function deleteNews($id)
+    // {//supprime l'actu
+    //     $id = $_GET['id'];
+    //     $modelNews = new News();
+    //     $modelNews->deleteOneActu($id);
+    // }
 
     /////////////////////// Onglet Boutique ///////////////////////
     /////////////////////// shop - produits ///////////////////////
@@ -168,7 +168,6 @@ class AdminController{
         $img = null;
 
         if (array_key_exists('name', $_POST)) {
-
             if (empty($_POST['name']))
                 $errors[] = "Veuillez donner un nom au produit";
             if (empty($_POST['category']))
@@ -185,11 +184,9 @@ class AdminController{
                     $file = $_FILES['img']['tmp_name'];
                     $imgSize = $_FILES['img']['size'];
 
-
                     $folder = "./public/img/produits/";
                     $path = $folder . $imgFile;
                     $targetFile = $folder . basename($imgFile);
-
                     $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
 
                     if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
@@ -199,14 +196,13 @@ class AdminController{
 
                     // si l'image est conforme :
                     if (count($imgErrors) == 0) {
-
                         //on déplace l'image dans le dossier
                         move_uploaded_file($file, $targetFile);
                         $addNew = [
                             trim($_POST['name']),
                             $imgFile,
                         ];
-                        
+                        //et on l'enregistre dans la db
                         $modelGallery = new Gallery();
                         $img = $modelGallery->creatNew($addNew);
                         $success[] = "L'image a bien été envoyée !";
@@ -243,20 +239,6 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-    //active ou désactive un produit
-    // public function activeProduct($id)
-    // {
-    //     $id = $_GET['id'];
-
-    //     $modelProduct = new Products();
-    //     $currentProduct = $modelProduct->getOneProduct($id);
-    //     $newData = [
-    //         'id' => $id,
-    //         'active' => ($currentProduct['active'] ? 0 : 1)
-    //     ];
-    //     $modelProduct->updateProduct($newData);
-    // }
-
     public function displayUpdateProdForm($id)
     {//affiche form d'update d'un produit existant
         $id = $_GET['id'];
@@ -271,7 +253,7 @@ class AdminController{
     }
 
     public function verifUpdateProdForm($id)
-    { // vérifie et créer le produit 
+    { // vérifie et met à jour le produit 
         $errors = $imgErrors = [];
         $success = [];
         $img = null;
@@ -311,11 +293,9 @@ class AdminController{
                     $imgFile = strtolower($_FILES['img']['name']);
                     $file = $_FILES['img']['tmp_name'];
                     $imgSize = $_FILES['img']['size'];
-
                     $folder = "./public/img/produits/";
                     $path = $folder . $imgFile;
                     $targetFile = $folder . basename($imgFile);
-
                     $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
 
                     if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
@@ -332,6 +312,7 @@ class AdminController{
                             trim($_POST['name']),
                             $imgFile,
                         ];
+                        //et on l'enregistre dans la db
                         $modelGallery = new Gallery();
                         $img = $modelGallery->creatNew($addNew);
                         $success[] = "L'image a bien été enregistrée !";
@@ -453,96 +434,78 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
-    public function activeCategory($id)
-    {
-        $id = $_GET['id'];
-
-        $modelCategory = new Categories();
-        $currentCategory = $modelCategory->getOneCategory($id);
-        $newData = [
-            'id' => $id,
-            'active' => ($currentCategory['active'] ? 0 : 1)
-        ];
-
-        $_SESSION['admin']['dashboardPages']['tab1'] = '';
-        $_SESSION['admin']['dashboardPages']['tab2'] = 'checked';
-        $_SESSION['admin']['dashboardPages']['tab3'] = '';
-        $_SESSION['admin']['dashboardPages']['tab4'] = '';
-
-        $modelCategory->updateCategory($newData);
-    }
 
     /////////////////////// recettes ///////////////////////
     // à faire
-    public function displayCreateRecipesForm()
-    {//affiche le form pour une nouvelle recette
-        $modelRecipes = new Recipes();
-        $recipes = $modelRecipes->getAllRecipes();
+    // public function displayCreateRecipesForm()
+    // {//affiche le form pour une nouvelle recette
+    //     $modelRecipes = new Recipes();
+    //     $recipes = $modelRecipes->getAllRecipes();
 
-        $modelProducts = new Products();
-        $products = $modelProducts->getAllProducts();
+    //     $modelProducts = new Products();
+    //     $products = $modelProducts->getAllProducts();
 
-        $template = "views/recipes/form.phtml";
-        include_once 'views/layout.phtml';
-    }
+    //     $template = "views/recipes/form.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    public function verifRecipeForm()
-    {// vérifie et créer la recette 
-        $errors = [];
-        $success = [];
+    // public function verifRecipeForm()
+    // {// vérifie et créer la recette 
+    //     $errors = [];
+    //     $success = [];
 
-        if (array_key_exists('name', $_POST)) {
+    //     if (array_key_exists('name', $_POST)) {
 
-            if (empty($_POST['name']))
-                $errors[] = "Veuillez donner un nom à la recette";
-            if (empty($_POST['product']))
-            $errors[] = "Veuillez selectionner l'ingrédient phare de la recette";
-            if (empty($_POST['recipe']))
-                $errors[] = "Veuillez écrire ici votre recette";
+    //         if (empty($_POST['name']))
+    //             $errors[] = "Veuillez donner un nom à la recette";
+    //         if (empty($_POST['product']))
+    //         $errors[] = "Veuillez selectionner l'ingrédient phare de la recette";
+    //         if (empty($_POST['recipe']))
+    //             $errors[] = "Veuillez écrire ici votre recette";
 
-            if (count($errors) == 0) {
-                $addNew = [
-                    trim($_POST['name']),
-                    trim($_POST['product']),
-                    trim($_POST['difficulty']),
-                    trim($_POST['time']),
-                    trim($_POST['thermostat']),
-                    trim($_POST['portions']),
-                    trim($_POST['recipe']),
-                    trim($_POST['img'])
-                ];
+    //         if (count($errors) == 0) {
+    //             $addNew = [
+    //                 trim($_POST['name']),
+    //                 trim($_POST['product']),
+    //                 trim($_POST['difficulty']),
+    //                 trim($_POST['time']),
+    //                 trim($_POST['thermostat']),
+    //                 trim($_POST['portions']),
+    //                 trim($_POST['recipe']),
+    //                 trim($_POST['img'])
+    //             ];
 
-                $modelRecipes = new Recipes();
-                $modelRecipes->creatNew($addNew);
-                $success[] = "La nouvelle recette a bien été créée !";
-            }
-        }
-        $_SESSION['admin']['dashboardPages'] = [
-            'tab1' => '',
-            'tab2' => '',
-            'tab3' => 'checked',
-            'tab4' => ''
-        ];  
-        $template = "dashboard.phtml";
-        include_once 'views/layout.phtml';
-    }
+    //             $modelRecipes = new Recipes();
+    //             $modelRecipes->creatNew($addNew);
+    //             $success[] = "La nouvelle recette a bien été créée !";
+    //         }
+    //     }
+    //     $_SESSION['admin']['dashboardPages'] = [
+    //         'tab1' => '',
+    //         'tab2' => '',
+    //         'tab3' => 'checked',
+    //         'tab4' => ''
+    //     ];  
+    //     $template = "dashboard.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    //supprime la recette //à faire
+    // //supprime la recette //à faire
 
-    public function displayUpdateRecipesForm($id)
-    { //affiche le form pour updater une recette existante
-        $id = $_GET['id'];
-        $modelRecipes = new Recipes();
-        $recipe = $modelRecipes->getOneRecipe($id);
+    // public function displayUpdateRecipesForm($id)
+    // { //affiche le form pour updater une recette existante
+    //     $id = $_GET['id'];
+    //     $modelRecipes = new Recipes();
+    //     $recipe = $modelRecipes->getOneRecipe($id);
 
-        $modelProducts = new Products();
-        $products = $modelProducts->getAllProducts();
+    //     $modelProducts = new Products();
+    //     $products = $modelProducts->getAllProducts();
 
-        $template = "views/recipes/form.phtml";
-        include_once 'views/layout.phtml';
-    }
+    //     $template = "views/recipes/form.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
 
-    //vérifie et met à jour la recette // à faire
+    // //vérifie et met à jour la recette // à faire
 
 
     /////////////////////// Onglet Contact ///////////////////////

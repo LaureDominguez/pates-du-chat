@@ -6,6 +6,7 @@ use \Models\News;
 use \Models\Categories;
 use \Models\Products;
 use \Models\Recipes;
+use \Models\Horaires;
 
 class HomeController{
     public function displayHomePage(){
@@ -21,6 +22,9 @@ class HomeController{
 
         $modelRecipes = new Recipes();
         $recipes = $modelRecipes->getAllRecipes();
+
+        $modelHoraires = new Horaires();
+        $dates = $modelHoraires->getAllDates();
 
         $template = "home.phtml";
         include_once'views/layout.phtml';

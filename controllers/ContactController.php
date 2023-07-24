@@ -2,10 +2,10 @@
 
 namespace Controllers;
 
-use \Models\Horaires;
 use \Models\Mail;
 
 class ContactController{
+
     public function submitMessage()
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site
         $errors = $success = $getMessage = [];

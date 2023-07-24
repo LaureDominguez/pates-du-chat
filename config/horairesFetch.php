@@ -5,19 +5,32 @@ require_once '../models/Horaires.php';
 
 // Function to update the data in the database
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
         $dates = new Models\Horaires();
         $input = json_decode(file_get_contents('php://input'), true);
-        // $errors = [];
+        $field = $input["field"];
 
-
-        $newData = [
-                "day" => $_POST["day"],
-                "field" => $_POST["field"],
-                "value" => $_POST["value"]
-        ];
+        switch ($field){
+                case "time":
+                        $newData = [
+                                "id" => $input["day"],
+                                'time' => $input["value"],
+                        ];
+                        break;
+                case "city":
+                        $newData = [
+                                "id" => $input["day"],
+                                'city' => $input["value"],
+                        ];
+                        break;
+                case "place":
+                        $newData = [
+                                "id" => $input["day"],
+                                'place' => $input["value"],
+                        ];
+                        break;
+        }
 
         $dates->updateDate($newData);
 

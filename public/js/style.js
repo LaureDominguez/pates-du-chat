@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", function () {
     cookieSession();
     editContact();
     sortTable();
-    // dynamicFields();
+    // dynamicFields(); //pour ajouter des ingrédients
 })
 
 

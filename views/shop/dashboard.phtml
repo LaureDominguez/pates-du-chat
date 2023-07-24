@@ -3,10 +3,8 @@
 <!-- produits -->
 <h3>Toutes les pâtes</h3>
 
-<!-- <ul>
-                <li>pagination</li>
-                <li>activer/masquer un produit</li>
-            </ul> -->
+<!-- à faire :
+- pagination -->
 
 <table class="dashboard-table">
     <thead>
@@ -31,19 +29,21 @@
                         <!-- fetch -->
                         <form action="">
                             <label class="switch">
-                                <input id="switchProducts" type="checkbox" <?php if ($product['active']) : echo 'checked';
-                                                                            endif; ?> value=<?= htmlspecialchars($product["id"]); ?>>
+                                <input id="switchProducts" type="checkbox" 
+                                    <?php if ($product['active']) : echo 'checked'; endif; ?> 
+                                    value=<?= htmlspecialchars($product["id"]); ?>>
                                 <span id="setSwitchProduct"></span>
                             </label>
                         </form>
                     </td>
                     <td>
-                        <a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']); ?>" data-text="Modifier le produit" class="aide left">
+                        <a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']); ?>"             data-text="Modifier le produit" class="aide left">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>" data-text="Voir le produit" class="aide left">
+                        <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>" 
+                        data-text="Voir le produit" class="aide left">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </td>
@@ -88,15 +88,6 @@
                             <span id="setSwitchCategory"></span>
                         </label>
                     </form>
-
-                    <!-- fetch -->
-                    <!-- <form action="index.php?route=switchCat&id=< ?= htmlspecialchars($category['id']); ?>" method="post">
-                        <label class="switch">
-                            <input type="checkbox" name="switch" class="switchCat" id="switch_< ?= htmlspecialchars($category['id']); ?>" data-toggle="toggle" data-on="En ligne" data-off="Hors Ligne" < ?php if ($category['active']) : echo 'checked';
-                                                                                                                                                                                                        endif; ?> />
-                            <span></span>
-                        </label>
-                    </form> -->
                 </td>
                 <td>
                     <a href=" index.php?route=displayUploadCatForm&id=<?= htmlspecialchars($category['id']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>

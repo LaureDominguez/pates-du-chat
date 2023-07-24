@@ -1,27 +1,46 @@
 // ********************* modifier le tableau d'horaires
 
 export function editContact() {
-    
     if (window.location.search === "?route=admin") {
+        const saveBtn = document.getElementById('saveBtn');
         let elements = document.querySelectorAll('.editable');
+
         elements.forEach(element => {
             element.setAttribute('contenteditable', 'true');
-            element.addEventListener('blur', () => {
-                saveChanges(element);
+            element.addEventListener('focus', () => {
+                // Sauvegarder la valeur originale lorsque l'élément est en focus
+                element.dataset.originalValue = element.innerText;
             });
-        })
+        });
+
+        saveBtn.addEventListener('click', () => {
+            elements.forEach(element => {
+                const dataField = element.getAttribute('data-field');
+                const dataDay = element.parentNode.getAttribute('data-day');
+                const value = element.innerText;
+                const originalValue = element.dataset.originalValue;
+
+                // Vérifier s'il y a eu une modification
+                if (value !== originalValue) {
+                    saveChanges(dataField, dataDay, value);
+                    // Réinitialiser la valeur originale pour l'élément
+                    element.dataset.originalValue = value;
+                }
+            });
+        });
     }
 
-    function saveChanges(element) {
+    function saveChanges(field, day, value) {
         const data = {
-            field: element.getAttribute('data-field'), // Ajoutez un attribut data-field à chaque élément éditable pour identifier le champ (par exemple, "heure", "ville", "emplacement")
-            value: element.innerText
+            day: day,
+            field: field,
+            value: value
         };
         // Envoie les données modifiées au serveur en utilisant fetch
         fetch('./config/horairesFetch.php', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
@@ -34,5 +53,4 @@ export function editContact() {
             console.error('Erreur lors de l\'envoi des modifications au serveur:', error);
         });
     }
-
 }

@@ -1,9 +1,13 @@
 <div class="menu-tabs">
+    <input type="radio" class="hidden" id="tab1" name="tab-control" disabled>
+    <input type="radio" class="hidden" id="tab2" name="tab-control" checked>
+    <input type="radio" class="hidden" id="tab3" name="tab-control" disabled>
+    <input type="radio" class="hidden" id="tab4" name="tab-control">
 
-    <input type="radio" class="hidden" id="tab1" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab1'] ?> disabled>
-    <input type="radio" class="hidden" id="tab2" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab2'] ?> checked>
-    <input type="radio" class="hidden" id="tab3" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab3'] ?> disabled>
-    <input type="radio" class="hidden" id="tab4" name="tab-control" <?= $_SESSION['admin']['dashboardPages']['tab4'] ?>>
+    <!-- <input type="radio" class="hidden" id="tab1" name="tab-control" < ?= $_SESSION['admin']['dashboardPages']['tab1'] ?> disabled>
+    <input type="radio" class="hidden" id="tab2" name="tab-control" < ?= $_SESSION['admin']['dashboardPages']['tab2'] ?> checked>
+    <input type="radio" class="hidden" id="tab3" name="tab-control" < ?= $_SESSION['admin']['dashboardPages']['tab3'] ?> disabled>
+    <input type="radio" class="hidden" id="tab4" name="tab-control" < ?= $_SESSION['admin']['dashboardPages']['tab4'] ?>> -->
 
     <ul>
         <li tabindex="0"><label for="tab1" role="button" class="disabled"><span>news</span></label></li>
@@ -16,7 +20,7 @@
 
         <!--------------- news --------------->
         <section class="section-tab" id="news-tab">
-            <?php include('./views/news/dashboard.phtml'); ?>
+            <!-- < ?php include('./views/news/dashboard.phtml'); ?> -->
         </section>
 
         <!--------------- shop --------------->
@@ -26,7 +30,7 @@
 
         <!--------------- recipes --------------->
         <section class="section-tab" id="recipe-tab">
-            <?php include('./views/recipes/dashboard.phtml'); ?>
+            <!-- < ?php include('./views/recipes/dashboard.phtml'); ?> -->
         </section>
 
         <!--------------- contact --------------->

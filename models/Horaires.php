@@ -7,8 +7,7 @@ class Horaires extends Database {
 
     public function getAllDates(): array | bool
     {
-        $req = "SELECT * FROM horaires
-        -- ORDER BY created_at DESC";
+        $req = "SELECT * FROM horaires";
         return $this->findAll($req);
     }
 
