@@ -9,32 +9,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
         $dates = new Models\Horaires();
         $input = json_decode(file_get_contents('php://input'), true);
-        $field = $input["field"];
 
-        switch ($field){
-                case "time":
+        if (is_array($input)) {
+                foreach ($input as $data) {
                         $newData = [
-                                "id" => $input["day"],
-                                'time' => $input["value"],
+                                'id' => $data['day'],
+                                'time' => $data['time'],
+                                'city' => $data['city'],
+                                'place' => $data['place']
                         ];
-                        break;
-                case "city":
-                        $newData = [
-                                "id" => $input["day"],
-                                'city' => $input["value"],
-                        ];
-                        break;
-                case "place":
-                        $newData = [
-                                "id" => $input["day"],
-                                'place' => $input["value"],
-                        ];
-                        break;
+
+                        $dates->updateDate($newData);
+                }
+                $response = array('status' => 'success', 'message' => 'Data updated successfully');
+        } else {
+                // Return an error response if the request data is not an array
+                $response = array('status' => 'error', 'message' => 'Invalid request data');
         }
-
-        $dates->updateDate($newData);
-
-        $response = array('status' => 'success', 'message' => 'Data updated successfully');
 } else {
         // Return an error response if the request method is not POST
         $response = array('status' => 'error', 'message' => 'Invalid request');

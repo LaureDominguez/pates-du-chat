@@ -1,71 +1,69 @@
 // ********************* modifier le tableau d'horaires
 
 export function editContact() {
+    // la fonction n'est dispo que sur la page admin
     if (window.location.search === "?route=admin") {
+
+        // rend les champs et le bouton dispo pour admin
         const saveBtn = document.getElementById('saveBtn');
-        let elements = document.querySelectorAll('.editable');
+        const elements = document.querySelectorAll('.editable');
         saveBtn.style.display = "flex";
 
-        elements.forEach(element => {
-            const dataField = element.getAttribute('data-field');
-            const dataDay = element.parentNode.getAttribute('data-day');
-                
-                
-            
-            element.setAttribute('contenteditable', 'true');
-            element.addEventListener('focus', () => {
-                if (dataField.parentNode == dataDay.parentNode) {
-                    //faire un index des datafield modifiés
-                    console.log('pouet')
-                    console.log(dataField);
-                    console.log(dataDay)
-                }
-                // Sauvegarder la valeur originale lorsque l'élément est en focus
-                element.dataset.originalValue = element.innerText;
+        elements.forEach(function (field) {
+            field.setAttribute('contenteditable', 'true');
+            // Ajouter la classe 'modified' lorsque le contenu est modifié
+            field.addEventListener('input', function () {
+                this.classList.add('modified');
             });
         });
+        
+        //fonction quand on clique sur le boutton
+        saveBtn.addEventListener('click', function () {
+            // Créer un tableau qui stock les données à enregistrer
+            const dataToSave = [];
 
-        saveBtn.addEventListener('click', () => {
-            elements.forEach((element) => {
-                const dataField = element.getAttribute('data-field');
-                const dataDay = element.parentNode.getAttribute('data-day');
-                const value = element.innerText;
-                const originalValue = element.dataset.originalValue;
-                
-                console.log(dataField);
-                console.log(dataDay)
+            // Parcourir toutes les lignes du tableau
+            const tableRows = document.querySelectorAll('tr[data-day]');
+            tableRows.forEach(function (row) {
+                const day = row.getAttribute('data-day');
+                const timeCell = row.querySelector('[data-field="time"]');
+                const cityCell = row.querySelector('[data-field="city"]');
+                const placeCell = row.querySelector('[data-field="place"]');
 
-                // Vérifier s'il y a eu une modification
-                if (value !== originalValue) {
-                    saveChanges(dataField, dataDay, value);
-                    // Réinitialiser la valeur originale pour l'élément
-                    element.dataset.originalValue = value;
+                // récupère les case modifées
+                if (timeCell.classList.contains('modified') || cityCell.classList.contains('modified') || placeCell.classList.contains('modified')) {
+                    const time = timeCell.textContent;
+                    const city = cityCell.textContent;
+                    const place = placeCell.textContent;
+
+                    // Ajouter les données modifiées au tableau 
+                    dataToSave.push({ day, time, city, place });
                 }
             });
-        });
-    }
 
-    function saveChanges(field, day, value) {
-        const data = {
-            day: day,
-            field: field,
-            value: value
-        };
-        // Envoie les données modifiées au serveur en utilisant fetch
-        fetch('./config/horairesFetch.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Traitez la réponse du serveur si nécessaire
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Erreur lors de l\'envoi des modifications au serveur:', error);
+            // Effectuer la requête fetch pour enregistrer les données sur le serveur
+            fetch('./config/horairesFetch.php', {
+                method: 'POST', // Utiliser la méthode POST pour envoyer les données
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSave) // Convertir les données en format JSON pour l'envoi
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Traiter la réponse du serveur ici si nécessaire
+                alert('Données enregistrées avec succès !');
+                // on supprime la classe "modified" après envoi
+                tableRows.forEach(function (row) {
+                        row.querySelector('[data-field="time"]').classList.remove('modified');
+                        row.querySelector('[data-field="city"]').classList.remove('modified');
+                        row.querySelector('[data-field="place"]').classList.remove('modified');
+                    });
+            })
+            .catch(error => {
+                // Gérer les erreurs ici si nécessaire
+                alert('Une erreur est survenue lors de l\'enregistrement des données.');
+            });
         });
-    }
+    };
 }
