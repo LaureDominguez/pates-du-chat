@@ -6,8 +6,6 @@ export function filterCategory() {
     const filterBtn = document.getElementById('filterBtn');
     const filterDiv = document.getElementById('filter');
     filterDiv.style.opacity = 0;
-
-    console.log('pouet', filterDiv.style)
     
     filterBtn.addEventListener('click', function (e) {
         const currentOpacity = parseFloat(filterDiv.style.opacity);
@@ -15,30 +13,24 @@ export function filterCategory() {
     });
 
 
-// Filtres les produits
+// Filtres les produits par catégorie
+    let checkboxes = document.querySelectorAll('.filter');
 
-    let elements = document.querySelectorAll('.filter');
-    console.log(elements);
-
-    elements.forEach(element => {
-        const checkbox = element.getAttribute('data-field');
-        const dataDay = element.parentNode.getAttribute('data-day');
-                
-                
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            // récup nom de la catégorie
+            const categoryName = checkbox.dataset.id;
+            // et de l'article associé
+            const categories = document.querySelectorAll('.shop-cat');
             
-        //         element.setAttribute('contenteditable', 'true');
-    
-        // //affiche ou masque les produits
-        // window.addEventListener('click', function (e) {
-        //     switch (e.target.id) {
-        //         case "switchProducts":
-        //             const productId = e.target.value
-        //             const dataProd = {
-        //                 id: productId,
-        //                 type: 'product'
-        //             };
-
-        //             break;
-        //     }  
+            // puis parcours chaque catégorie pour appliquer la fonction
+            categories.forEach(function (category) {
+                // si le nom de la catégorie == la valeur de la checkbox
+                if (category.querySelector('h2').textContent === categoryName) {
+                    // show/hide la catégorie en fonction de l'état de la checkbox
+                    category.style.display = checkbox.checked ? 'block' : 'none';
+                }
+            });
+        });
     });
 }

@@ -665,7 +665,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   transition: transform 0.4s;
   transform: scalex(0);
 }
-.menu-tabs ul li label:hover:not(.disabled, :checked) {
+.menu-tabs ul li label:hover:not(:checked) {
   background-color: #eeecec;
   background: linear-gradient(200deg, #eeecec 45%, #fff 95%);
 }
@@ -1540,7 +1540,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 /******************* index *******************/
-.shop-cat {
+.shop-cat div {
   margin: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 15rem);

@@ -6,8 +6,7 @@ use \Models\Users;
 
 class UsersController{
 
-
-    ////////////////////////// check session //////////////////////////
+////////////////////////// check session //////////////////////////
 
     public function isConnected()
     {
@@ -18,6 +17,7 @@ class UsersController{
     }
 
 ////////////////////////// Profile //////////////////////////
+
     public function profil()
     {//affiche le compte user
         $model = new Users();
@@ -28,6 +28,7 @@ class UsersController{
     }
 
 ////////////////////////// register //////////////////////////
+
     public function newUser()
     {//création d'un nouveau compte user
         $newUser = [
@@ -58,6 +59,7 @@ class UsersController{
     }
 
 ////////////////////////// connexion //////////////////////////
+
     public function loginUser()
     { //connexion à un compte
         $errors = [];

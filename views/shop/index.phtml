@@ -1,5 +1,5 @@
 <section class="content">
-    <h1>Tous les produits</h1>
+    <h1>Toutes les pâtes</h1>
 
     <!-- if (filter == checked): $category['active']=0 -->
 
@@ -17,29 +17,29 @@
 
     <?php foreach ($categories as $category) : ?>
         <?php if ($category['active']) : ?>
-
-            <h2><?= htmlspecialchars($category["name"]); ?></h2>
-
             <article class="shop-cat">
-                <?php foreach ($products as $product) : ?>
-                    <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) : ?>
-                        <figure class="shop-tuile">
-                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
-                                <?php if (!empty($product["img"])) : ?>
-                                    <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
-                                <?php else : ?>
-                                    <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
-                                <?php endif; ?>
+                <h2><?= htmlspecialchars($category["name"]); ?></h2>
+                <div>
+                    <?php foreach ($products as $product) : ?>
+                        <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) : ?>
+                            <figure class="shop-tuile">
+                                <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
+                                    <?php if (!empty($product["img"])) : ?>
+                                        <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                                    <?php else : ?>
+                                        <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
+                                    <?php endif; ?>
 
-                                <figcaption>
-                                    <h3><?= htmlspecialchars($product["name"]); ?></h3>
-                                    <p><?= htmlspecialchars($product["descript"]); ?></p>
-                                    <p><?= htmlspecialchars($product["price"]); ?>€</p>
-                                </figcaption>
-                            </a>
-                        </figure>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                                    <figcaption>
+                                        <h3><?= htmlspecialchars($product["name"]); ?></h3>
+                                        <p><?= htmlspecialchars($product["descript"]); ?></p>
+                                        <p><?= htmlspecialchars($product["price"]); ?>€</p>
+                                    </figcaption>
+                                </a>
+                            </figure>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
 
             </article>
         <?php endif; ?>
