@@ -77,7 +77,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
 
-/////////////////////// profil ///////////////////////
+/////////////////////// User profil ///////////////////////
         case 'myAccount':
             $controller = new Controllers\UsersController();
             $controller->isConnected();
@@ -108,7 +108,7 @@ if (array_key_exists('route', $_GET)):
             $controller->profil();
             break;
 
-/////////////////////// Dashboard ///////////////////////
+/////////////////////// Admin dashboard ///////////////////////
 ///////////////////////shop
         //products
         case 'displayCreateProdForm':

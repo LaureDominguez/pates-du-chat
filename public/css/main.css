@@ -1784,7 +1784,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* index *******************/
 .contact {
   width: 60%;
-  background-color: rgb(255, 207, 149);
   padding: 2rem;
   border-radius: 10px;
   margin: auto;
@@ -1804,30 +1803,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   padding: 0.5rem 0;
   border: 1px solid rgb(200, 200, 200);
 }
-.contact table, .contact table td {
-  padding: 0.3rem;
+.contact table td {
+  padding: 0.5rem;
   border: 1px solid rgb(200, 200, 200);
-}
-.contact table tr:hover:not(th) {
-  background-color: rgb(255, 207, 149);
 }
 .contact table td:first-child {
   background-color: var(--orange);
   color: #fff;
   width: 15%;
 }
-.contact table td:nth-child(2) {
-  width: 20%;
-}
-.contact table td:nth-child(3) {
+.contact table td:nth-child(2), .contact table td:nth-child(3) {
   width: 20%;
 }
 .contact table td:nth-child(4) {
   width: 45%;
 }
-.contact .btn {
-  margin: 0;
-  align-items: flex-end;
+.contact table tr:hover:not(th) {
+  background-color: rgb(255, 207, 149);
 }
 .contact .map {
   display: flex;
@@ -1836,8 +1828,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   justify-content: space-between;
 }
 .contact .map div {
-  padding: 2rem 2rem 4rem 2rem;
+  padding: 2rem 2rem 4rem 4rem;
   text-align: center;
+  margin: auto;
 }
 .contact .map iframe {
   border-radius: 10px;

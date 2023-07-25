@@ -5,7 +5,7 @@
 
 .contact{
     width: 60%;
-    background-color: rgb(255, 207, 149);
+    // background-color: rgb(255, 207, 149);
     padding: 2rem;
     border-radius: 10px;
     margin: auto;
@@ -24,33 +24,30 @@
             padding: 0.5rem 0;
             border: 1px solid rgb(200, 200, 200);
         }
-        &, td{
-            padding: 0.3rem;
+        td{
+            padding: 0.5rem;
             border: 1px solid rgb(200, 200, 200);
+            &:first-child{
+                background-color: var(--orange);
+                color: #fff;
+                width: 15%;
+            }
+            &:nth-child(2), &:nth-child(3){
+                width: 20%;
+            }
+            &:nth-child(4){
+                width: 45%;
+            }
         }
         tr:hover:not(th) {
             background-color: rgb(255, 207, 149);
         }
-        td:first-child{
-            background-color: var(--orange);
-            color: #fff;
-            width: 15%;
-        }
-        td:nth-child(2){
-            width: 20%;
-        }
-        td:nth-child(3){
-            width: 20%;
-        }
-        td:nth-child(4){
-            width: 45%;
-        }
     }
 
-    .btn{
-        margin: 0;
-        align-items: flex-end;
-    }
+    // .btn{
+    //     margin: 0;
+    //     align-items: flex-end;
+    // }
 
     .map{
         display: flex;
@@ -58,8 +55,9 @@
         align-items: center;
         justify-content: space-between;
         div{
-            padding: 2rem 2rem 4rem 2rem;
+            padding: 2rem 2rem 4rem 4rem;
             text-align: center;
+            margin: auto;
         }
         iframe{
             border-radius: 10px;

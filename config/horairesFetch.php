@@ -4,7 +4,6 @@ require_once '../models/Database.php';
 require_once '../models/Horaires.php';
 
 // Function to update the data in the database
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
         $dates = new Models\Horaires();
