@@ -1,19 +1,8 @@
 /******************* shop *******************/
 @use '_base';
 
-/******************* index *******************/
 
-.shop-cat{
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 15rem);
-    grid-template-rows: repeat(auto-fill, 15rem);
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    justify-content: center;
-}
-
+/******************* home *******************/
 .shop-tuile{
     height: 12rem;
     width: 12rem;
@@ -53,6 +42,24 @@
     &:hover figcaption{
         opacity: .9;
     }
+}
+
+/******************* index *******************/
+.shop-cat{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 15rem);
+    grid-template-rows: repeat(auto-fill, 15rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#filter{
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
 }
 
 /******************* detail *******************/

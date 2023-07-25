@@ -16,16 +16,6 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
-    public function cart()
-    {//affiche le panier de l'utilisateur (gestion dans ShopCartController)
-        $model = new Users();
-        // $user = $model->getUser($_SESSION['user']['id']);
-        $model = new ShopCartController();
-
-        $template = "users/cart.phtml";
-        include_once 'views/layout.phtml';
-    }
-
 ////////////////////////// register //////////////////////////
     public function newUser()
     {//création d'un nouveau compte user
@@ -171,12 +161,8 @@ class UsersController{
     { //deconnexion de la session 'user'
         session_destroy();
         $currentPage = $_SESSION['visitor']['currentPage'];
-        // var_dump($currentPage);
-        // var_dump($_SESSION);
-        // var_dump($_SERVER);
-        // die;
 
-        if ($currentPage == 'myAccount' || 'myShopCart' || '=admin') {
+        if ($currentPage == 'myAccount' || $currentPage == 'myShopCart' || $currentPage == 'admin') {
             header('Location: index.php?route=home');
         } else {
             header('Location: ' . $currentPage);

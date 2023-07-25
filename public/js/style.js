@@ -1,27 +1,25 @@
 import { toogleModal } from "./modules/loggin.js";
 import { dropdownNav } from "./modules/dropdown.js";
-// import { toogleCart } from "./modules/shopCart.js";
-import { checkboxProducts } from "./modules/switch.js";
+import { switchProducts } from "./modules/switch.js";
 import { revealOnScroll } from "./modules/anim-reveal.js";
 import { titleOnNav } from "./modules/home-title.js";
 import { checkErrors } from "./modules/errors.js";
 import { cookieSession } from "./modules/cookie.js";
 import { editContact } from "./modules/horaires.js";
 import { sortTable } from "./modules/sort-table.js";
-// import { dynamicFields } from "./modules/dynamicFields.js";
+import { filterCategory } from "./modules/fitler.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     toogleModal();
     dropdownNav();
-    // toogleCart();
-    checkboxProducts();
+    switchProducts();
     revealOnScroll();
     titleOnNav();
     checkErrors();
-    cookieSession();
+    // cookieSession();
     editContact();
     sortTable();
-    // dynamicFields(); //pour ajouter des ingrédients
+    filterCategory();
 })
 
 

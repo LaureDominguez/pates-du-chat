@@ -6,19 +6,33 @@ export function editContact() {
         let elements = document.querySelectorAll('.editable');
 
         elements.forEach(element => {
+            const dataField = element.getAttribute('data-field');
+            const dataDay = element.parentNode.getAttribute('data-day');
+                
+                
+            
             element.setAttribute('contenteditable', 'true');
             element.addEventListener('focus', () => {
+                if (dataField.parentNode == dataDay.parentNode) {
+                    //faire un index des datafield modifiés
+                    console.log('pouet')
+                    console.log(dataField);
+                    console.log(dataDay)
+                }
                 // Sauvegarder la valeur originale lorsque l'élément est en focus
                 element.dataset.originalValue = element.innerText;
             });
         });
 
         saveBtn.addEventListener('click', () => {
-            elements.forEach(element => {
+            elements.forEach((element) => {
                 const dataField = element.getAttribute('data-field');
                 const dataDay = element.parentNode.getAttribute('data-day');
                 const value = element.innerText;
                 const originalValue = element.dataset.originalValue;
+                
+                console.log(dataField);
+                console.log(dataDay)
 
                 // Vérifier s'il y a eu une modification
                 if (value !== originalValue) {

@@ -2,17 +2,13 @@
 
 namespace Controllers;
 
-use \Models\News;
 use \Models\Categories;
 use \Models\Products;
-use \Models\Recipes;
 use \Models\Horaires;
 
 class HomeController{
     public function displayHomePage(){
         
-        $modelNews = new News();
-        $news = $modelNews->getAllNews();
 
         $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
@@ -20,8 +16,6 @@ class HomeController{
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
-        $modelRecipes = new Recipes();
-        $recipes = $modelRecipes->getAllRecipes();
 
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();

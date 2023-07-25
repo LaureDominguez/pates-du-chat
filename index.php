@@ -23,18 +23,6 @@ if (array_key_exists('route', $_GET)):
             $controller->displayHomePage();
             break;
 
-        // partie en construction
-        // case 'news':
-        //     $controller = new Controllers\NewsController();
-        //     $controller->displayAllNews();
-        //     break;
-
-        // case 'newsDetail':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\NewsController();
-        //     $controller->displayOneActu($id);
-        //     break;
-
         case 'shop':
             $controller = new Controllers\ShopController();
             $controller->displayAllShop();
@@ -46,18 +34,6 @@ if (array_key_exists('route', $_GET)):
             $controller->displayOneProduct($id);
             break;
             
-        // partie en construction
-        // case 'recipes':
-        //     $controller = new Controllers\RecipesController();
-        //     $controller->displayAllRecipes();
-        //     break;
-
-        // case 'recipeDetail':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\RecipesController();
-        //     $controller->displayOneRecipe($id);
-        //     break;
-
         case 'sendContactMail':
             $controller = new Controllers\ContactController();
             $controller->submitMessage();
@@ -68,35 +44,6 @@ if (array_key_exists('route', $_GET)):
             $controller->isAdmin();
             $controller->displayDashboard();
             break;
-
-
-/////////////////////// Panier ///////////////////////
-        case 'addToCart':
-            $id = $_GET['id'];
-            $controller = new Controllers\ShopCartController();
-            $controller->addCartToCookie($id);
-            break;
-
-        case 'lessQuantity':
-            $id = $_GET['id'];
-            $quantity = $_GET['quantity'];
-            $controller = new Controllers\ShopCartController();
-            $controller->changeQuantity($id, $quantity);
-            break;
-
-        case 'addQuantity':
-            $id = $_GET['id'];
-            $quantity = $_GET['quantity'];
-            $controller = new Controllers\ShopCartController();
-            $controller->changeQuantity($id, $quantity);
-            break;
-
-
-        case 'flushCart':
-            $controller = new Controllers\ShopCartController();
-            $controller->flushCart();
-            break;
-
 
 /////////////////////// login ///////////////////////
         // case 'login':
@@ -151,54 +98,7 @@ if (array_key_exists('route', $_GET)):
             $controller->profil();
             break;
 
-        case 'myShopCart':
-            $controller = new Controllers\UsersController();
-            $controller->isConnected();
-            $controller->cart();
-            break;
-
-        case 'myShopHist':
-            # code...
-            break;
-
-
 /////////////////////// Dashboard ///////////////////////
-///////////////////////news
-// partie en construction
-        // case 'displayCreateNewsForm':
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->displayCreateNewsForm();
-        //     break;
-
-        // case 'submitNews':
-        //     $controller = new Controllers\AdminController;
-        //     $controller->isAdmin();
-        //     $controller->VerifCreatNewsForm();
-        //     break;
-
-        // case 'displayUpdateNewsForm':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->displayUpdateNewsForm($id);
-        //     break;
-
-        // case 'updateNews':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->VerifUpdateNewsForm($id);
-        //     break;
-
-        // case 'deleteNews':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->deleteNews($id);
-        //     header('Location: index.php?route=admin');
-        //     break;
-
 ///////////////////////shop
         //products
         case 'displayCreateProdForm':
@@ -253,32 +153,6 @@ if (array_key_exists('route', $_GET)):
             $controller->isAdmin();
             $controller->verifUpdateCatForm($id);
             break;
-
-        //recipes
-        // partie en construction
-        // case 'displayCreateRecipesForm':
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->displayCreateRecipesForm();
-        //     break;
-
-        // case 'rateRecipes':
-        //     $controller = new Controllers\UsersController();
-        //     $controller->isConnected();
-        //     break;
-
-        // case 'displayUpdateRecipesForm':
-        //     $id = $_GET['id'];
-        //     $controller = new Controllers\AdminController();
-        //     $controller->isAdmin();
-        //     $controller->displayUpdateRecipesForm($id);
-        //     break;
-
-        // case 'submitRecipeForm':
-        //     $controller = new Controllers\AdminController;
-        //     $controller->isAdmin();
-        //     $controller->verifRecipeForm();
-        //     break;
 
 ///////////////////////contact
 

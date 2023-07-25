@@ -21,26 +21,15 @@ define('DB_PASSWORD', '');
 // define('DB_PASSWORD', 'a0f980b4fdda9a703fe56e7ea61b8c49');
 
 
-// cookie panier
-    define('COOKIE_NAME', 'panier');
-    define('COOKIE_EXPIRE', time() + 86400);
-
-global $panier;
-
-if (isset($_COOKIE[COOKIE_NAME])) {
-    $panier = json_decode($_COOKIE[COOKIE_NAME], true);
-} else {
-    $panier = array();
-}
 
 // cookie session
 
-global $session;
+// global $session;
 
-if (isset($_COOKIE['session'])){
-    $session = json_decode($_COOKIE['session'], true);
-} else {
-    $session = array();
-}
+// if (isset($_COOKIE['session'])){
+//     $session = json_decode($_COOKIE['session'], true);
+// } else {
+//     $session = array();
+// }
 
 // serveur mail

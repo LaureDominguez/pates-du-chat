@@ -1,11 +1,19 @@
 <section class="content">
     <h1>Tous les produits</h1>
 
-    <!-- <ul>
-        <li>trier les catégories</li>
-        <li>rechercher un produit</li>
-    </ul> -->
+    <!-- if (filter == checked): $category['active']=0 -->
 
+    <div class="filterBox">
+        <button type="button" class="btn" id="filterBtn">Filtrer</button>
+        <div id="filter">
+            <?php foreach ($categories as $category) : ?>
+                <div>
+                    <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
+                    <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 
     <?php foreach ($categories as $category) : ?>
         <?php if ($category['active']) : ?>

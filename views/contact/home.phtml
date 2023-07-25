@@ -17,24 +17,5 @@
 </section>
 
 <section class="contact">
-    <h3>une question ? écrivez-moi !</h3>
-    <form action="index.php?route=sendContactMail" method="post">
-        <div>
-            <label for="name-contact">nom</label>
-            <input type="text" name="name" id="name-contact">
-        </div>
-        <div>
-            <label for="email-contact">email</label>
-            <input type="email" name="email" id="email-contact">
-        </div>
-        <div>
-            <label for="phone-contact">téléphone</label>
-            <input type="tel" name="phone" id="phone-contact">
-        </div>
-        <div>
-            <label for="message-contact">message</label>
-            <textarea name="message" id="message-contact" cols="30" rows="10"></textarea>
-        </div>
-        <button class="btn" type="submit">Envoyer</button>
-    </form>
+    <?php include('mail.phtml'); ?>
 </section>

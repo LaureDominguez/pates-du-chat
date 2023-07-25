@@ -11,9 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <!--Font Awesome 6-->
     <script src="https://kit.fontawesome.com/267127ee95.js" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous"> -->
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="public/css/main.css">
 </head>
@@ -31,12 +28,6 @@
             </aside>
         <?php endif ?>
 
-        <?php if (isset($_COOKIE['panier'])) : ?>
-            <aside class="cart" id="shopping-icon">
-                <?php include_once('shop/cart.phtml'); ?>
-            </aside>
-        <?php endif ?>
-
 
         <?php if (isset($_SESSION['visitor']['flash_message'])) : ?>
             <aside>
@@ -47,24 +38,13 @@
 
         <?php if (isset($template) && $template == "home.phtml") : ?>
             <section>
-            <?php else : ?>
-                <section class="container">
-                <?php endif ?>
+        <?php else : ?>
+            <section class="container">
+        <?php endif ?>
                 <?php include $template; ?>
-                </section>
+            </section>
     </main>
 
-    <!-- Bootstrap -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script> -->
-    <!-- CKEditor 5 -->
-    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error();
-            });
-    </script> -->
     <!-- Style -->
     <script type="module" src="public/js/style.js"></script>
 </body>

@@ -1,6 +1,6 @@
 // ********************* switch active
 
-export function checkboxProducts() {
+export function switchProducts() {
     
     //affiche ou masque les produits
     window.addEventListener('click', function (e) {

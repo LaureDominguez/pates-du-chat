@@ -1,14 +1,9 @@
 <section class="content">
     <figure class="shop-detail">
-        <?php if (isset($product["img"])) : ?>
-            <!-- <img src="/images/{{$product->img}}" alt=""> -->
-            <?php if (!empty($product["img"])) : ?>
-                <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
-            <?php else : ?>
-                <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
-            <?php endif; ?>
+        <?php if (!empty($product["img"])) : ?>
+            <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
         <?php else : ?>
-            <img src="public/img/Hades.jpg" alt="">
+            <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
         <?php endif; ?>
         <figcaption>
             <h1><?= htmlspecialchars($product["name"]); ?></h1>
