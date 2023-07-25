@@ -4,6 +4,7 @@ export function editContact() {
     if (window.location.search === "?route=admin") {
         const saveBtn = document.getElementById('saveBtn');
         let elements = document.querySelectorAll('.editable');
+        saveBtn.style.display = "flex";
 
         elements.forEach(element => {
             const dataField = element.getAttribute('data-field');

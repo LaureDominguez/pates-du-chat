@@ -1,12 +1,10 @@
 /******************* dashboard *******************/
 @use '_base';
-@use '_rating';
 @use '_switch';
 @use '_tooltip';
 
 /******************* table à onglets *******************/
 .menu-tabs{
-	background-color: white;
 	max-width: 960px;
 	margin: 2rem auto;
 	ul{
@@ -14,6 +12,7 @@
 		padding-left:0;
 		margin:0;
 		list-style-type: none;
+		background-color: transparent;
 	}
 	ul li{
 		flex: 0 0 25%;
@@ -44,7 +43,7 @@
 				transition: transform .4s;
 				transform: scalex(0)
 			}
-			&:hover:not(.disabled, :checked){
+			&:hover:not( :checked){
 				background-color: #eeecec;
 				background: linear-gradient(200deg, #eeecec 45%, #fff 95%);
 
@@ -71,7 +70,7 @@
 	input:nth-of-type(3):checked ~ ul > li:nth-child(3) > label,
 	input:nth-of-type(4):checked ~ ul > li:nth-child(4) > label{
 		cursor: default;
-		background-color: initial;
+		background-color: white;
 	}		
 
 	input:nth-of-type(1):checked ~ .contenu-tabs > .section-tab:nth-child(1),
@@ -83,6 +82,7 @@
 }
 
 .contenu-tabs{
+	background-color: white;
 	min-height:400px;
 	padding:1rem;
 }	
@@ -146,6 +146,10 @@
 		border-collapse: collapse;
 		}
 	}
+}
+
+#saveBtn{
+	display: none;
 }
 
 /******************* formulaires *******************/

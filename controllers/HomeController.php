@@ -16,7 +16,6 @@ class HomeController{
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
-
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();
 

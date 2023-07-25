@@ -2,9 +2,24 @@
 
 namespace Controllers;
 
+use \Models\Horaires;
 use \Models\Mail;
 
 class ContactController{
+
+    public function displayContactPage(){
+        $modelHoraires = new Horaires();
+        $dates = $modelHoraires->getAllDates();
+
+        $template = "contact/index.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    public function displayContactForm()
+    {
+        $template = "contact/mail.phtml";
+        include_once 'views/layout.phtml';
+    }
 
     public function submitMessage()
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site

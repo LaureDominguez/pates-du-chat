@@ -6,7 +6,18 @@ use \Models\Users;
 
 class UsersController{
 
-////////////////////////// routes //////////////////////////
+
+    ////////////////////////// check session //////////////////////////
+
+    public function isConnected()
+    {
+        if (!isset($_SESSION['user'])) {
+            header('Location: index.php?route=login');
+        }
+        
+    }
+
+////////////////////////// Profile //////////////////////////
     public function profil()
     {//affiche le compte user
         $model = new Users();
@@ -94,15 +105,6 @@ class UsersController{
         }
         header('Location: ' . $_SESSION['visitor']['currentPage']);
         exit();
-    }
-
-    ////////////////////////// check session //////////////////////////
-
-    public function isConnected()
-    {
-        if (!isset($_SESSION['user']))
-            header('Location: index.php?route=login');
-            exit();
     }
 
     ////////////////////////// update //////////////////////////

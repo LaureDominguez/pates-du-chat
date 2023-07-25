@@ -2,7 +2,7 @@
 <nav>
     <ul class="pages">
         <li><a href="index.php?route=shop">Les pâtes fraîches</a></li>
-        <li><a href="index.php?route=shop">Les marchés</a></li>
+        <li><a href="index.php?route=contactPage">Les marchés</a></li>
     </ul>
 
     <ul class="title" id="title">
@@ -10,7 +10,7 @@
     </ul>
 
     <ul class="account">
-        <li><a href="index.php?route=home#contact">contact</a></li>
+        <li><a href="index.php?route=contactMail">contact</a></li>
 
         <!-- accès gestion du site -->
         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>

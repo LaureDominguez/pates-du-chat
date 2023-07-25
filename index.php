@@ -33,6 +33,16 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\ShopController();
             $controller->displayOneProduct($id);
             break;
+
+        case 'contactPage':
+            $controller = new Controllers\ContactController();
+            $controller->displayContactPage();
+            break;
+
+        case 'contactMail':
+            $controller = new Controllers\ContactController();
+            $controller->displayContactForm();
+            break;
             
         case 'sendContactMail':
             $controller = new Controllers\ContactController();
