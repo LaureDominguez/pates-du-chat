@@ -1,14 +1,19 @@
 // ********************* modifier le tableau d'horaires
 
 export function editContact() {
-    // la fonction n'est dispo que sur la page admin
-    if (window.location.search === "?route=admin") {
 
-        // rend les champs et le bouton dispo pour admin
-        const saveBtn = document.getElementById('saveBtn');
-        const elements = document.querySelectorAll('.editable');
-        saveBtn.style.display = "flex";
-
+    // rend les champs et le bouton dispo pour admin
+    const saveBtn = document.getElementById('saveBtn');
+    const elements = document.querySelectorAll('.editable');
+    console.log(window.location.search)
+    
+    // l'edition n'est dispo que sur la page admin
+    if (window.location.search != "?route=admin") {
+        saveBtn.style.display = "none";
+        elements.forEach(function (field) {
+            field.classList.remove('editable');
+        });
+    } else {
         elements.forEach(function (field) {
             field.setAttribute('contenteditable', 'true');
             // Ajouter la classe 'modified' lorsque le contenu est modifié
@@ -42,16 +47,17 @@ export function editContact() {
             });
 
             // Effectuer la requête fetch pour enregistrer les données sur le serveur
-            fetch('./config/horairesFetch.php', {
+            fetch('index.php?route=horairesFetch', {
                 method: 'POST', // Utiliser la méthode POST pour envoyer les données
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(dataToSave) // Convertir les données en format JSON pour l'envoi
             })
-            .then(response => response.json())
+                .then(response => response.json())
             .then(data => {
                 // Traiter la réponse du serveur ici si nécessaire
+                console.log('réponse', data);
                 alert('Données enregistrées avec succès !');
                 // on supprime la classe "modified" après envoi
                 tableRows.forEach(function (row) {
@@ -60,10 +66,11 @@ export function editContact() {
                         row.querySelector('[data-field="place"]').classList.remove('modified');
                     });
             })
-            .catch(error => {
+                .catch(error => {
+                    console.log('Erreur :', error);
                 // Gérer les erreurs ici si nécessaire
                 alert('Une erreur est survenue lors de l\'enregistrement des données.');
             });
         });
-    };
+    }
 }

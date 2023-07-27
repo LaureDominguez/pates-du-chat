@@ -30,22 +30,11 @@ body{
                 -webkit-linear-gradient(336deg, #ADC865, rgba(0,255,0,0) 70.71%);
 }
 
-section:not(:last-child){
-    margin-bottom: 3rem ;
-}
-
 main{
     margin: 0 auto;
     min-height: 100vh;
 }
 
-.content{
-    border-radius: 10px;
-}
-
-.container{
-    padding: 3.3rem 0;
-}
 
 hr{
     margin: 3rem 10rem;
@@ -145,14 +134,7 @@ form{
     input:not(.btn, .file), form textarea, form select{
         border: none;
         border-radius: 5px;
-        // box-shadow: 0px 0px 5px 1px #00000085;
     }
-    // div:not(.log) {
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     flex-direction: column;
-    //     margin-bottom: 1rem;
-    // }
 }
 
 /******************* short *******************/
@@ -173,8 +155,29 @@ form{
     display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll{
     overflow: hidden;
     position: fixed;
+}
+
+/******************* Media query *******************/
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* PC */
+@media (min-width: 1024px) {
+    .container{
+        padding: 3.3rem 0;
+    }
+
+    .content{
+        border-radius: 10px;
+    }
+
+    section:not(:last-child){
+        margin-bottom: 3rem ;
+    }
 }

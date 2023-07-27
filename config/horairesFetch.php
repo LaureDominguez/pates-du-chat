@@ -1,7 +1,7 @@
 <?php
 
-require_once '../models/Database.php';
-require_once '../models/Horaires.php';
+require_once './models/Database.php';
+require_once './models/Horaires.php';
 
 // Function to update the data in the database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,4 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 header('Content-Type: application/json');
 
 // Convert the response array to JSON format and echo it
-echo json_encode($response);
+try {
+        echo json_encode($response, JSON_THROW_ON_ERROR);
+} catch (JsonException $e) {
+        // En cas d'erreur lors de l'encodage JSON, vous pouvez afficher un message d'erreur détaillé
+        echo json_encode(array('status' => 'error', 'message' => 'An error occurred while encoding JSON response'));
+}

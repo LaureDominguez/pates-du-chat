@@ -59,18 +59,14 @@
     iframe{
         border-radius: 10px;
         height: 250px;
+        width: 100%;
         margin: 2rem 0;
     }
 }
 
 .mail {
-    margin: auto;
     padding: 2rem 2rem 4rem 2rem;
     position: relative;
-        border-radius: 10px;
-        background-color: #ffffff6a;
-        backdrop-filter: blur(4px);
-        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     div{
         display: flex;
         flex-direction: column;
@@ -137,6 +133,11 @@
     }
 
     .mail {
+        margin: auto;
         width: 70%;
+        border-radius: 10px;
+        background-color: #ffffff6a;
+        backdrop-filter: blur(4px);
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     }
 }

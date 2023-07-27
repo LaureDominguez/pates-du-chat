@@ -166,6 +166,19 @@ if (array_key_exists('route', $_GET)):
 
 ///////////////////////contact
 
+/////////////////////// fetch
+        case 'loginFetch':
+            require('./config/conexionFetch.php');
+            break;
+
+        case 'productsFetch':
+            require('./config/switchActiveFetch.php');
+            break;
+            
+        case 'horairesFetch':
+            require ('./config/horairesFetch.php');
+            break;
+
 /////////////////////// end ///////////////////////
         default:
             header('Location: index.php?route=home');

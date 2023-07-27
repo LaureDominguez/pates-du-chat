@@ -39,7 +39,7 @@ export function switchProducts() {
                     type: 'category'
                 };
                 
-                fetch('./config/switchActiveFetch.php', {
+                fetch('index.php?route=productsFetch', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

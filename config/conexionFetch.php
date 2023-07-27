@@ -1,7 +1,7 @@
 <?php
 
-require_once '../models/Database.php';
-require_once '../models/Users.php';
+require_once './models/Database.php';
+require_once './models/Users.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();

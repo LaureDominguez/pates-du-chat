@@ -2,10 +2,11 @@
 @use '_base';
 @use '_switch';
 @use '_tooltip';
+@use '_animations';
 
 /******************* table à onglets *******************/
 .menu-tabs{
-	max-width: 960px;
+	max-width: 95%;
 	margin: 1rem auto;
 	font-size: small;
 	ul{
@@ -23,7 +24,7 @@
 			outline: none;
 			border: solid 1px transparent;
 			cursor: pointer;
-			height: 4rem;
+			height: 3rem;
 			align-items: center;
 			justify-content:center;
 			transition: background-color .4s;
@@ -91,7 +92,6 @@
 .section-tab{
 	display:none;
 	animation: anim-tabs .4s ease-in-out;
-	margin-top:2rem;
 }	
 
 @keyframes anim-tabs{
@@ -109,6 +109,7 @@
 .dashboard-table{
 	margin-bottom: 1rem;
 	border-collapse: collapse;
+    width: 100%;
 
 	&, th, td{
 		border: 1px solid rgb(200, 200, 200);
@@ -125,18 +126,12 @@
 		background-color: rgb(255, 207, 149);
 	}
 
-	td a{
-		transition: all 1s ease-out;
-		&:hover{
-			color: red;
-		}
-	}
 }
 
 #contact-tab{
 	.editable{
-		color: red;
-		
+		color: var(--orange);
+		font-style: italic;
 	}
 	table{
 		margin: 1rem auto;
@@ -144,13 +139,9 @@
 			padding: 1rem;
 			border: 1px solid rgb(200, 200, 200);
 			text-align: center;
-		border-collapse: collapse;
+			border-collapse: collapse;
 		}
 	}
-}
-
-#saveBtn{
-	display: none;
 }
 
 /******************* formulaires *******************/
@@ -176,18 +167,6 @@
 
 
 /******************* Media query *******************/
-// Mobiles
-@media (max-width: 767px) {
-    
-}
-/* Smatrphone en landscape */
-@media screen and (max-width: 767px) and (orientation: landscape) {
-}
-
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-    
-}
 
 /* PC */
 @media (min-width: 1024px) {
@@ -195,8 +174,9 @@
 	
 /******************* table à onglets *******************/
 	.menu-tabs{
-		max-width: 960px;
+		max-width: 80%;
 		margin: 2rem auto;
+		font-size: inherit;
 		ul{
 			display: flex;
 			padding-left:0;
@@ -313,19 +293,12 @@
 		tbody>tr:hover {
 			background-color: rgb(255, 207, 149);
 		}
-
-		td a{
-			transition: all 1s ease-out;
-			&:hover{
-				color: red;
-			}
-		}
 	}
 
 	#contact-tab{
 		.editable{
-			color: red;
-			
+			color: var(--orange);
+			cursor: text;
 		}
 		table{
 			margin: 1rem auto;
@@ -338,9 +311,6 @@
 		}
 	}
 
-	#saveBtn{
-		display: none;
-	}
 
 	/******************* formulaires *******************/
 

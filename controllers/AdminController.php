@@ -34,6 +34,12 @@ class AdminController{
 
     public function isAdmin()
     {
+        // autoriser le fetch
+        if (isset($_GET['route']) && $_GET['route'] === 'horairesFetch') {
+            // Autoriser l'accès sans authentification
+            return;
+        }
+        // check authentification pour admin
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] != 1){
             header('Location: index.php?route=home');
             exit;

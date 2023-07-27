@@ -17,80 +17,82 @@ export function toogleModal() {
     const menuMobile = document.getElementById('menu-mobile');
 
 
-    // display login form from large screen
-    document.getElementById('login').addEventListener('click', function () {
-        showElement(modal);
-        showElement(logWindow);
-    })
-
-    // display login form from mobile
-    document.getElementById('login-mobile').addEventListener('click', function () {
-        hideElement(menuMobile);
-        hideElement(burger);
-        showElement(logWindow);
-        logWindow.classList.add('bg-animed');
-    })
-
-    // switch to register form
-    document.getElementById('register').addEventListener('click', function () {
-        if (mediaQuery.matches) {
-            hideElement(menuMobile);
-            showElement(registerWindow);
-            registerWindow.classList.add('bg-animed');
-        } else {
-            showElement(registerWindow);
-            hideElement(logWindow);
-        }
-    })
-
-    // switch to login form
-    document.getElementById('connexion').addEventListener('click', function () {
-        if (mediaQuery.matches) {
-            hideElement(registerWindow);
-            showElement(logWindow);
-        } else {
+    if (logWindow || registerWindow) {
+        // display login form from large screen
+        document.getElementById('login').addEventListener('click', function () {
             showElement(modal);
-            hideElement(registerWindow);
             showElement(logWindow);
-        }
-    })
+        })
+
+        // display login form from mobile
+        document.getElementById('login-mobile').addEventListener('click', function () {
+            hideElement(menuMobile);
+            hideElement(burger);
+            showElement(logWindow);
+            logWindow.classList.add('bg-animed');
+        })
+
+        // switch to register form
+        document.getElementById('register').addEventListener('click', function () {
+            if (mediaQuery.matches) {
+                hideElement(menuMobile);
+                showElement(registerWindow);
+                registerWindow.classList.add('bg-animed');
+            } else {
+                showElement(registerWindow);
+                hideElement(logWindow);
+            }
+        })
+
+        // switch to login form
+        document.getElementById('connexion').addEventListener('click', function () {
+            if (mediaQuery.matches) {
+                hideElement(registerWindow);
+                showElement(logWindow);
+            } else {
+                showElement(modal);
+                hideElement(registerWindow);
+                showElement(logWindow);
+            }
+        })
+
+        //close login form
+        document.getElementById('close-log').addEventListener('click', function () {
+            if (mediaQuery.matches) {
+                hideElement(registerWindow);
+                hideElement(logWindow);
+                showElement(burger);
+            } else {
+                hideElement(modal);
+                hideElement(logWindow);
+            }
+        })
 
     //close login form
-    document.getElementById('close-log').addEventListener('click', function () {
-        if (mediaQuery.matches) {
+        document.getElementById('close-register').addEventListener('click', function () {
+            if (mediaQuery.matches) {
+                hideElement(registerWindow)
+                hideElement(logWindow);
+                showElement(burger);
+            } else {
+                hideElement(modal);
+                hideElement(registerWindow)
+            }
+        })
+
+        //close both forms
+        modal.addEventListener('click', function (e) {
+            hideElement(modal);
+            hideElement(logWindow);
             hideElement(registerWindow);
-            hideElement(logWindow);
-            showElement(burger);
-        } else {
-            hideElement(modal);
-            hideElement(logWindow);
-        }
-    })
+        })
 
-   //close login form
-    document.getElementById('close-register').addEventListener('click', function () {
-        if (mediaQuery.matches) {
-            hideElement(registerWindow)
-            hideElement(logWindow);
-            showElement(burger);
-        } else {
-            hideElement(modal);
-            hideElement(registerWindow)
-        }
-    })
+        logWindow.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
 
-     //close both forms
-    modal.addEventListener('click', function (e) {
-        hideElement(modal);
-        hideElement(logWindow);
-        hideElement(registerWindow);
-    })
-
-    logWindow.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
-
-    registerWindow.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
+        registerWindow.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
 }

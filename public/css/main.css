@@ -24,21 +24,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -155,12 +143,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* general *******************/
 /******************* navbar *******************/
 #burger {
@@ -393,21 +395,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -524,18 +514,32 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* switch toggle *******************/
 .switch {
   display: inline-block;
   position: relative;
-  width: 35px;
-  height: 20px;
+  width: 20px;
+  height: 10px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -564,8 +568,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   position: absolute;
   top: 50%;
   left: 2px;
-  width: 16px;
-  height: 16px;
+  width: 8px;
+  height: 8px;
   background: white;
   border-radius: 50%;
   transform: translateY(-50%);
@@ -577,9 +581,24 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 .switch input:checked + span:before {
-  left: 17px;
+  left: 11px;
 }
 
+/******************* Media query *******************/
+/* PC */
+@media (min-width: 1024px) {
+  .switch {
+    width: 35px;
+    height: 20px;
+  }
+  .switch input + span:before {
+    width: 16px;
+    height: 16px;
+  }
+  .switch input:checked + span:before {
+    left: 17px;
+  }
+}
 /******************* tooltip *******************/
 .aide {
   position: relative;
@@ -642,10 +661,119 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: block;
 }
 
+/******************* animations *******************/
+/******************* sliders animation on scrolling *******************/
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealR {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(-150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealL {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active, .revealR.active, .revealL.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/******************* title move through nav *******************/
+.move-up {
+  animation: move-up 1.2s both;
+  transition: transform 0.5s ease-in-out, opacity 1.2s ease-in-out;
+}
+
+@keyframes move-up {
+  0% {
+    transform: translateY(13px);
+    scale: 2;
+    animation-timing-function: ease-in;
+    opacity: 0.1;
+  }
+  100% {
+    scale: 1;
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+}
+.move-out {
+  animation: move-out 0.8s both;
+}
+
+@keyframes move-out {
+  0% {
+    transform: translateY(0px);
+    scale: 1;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    scale: 2;
+    animation-timing-function: ease-out;
+    opacity: 0;
+  }
+}
+/******************* shiny effect *******************/
+@keyframes shine {
+  0% {
+    left: -100px;
+    opacity: 0.1;
+  }
+  20% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.1;
+  }
+}
+/******************* background animation *******************/
+.bg-animed {
+  background-size: 200%;
+  background-image: linear-gradient(45deg, var(--green) 0%, var(--orange) 50%, var(--red) 100%);
+  animation: AnimateBG 5s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/******************* waiting scale *******************/
+@keyframes wait {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 /******************* dashboard *******************/
 /******************* table à onglets *******************/
 .menu-tabs {
-  max-width: 960px;
+  max-width: 95%;
   margin: 1rem auto;
   font-size: small;
 }
@@ -665,7 +793,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   outline: none;
   border: solid 1px transparent;
   cursor: pointer;
-  height: 4rem;
+  height: 3rem;
   align-items: center;
   justify-content: center;
   transition: background-color 0.4s;
@@ -727,7 +855,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 .section-tab {
   display: none;
   animation: anim-tabs 0.4s ease-in-out;
-  margin-top: 2rem;
 }
 
 @keyframes anim-tabs {
@@ -743,6 +870,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .dashboard-table {
   margin-bottom: 1rem;
   border-collapse: collapse;
+  width: 100%;
 }
 .dashboard-table, .dashboard-table th, .dashboard-table td {
   border: 1px solid rgb(200, 200, 200);
@@ -756,15 +884,10 @@ form input:not(.btn, .file), form form textarea, form form select {
 .dashboard-table tbody > tr:hover {
   background-color: rgb(255, 207, 149);
 }
-.dashboard-table td a {
-  transition: all 1s ease-out;
-}
-.dashboard-table td a:hover {
-  color: red;
-}
 
 #contact-tab .editable {
-  color: red;
+  color: var(--orange);
+  font-style: italic;
 }
 #contact-tab table {
   margin: 1rem auto;
@@ -774,10 +897,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border: 1px solid rgb(200, 200, 200);
   text-align: center;
   border-collapse: collapse;
-}
-
-#saveBtn {
-  display: none;
 }
 
 /******************* formulaires *******************/
@@ -801,14 +920,13 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 /******************* Media query *******************/
-/* Smatrphone en landscape */
-/* Tablettes */
 /* PC */
 @media (min-width: 1024px) {
   /******************* table à onglets *******************/
   .menu-tabs {
-    max-width: 960px;
+    max-width: 80%;
     margin: 2rem auto;
+    font-size: inherit;
   }
   .menu-tabs ul {
     display: flex;
@@ -914,14 +1032,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   .dashboard-table tbody > tr:hover {
     background-color: rgb(255, 207, 149);
   }
-  .dashboard-table td a {
-    transition: all 1s ease-out;
-  }
-  .dashboard-table td a:hover {
-    color: red;
-  }
   #contact-tab .editable {
-    color: red;
+    color: var(--orange);
+    cursor: text;
   }
   #contact-tab table {
     margin: 1rem auto;
@@ -931,9 +1044,6 @@ form input:not(.btn, .file), form form textarea, form form select {
     border: 1px solid rgb(200, 200, 200);
     text-align: center;
     border-collapse: collapse;
-  }
-  #saveBtn {
-    display: none;
   }
   /******************* formulaires *******************/
   .dashboard-form form {
@@ -980,21 +1090,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -1111,12 +1209,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* user *******************/
 .userProfil {
   width: 80%;
@@ -1156,21 +1268,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -1287,12 +1387,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* home *******************/
 main {
   overflow: hidden;
@@ -1300,6 +1414,26 @@ main {
 
 .home {
   padding-top: 2rem;
+}
+.home .mail {
+  margin: auto;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.4156862745);
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem 2rem 4rem 2rem;
+  position: relative;
+}
+.home .mail div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+.home .mail button {
+  position: absolute;
+  bottom: 2rem;
+  right: 40%;
+  left: 40%;
 }
 
 #title-landscape {
@@ -1494,21 +1628,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -1625,12 +1747,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* shop *******************/
 /******************* home *******************/
 .shop-tuile {
@@ -1807,21 +1943,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -1938,12 +2062,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* contact *******************/
 /******************* index *******************/
 .contact {
@@ -2002,17 +2140,13 @@ form input:not(.btn, .file), form form textarea, form form select {
 .map iframe {
   border-radius: 10px;
   height: 250px;
+  width: 100%;
   margin: 2rem 0;
 }
 
 .mail {
-  margin: auto;
   padding: 2rem 2rem 4rem 2rem;
   position: relative;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.4156862745);
-  backdrop-filter: blur(4px);
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 .mail div {
   display: flex;
@@ -2070,7 +2204,12 @@ form input:not(.btn, .file), form form textarea, form form select {
     margin: 1rem;
   }
   .mail {
+    margin: auto;
     width: 70%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4156862745);
+    backdrop-filter: blur(4px);
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
 }
 /******************* general *******************/
@@ -2098,21 +2237,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -2229,12 +2356,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* animations *******************/
 /******************* sliders animation on scrolling *******************/
 .reveal {
@@ -2333,6 +2474,15 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+/******************* waiting scale *******************/
+@keyframes wait {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 /******************* general *******************/
@@ -2553,21 +2703,9 @@ body {
   background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
 }
 
-section:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
 main {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.content {
-  border-radius: 10px;
-}
-
-.container {
-  padding: 3.3rem 0;
 }
 
 hr {
@@ -2684,12 +2822,26 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
-/******************* hidden *******************/
+/******************* noScroll *******************/
 .noScroll {
   overflow: hidden;
   position: fixed;
 }
 
+/******************* Media query *******************/
+/* Tablettes */
+/* PC */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3.3rem 0;
+  }
+  .content {
+    border-radius: 10px;
+  }
+  section:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
 /******************* animations *******************/
 /******************* sliders animation on scrolling *******************/
 .reveal {
@@ -2788,6 +2940,15 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+/******************* waiting scale *******************/
+@keyframes wait {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
