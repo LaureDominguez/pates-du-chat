@@ -172,3 +172,9 @@ form{
 .hidden{
     display: none;
 }
+
+/******************* hidden *******************/
+.noScroll{
+    overflow: hidden;
+    position: fixed;
+}

@@ -1,13 +1,14 @@
 /******************* general *******************/
 @use '_base';
+@use '_animations';
 
 /******************* alert *******************/
 
 .success{
     position: fixed;
-    top: 2.2rem;
-    left: 40%;
-    right: 40%;
+    top: 1rem;
+    left: 10%;
+    right: 10%;
     text-align: center;
     color: #fff;
     background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #ADC865 50%,  rgba(255,0,0,0) 100%);
@@ -31,7 +32,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--orange);
     z-index: 100;
     flex-direction: column;
     align-items: center;
@@ -39,14 +39,14 @@
     z-index: 100;
     .btn{
         width: 100%;
-        margin: auto;
+        margin: 0;
     }
     form{
         width: 80%;
-        height: 60%;
+        height: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         input:not(.checkbox){
             width: 100%;
         }
@@ -58,7 +58,6 @@
         }
     }
 }
-
 
 .error{
     color: #fff;
@@ -81,26 +80,20 @@
         align-items: center;
         justify-content: center;
         border-radius: 0 5px 5px 0;
-        cursor: pointer;
-        &:hover, &:active{
-            background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #FAC172 25%);
-        }
     }
     a{
         display: inline-block;
+        font-size: larger;
         text-align: right;
         width: 100%;
     }
 }
 
-#forgot:hover{
-    background:-webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
-}
-
-
 .trans-btn{
     width: 80%;
     transition: all .5s ease-out;
+    font-size: large;
+    margin: 2rem;
     p{
         display: block;
     }
@@ -116,28 +109,6 @@
         }
     }
 }
-
-/******************* croix *******************/
-
-// .croix-btn{
-//     border: solid 1px #fff;
-//     border-radius: 3px;
-//     color: #fff;
-//     background-color: var(--orange);
-//     width: 1.2rem;
-//     height: 1.2rem;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     transition: all, 0.1s ease-in;
-//     position: absolute;
-//     top: 10px;
-//     right: 10px;
-//     &:hover, &:active, &:focus-visible{
-//         color: var(--orange);
-//         background-color: #fff;
-//     }
-// }
 
 .close-btn{
     position: fixed;
@@ -180,15 +151,9 @@
     // }
 
     .success{
-        position: fixed;
         top: 2.2rem;
         left: 40%;
         right: 40%;
-        text-align: center;
-        color: #fff;
-        background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #ADC865 50%,  rgba(255,0,0,0) 100%);
-        text-align: center;
-        padding: 0.2rem;
     }
 
 
@@ -207,45 +172,28 @@
         display: none;
     }
 
-    #log-window, #register-window{
-        display: none;
-    }
-
     .log{
         width: 30vw;
         height: 50vh;
         flex-direction: column;
         align-items: center;
         margin: auto;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        right: 20%;
+        position: relative;
         font-size: 0.7rem;
         padding: 1rem;
-        border-radius: 5px;
+        border-radius: 10px;
         background-color: var(--orange);
         box-shadow: 2px 2px 15px 2px #000000a3;
-        z-index: 100;
-        .btn{
-            width: 100%;
-            margin: auto;
+        .close-btn{
+            position: absolute;
+            &:hover{
+                cursor: pointer;
+                background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 0, 0, 0.49) 0%, rgba(255, 0, 0, 0) 60%);
+            }
         }
+
         form{
-            width: 80%;
             height: 60%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            input:not(.checkbox){
-                width: 100%;
-            }
-            label{
-                color: #fff;
-            }
-            .champs{
-                margin-bottom: 1rem;
-            }
         }
     }
 
@@ -257,29 +205,14 @@
     }
 
     .password{
-        div{
-            position: relative;
-            overflow: hidden;
-        }
         i{
-            color: var(--vert);
-            position: absolute;
-            right: 0;
-            width: 10%;
-            height: 100%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0 5px 5px 0;
             cursor: pointer;
             &:hover, &:active{
                 background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #FAC172 25%);
             }
         }
         a{
-            display: inline-block;
-            text-align: right;
-            width: 100%;
+            font-size: inherit;
         }
     }
 

@@ -155,6 +155,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
 /******************* general *******************/
 /******************* navbar *******************/
 #burger {
@@ -516,6 +522,12 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* hidden *******************/
 .hidden {
   display: none;
+}
+
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
 }
 
 /******************* switch toggle *******************/
@@ -1099,6 +1111,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
 /******************* user *******************/
 .userProfil {
   width: 80%;
@@ -1267,6 +1285,12 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* hidden *******************/
 .hidden {
   display: none;
+}
+
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
 }
 
 /******************* home *******************/
@@ -1601,6 +1625,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
 /******************* shop *******************/
 /******************* home *******************/
 .shop-tuile {
@@ -1908,6 +1938,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
 /******************* contact *******************/
 /******************* index *******************/
 .contact {
@@ -2193,13 +2229,119 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
+/******************* animations *******************/
+/******************* sliders animation on scrolling *******************/
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealR {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(-150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.revealL {
+  position: relative;
+  transform: translateY(150px);
+  transform: translateX(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+
+.reveal.active, .revealR.active, .revealL.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/******************* title move through nav *******************/
+.move-up {
+  animation: move-up 1.2s both;
+  transition: transform 0.5s ease-in-out, opacity 1.2s ease-in-out;
+}
+
+@keyframes move-up {
+  0% {
+    transform: translateY(13px);
+    scale: 2;
+    animation-timing-function: ease-in;
+    opacity: 0.1;
+  }
+  100% {
+    scale: 1;
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+}
+.move-out {
+  animation: move-out 0.8s both;
+}
+
+@keyframes move-out {
+  0% {
+    transform: translateY(0px);
+    scale: 1;
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    scale: 2;
+    animation-timing-function: ease-out;
+    opacity: 0;
+  }
+}
+/******************* shiny effect *******************/
+@keyframes shine {
+  0% {
+    left: -100px;
+    opacity: 0.1;
+  }
+  20% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.1;
+  }
+}
+/******************* background animation *******************/
+.bg-animed {
+  background-size: 200%;
+  background-image: linear-gradient(45deg, var(--green) 0%, var(--orange) 50%, var(--red) 100%);
+  animation: AnimateBG 5s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 /******************* general *******************/
 /******************* alert *******************/
 .success {
   position: fixed;
-  top: 2.2rem;
-  left: 40%;
-  right: 40%;
+  top: 1rem;
+  left: 10%;
+  right: 10%;
   text-align: center;
   color: #fff;
   background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #ADC865 50%, rgba(255, 0, 0, 0) 100%);
@@ -2220,7 +2362,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--orange);
   z-index: 100;
   flex-direction: column;
   align-items: center;
@@ -2229,14 +2370,14 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .log .btn {
   width: 100%;
-  margin: auto;
+  margin: 0;
 }
 .log form {
   width: 80%;
-  height: 60%;
+  height: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .log form input:not(.checkbox) {
   width: 100%;
@@ -2268,24 +2409,19 @@ form input:not(.btn, .file), form form textarea, form form select {
   align-items: center;
   justify-content: center;
   border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-.password i:hover, .password i:active {
-  background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #FAC172 25%);
 }
 .password a {
   display: inline-block;
+  font-size: larger;
   text-align: right;
   width: 100%;
-}
-
-#forgot:hover {
-  background: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .trans-btn {
   width: 80%;
   transition: all 0.5s ease-out;
+  font-size: large;
+  margin: 2rem;
 }
 .trans-btn p {
   display: block;
@@ -2300,7 +2436,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: block;
 }
 
-/******************* croix *******************/
 .close-btn {
   position: fixed;
   top: 0;
@@ -2319,15 +2454,9 @@ form input:not(.btn, .file), form form textarea, form form select {
 @media (min-width: 1024px) {
   /******************* alert *******************/
   .success {
-    position: fixed;
     top: 2.2rem;
     left: 40%;
     right: 40%;
-    text-align: center;
-    color: #fff;
-    background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #ADC865 50%, rgba(255, 0, 0, 0) 100%);
-    text-align: center;
-    padding: 0.2rem;
   }
   /******************* loggin *******************/
   #modal {
@@ -2342,74 +2471,42 @@ form input:not(.btn, .file), form form textarea, form form select {
     z-index: 200;
     display: none;
   }
-  #log-window, #register-window {
-    display: none;
-  }
   .log {
     width: 30vw;
     height: 50vh;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    right: 20%;
+    position: relative;
     font-size: 0.7rem;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--orange);
     box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.6392156863);
-    z-index: 100;
   }
-  .log .btn {
-    width: 100%;
-    margin: auto;
+  .log .close-btn {
+    position: absolute;
+  }
+  .log .close-btn:hover {
+    cursor: pointer;
+    background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 0, 0, 0.49) 0%, rgba(255, 0, 0, 0) 60%);
   }
   .log form {
-    width: 80%;
     height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .log form input:not(.checkbox) {
-    width: 100%;
-  }
-  .log form label {
-    color: #fff;
-  }
-  .log form .champs {
-    margin-bottom: 1rem;
   }
   .error {
     color: #fff;
     background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #E25B45 50%, rgba(255, 0, 0, 0) 90%);
     text-align: center;
   }
-  .password div {
-    position: relative;
-    overflow: hidden;
-  }
   .password i {
-    color: var(--vert);
-    position: absolute;
-    right: 0;
-    width: 10%;
-    height: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0 5px 5px 0;
     cursor: pointer;
   }
   .password i:hover, .password i:active {
     background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #FAC172 25%);
   }
   .password a {
-    display: inline-block;
-    text-align: right;
-    width: 100%;
+    font-size: inherit;
   }
   #forgot:hover {
     background: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
@@ -2587,6 +2684,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   display: none;
 }
 
+/******************* hidden *******************/
+.noScroll {
+  overflow: hidden;
+  position: fixed;
+}
+
 /******************* animations *******************/
 /******************* sliders animation on scrolling *******************/
 .reveal {
@@ -2667,6 +2770,24 @@ form input:not(.btn, .file), form form textarea, form form select {
   100% {
     left: 100%;
     opacity: 0.1;
+  }
+}
+/******************* background animation *******************/
+.bg-animed {
+  background-size: 200%;
+  background-image: linear-gradient(45deg, var(--green) 0%, var(--orange) 50%, var(--red) 100%);
+  animation: AnimateBG 5s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 

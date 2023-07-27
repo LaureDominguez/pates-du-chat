@@ -87,3 +87,22 @@
         opacity: 0.1;
     }
 }
+
+/******************* background animation *******************/
+
+.bg-animed {
+    background-size: 200%;
+    background-image: linear-gradient(
+        45deg, 
+        var(--green) 0%, 
+        var(--orange) 50%, 
+        var(--red) 100%
+    );  
+    animation: AnimateBG 5s ease infinite;
+}
+
+@keyframes AnimateBG { 
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}

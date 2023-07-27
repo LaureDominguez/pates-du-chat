@@ -28,6 +28,7 @@ export function toogleModal() {
         hideElement(menuMobile);
         hideElement(burger);
         showElement(logWindow);
+        logWindow.classList.add('bg-animed');
     })
 
     // switch to register form
@@ -35,6 +36,7 @@ export function toogleModal() {
         if (mediaQuery.matches) {
             hideElement(menuMobile);
             showElement(registerWindow);
+            registerWindow.classList.add('bg-animed');
         } else {
             showElement(registerWindow);
             hideElement(logWindow);
@@ -56,7 +58,9 @@ export function toogleModal() {
     //close login form
     document.getElementById('close-log').addEventListener('click', function () {
         if (mediaQuery.matches) {
+            hideElement(registerWindow);
             hideElement(logWindow);
+            showElement(burger);
         } else {
             hideElement(modal);
             hideElement(logWindow);
@@ -67,6 +71,7 @@ export function toogleModal() {
     document.getElementById('close-register').addEventListener('click', function () {
         if (mediaQuery.matches) {
             hideElement(registerWindow)
+            hideElement(logWindow);
             showElement(burger);
         } else {
             hideElement(modal);
@@ -76,15 +81,9 @@ export function toogleModal() {
 
      //close both forms
     modal.addEventListener('click', function (e) {
-        if (mediaQuery.matches) {
-            hideElement(registerWindow)
-            hideElement(logWindow);
-            showElement(burger);
-        } else {
-            hideElement(modal);
-            hideElement(logWindow);
-            hideElement(registerWindow);
-        }
+        hideElement(modal);
+        hideElement(logWindow);
+        hideElement(registerWindow);
     })
 
     logWindow.addEventListener('click', function (e) {
@@ -94,9 +93,4 @@ export function toogleModal() {
     registerWindow.addEventListener('click', function (e) {
         e.stopPropagation();
     });
-
-    modal.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
-
 }
