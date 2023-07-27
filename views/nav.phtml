@@ -3,32 +3,22 @@
 <i class="fa-solid fa-bars" id="burger"></i>
 <nav id="menu-mobile">
     <ul>
+        <li><a href="index.php?route=home">Accueil</a></li>
         <li><a href="index.php?route=shop">Les pâtes fraîches</a></li>
         <li><a href="index.php?route=contactPage">Les marchés</a></li>
-        <li><a href="index.php?route=contactMail">contact</a></li>
+        <li><a href="index.php?route=contactMail">Contact</a></li>
 
         <!-- accès gestion du site -->
         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
-            <li><a href="index.php?route=admin">tableau de bord</a></li>
+            <li><a href="index.php?route=admin">Gestion du site</a></li>
         <?php endif; ?>
 
         <!-- accès gestion du compte -->
         <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])) : ?>
-            <li class="dropdown">
-                <a class="dropdown-toggle" role="button" id="dropdown-toggle">
-                    <?php if (isset($_SESSION['user']['name'])) : ?>
-                        <?= htmlspecialchars($_SESSION['user']['name']); ?>
-                    <?php else : ?>
-                        <?= htmlspecialchars($_SESSION['user']['email']); ?>
-                    <?php endif; ?>
-                </a>
-                <ul class="dropdown-menu" id="dropdown-menu">
-                    <li><a href="index.php?route=myAccount">mon compte</a></li>
-                    <li><a href="index.php?route=logout">déconnexion</a></li>
-                </ul>
-            </li>
+            <li><a href="index.php?route=myAccount">Mon compte</a></li>
+            <li><a href="index.php?route=logout">Déconnexion</a></li>
         <?php else : ?>
-            <li id="loggin">connexion</li>
+            <li id="login-mobile">Connexion</li>
         <?php endif; ?>
     </ul>
 </nav>
@@ -46,11 +36,11 @@
     </ul>
 
     <ul class="account">
-        <li><a href="index.php?route=contactMail">contact</a></li>
+        <li><a href="index.php?route=contactMail">Contact</a></li>
 
         <!-- accès gestion du site -->
         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
-            <li><a href="index.php?route=admin">tableau de bord</a></li>
+            <li><a href="index.php?route=admin">Gestion du site</a></li>
         <?php endif; ?>
 
         <!-- accès gestion du compte -->
@@ -64,12 +54,12 @@
                     <?php endif; ?>
                 </a>
                 <ul class="dropdown-menu" id="dropdown-menu">
-                    <li><a href="index.php?route=myAccount">mon compte</a></li>
-                    <li><a href="index.php?route=logout">déconnexion</a></li>
+                    <li><a href="index.php?route=myAccount">Mon compte</a></li>
+                    <li><a href="index.php?route=logout">Déconnexion</a></li>
                 </ul>
             </li>
         <?php else : ?>
-            <li id="loggin">connexion</li>
+            <li id="login">Connexion</li>
         <?php endif; ?>
     </ul>
 </nav>

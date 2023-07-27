@@ -2,6 +2,7 @@
 
 export function checkErrors() {
 
+
 /////////// register form ///////////////////
     const registerForm = document.querySelector('#register-form');
     if (registerForm) {

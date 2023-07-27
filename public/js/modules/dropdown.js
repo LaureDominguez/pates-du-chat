@@ -5,7 +5,6 @@ export function dropdownNav() {
     let menu = document.getElementById('dropdown-menu');
 
     window.addEventListener('click', function (e) {
-        console.log('pouet')
         if (dropdown !== null) {
             if (dropdown.contains(e.target)) {
                 menu.style.display = "block";
@@ -20,15 +19,15 @@ export function dropdownNav() {
     const menuMobile = document.getElementById('menu-mobile');
     if(burger) {
         burger.addEventListener('click', function (e) {
-            switch (menuMobile.style.opacity) {
-                case '0':
-                    menuMobile.style.opacity = '1';
+            switch (menuMobile.style.display) {
+                case 'none':
+                    menuMobile.style.display = 'flex';
                     break;
-                case '1':
-                    menuMobile.style.opacity = '0';
+                case 'flex':
+                    menuMobile.style.display = 'none';
                     break;
                 default:
-                    menuMobile.style.opacity = '1';
+                    menuMobile.style.display = 'none';
                     break;
             }
         })
