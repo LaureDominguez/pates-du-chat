@@ -4,17 +4,92 @@
 
 /******************* home *******************/
 .shop-tuile{
-    height: 12rem;
-    width: 12rem;
+    height: 8rem;
+    width: 8rem;
     overflow: hidden;
     border: solid 1px transparent;
     border-radius: 10px;
+    img{
+        object-fit: cover;
+        height: 8rem;
+        width: 8rem;
+    }
+    figcaption{
+        display: none;
+    }
+}
+
+/******************* index *******************/
+
+.shop-filter{
+    position: relative;
+    .filterBox{
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-right: 20%;
+        top: 0;
+        right: 0;
+    }
+}
+
+.shop-cat div{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 9rem);
+    grid-template-rows: repeat(auto-fill, 9rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+#filter{
     display: flex;
+    flex-direction: column;
+    opacity: 0;
+}
+
+/******************* detail *******************/
+
+.shop-detail{
+    display: flex;
+    justify-content: center;
+    img{
+        width: 40%;
+        object-fit: cover;
+        border-radius: 10px 0 0 10px;
+    }
+    figcaption{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        width: 40%;
+        background-color: #ffffff86;
+        border-radius: 0 10px 10px 0;
+    }
+}
+
+/******************* Media query *******************/
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* PC */
+@media (min-width: 1024px) {
+    
+/******************* home *******************/
+.shop-tuile{
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     position: relative;
     cursor: pointer;
     img{
-        object-fit: cover;
         height: 12rem;
         width: 12rem;
         position: relative;
@@ -45,15 +120,21 @@
 }
 
 /******************* index *******************/
+
+.shop-filter{
+    position: relative;
+    .filterBox{
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-right: 20%;
+        top: 0;
+        right: 0;
+    }
+}
+
 .shop-cat div{
-    margin: 1rem;
-    display: grid;
     grid-template-columns: repeat(auto-fill, 15rem);
     grid-template-rows: repeat(auto-fill, 15rem);
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    justify-content: center;
 }
 
 #filter{
@@ -66,8 +147,9 @@
 
 .shop-detail{
     display: flex;
+    justify-content: center;
     img{
-        width: 50%;
+        width: 40%;
         object-fit: cover;
         border-radius: 10px 0 0 10px;
     }
@@ -77,8 +159,10 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
-        width: 50%;
+        width: 40%;
         background-color: #ffffff86;
         border-radius: 0 10px 10px 0;
     }
+}
+
 }

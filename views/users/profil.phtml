@@ -1,44 +1,44 @@
 <section class="userProfil">
     <h1>Mon compte</h1>
 
-    <ul>
+    <!-- <ul>
         <li>changer mot de passe</li>
-        <li>afficher mot de passe</li>
         <li>envoyer mail de confirmation d'adresse</li>
         <li>récupérer mot de passe par email</li>
-    </ul>
+    </ul> -->
 
-    <form action="index.php?route=changeNameForm" method="post">
-        <div>
-            <label for="name">Nom</label>
-            <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']); ?>">
-        </div>
-        <input type="submit" class="btn" value="Valider">
-    </form>
+    <div>
+        <form action="index.php?route=changeNameForm" method="post">
+            <div>
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']); ?>">
+            </div>
+            <input type="submit" class="btn" value="Valider">
+        </form>
 
-    <form action="index.php?route=changeMailForm" method="post">
-        <div>
-            <label for="email">email</label>
-            <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']); ?>">
-        </div>
-        <input type="submit" class="btn" value="Valider">
-    </form>
+        <form action="index.php?route=changeMailForm" method="post">
+            <div>
+                <label for="email">email</label>
+                <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']); ?>">
+            </div>
+            <input type="submit" class="btn" value="Valider">
+        </form>
 
-    <form action="index.php?route=changePswdForm" method="post">
-        <div>
-            <label for="pswd">mot de passe</label>
-            <input type="password" name="pswd" id="pswd">
-        </div>
-        <input type="submit" class="btn" value="Valider">
-    </form>
+        <form action="index.php?route=changePswdForm" method="post">
+            <div>
+                <label for="pswd">mot de passe</label>
+                <input type="password" name="pswd" id="pswd">
+            </div>
+            <input type="submit" class="btn" value="Valider">
+        </form>
 
-    <form action="index.php?route=desactivateUser" method="post">
-        <div>
-            <label>Désactiver le compte</label>
-        </div>
-        <input type="submit" class="btn" value="Supprimer">
-    </form>
-
+        <form action="index.php?route=desactivateUser" method="post">
+            <div>
+                <label>Désactiver le compte</label>
+            </div>
+            <input type="submit" class="btn" value="Supprimer">
+        </form>
+    </div>
 
     <!-- if compte désactivé, on pourra demader à supprimer le compte de la db -->
 

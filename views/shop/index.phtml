@@ -1,17 +1,20 @@
-<section class="content">
-    <h1>Toutes les pâtes</h1>
+<section class="content shop">
+    <div class="shop-filter">
+        <h1>Toutes les pâtes</h1>
 
-    <div class="filterBox">
-        <button type="button" class="btn" id="filterBtn">Filtrer</button>
-        <div id="filter">
-            <?php foreach ($categories as $category) : ?>
-                <div>
-                    <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
-                    <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
-                </div>
-            <?php endforeach; ?>
+        <div class="filterBox">
+            <button type="button" class="btn" id="filterBtn">Filtrer</button>
+            <div id="filter">
+                <?php foreach ($categories as $category) : ?>
+                    <div>
+                        <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
+                        <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
+
 
     <?php foreach ($categories as $category) : ?>
         <?php if ($category['active']) : ?>
