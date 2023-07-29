@@ -1,13 +1,15 @@
-// ********************* modifier le tableau d'horaires
+// Fonction pour vérifier si des modifications ont été apportées
+function hasModifications() {
+    const modifiedElements = document.querySelectorAll('.modified');
+    return modifiedElements.length > 0;
+}
 
 export function editContact() {
-
-    // rend les champs et le bouton dispo pour admin
     const saveBtn = document.getElementById('saveBtn');
     const elements = document.querySelectorAll('.editable');
-    
-    // l'edition n'est dispo que sur la page admin
-    if (window.location.search != "?route=admin") {
+
+    // rend les champs et le bouton save dispo sur page admin
+    if (window.location.search !== "?route=admin") {
         saveBtn.style.display = "none";
         elements.forEach(function (field) {
             field.classList.remove('editable');
@@ -21,12 +23,17 @@ export function editContact() {
             });
         });
         
-        //fonction quand on clique sur le boutton
+        // bouton save
         saveBtn.addEventListener('click', function () {
+            if (!hasModifications()) {
+                alert('Aucune modification à enregistrer.');
+                return;
+            }
+
             // Créer un tableau qui stock les données à enregistrer
             const dataToSave = [];
 
-            // Parcourir toutes les lignes du tableau
+            //vérifie tout le tableau
             const tableRows = document.querySelectorAll('tr[data-day]');
             tableRows.forEach(function (row) {
                 const day = row.getAttribute('data-day');
@@ -39,37 +46,34 @@ export function editContact() {
                     const time = timeCell.textContent;
                     const city = cityCell.textContent;
                     const place = placeCell.textContent;
-
-                    // Ajouter les données modifiées au tableau 
+                    // Ajoute les données modifiées au tableau 
                     dataToSave.push({ day, time, city, place });
                 }
             });
 
-            // Effectuer la requête fetch pour enregistrer les données sur le serveur
+            // envoi les données en fetch au serveur
             fetch('index.php?route=horairesFetch', {
-                method: 'POST', // Utiliser la méthode POST pour envoyer les données
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(dataToSave) // Convertir les données en format JSON pour l'envoi
+                body: JSON.stringify(dataToSave)
             })
                 .then(response => response.json())
-            .then(data => {
-                // Traiter la réponse du serveur ici si nécessaire
-                console.log('réponse', data);
-                alert('Données enregistrées avec succès !');
-                // on supprime la classe "modified" après envoi
-                tableRows.forEach(function (row) {
+                .then(data => {
+                    console.log('réponse', data);
+                    alert('Données enregistrées avec succès !');
+                    // supprime la classe "modified" après envoi
+                    tableRows.forEach(function (row) {
                         row.querySelector('[data-field="time"]').classList.remove('modified');
                         row.querySelector('[data-field="city"]').classList.remove('modified');
                         row.querySelector('[data-field="place"]').classList.remove('modified');
                     });
-            })
+                })
                 .catch(error => {
                     console.log('Erreur :', error);
-                // Gérer les erreurs ici si nécessaire
-                alert('Une erreur est survenue lors de l\'enregistrement des données.');
-            });
+                    alert('Une erreur est survenue lors de l\'enregistrement des données.');
+                });
         });
     }
 }

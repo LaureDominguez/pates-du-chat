@@ -21,10 +21,9 @@ export function switchProducts() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        console.log('Le produit a été activé/désactivé avec succès !');
-                        // Mettre à jour l'affichage ou effectuer d'autres actions si nécessaire
+                        alert('Le produit a été activé/désactivé avec succès !');
                     } else {
-                        console.error('Erreur lors de l\'activation/désactivation du produit.');
+                        alert('Erreur lors de l\'activation/désactivation du produit.');
                     }
                 })
                 .catch(error => {
@@ -48,10 +47,9 @@ export function switchProducts() {
                 })
                 .then(response => {
                     if (response.ok) {
-                        console.log('La catégorie a été activée/désactivée avec succès !');
-                        // Mettre à jour l'affichage ou effectuer d'autres actions si nécessaire
+                        alert('La catégorie a été activée/désactivée avec succès !');
                     } else {
-                        console.error('Erreur lors de l\'activation/désactivation de la catégorie.');
+                        alert('Erreur lors de l\'activation/désactivation de la catégorie.');
                     }
                 })
                 .catch(error => {
