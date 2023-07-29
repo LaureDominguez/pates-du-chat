@@ -1568,7 +1568,7 @@ main {
     scroll-margin-top: 5rem;
   }
   .home:not(:last-child) {
-    height: 100vh;
+    min-height: 100vh;
   }
   #title-landscape {
     display: none;
