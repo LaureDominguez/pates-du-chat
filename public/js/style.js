@@ -9,12 +9,15 @@ import { checkErrors } from "./modules/errors.js";
 import { switchProducts } from "./modules/switch.js";
 import { editContact } from "./modules/horaires.js";
 import { sortTable } from "./modules/sort-table.js";
+import { lazy } from "./modules/lazy.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     revealOnScroll(); // animation des blocs section sur homepage
     titleOnNav(); // animation du titre dans la barre de nav
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     // cookieSession();
+
+    lazy(); // spinner le temps que le google map charge
 
     filterCategory(); // tri des produits dans partie shop
 

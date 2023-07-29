@@ -7,9 +7,9 @@ export function dropdownNav() {
     window.addEventListener('click', function (e) {
         if (dropdown !== null) {
             if (dropdown.contains(e.target)) {
-                menu.style.display = "block";
+                menu.style.display = "flex";
             }
-            else if (menu.style.display == "block") {
+            else if (menu.style.display == "flex") {
                 menu.style.display = "none";
             }
         }

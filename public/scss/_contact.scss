@@ -56,6 +56,9 @@
             margin-top: 0;
         }
     }
+    #spinner{
+        background-color: transparent;
+    }
     iframe{
         border-radius: 10px;
         height: 250px;
@@ -118,6 +121,7 @@
     .map{
         width: 60%;
         margin: auto;
+        display: flex;
         flex-direction: row-reverse;
         align-items: center;
         justify-content: space-between;
