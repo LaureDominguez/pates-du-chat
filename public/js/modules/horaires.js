@@ -5,7 +5,6 @@ export function editContact() {
     // rend les champs et le bouton dispo pour admin
     const saveBtn = document.getElementById('saveBtn');
     const elements = document.querySelectorAll('.editable');
-    console.log(window.location.search)
     
     // l'edition n'est dispo que sur la page admin
     if (window.location.search != "?route=admin") {

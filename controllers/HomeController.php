@@ -9,7 +9,6 @@ use \Models\Horaires;
 class HomeController{
     public function displayHomePage(){
         
-
         $modelProduct = new Products();
         $products = $modelProduct->getAllProducts();
 
@@ -18,6 +17,24 @@ class HomeController{
 
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();
+
+        if (isset($_SESSION['visitor']['flash_message']['error'])) {
+            $errorLog = '';
+            $errorRegist = '';
+            $errors = '';
+            $errorType = $_SESSION['visitor']['flash_message']['error'];
+            switch (true){
+                case isset($errorType['login']):
+                    $errorLog = $errorType['login'][0];
+                    break;
+                case isset($errorType['register']):
+                    $errorRegist = $errorType['register'][0];
+                    break;
+                default:
+                    $errors = $errorType;
+                    break;
+            }
+        }
 
         $template = "home.phtml";
         include_once'views/layout.phtml';

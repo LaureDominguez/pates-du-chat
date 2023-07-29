@@ -7,7 +7,11 @@
         <div class="champs">
             <label for="email_log">email</label>
             <input type="email" name="email" id="email_log">
-            <div class="error" id="error_log_mail"></div>
+            <div class="error" id="error_log_mail">
+                <?php if (isset($errorLog)) : ?>
+                    <span id="errorL"><?= htmlspecialchars($errorLog); ?></span>
+                <?php endif; ?>
+            </div>
         </div>
         <div class="champs password">
             <label for="pswd_log">mot de passe</label>

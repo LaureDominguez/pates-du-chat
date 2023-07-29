@@ -2623,7 +2623,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .log {
     width: 30vw;
-    height: 50vh;
+    height: 60vh;
     flex-direction: column;
     align-items: center;
     margin: auto;

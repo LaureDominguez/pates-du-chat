@@ -30,80 +30,97 @@ class UsersController{
 ////////////////////////// register //////////////////////////
 
     public function newUser()
-    {//création d'un nouveau compte user
-        $newUser = [
-            trim($_POST['email']),
-            trim($_POST['pswd'])
-            // password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
-        ];
-
+    { //création d'un nouveau compte user
+        //check si email deja utilisé
+        $errors = $success = [];
         $model = new Users();
-        $newID = $model->creatNew($newUser);
+        $isUsed = $model->checkEmail(trim($_POST['email']));
 
-        //recupère l'id créé pour le connecter directement
-        $newUser = $model->getUser($newID);
+        if($isUsed !== false){ // si error on arrete le script et renvoi l'erreur
+            $errors = "Cet email est déjà utilisé";
+            $_SESSION['visitor']['flash_message']['error'] = [
+                'register' => $errors
+            ];
+            header('Location: ' . $_SESSION['visitor']['currentPage']);
+            exit;
+        } else { //sinon on créer le compte
+            $newUser = [
+                trim($_POST['email']),
+                // trim($_POST['pswd'])
+                password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
+            ];
 
-        $_SESSION['user'] = [
-            'id' => $newUser['id'],
-            'email' => $newUser['email'],
-            'name' => $newUser['name'],
-            'role' => $newUser['role']
-        ];
+            $newID = $model->creatNew($newUser);
 
-        $success = "Votre compte a bien été créé !";
-        $_SESSION['visitor']['flash_message'] = [
-            'success' => $success
-        ];
+            //recupère l'id créé pour le connecter directement
+            $newUser = $model->getUser($newID);
 
-        header('Location: ' . $_SESSION['visitor']['currentPage']);
+            $_SESSION['user'] = [
+                'id' => $newUser['id'],
+                'email' => $newUser['email'],
+                'name' => $newUser['name'],
+                'role' => $newUser['role']
+            ];
+
+            $success = "Votre compte a bien été créé !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+
+            header('Location: ' . $_SESSION['visitor']['currentPage']);
+        }
     }
 
 ////////////////////////// connexion //////////////////////////
 
     public function loginUser()
     { //connexion à un compte
-        $errors = [];
+        $errors = $success = [];
         $email = trim($_POST['email']);
-        $pswd = trim($_POST['pswd']);
-        // $pswd = password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT);
-
-        // var_dump($pswd);
-        // die;
         $model = new Users();
 
+        //check si l'email est dans la db
         $userExist = $model->checkEmail($email);
-        $user = $model->getUser($userExist['id']);
 
-        // if (!$user || !password_verify($pswd, $user['pswd'])) {
-        //     $errors[] = "Email ou mot de passe incorrect";
-        // }
-
-        if (count($errors) > 0) {
-            $_SESSION['visitor']['flash_message'] = [
-                'error' => $errors
+        if($userExist === false){
+            $errors[] = "L'email ou le mot de passe est incorrect";
+            $_SESSION['visitor']['flash_message']['error'] = [
+                'login' => $errors
             ];
-        } else {
-            $_SESSION['user'] = [
-                'id' => $user['id'],
-                'email' => $user['email'],
-                'name' => $user['name'],
-                'role' => $user['role']
-            ];
+            header('Location: ' . $_SESSION['visitor']['currentPage']);
+            exit();
+        } else { // si oui, récup les infos
+            $user = $model->getUser($userExist['id']);
 
-            //si user a un nom, alors on l'appelle par son nom, sinon par email
-            $userName = isset($user['name']) ? $user['name'] : $user['email'];
+            $pswd = password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT);
+            if (password_verify($pswd, $user['pswd'])){
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'email' => $user['email'],
+                    'name' => $user['name'],
+                    'role' => $user['role']
+                ];
 
-            //si user a le role admin, alors on lui dit
-            if ($user['role'] == 1) {
-                $success = "Bienvenue admin " . $userName;
-                $_SESSION['admin']['adminToken'];
+                //si user a un nom, alors on l'appelle par son nom, sinon par email
+                $userName = isset($user['name']) ? $user['name'] : $user['email'];
+
+                //si user a le role admin, alors on lui dit
+                if ($user['role'] == 1) {
+                    $success = "Bienvenue admin " . $userName;
+                    $_SESSION['admin']['adminToken'];
+                } else {
+                    $success = "Bienvenue, " . $userName;
+                }
+
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
             } else {
-                $success = "Bienvenue, " . $userName;
+                $errors[] = "L'email ou le mot de passe est incorrect";
+                $_SESSION['visitor']['flash_message']['error'] = [
+                    'login' => $errors
+                ];
             }
-
-            $_SESSION['visitor']['flash_message'] = [
-                'success' => $success
-            ];
         }
         header('Location: ' . $_SESSION['visitor']['currentPage']);
         exit();

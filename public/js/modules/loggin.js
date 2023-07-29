@@ -16,6 +16,49 @@ export function toogleModal() {
     const burger = document.getElementById('burger');
     const menuMobile = document.getElementById('menu-mobile');
 
+    const promptLogin = document.getElementById('errorL');
+    const promptRegister = document.getElementById('errorR');
+
+    //////////////////////////////////////////////////
+    // Show / hide password
+
+    function showPassword(password) {
+        password.setAttribute('type', 'text');
+    }
+    function hidePassword(password) {
+        password.setAttribute('type', 'password');
+    }
+    // register form
+    const registerShow = document.getElementById('register-show')
+    const registerHide = document.getElementById('register-hide')
+    const registerPswd = document.getElementById('pswd_new');
+    const pswdConfirm = document.getElementById('pswd_confirm_new')
+
+    // login form
+    const loginShow = document.getElementById('login-show')
+    const loginHide = document.getElementById('login-hide')
+    const loginPswd = document.getElementById('pswd_log');
+    //////////////////////////////////////////////////
+
+
+    // prompt modale with php error
+    if (promptLogin || promptRegister) {
+        if (mediaQuery.matches) {
+            hideElement(menuMobile);
+            hideElement(burger);
+            logWindow.classList.add('bg-animed');
+        } else {
+            showElement(modal);
+        }
+        
+        if (promptLogin) {
+            showElement(logWindow);
+        } else if (promptRegister) {
+            showElement(registerWindow);
+        }
+    } 
+
+
 
     if (logWindow || registerWindow) {
         // display login form from large screen
@@ -94,5 +137,43 @@ export function toogleModal() {
         registerWindow.addEventListener('click', function (e) {
             e.stopPropagation();
         });
+
+
+        //////////////////////////////////////////////////
+        // Show / hide password
+        registerShow.style.display = 'inline-flex';
+        registerHide.style.display = 'none';
+        registerPswd.setAttribute('type', 'password');
+        pswdConfirm.setAttribute('type', 'password');
+        
+        loginShow.style.display = 'inline-flex';
+        loginHide.style.display = 'none';
+        loginPswd.setAttribute('type', 'password');
+        
+        registerHide.addEventListener('click', function () {
+            hideElement(registerHide);
+            registerShow.style.display = 'inline-flex';
+            showPassword(registerPswd);
+            showPassword(pswdConfirm);
+        })
+
+        registerShow.addEventListener('click', function () {
+            hideElement(registerShow);
+            registerHide.style.display = 'inline-flex';
+            hidePassword(registerPswd);
+            hidePassword(pswdConfirm);
+        })
+
+        loginShow.addEventListener('click', function () {
+            hideElement(loginShow);
+            loginHide.style.display = 'inline-flex';
+            showPassword(loginPswd);
+        })
+
+        loginHide.addEventListener('click', function () {
+            hideElement(loginHide);
+            loginShow.style.display = 'inline-flex';
+            hidePassword(loginPswd);
+        })
     }
 }

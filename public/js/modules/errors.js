@@ -1,7 +1,5 @@
 // ********************* show/hide modal
-
 export function checkErrors() {
-
 
 /////////// register form ///////////////////
     const registerForm = document.querySelector('#register-form');
@@ -88,35 +86,15 @@ export function checkErrors() {
             if (errorFound) {
                 errorPswd.style.display = 'block';
                 errorPswd.innerHTML = errorMessage;
+                console.log(errorFound);
                 return;
             }
             errorPswd.style.display = 'none';
 
-            // Sinon envoi requête fetch pour vérifier la db
+            // Sinon envoi le form
             if (errorFound === false) {
-                // try {
-                //     const hashedPassword = await encryptPassword(pswd);
-                //     console.log(hashedPassword);
-                //     newData.set('pswd', hashedPassword);
-                    fetchData(newData)
-                        .then(data => {
-                            // Affiche les erreurs si besoin
-                            console.log(data);
-                            if (data.mail) {
-                                errorMail.style.display = 'block';
-                                errorMail.innerHTML = data.mail;
-                            } else {
-                                // Si pas d'erreur, alors on envoie le formulaire
-                                registerForm.submit();
-                            }
-                        })
-                    .catch(error => {
-                            console.error('Erreur lors de la requête POST', error);
-                        });
-                // } catch (error) {
-                //     console.error('Erreur lors du hachage du mot de passe', error);
-                    // }
-                return;
+                console.log('ca passe');
+                registerForm.submit();
             }
         }
     }
@@ -163,145 +141,18 @@ export function checkErrors() {
                 errorPswd.style.display = 'none';
             }
 
-            // Si ok, on envoi la requête fetch pour vérifier avec la db
+            // Si ok, on envoi le form
             if (emailIsValid && pswdIsValid) {
-                // try {
-                //     const hashedPassword = await encryptPassword(pswd);
-                //     logData.set('pswd', hashedPassword);
-                //     console.log(hashedPassword);
-                    fetchData(logData)
-                        .then(data => {
-                            // Affiche les erreurs si besoin
-                            if (data.pswd) {
-                                console.log(data.pswd);
-                                errorMail.style.display = 'block';
-                                errorMail.innerHTML = data.pswd;
-                            } else {
-                                // Si pas d'erreur, alors on envoie le formulaire
-                                console.log('envoyé au serveur');
-                                loginForm.submit();
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Erreur lors de la requête POST', error);
-                        });
-                    // } catch (error) {
-                    //     console.error('Erreur lors du hachage du mot de passe', error);
-                    // }
-                return;
+                loginForm.submit();
             }
         }
     }
-
-
-///////////// button toggle show/hide password //////////////////
-    // register form
-    const registerShow = document.getElementById('register-show')
-    const registerHide = document.getElementById('register-hide')
-    const registerPswd = document.getElementById('pswd_new');
-    const pswdConfirm = document.getElementById('pswd_confirm_new')
-
-    // login form
-    const loginShow = document.getElementById('login-show')
-    const loginHide = document.getElementById('login-hide')
-    const loginPswd = document.getElementById('pswd_log');
-
-
-    // actions des bouttons
-    if (loginForm || registerForm) {
-        window.addEventListener('click', function (e) {
-            switch (e.target.id) {
-                case "register-show":
-                    registerShow.style.display = 'none';
-                    registerHide.style.display = 'inline-flex';
-                    registerPswd.setAttribute('type', 'text');
-                    pswdConfirm.setAttribute('type', 'text');
-                    break;
-                case "register-hide":
-                    registerShow.style.display = 'inline-flex';
-                    registerHide.style.display = 'none';
-                    registerPswd.setAttribute('type', 'password');
-                    pswdConfirm.setAttribute('type', 'password');
-                    break;
-                case "login-show":
-                    loginShow.style.display = 'none';
-                    loginHide.style.display = 'inline-flex';
-                    loginPswd.setAttribute('type', 'text');
-                    break;
-                case "login-hide":
-                    loginShow.style.display = 'inline-flex';
-                    loginHide.style.display = 'none';
-                    loginPswd.setAttribute('type', 'password');
-                    break;
-                default:
-                    registerShow.style.display = 'inline-flex';
-                    registerHide.style.display = 'none';
-                    registerPswd.setAttribute('type', 'password');
-                    pswdConfirm.setAttribute('type', 'password');
-                    
-                    loginShow.style.display = 'inline-flex';
-                    loginHide.style.display = 'none';
-                    loginPswd.setAttribute('type', 'password');
-            }
-        });
-    }
-    
-
-    // empêche les champs de repasser en masqué lorsqu'on tape le mot de passe
-    if (registerPswd) {
-        registerPswd.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    }
-    if (pswdConfirm) {
-        pswdConfirm.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    }
-    if (loginPswd) {
-        loginPswd.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-    }
 }
 
-///////////// Différentes fonctions nécessaires aux formulaires ////////
+///////////// check email validation ////////
 
 function isValidEmail(email) {
   // Expression régulière pour valider le format d'une adresse e-mail
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
-
-// Fonction pour crypter le mot de passe côté client
-// async function encryptPassword(password) {
-//     const encoder = new TextEncoder();
-//     const data = encoder.encode(password);
-//     const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-//     const hashArray = Array.from(new Uint8Array(hashBuffer));
-//     const hashedPassword = hashArray.map(byte => ('00' + byte.toString(16)).slice(-2)).join('');
-//     return hashedPassword;
-// }
-
-function fetchData(data) {
-    const jsonData = JSON.stringify(Object.fromEntries(data));
-    // console.log(jsonData);
-
-    return fetch('./config/conexionFetch.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: jsonData,
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erreur de requête : ' + response.status);
-        }
-        return response.json();
-    })
-    .catch(error => {
-        console.error('Erreur lors de la requête POST', error);
-    });
-}
-
