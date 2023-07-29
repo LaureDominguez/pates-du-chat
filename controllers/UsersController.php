@@ -13,7 +13,6 @@ class UsersController{
         if (!isset($_SESSION['user'])) {
             header('Location: index.php?route=login');
         }
-        
     }
 
 ////////////////////////// Profile //////////////////////////
@@ -82,7 +81,7 @@ class UsersController{
         //check si l'email est dans la db
         $userExist = $model->checkEmail($email);
 
-        if($userExist === false){
+        if(!$userExist){
             $errors[] = "L'email ou le mot de passe est incorrect";
             $_SESSION['visitor']['flash_message']['error'] = [
                 'login' => $errors
@@ -91,8 +90,8 @@ class UsersController{
             exit();
         } else { // si oui, récup les infos
             $user = $model->getUser($userExist['id']);
+            $pswd = trim($_POST['pswd']);
 
-            $pswd = password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT);
             if (password_verify($pswd, $user['pswd'])){
                 $_SESSION['user'] = [
                     'id' => $user['id'],
@@ -144,7 +143,6 @@ class UsersController{
         if (empty($name)) {
             $errors[] = "Veuillez entrer votre nom";
         }
-
 
         if (array_key_exists('name', $_POST)) {
 

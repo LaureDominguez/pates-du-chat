@@ -4,8 +4,6 @@ namespace Controllers;
 
 use \Models\Horaires;
 use \Models\Mail;
-use JsonException;
-// use \Models\Database;
 
 class ContactController{
 

@@ -1,8 +1,8 @@
 <?php
 
-require_once '../models/Database.php';
-require_once '../models/Products.php';
-require_once '../models/Categories.php';
+require_once './models/Database.php';
+require_once './models/Products.php';
+require_once './models/Categories.php';
 
 // Function to update the data in the database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

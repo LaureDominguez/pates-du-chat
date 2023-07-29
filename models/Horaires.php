@@ -18,12 +18,12 @@ class Horaires extends Database {
         return $this->findOne($req, $params);
     }
 
-    public function creatDate($params)
-    {
-        $this->addOne("horaires", "day, time, city, place", "?, ?, ?, ?", $params);
-        header('Location: index.php?route=admin');
-        exit();
-    }
+    // public function creatDate($params)
+    // {
+    //     $this->addOne("horaires", "day, time, city, place", "?, ?, ?, ?", $params);
+    //     header('Location: index.php?route=admin');
+    //     exit();
+    // }
 
     public function updateDate($newData)
     {
@@ -32,8 +32,8 @@ class Horaires extends Database {
         exit();
     }
 
-    public function deleteOneDate($id)
-    {
-        $this->deleteOne("horaires", $id);
-    }
+    // public function deleteOneDate($id)
+    // {
+    //     $this->deleteOne("horaires", $id);
+    // }
 }
