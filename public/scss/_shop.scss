@@ -22,13 +22,21 @@
 /******************* index *******************/
 
 .shop-filter{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .filterBox{
-        position: absolute;
-        margin-top: 1.5rem;
-        margin-right: 20%;
-        top: 0;
-        right: 0;
+        text-align: center;
+        #filter{
+            // display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            background-color: #ffffff6a;
+            backdrop-filter: blur(4px);
+            border-radius: 10px;
+        }
     }
 }
 
@@ -46,7 +54,6 @@
 #filter{
     display: flex;
     flex-direction: column;
-    opacity: 0;
 }
 
 /******************* detail *******************/
@@ -122,13 +129,24 @@
 /******************* index *******************/
 
 .shop-filter{
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+        position: relative;
+    h1{
+        grid-area: 1 / 2 / 2 / 5;
+    }
     .filterBox{
-        position: absolute;
-        margin-top: 1.5rem;
-        margin-right: 20%;
-        top: 0;
-        right: 0;
+        grid-area: 1 / 5 / 2 / 6;
+            position: absolute;
+        #filterBtn{
+            position: fixed;
+        }
+        #filter{
+            top: 9.5rem;
+            position: fixed;
+        }
     }
 }
 
@@ -137,11 +155,7 @@
     grid-template-rows: repeat(auto-fill, 15rem);
 }
 
-#filter{
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-}
+
 
 /******************* detail *******************/
 

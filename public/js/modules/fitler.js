@@ -8,11 +8,11 @@ export function filterCategory() {
 
 //le script ne se lance que si la classe existe
     if (filterDiv) {
-        filterDiv.style.opacity = 0;
+        filterDiv.style.display = "none";
     
         filterBtn.addEventListener('click', function (e) {
-            const currentOpacity = parseFloat(filterDiv.style.opacity);
-            filterDiv.style.opacity = currentOpacity === 0 ? 1 : 0;
+            const currentDisplay = filterDiv.style.display;
+            filterDiv.style.display = currentDisplay === "none" ? "flex" : "none";
         });
 
 

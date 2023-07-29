@@ -1781,14 +1781,21 @@ form input:not(.btn, .file), form form textarea, form form select {
 
 /******************* index *******************/
 .shop-filter {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .shop-filter .filterBox {
-  position: absolute;
-  margin-top: 1.5rem;
-  margin-right: 20%;
-  top: 0;
-  right: 0;
+  text-align: center;
+}
+.shop-filter .filterBox #filter {
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.4156862745);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
 }
 
 .shop-cat div {
@@ -1805,7 +1812,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 #filter {
   display: flex;
   flex-direction: column;
-  opacity: 0;
 }
 
 /******************* detail *******************/
@@ -1873,23 +1879,29 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   /******************* index *******************/
   .shop-filter {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     position: relative;
   }
+  .shop-filter h1 {
+    grid-area: 1/2/2/5;
+  }
   .shop-filter .filterBox {
+    grid-area: 1/5/2/6;
     position: absolute;
-    margin-top: 1.5rem;
-    margin-right: 20%;
-    top: 0;
-    right: 0;
+  }
+  .shop-filter .filterBox #filterBtn {
+    position: fixed;
+  }
+  .shop-filter .filterBox #filter {
+    top: 9.5rem;
+    position: fixed;
   }
   .shop-cat div {
     grid-template-columns: repeat(auto-fill, 15rem);
     grid-template-rows: repeat(auto-fill, 15rem);
-  }
-  #filter {
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
   }
   /******************* detail *******************/
   .shop-detail {
