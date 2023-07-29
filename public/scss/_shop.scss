@@ -9,13 +9,31 @@
     overflow: hidden;
     border: solid 1px transparent;
     border-radius: 10px;
+    position: relative;
     img{
         object-fit: cover;
         height: 8rem;
         width: 8rem;
+        position: relative;
     }
     figcaption{
-        display: none;
+        h4, h5 {
+            display: none;
+        }
+        h3 {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        .title-tuile{
+            position: absolute;
+            bottom: 0;
+            left: 3%;
+            width: 90%;
+            margin: 0.2rem;
+            background-color: rgba(255, 255, 255, 0.4156862745);
+            line-height: 1.5rem;
+            border-radius: 8px;
+        }
     }
 }
 
@@ -28,7 +46,6 @@
     .filterBox{
         text-align: center;
         #filter{
-            // display: none;
             flex-direction: column;
             align-items: flex-start;
             margin: 0.5rem;
@@ -40,15 +57,22 @@
     }
 }
 
-.shop-cat div{
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 9rem);
-    grid-template-rows: repeat(auto-fill, 9rem);
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    justify-content: center;
+.shop-cat{
+    display: flex;
+    flex-direction: column;
+    div{
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 9rem);
+        grid-template-rows: repeat(auto-fill, 9rem);
+        align-items: center;
+        justify-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    .btn{
+        border: 1px solid;
+    }
 }
 
 #filter{
@@ -120,6 +144,15 @@
         text-align: justify;
         opacity: 0;
         transition: all .5s ease;
+        h4, h5 {
+            display: inline;
+            margin: 1rem;
+        }
+        .title-tuile{
+            position: unset;
+            background-color: transparent;
+            margin: 1rem;
+        }
     }
     &:hover figcaption{
         opacity: .9;

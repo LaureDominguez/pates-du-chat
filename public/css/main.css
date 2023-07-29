@@ -57,7 +57,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -422,7 +422,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -1117,7 +1117,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -1295,7 +1295,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -1441,21 +1441,24 @@ main {
   background-position: center;
   min-height: 100vh;
 }
-#home h1 {
-  margin: 0;
-}
-#home h1::after {
-  content: url("../img/site/Logo pate.png");
-}
-#home h2 {
-  margin-top: 0;
-}
 #home #title {
   padding: 0.8rem;
 }
+#home #title h1 {
+  margin: 0;
+}
+#home #title h1::after {
+  content: url("../img/site/Logo pate.png");
+}
 #home #title h2 {
+  margin-top: 0;
   font-size: larger;
+  line-height: 2rem;
+  padding: 0.5rem;
   background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 90%);
+}
+#home #title h2::before, #home #title h2::after {
+  content: none;
 }
 #home article {
   display: flex;
@@ -1463,37 +1466,36 @@ main {
   align-items: center;
   justify-content: center;
 }
-#home .logo {
-  height: 10rem;
-  margin: 1rem;
+#home article .logo {
+  height: 9rem;
 }
-#home table {
+#home article table {
   background-color: rgba(255, 207, 149, 0.648);
-  margin: 2rem;
+  margin: 1rem;
   border-collapse: collapse;
   border-radius: 10px;
   box-shadow: -4px 13px 15px 7px rgba(0, 0, 0, 0.27);
 }
-#home table tr {
+#home article table tr {
   height: 3rem;
   line-height: 2.3rem;
 }
-#home table tr:nth-child(odd) td:first-child {
+#home article table tr:nth-child(odd) td:first-child {
   text-align: left;
 }
-#home table tr:nth-child(odd) td:last-child {
+#home article table tr:nth-child(odd) td:last-child {
   text-align: right;
 }
-#home table tr:nth-child(even) td:first-child {
+#home article table tr:nth-child(even) td:first-child {
   text-align: right;
 }
-#home table tr:nth-child(even) td:last-child {
+#home article table tr:nth-child(even) td:last-child {
   text-align: left;
 }
-#home table td {
+#home article table td {
   padding: 0.5rem;
 }
-#home table td:nth-child(2) {
+#home article table td:nth-child(2) {
   width: 80%;
   font-family: var(--Pacifico);
   font-size: larger;
@@ -1501,7 +1503,7 @@ main {
   color: var(--vert);
   text-align: justify;
 }
-#home table td:first-child, #home table td:last-child {
+#home article table td:first-child, #home article table td:last-child {
   width: 10%;
 }
 
@@ -1514,6 +1516,12 @@ main {
   #title-landscape {
     display: flex;
     align-items: center;
+  }
+  #title-landscape h1 {
+    margin: 0;
+  }
+  #title-landscape h2 {
+    margin: 0 1rem;
   }
   #home {
     display: flex;
@@ -1530,12 +1538,12 @@ main {
     height: 7rem;
     margin: 1rem;
   }
-  #home table {
+  #home article table {
     font-size: smaller;
     height: 2.5rem;
     margin: 0.5rem;
   }
-  #home table tr {
+  #home article table tr {
     line-height: 1.5rem;
   }
 }
@@ -1580,14 +1588,16 @@ main {
     animation: shine 5s infinite linear; /* Animation */
   }
   #home #title h2 {
-    font-size: inherit;
     background: none;
+  }
+  #home #title h2::before, #home #title h2::after {
+    content: "";
   }
   #home article {
     width: 40%;
   }
   #home #logo {
-    margin: 2rem;
+    margin: 1rem;
   }
   #home table {
     padding: 1rem;
@@ -1655,7 +1665,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -1769,14 +1779,30 @@ form input:not(.btn, .file), form form textarea, form form select {
   overflow: hidden;
   border: solid 1px transparent;
   border-radius: 10px;
+  position: relative;
 }
 .shop-tuile img {
   object-fit: cover;
   height: 8rem;
   width: 8rem;
+  position: relative;
 }
-.shop-tuile figcaption {
+.shop-tuile figcaption h4, .shop-tuile figcaption h5 {
   display: none;
+}
+.shop-tuile figcaption h3 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.shop-tuile figcaption .title-tuile {
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+  width: 90%;
+  margin: 0.2rem;
+  background-color: rgba(255, 255, 255, 0.4156862745);
+  line-height: 1.5rem;
+  border-radius: 8px;
 }
 
 /******************* index *******************/
@@ -1798,6 +1824,10 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 10px;
 }
 
+.shop-cat {
+  display: flex;
+  flex-direction: column;
+}
 .shop-cat div {
   margin: 1rem;
   display: grid;
@@ -1807,6 +1837,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   justify-items: center;
   align-content: center;
   justify-content: center;
+}
+.shop-cat .btn {
+  border: 1px solid;
 }
 
 #filter {
@@ -1873,6 +1906,15 @@ form input:not(.btn, .file), form form textarea, form form select {
     text-align: justify;
     opacity: 0;
     transition: all 0.5s ease;
+  }
+  .shop-tuile figcaption h4, .shop-tuile figcaption h5 {
+    display: inline;
+    margin: 1rem;
+  }
+  .shop-tuile figcaption .title-tuile {
+    position: unset;
+    background-color: transparent;
+    margin: 1rem;
   }
   .shop-tuile:hover figcaption {
     opacity: 0.9;
@@ -1982,7 +2024,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -2094,13 +2136,11 @@ form input:not(.btn, .file), form form textarea, form form select {
   padding: 1rem;
   border-radius: 10px;
   margin: auto;
-  margin-bottom: 2rem;
 }
 .contact table {
   margin: auto;
   background-color: rgb(255, 242, 225);
   text-align: center;
-  table-layout: fixed;
   border-collapse: collapse;
 }
 .contact table tr {
@@ -2119,13 +2159,13 @@ form input:not(.btn, .file), form form textarea, form form select {
 .contact table td:first-child {
   background-color: var(--orange);
   color: #fff;
-  width: 10%;
+  width: 8%;
 }
 .contact table td:nth-child(2), .contact table td:nth-child(3) {
   width: 15%;
 }
 .contact table td:nth-child(4) {
-  width: 60%;
+  width: 62%;
 }
 
 .map {
@@ -2176,6 +2216,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   /******************* index *******************/
   .contact {
     padding: 2rem;
+    margin-bottom: 3rem;
   }
   .contact table {
     width: 80%;
@@ -2280,7 +2321,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -2746,7 +2787,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
@@ -3019,7 +3060,7 @@ h1 {
 h2 {
   font-size: 1.5rem;
   line-height: 3rem;
-  font-stretch: expanded;
+  letter-spacing: 2px;
   overflow: hidden;
   text-align: center;
 }
