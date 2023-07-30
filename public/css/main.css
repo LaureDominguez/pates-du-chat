@@ -1850,26 +1850,54 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* detail *******************/
 .shop-detail {
   display: flex;
-  justify-content: center;
+  flex-direction: column-reverse;
+  align-items: center;
 }
 .shop-detail img {
-  width: 40%;
+  width: 90%;
   object-fit: cover;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
+  margin: 1rem;
 }
 .shop-detail figcaption {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 1rem;
-  width: 40%;
   background-color: rgba(255, 255, 255, 0.5254901961);
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
+  width: 90%;
+  text-align: center;
 }
 
 /******************* Media query *******************/
+/* Smatrphone en landscape */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .shop-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .shop-detail img {
+    width: 40%;
+    height: 75vh;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+    margin: 0;
+  }
+  .shop-detail figcaption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 40%;
+    height: 75vh;
+    background-color: rgba(255, 255, 255, 0.5254901961);
+    border-radius: 0 10px 10px 0;
+  }
+}
 /* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /******************* detail *******************/
+}
 /* PC */
 @media (min-width: 1024px) {
   /******************* home *******************/
@@ -1948,12 +1976,15 @@ form input:not(.btn, .file), form form textarea, form form select {
   /******************* detail *******************/
   .shop-detail {
     display: flex;
+    flex-direction: row;
     justify-content: center;
   }
   .shop-detail img {
     width: 40%;
+    height: 75vh;
     object-fit: cover;
     border-radius: 10px 0 0 10px;
+    margin: 0;
   }
   .shop-detail figcaption {
     display: flex;
@@ -1962,6 +1993,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     align-items: center;
     padding: 1rem;
     width: 40%;
+    height: 75vh;
     background-color: rgba(255, 255, 255, 0.5254901961);
     border-radius: 0 10px 10px 0;
   }

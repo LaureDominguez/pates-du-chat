@@ -6,7 +6,7 @@ class Products extends Database {
 
     public function getAllProducts()
     {
-        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active, 
+        $req = "SELECT products.id, products.cat_id, products.name, products.descript, products.ingredients, products.price, products.img, products.active, 
             categories.name AS category,
             categories.active AS categoryActive,
             images.img AS image,
@@ -20,7 +20,7 @@ class Products extends Database {
     public function getOneProduct($id): array | bool
     {
         $req =
-        "SELECT products.id, products.cat_id, products.name, products.descript, products.price, products.img, products.active, 
+        "SELECT products.id, products.cat_id, products.name, products.descript, products.ingredients, products.price, products.img, products.active, 
             categories.name AS categoryProduct,
             categories.active AS categoryActive,
             images.img AS image,
@@ -35,7 +35,7 @@ class Products extends Database {
 
     public function creatNew($params)
     {
-        $this->addOne("products", "name, cat_id, descript, price, img", "?, ?, ?, ?, ?", $params);
+        $this->addOne("products", "name, cat_id, descript, ingredients, price, img", "?, ?, ?, ?, ?", $params);
         header('Location: index.php?route=admin');
         exit();
     }

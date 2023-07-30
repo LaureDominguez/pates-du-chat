@@ -75,6 +75,8 @@ class AdminController{
                 $errors[] = "Veuillez selectionner une catégorie";
             if (empty($_POST['descript']))
                 $errors[] = "Veuillez entrer une description";
+            // if (empty($_POST['ingredients']))
+            //     $errors[] = "Veuillez renseigner les ingrédients";
             if (empty($_POST['price']))
                 $errors[] = "Veuillez définir un prix";
 
@@ -118,6 +120,7 @@ class AdminController{
                     trim($_POST['name']),
                     trim($_POST['category']),
                     trim($_POST['descript']),
+                    trim($_POST['ingredients']),
                     trim($_POST['price']),
                     $img
                 ];
@@ -179,6 +182,9 @@ class AdminController{
                 if ($_POST['descript'] !== $currentProductData['descript']) {
                     $newData['descript'] = trim($_POST['descript']);
                 }
+                if ($_POST['ingredients'] !== $currentProductData['ingredients']) {
+                    $newData['ingredients'] = trim($_POST['ingredients']);
+                }
                 if ($_POST['price'] !== $currentProductData['price']) {
                     $newData['price'] = trim($_POST['price']);
                 }
@@ -200,6 +206,18 @@ class AdminController{
 
                     // si l'image est conforme :
                     if (count($imgErrors) == 0) {
+
+                        //on vérifie s'il y a déjà une image d'enregistré
+                        $currentImg = $currentProductData['image'];
+                        // var_dump($currentImg);
+                        // die;
+                        if($currentImg){
+                            //si oui, on supprime l'ancienne image
+                            $oldImgPath = $folder . $currentImg;
+                            if(file_exists($oldImgPath)){
+                                unlink($oldImgPath);
+                            }
+                        }
 
                         //on déplace l'image dans le dossier
                         move_uploaded_file($file, $targetFile);
@@ -313,6 +331,6 @@ class AdminController{
     }
 
     /////////////////////// Onglet Contact ///////////////////////
-    // en cours
+    // géré dans /config/horairesFetch.php
 
 }

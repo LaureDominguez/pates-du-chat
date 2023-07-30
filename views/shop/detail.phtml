@@ -6,9 +6,10 @@
             <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
         <?php endif; ?>
         <figcaption>
-            <h1><?= htmlspecialchars($product["name"]); ?></h1>
+            <h2><?= htmlspecialchars($product["name"]); ?></h2>
             <p><?= htmlspecialchars($product["descript"]); ?></p>
-            <p><?= htmlspecialchars($product["price"]); ?>€</p>
+            <p><?= htmlspecialchars($product["ingredients"]); ?></p>
+            <h3><?= htmlspecialchars($product["price"]); ?>€ / kg</h3>
         </figcaption>
     </figure>
 </section>

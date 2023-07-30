@@ -12,7 +12,7 @@
                 <select name="category" id="category">
                     <option value="<?= htmlspecialchars($product['cat_id']); ?>"><?= htmlspecialchars($product['categoryProduct']); ?></option>
                     <?php foreach ($categories as $category) : ?>
-                        <?php if($category['name'] != $product['categoryProduct']): ?>
+                        <?php if ($category['name'] != $product['categoryProduct']) : ?>
                             <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
                         <?php endif ?>
                     <?php endforeach; ?>
@@ -21,6 +21,10 @@
             <div>
                 <label for="descript">decription</label>
                 <textarea name="descript" id="descript" cols="30" rows="10"><?= htmlspecialchars($product["descript"]); ?></textarea>
+            </div>
+            <div>
+                <label for="ingredients">ingredients</label>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="10"><?= htmlspecialchars($product["ingredients"]); ?></textarea>
             </div>
             <div>
                 <label for="price">prix</label>
