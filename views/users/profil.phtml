@@ -19,13 +19,13 @@
                 </div>
             </form>
 
-            <form action="index.php?route=changeMailForm" method="post">
+            <!-- <form action="index.php?route=changeMailForm" method="post">
                 <h3>Changer mon email de contact</h3>
                 <div>
                     <input type="email" name="email" class="text-input" id="email" value="<?= htmlspecialchars($user['email']); ?>">
                     <input type="submit" class="btn" value="Valider">
                 </div>
-            </form>
+            </form> -->
 
             <form action="" method="post" id="newsletter">
                 <h3>S'abonner à la newsletter</h3>
@@ -41,21 +41,20 @@
             <h2>Gestion du compte</h2>
             <form action="index.php?route=changePswdForm" method="post">
                 <h3>Changer mon mot de passe</h3>
-                <div class="password">
+                <!-- <div class="password">
                     <input type=" password" name="pswd" class="text-input" id="pswd_change">
                     <i class="fa-solid fa-eye" id="change-show"></i>
                     <i class="fa-regular fa-eye hidden" id="change-hide"></i>
                     <div class="error" id="error_change_pswd"></div>
-                </div>
-                <input type="submit" class="btn" value="Valider">
-    </div>
-    </form>
+                </div> -->
+                <input type="submit" class="btn" value="Envoyer le lien par email">
+            </form>
 
-    <form action="index.php?route=desactivateUser" method="post">
-        <h3>Désactiver mon compte</h3>
-        <p>Attention, vous ne pourrez plus accéder à votre compte si vous le désactivez.</p>
-        <input type="submit" class="btn" value="Désactiver">
-    </form>
-</section>
-</div>
+            <form action="index.php?route=desactivateUser" method="post">
+                <h3>Désactiver mon compte</h3>
+                <p>Attention, vous ne pourrez plus accéder à votre compte si vous le désactivez.</p>
+                <input type="submit" class="btn" value="Désactiver">
+            </form>
+        </section>
+    </div>
 </section>

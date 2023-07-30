@@ -1,6 +1,8 @@
 /******************* general *******************/
 @use '_base';
 @use '_animations';
+@use '_flip-horizontal-bottom';
+@use '_rotate-center';
 
 /******************* alert *******************/
 
@@ -92,8 +94,6 @@
 .trans-btn{
     width: 80%;
     transition: all .5s ease-out;
-    font-size: larger;
-    margin: 2rem;
     p{
         display: block;
     }
@@ -109,6 +109,7 @@
         }
     }
 }
+
 
 .close-btn{
     position: fixed;
@@ -198,22 +199,16 @@
         }
     }
 
+
+
     .trans-btn{
         width: 80%;
         transition: all .5s ease-out;
-        p{
-            display: block;
-        }
-        a{
-            display: none;
-        }
+        font-size: larger;
+        margin: 2rem;
+        position: relative;
         &:hover{
-            p{
-                display: none;
-            }
-            a{
-                display: block;
-            }
+            animation: flip-horizontal-bottom 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
         }
     }
 }
