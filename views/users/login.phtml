@@ -5,7 +5,7 @@
     <form action="index.php?route=connect" method="post" id="login-form">
         <div class="champs">
             <label for="email_log">email</label>
-            <input type="email" name="email" id="email_log">
+            <input type="email" name="email" id="email_log" autocomplete="email">
             <div class="error" id="error_log_mail">
                 <?php if (isset($errorLog)) : ?>
                     <span id="errorL"><?= htmlspecialchars($errorLog); ?></span>
@@ -15,7 +15,7 @@
         <div class="champs password">
             <label for="pswd_log">mot de passe</label>
             <div>
-                <input type="password" name="pswd" id="pswd_log">
+                <input type="password" name="pswd" id="pswd_log" autocomplete="password">
                 <i class="fa-solid fa-eye" id="login-show"></i>
                 <i class="fa-regular fa-eye hidden" id="login-hide"></i>
             </div>

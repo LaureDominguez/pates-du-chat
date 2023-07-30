@@ -28,13 +28,10 @@ class Users extends Database {
         return $this->findOne($req, $params);
     }
 
-    public function updateUser($name)
+    public function updateUser($newData)
     {
-        $newData = [
-            'name'  => $name
-        ];
         $this->updateOne('users', $newData, 'id', $_SESSION['user']['id']);
-        return $name;
+        return $newData;
     }
     
 }

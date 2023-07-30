@@ -53,43 +53,9 @@ nav{
     }
 }
 
-// .dropdown{
-//     position: relative;
-// }
-// .dropdown-toggle::after{
-//     content: '\2BC6';
-// }
-// .dropdown-menu{
-//     display: none;
-//     position: absolute;
-//     margin: 0.5rem;
-//     padding: 0.5rem;
-//     border-radius: 10px;
-//     width: 10rem;
-//     height: 5rem;
-//     top: 1.8rem;
-//     border: 1px solid var(--orange-clair);
-//     background-color: #ffffffe8;
-//     li:hover{
-//         background-color: #fff;
-//     }
-// }
 
 
 /******************* Media query *******************/
-// Mobiles
-// @media (max-width: 767px) {
-//     #burger, #menu-mobile{
-//         display: flex;
-//     }
-//     #menu-mobile{
-//         // opacity: 0;
-//         display: none;
-//     }
-//     #largeS{
-//         display: none;
-//     }
-// }
 
 /* Tablettes */
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -155,6 +121,7 @@ nav{
             flex-direction: row;
             align-items: center;
             justify-content: space-around;
+            z-index: 10;
         }
         .title{
             width: 40%;
@@ -165,6 +132,7 @@ nav{
             opacity: 0;
             align-items: center;
             justify-content: center;
+            z-index: 0;
             &::before,
             &::after {
                 background-color: var(--vert);
@@ -204,6 +172,7 @@ nav{
             align-items: flex-end;
             text-align: right;
             justify-content: space-around;
+            z-index: 10;
         }
     }
 

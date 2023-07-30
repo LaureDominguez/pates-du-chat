@@ -89,16 +89,16 @@ if (array_key_exists('route', $_GET)):
             $controller->updateUserName();
             break;
 
-        case 'changeMailForm':
-            $controller = new Controllers\UsersController();
-            $controller->isConnected();
-            $controller->profil();
-            break;
+        // case 'changeMailForm':
+        //     $controller = new Controllers\UsersController();
+        //     $controller->isConnected();
+        //     $controller->updateUserMail();
+        //     break;
 
         case 'changePswdForm':
             $controller = new Controllers\UsersController();
             $controller->isConnected();
-            $controller->profil();
+            $controller->resetPswd();
             break;
 
         case 'deleteUser':

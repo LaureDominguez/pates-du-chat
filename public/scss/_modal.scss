@@ -92,7 +92,7 @@
 .trans-btn{
     width: 80%;
     transition: all .5s ease-out;
-    font-size: large;
+    font-size: larger;
     margin: 2rem;
     p{
         display: block;
@@ -125,30 +125,14 @@
 
 
 /******************* Media query *******************/
-// Mobiles
-@media (max-width: 767px) {
-    
-}
-
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-    
-}
-
 /* PC */
 @media (min-width: 1024px) {
     /******************* alert *******************/
-
-    // .alert{
-    //     width: 20vw;
-    //     padding: 1rem;
-    //     border-radius: 5px;
-    //     background-color: var(--orange);
-    //     box-shadow: 2px 2px 15px 2px #000000a3;
-    // }
-    // .error{
-    //     color: red;
-    // }
+    .error{
+        color: #fff;
+        background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
+        text-align: center;
+    }
 
     .success{
         top: 2.2rem;
@@ -156,9 +140,7 @@
         right: 40%;
     }
 
-
     /******************* loggin *******************/
-
     #modal{
         background-color: #ffffff57;
         backdrop-filter: blur(5px);
@@ -197,16 +179,8 @@
         }
     }
 
-
-    .error{
-        color: #fff;
-        background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
-        text-align: center;
-    }
-
     .password{
         i{
-            cursor: pointer;
             &:hover, &:active{
                 background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #FAC172 25%);
             }
@@ -216,10 +190,13 @@
         }
     }
 
-    #forgot:hover{
-        background:-webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+    #forgot{
+        border: 1px solid transparent;
+        &:hover{
+            color: #fff;
+            background:-webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+        }
     }
-
 
     .trans-btn{
         width: 80%;

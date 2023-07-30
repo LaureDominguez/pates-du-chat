@@ -1,12 +1,12 @@
-<div class="log noScroll" id="register-window">
-    <i class="fa-solid fa-x close-btn" id="close-register"></i>
+<div class="log noScroll" id="reset-window">
+    <i class="fa-solid fa-x close-btn" id="close-reset"></i>
     <!-- <i class="fa-solid fa-xmark croix-btn" id="close-register"></i> -->
-    <h2>Nouveau compte</h2>
+    <h2>Changer le mot de passe</h2>
 
     <form action="index.php?route=register" method="post" id="register-form">
         <div class="champs">
             <label for="email_new">email</label>
-            <input type="email" name="email" id="email_new" autocomplete="email">
+            <input type="email" name="email" id="email_new" value="<?= htmlspecialchars($user['email']); ?>" disabled>
             <div class="error" id="error_new_mail">
                 <?php if (isset($errorRegist)) : ?>
                     <span id="errorR"><?= htmlspecialchars($errorRegist); ?></span>
@@ -17,7 +17,7 @@
         <div class="champs password">
             <label for="pswd_new">mot de passe</label>
             <div>
-                <input type="password" name="pswd" id="pswd_new" autocomplete="new-password">
+                <input type="password" name="pswd" id="pswd_new">
                 <i class="fa-solid fa-eye" id="register-show"></i>
                 <i class="fa-regular fa-eye none" id="register-hide"></i>
             </div>
@@ -26,7 +26,7 @@
 
         <div class="champs">
             <label for="pswd_confirm_new">confirmez votre mot de passe</label>
-            <input type="password" name="pswd_confirm" id="pswd_confirm_new" autocomplete="new-password">
+            <input type="password" name="pswd_confirm" id="pswd_confirm_new">
             <div class="error" id="error_new_verif"></div>
         </div>
 

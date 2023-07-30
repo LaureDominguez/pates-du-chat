@@ -45,7 +45,6 @@ class UsersController{
         } else { //sinon on créer le compte
             $newUser = [
                 trim($_POST['email']),
-                // trim($_POST['pswd'])
                 password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
             ];
 
@@ -136,42 +135,117 @@ class UsersController{
     public function updateUserName()
     {//création ou modification du nom de user
         $errors = [];
-        $success = "";
+        $success = $name = "";
 
-        $name = trim($_POST['name']);
-
-        if (empty($name)) {
-            $errors[] = "Veuillez entrer votre nom";
-        }
-
-        if (array_key_exists('name', $_POST)) {
-
+        if (isset($_POST['name'])) {
             $name = trim($_POST['name']);
             $this->replaceSpecialChar($name);
 
-            if (empty($name))
+            if (empty($name)) {
                 $errors[] = "Veuillez entrer votre nom";
             }
 
             if (count($errors) == 0) {
-
+                $newData = [
+                    'name' => $name
+                ];
                 $model = new Users();
-                $model->updateUser($name);
+                $model->updateUser($newData);
 
-                $_SESSION['user']['name']=$name;
+                $_SESSION['user']['name'] = $name;
 
                 $success = "Votre nom a bien été modifié !";
                 $_SESSION['visitor']['flash_message'] = [
-                        'success' => $success
-                    ];
-                
+                    'success' => $success
+                ];
+
                 header('Location: index.php?route=myAccount');
                 exit();
             }
+        }
         $_SESSION['visitor']['flash_message'] = [
             'error' => $errors
         ];
         $template = "users/profil.phtml";
+        include_once 'views/layout.phtml';
+    }
+
+    // public function updateUserMail()
+    // { // change email de user
+    //     $errors = [];
+    //     $success = $email = "";
+
+    //     if (isset($_POST['email'])) {
+    //         $email = trim($_POST['email']);
+    //         $this->replaceSpecialChar($email);
+
+    //         if (empty($email)) {
+    //             $errors[] = "Veuillez renseigner la nouvelle adresse mail";
+    //         }
+
+    //         if (count($errors) == 0
+    //         ) {
+    //             $newData = [
+    //                 'email' => $email,
+    //                 'activate' => 0
+    //             ];
+
+    //             $model = new Users();
+    //             $model->updateUser($newData);
+
+    //             $_SESSION['user']['email'] = $email;
+
+    //             $success = "Votre email a bien été modifié !";
+    //             $_SESSION['visitor']['flash_message'] = [
+    //                 'success' => $success
+    //             ];
+
+    //             header('Location: index.php?route=myAccount');
+    //             exit();
+    //         }
+    //     }
+    //     $_SESSION['visitor']['flash_message'] = [
+    //         'error' => $errors
+    //     ];
+    //     $template = "users/profil.phtml";
+    //     include_once 'views/layout.phtml';
+    // }
+
+    public function resetPswd()
+    { //reset du password de user
+        $errors = [];
+        $success = "";
+
+        var_dump($_POST);
+        die;
+
+        if (isset($_POST['pswd'])) {
+            $restUser = [
+                    'pswd' => password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT)
+                ];
+
+            $model = new Users();
+            $model->updateUser($restUser);
+
+            $_SESSION['user'] = [
+                'id' => $restUser['id'],
+                'email' => $restUser['email'],
+                'name' => $restUser['name'],
+                'role' => $restUser['role']
+            ];
+
+            $success = "Votre mot de passe a bien été modifié !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+
+            header('Location: index.php?route=myAccount');
+            exit();
+        }
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $errors
+        ];
+        $template = "users/reset.phtml";
         include_once 'views/layout.phtml';
     }
 

@@ -107,16 +107,17 @@ a, a:active, a:hover{
 
 .btn{
     padding: 0.1rem 0.4rem;
-        margin: auto;
-        border: 1px solid transparent;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all .5s ease-out;
-        &:hover:not(#forgot){
-            background: -webkit-linear-gradient(308deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
-            color: #fff;
-        }
+    margin: auto;
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .5s ease-out;
+    &:hover:not(#forgot){
+        background: 
+            -webkit-linear-gradient(308deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+            -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+        color: #fff;
+    }
 }
 
 .buttons{
@@ -138,17 +139,17 @@ form{
 }
 
 /******************* short *******************/
-.short{
-    height: 13rem;
-    overflow: hidden;
-    background: linear-gradient(
-        180deg,
-        #000 70%,
-        transparent 90%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+// .short{
+//     height: 13rem;
+//     overflow: hidden;
+//     background: linear-gradient(
+//         180deg,
+//         #000 70%,
+//         transparent 90%
+//     );
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+// }
 
 /******************* hidden *******************/
 .hidden{

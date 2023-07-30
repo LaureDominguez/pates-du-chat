@@ -2,7 +2,7 @@
 @use '_base';
 
 .userProfil{
-    width: 80%;
+    width: 90%;
     margin: auto;
     .profil{
         display: flex;
@@ -10,23 +10,97 @@
         padding: 1rem;
         background-color: #ffffff86;
         border-radius: 10px;
+        h2{
+            border-width: 3px;
+            padding: 0.8rem;
+            border-style: solid;
+            border-image: linear-gradient(to right, var(--green), var(--orange)) 1;
+            border-left: none;
+            border-right: none;
+            &::before, &::after{
+                content: none;
+            }
+        }
+        h3{
+            letter-spacing: 1px;
+        }
+        form{
+            margin: 1rem;
+            padding: 1rem;
+            text-align: center;
+            background-color: #ffffff86;
+            border-radius: 10px;
+            h3, div{
+                margin: 1rem;
+            }
+            .text-input{ 
+                padding: 0.2rem 0.5rem;
+                background-color: #ffffff86;
+                box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
+            }
+            p{
+                font-style: italic;
+            }
+        }
+        #newsletter{
+            label{
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+        
     }
-    form{
-        div:not(#newsletter){
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr;
-            grid-column-gap: 0px;
-            grid-row-gap: 0px;
-            &:first-child{
-                grid-area: 1 / 1 / 2 / 2;
+}
+
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /******************* detail *******************/
+}
+
+/* PC */
+@media (min-width: 1024px) {
+    .userProfil{
+        width: 80%;
+        margin: auto;
+        .profil{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            background-color: #ffffff86;
+            border-radius: 10px;
+            section{
+                width: 80%;
+                margin: auto;
             }
-            &:nth-child(2){
-                grid-area: 1 / 2 / 2 / 3;
+        }
+        form{
+            margin: 1rem;
+            padding: 1rem;
+            text-align: center;
+            background-color: #ffffff86;
+            border-radius: 10px;
+            h3, div{
+                margin: 1rem;
             }
-            &:last-child{
-                grid-area: 1 / 3 / 2 / 4;
+            .text-input{ 
+                padding: 0.2rem 0.5rem;
+                background-color: #ffffff86;
+                box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
+            }
+            p{
+                font-style: italic;
+            }
+        }
+        #newsletter{
+            label{
+                font-weight: normal;
+                text-transform: none;
             }
         }
     }
+
+
+
+    
 }
