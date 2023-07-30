@@ -1,9 +1,12 @@
+// ********************* opening hour editable table
+
 // Fonction pour vérifier si des modifications ont été apportées
 function hasModifications() {
     const modifiedElements = document.querySelectorAll('.modified');
     return modifiedElements.length > 0;
 }
 
+// Fonction pour éditer le tableau
 export function editContact() {
     const saveBtn = document.getElementById('saveBtn');
     const elements = document.querySelectorAll('.editable');

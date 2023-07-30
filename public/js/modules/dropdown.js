@@ -1,5 +1,6 @@
-// ********************* show/hide nav
+// ********************* show/hide navbar on mobile, and dropdown on large screan
 
+// dropdown menu
 export function dropdownNav() {
     let dropdown = document.getElementById('dropdown-toggle');
     let menu = document.getElementById('dropdown-menu');
@@ -15,6 +16,7 @@ export function dropdownNav() {
         }
     })
 
+// mobile navbar
     const burger = document.getElementById('burger');
     const menuMobile = document.getElementById('menu-mobile');
     if(burger) {

@@ -12,7 +12,7 @@
       width:200px;
       padding:10px;
       border-radius:10px;
-      background:#000;
+      background:var(--vert);
       color: #fff;
       text-align:center;
       display:none;
@@ -37,8 +37,8 @@
       top:50%;
       transform:translateY(-50%);
       /* the arrow */
-      border:10px solid #000;
-      border-color: transparent black transparent transparent;
+      border:10px solid var(--vert);
+      border-color: transparent var(--vert) transparent transparent;
       display:none;
   }
   &.left:after {
@@ -48,7 +48,7 @@
     /* set new values */
       right:100%;
       margin-right:-5px;
-      border-color: transparent transparent transparent black;
+      border-color: transparent transparent transparent var(--vert);
   }
   &:hover:before, &:hover:after {
       display:block;

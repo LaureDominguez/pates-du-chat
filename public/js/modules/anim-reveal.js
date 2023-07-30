@@ -1,4 +1,4 @@
-// ********************* anim reveal on scroll
+// ********************* animation reveal blocks on scroll
 export function revealOnScroll() {
 
     const scrollElements = document.querySelectorAll(".scroll");

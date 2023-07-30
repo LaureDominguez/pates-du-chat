@@ -12,6 +12,10 @@
     background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
 }
 
+#largeS, #menu-mobile{
+    display: none;
+}
+
 nav{
     position: fixed;
     display: flex;
@@ -49,34 +53,48 @@ nav{
     }
 }
 
-.dropdown{
-    position: relative;
-}
-.dropdown-toggle::after{
-    content: '\2BC6';
-}
-.dropdown-menu{
-    display: none;
-    position: absolute;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 10px;
-    width: 10rem;
-    height: 5rem;
-    top: 1.8rem;
-    border: 1px solid var(--orange-clair);
-    background-color: #ffffffe8;
-    li:hover{
-        background-color: #fff;
-    }
-}
+// .dropdown{
+//     position: relative;
+// }
+// .dropdown-toggle::after{
+//     content: '\2BC6';
+// }
+// .dropdown-menu{
+//     display: none;
+//     position: absolute;
+//     margin: 0.5rem;
+//     padding: 0.5rem;
+//     border-radius: 10px;
+//     width: 10rem;
+//     height: 5rem;
+//     top: 1.8rem;
+//     border: 1px solid var(--orange-clair);
+//     background-color: #ffffffe8;
+//     li:hover{
+//         background-color: #fff;
+//     }
+// }
 
 
 /******************* Media query *******************/
 // Mobiles
-@media (max-width: 767px) {
-    #burger, #menu-mobile{
-        display: flex;
+// @media (max-width: 767px) {
+//     #burger, #menu-mobile{
+//         display: flex;
+//     }
+//     #menu-mobile{
+//         // opacity: 0;
+//         display: none;
+//     }
+//     #largeS{
+//         display: none;
+//     }
+// }
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #burger{
+        display: block;
     }
     #menu-mobile{
         // opacity: 0;
@@ -87,12 +105,12 @@ nav{
     }
 }
 
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-    #mobile, #menu-mobile{
-        display: flex;
+/* Tablettes en landscape */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+    #burger{
+        display: block;
     }
-    #mobile{
+    #menu-mobile{
         // opacity: 0;
         display: none;
     }
@@ -103,7 +121,7 @@ nav{
 
 /* PC */
 @media (min-width: 1024px) {
-    #mobile, #menu-mobile, #burger{
+    #menu-mobile, #burger{
         display: none;
     }
     #largeS{
@@ -202,6 +220,9 @@ nav{
         padding: 0.5rem;
         border-radius: 10px;
         width: 10rem;
+        height: 5rem;
+        top: 1.8rem;
+        // z-index: 100;
         background-color: #ffffff6a;
         backdrop-filter: blur(4px);
         & li:hover{

@@ -176,6 +176,10 @@ form input:not(.btn, .file), form form textarea, form form select {
   background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
 }
 
+#largeS, #menu-mobile {
+  display: none;
+}
+
 nav {
   position: fixed;
   display: flex;
@@ -213,34 +217,11 @@ nav li {
   box-shadow: inset -2px 5px 11px 7px rgba(94, 94, 94, 0.5490196078), 5px 5px 12px 5px rgba(207, 207, 207, 0.59);
 }
 
-.dropdown {
-  position: relative;
-}
-
-.dropdown-toggle::after {
-  content: "⯆";
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 10px;
-  width: 10rem;
-  height: 5rem;
-  top: 1.8rem;
-  border: 1px solid var(--orange-clair);
-  background-color: rgba(255, 255, 255, 0.9098039216);
-}
-.dropdown-menu li:hover {
-  background-color: #fff;
-}
-
 /******************* Media query *******************/
-@media (max-width: 767px) {
-  #burger, #menu-mobile {
-    display: flex;
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #burger {
+    display: block;
   }
   #menu-mobile {
     display: none;
@@ -249,12 +230,12 @@ nav li {
     display: none;
   }
 }
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #mobile, #menu-mobile {
-    display: flex;
+/* Tablettes en landscape */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  #burger {
+    display: block;
   }
-  #mobile {
+  #menu-mobile {
     display: none;
   }
   #largeS {
@@ -263,7 +244,7 @@ nav li {
 }
 /* PC */
 @media (min-width: 1024px) {
-  #mobile, #menu-mobile, #burger {
+  #menu-mobile, #burger {
     display: none;
   }
   #largeS {
@@ -357,6 +338,8 @@ nav li {
     padding: 0.5rem;
     border-radius: 10px;
     width: 10rem;
+    height: 5rem;
+    top: 1.8rem;
     background-color: rgba(255, 255, 255, 0.4156862745);
     backdrop-filter: blur(4px);
   }
@@ -611,7 +594,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   width: 200px;
   padding: 10px;
   border-radius: 10px;
-  background: #000;
+  background: var(--vert);
   color: #fff;
   text-align: center;
   display: none;
@@ -636,8 +619,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   top: 50%;
   transform: translateY(-50%);
   /* the arrow */
-  border: 10px solid #000;
-  border-color: transparent black transparent transparent;
+  border: 10px solid var(--vert);
+  border-color: transparent var(--vert) transparent transparent;
   display: none;
 }
 
@@ -648,7 +631,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   /* set new values */
   right: 100%;
   margin-right: -5px;
-  border-color: transparent transparent transparent black;
+  border-color: transparent transparent transparent var(--vert);
 }
 
 .aide:hover:before, .aide:hover:after {
@@ -1557,6 +1540,71 @@ main {
   }
   .home:not(:last-child) {
     height: 100vh;
+  }
+  #home #title {
+    background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.49) 0%, rgba(252, 252, 252, 0) 80%);
+  }
+  #home #title h2 {
+    background: none;
+  }
+  #home #title h2::before, #home #title h2::after {
+    content: "";
+  }
+  #home article {
+    width: 80%;
+    margin: auto;
+    height: 55vh;
+    justify-content: space-evenly;
+  }
+  #home #logo {
+    margin: 1rem;
+    height: 12rem;
+  }
+  #home table {
+    padding: 1rem;
+    margin: 0 2rem;
+  }
+  #home table tr {
+    line-height: 1.8rem;
+  }
+}
+/* Tablettes en landscape */
+@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+  .home {
+    padding-top: 0;
+  }
+  #title-landscape {
+    display: flex;
+    align-items: center;
+  }
+  #title-landscape h1 {
+    margin: 0;
+  }
+  #title-landscape h2 {
+    margin: 0 1rem;
+  }
+  #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #home a {
+    display: none;
+  }
+  #home #logo {
+    display: none;
+  }
+  #home .logo {
+    height: 7rem;
+    margin: 1rem;
+  }
+  #home article table {
+    font-size: smaller;
+    height: 2.5rem;
+    margin: 0.5rem;
+  }
+  #home article table tr {
+    line-height: 1.5rem;
   }
 }
 /* PC */

@@ -1,4 +1,5 @@
-// ********************* show/hide modal
+// ********************* show/hide login/regiter modal and password
+
 export function toogleModal() {
 
     function showElement(element) {

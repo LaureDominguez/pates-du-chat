@@ -1,4 +1,4 @@
-// ********************* show/hide modal
+// ********************* test errors on login/register modal
 export function checkErrors() {
 
 /////////// register form ///////////////////

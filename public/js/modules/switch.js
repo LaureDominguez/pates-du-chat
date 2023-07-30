@@ -1,4 +1,4 @@
-// ********************* switch active
+// ********************* switch product and category active
 
 export function switchProducts() {
     

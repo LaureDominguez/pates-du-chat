@@ -2,7 +2,6 @@
 import { revealOnScroll } from "./modules/anim-reveal.js";
 import { titleOnNav } from "./modules/home-title.js";
 import { dropdownNav } from "./modules/dropdown.js";
-import { cookieSession } from "./modules/cookie.js";
 import { filterCategory } from "./modules/fitler.js";
 import { toogleModal } from "./modules/loggin.js";
 import { checkErrors } from "./modules/errors.js";
@@ -15,7 +14,6 @@ window.addEventListener("DOMContentLoaded", function () {
     revealOnScroll(); // animation des blocs section sur homepage
     titleOnNav(); // animation du titre dans la barre de nav
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
-    // cookieSession();
 
     lazy(); // spinner le temps que le google map charge
 
