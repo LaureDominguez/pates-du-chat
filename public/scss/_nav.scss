@@ -112,6 +112,7 @@ nav{
             z-index: 200;
             overflow: hidden;
             transition: all 0.5s;
+            width: 49%;
             &::after{
                 transition: all 0.5s;
                 content: "";

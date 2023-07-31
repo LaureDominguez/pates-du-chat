@@ -106,12 +106,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -299,6 +302,7 @@ nav li {
     z-index: 200;
     overflow: hidden;
     transition: all 0.5s;
+    width: 49%;
   }
   nav li::after {
     transition: all 0.5s;
@@ -507,12 +511,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -1206,12 +1213,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -1456,12 +1466,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -1884,12 +1897,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -2214,11 +2230,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   /******************* detail *******************/
   .shop-detail {
+    min-height: 75vh;
     flex-direction: row;
   }
   .shop-detail img {
     width: 40%;
-    height: 75vh;
+    height: 80vh;
     border-radius: 10px 0 0 10px;
     margin: 0;
   }
@@ -2226,7 +2243,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     justify-content: space-between;
     margin: 0;
     width: 40%;
-    height: 75vh;
+    height: 80vh;
     border-radius: 0 10px 10px 0;
     text-align: center;
   }
@@ -2345,12 +2362,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -2527,6 +2547,15 @@ form input:not(.btn, .file), form form textarea, form form select {
     backdrop-filter: blur(4px);
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
+  .mail .btn {
+    transition: all 0.5s ease;
+    background-size: 0%;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+  }
+  .mail .btn:hover {
+    background-size: 100%;
+  }
 }
 /******************* general *******************/
 :root {
@@ -2635,12 +2664,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -2795,58 +2827,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
 }
 /******************* contact *******************/
-/******************* animation flip-horizontal-bottom *******************/
-.flip-horizontal-bottom {
-  -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
-  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2023-7-31 0:52:18
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-/**
- * ----------------------------------------
- * animation flip-horizontal-bottom
- * ----------------------------------------
- */
-@-webkit-keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
-  }
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg);
-  }
-}
-@keyframes flip-horizontal-bottom {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(-180deg);
-  }
-}
-@keyframes flip-horizontal-normal {
-  0% {
-    transform: rotateX(-180deg);
-  }
-  100% {
-    transform: rotateX(0);
-  }
-}
-@keyframes flip-horizontal-hover {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(-180deg);
-  }
-}
-/******************* contact *******************/
 /******************* animation rotate-center *******************/
 .rotate-center {
   -webkit-animation: rotate-center 0.6s ease-in-out both;
@@ -2918,7 +2898,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   z-index: 100;
 }
 .log .btn {
-  width: 100%;
   margin: 0;
 }
 .log form {
@@ -3049,6 +3028,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .log .close-btn:hover {
     cursor: pointer;
+    animation: rotate-center 0.6s ease-in-out both;
     background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 0, 0, 0.49) 0%, rgba(255, 0, 0, 0) 60%);
   }
   .log form {
@@ -3220,12 +3200,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -3486,12 +3469,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
+  background-size: 100%;
 }
 
 .buttons {
@@ -3665,221 +3651,15 @@ a, a:active, a:hover {
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   color: #fff;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-/******************* form *******************/
-form label {
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-form input:not(.btn, .file), form form textarea, form form select {
-  border: none;
-  border-radius: 5px;
-}
-
-/******************* hidden *******************/
-.hidden {
-  display: none;
-}
-
-/******************* noScroll *******************/
-.noScroll {
-  overflow: hidden;
-  position: fixed;
-}
-
-/******************* Media query *******************/
-/* Tablettes */
-/* PC */
-@media (min-width: 1024px) {
-  .container {
-    padding: 3.3rem 0;
-  }
-  .content {
-    border-radius: 10px;
-  }
-  section:not(:last-child) {
-    margin-bottom: 3rem;
-  }
-}
-/******************* contact *******************/
-/******************* animation flip-horizontal-bottom *******************/
-.flip-horizontal-bottom {
-  -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
-  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
-}
-
-/* ----------------------------------------------
- * Generated by Animista on 2023-7-31 0:52:18
- * Licensed under FreeBSD License.
- * See http://animista.net/license for more info. 
- * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
-/**
- * ----------------------------------------
- * animation flip-horizontal-bottom
- * ----------------------------------------
- */
-@-webkit-keyframes flip-horizontal-bottom {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
-  }
-  100% {
-    -webkit-transform: rotateX(-180deg);
-    transform: rotateX(-180deg);
-  }
-}
-@keyframes flip-horizontal-bottom {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(-180deg);
-  }
-}
-@keyframes flip-horizontal-normal {
-  0% {
-    transform: rotateX(-180deg);
-  }
-  100% {
-    transform: rotateX(0);
-  }
-}
-@keyframes flip-horizontal-hover {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(-180deg);
-  }
-}
-/******************* general *******************/
-:root {
-  --orange-charte: #f28f18;
-  --orange-select: rgb(255, 207, 149);
-  --orange-clair: rgb(255, 242, 225);
-  --vert: #004f12;
-  --red: #E25B45;
-  --orange: #FF8357;
-  --yellow: #FAC172;
-  --blue: #89D5C9;
-  --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
-}
-
-body * {
-  box-sizing: border-box;
-  user-select: none;
-}
-
-body {
-  margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
-  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
-}
-
-main {
-  margin: 0 auto;
-  min-height: 100vh;
-}
-
-hr {
-  margin: 3rem 10rem;
-}
-
-/******************* Fonts *******************/
-h1, h2, h3, h4, h5, nav, .btn {
-  font-family: "Pacifico", cursive;
-  color: var(--vert);
-  text-align: center;
-}
-
-h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
-  text-transform: capitalize;
-}
-
-*::first-letter {
-  text-transform: capitalize;
-}
-
-h1 {
-  font-size: 2.3rem;
-  line-height: 5rem;
-  margin-bottom: 2rem;
-}
-
-h2 {
-  font-size: 1.5rem;
-  line-height: 3rem;
-  letter-spacing: 2px;
-  overflow: hidden;
-  text-align: center;
-}
-
-h2:nth-child(1)::first-letter {
-  text-transform: capitalize;
-}
-
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
-h3 {
-  font-size: 1.2rem;
-  line-height: 2.5rem;
-}
-
-a, a:active, a:hover {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-/******************* bouttons *******************/
-.btn {
-  padding: 0.1rem 0.4rem;
-  margin: auto;
-  border: 1px solid;
-  line-height: 1.5rem;
-  border-radius: 20px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.5s ease-out;
-}
-
-.btn:hover:not(#forgot) {
-  background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
-  color: #fff;
+  background-size: 100%;
 }
 
 .buttons {

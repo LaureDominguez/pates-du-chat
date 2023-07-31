@@ -51,10 +51,10 @@
     background-repeat: no-repeat;
     background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
                 -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
-        &:hover{
-    color: #fff;
-            background-size: 100%;
-        }
+    &:hover{
+        color: #fff;
+        background-size: 100%;
+    }
 }
 
 /******************* index *******************/
@@ -300,10 +300,11 @@
     /******************* detail *******************/
 
     .shop-detail{
+        min-height: 75vh;
         flex-direction: row;
         img{
             width: 40%;
-            height: 75vh;
+            height: 80vh;
             border-radius: 10px 0 0 10px;
             margin: 0;
         }
@@ -311,7 +312,7 @@
             justify-content: space-between;
             margin: 0;
             width: 40%;
-            height: 75vh;
+            height: 80vh;
             border-radius: 0 10px 10px 0;
             text-align: center;
             .infoSup{
