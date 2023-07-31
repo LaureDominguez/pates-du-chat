@@ -18,6 +18,9 @@ class HomeController{
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();
 
+        $maxProducts = 11;
+        $count = 0;
+
         // Affiche les messages d'erreur des forumalires de connexion
         if (isset($_SESSION['visitor']['flash_message']['error'])) {
             $errorLog = '';

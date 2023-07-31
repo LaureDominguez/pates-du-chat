@@ -1530,7 +1530,7 @@ main {
   margin: 0;
 }
 #home #title h1::after {
-  content: url("../img/site/Logo pate.png");
+  content: url("../img/site/Logo-pate.png");
 }
 #home #title h2 {
   margin-top: 0;
@@ -1919,6 +1919,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   border: solid 1px transparent;
   border-radius: 10px;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
 }
 .shop-tuile img {
   object-fit: cover;
@@ -1944,6 +1947,13 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 8px;
 }
 
+.more {
+  font-family: "Pacifico", cursive;
+  letter-spacing: 1px;
+  color: #fff;
+  transition: all 0.5s ease;
+  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+}
 /******************* index *******************/
 .shop-filter {
   display: flex;
@@ -1992,6 +2002,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   flex-direction: column-reverse;
   align-items: center;
   min-height: 90vh;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 .shop-detail img {
   width: 90%;
@@ -2004,7 +2017,10 @@ form input:not(.btn, .file), form form textarea, form form select {
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 10px;
   width: 90%;
-  text-align: center;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .shop-detail figcaption h2 {
   border-width: 3px;
@@ -2036,44 +2052,56 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .shop-detail figcaption .infoSup {
   display: flex;
-  padding: 1rem;
+  padding: 0.3rem;
+  font-size: 0.9rem;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.5254901961);
-}
-.shop-detail figcaption .infoSup div {
-  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /******************* Media query *******************/
 /* Smatrphone en landscape */
 @media screen and (max-width: 767px) and (orientation: landscape) {
   .shop-detail {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: stretch;
+    padding: 0.5rem;
   }
   .shop-detail img {
-    width: 40%;
-    height: 75vh;
-    object-fit: cover;
+    min-width: 45%;
+    min-height: 75vh;
     border-radius: 10px 0 0 10px;
     margin: 0;
   }
   .shop-detail figcaption {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    width: 40%;
-    height: 75vh;
-    background-color: rgba(255, 255, 255, 0.5254901961);
+    margin: 0;
+    padding: 0.3rem;
+    min-width: 50%;
+    min-height: 75vh;
+    font-size: smaller;
     border-radius: 0 10px 10px 0;
+  }
+  .shop-detail figcaption .infoSup {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .shop-detail figcaption .infoSup div {
+    flex: 1;
   }
 }
 /* Tablettes */
 @media (min-width: 768px) and (max-width: 1023px) {
   /******************* detail *******************/
+  .shop-detail figcaption .infoSup {
+    flex-direction: row;
+    text-align: center;
+  }
+  .shop-detail figcaption .infoSup div {
+    flex: 1;
+  }
 }
 /* PC */
 @media (min-width: 1024px) {
@@ -2152,27 +2180,28 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   /******************* detail *******************/
   .shop-detail {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
   }
   .shop-detail img {
     width: 40%;
     height: 75vh;
-    object-fit: cover;
     border-radius: 10px 0 0 10px;
     margin: 0;
   }
   .shop-detail figcaption {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+    margin: 0;
     width: 40%;
     height: 75vh;
-    background-color: rgba(255, 255, 255, 0.5254901961);
     border-radius: 0 10px 10px 0;
+    text-align: center;
+  }
+  .shop-detail figcaption .infoSup {
+    flex-direction: row;
+    padding: 1rem;
+  }
+  .shop-detail figcaption .infoSup div {
+    flex: 1;
   }
 }
 /******************* general *******************/

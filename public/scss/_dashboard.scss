@@ -278,7 +278,6 @@
 	.dashboard-table{
 		margin-bottom: 1rem;
 		border-collapse: collapse;
-
 		th:not(:last-child, :nth-last-child(2)){
 			&::after{
 				font-family: "FontAwesome";

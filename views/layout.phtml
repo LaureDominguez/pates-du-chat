@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet rattrapage - xampp</title>
+    <!-- Non repertorié -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Les Pâtes du Chat</title>
+    <link rel="icon" href="./public/img/site/Favicon.png" type="image/x-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -28,7 +32,6 @@
             </aside>
         <?php endif ?>
 
-
         <?php if (isset($_SESSION['visitor']['flash_message'])) : ?>
             <aside>
                 <?php include_once('./views/flash_msg.phtml'); ?>
@@ -38,11 +41,11 @@
 
         <?php if (isset($template) && $template == "home.phtml") : ?>
             <section>
-        <?php else : ?>
-            <section class="container">
-        <?php endif ?>
+            <?php else : ?>
+                <section class="container">
+                <?php endif ?>
                 <?php include $template; ?>
-            </section>
+                </section>
     </main>
 
     <!-- Style -->
