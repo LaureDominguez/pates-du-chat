@@ -41,13 +41,19 @@
 }
 .more{
     font-family: 'Pacifico', cursive;
-    letter-spacing: 1px;
-    color: #fff;
+    letter-spacing: 2px;
+    color: var(--vert);
+    border-radius: 25px;
+    border: 1px solid;
+    padding: 1rem 1.3rem;
     transition: all 0.5s ease;
-    background: -webkit-linear-gradient(217deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%); 
+    background-size: 0%;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
         &:hover{
-            
+    color: #fff;
+            background-size: 100%;
         }
 }
 

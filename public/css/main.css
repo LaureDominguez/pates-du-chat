@@ -102,7 +102,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -129,7 +131,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -291,15 +292,34 @@ nav li {
     cursor: pointer;
   }
   nav li {
-    padding: 0.1rem 0.4rem;
     margin: auto;
-    border-radius: 20px;
-    transition: all 0.2s ease-out;
+    border-radius: 0 0 15px 15px;
     box-shadow: none;
+    position: relative;
+    z-index: 200;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  nav li::after {
+    transition: all 0.5s;
+    content: "";
+    background-image: -webkit-linear-gradient(40deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+    position: absolute;
+    z-index: -1;
+    display: block;
+    left: 0;
+    right: 0;
+    top: -100%;
+    bottom: 100%;
   }
   nav li:hover:not(.dropdown-menu) {
-    background: -webkit-linear-gradient(40deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
     color: #fff;
+  }
+  nav li:hover::after {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
   }
   nav .pages {
     width: 30%;
@@ -343,7 +363,7 @@ nav li {
   }
   nav .title a::after {
     content: "";
-    background-image: url("../img/site/Logo pate.png");
+    background-image: url("../img/site/Logo-pate.png");
     background-repeat: no-repeat;
     background-size: contain;
     height: 0.5rem;
@@ -483,7 +503,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -510,7 +532,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -1181,7 +1202,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -1208,7 +1231,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -1430,7 +1452,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -1457,7 +1481,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -1857,7 +1880,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -1884,7 +1909,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -1949,11 +1973,21 @@ form input:not(.btn, .file), form form textarea, form form select {
 
 .more {
   font-family: "Pacifico", cursive;
-  letter-spacing: 1px;
-  color: #fff;
+  letter-spacing: 2px;
+  color: var(--vert);
+  border-radius: 25px;
+  border: 1px solid;
+  padding: 1rem 1.3rem;
   transition: all 0.5s ease;
-  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+  background-size: 0%;
+  background-repeat: no-repeat;
+  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
 }
+.more:hover {
+  color: #fff;
+  background-size: 100%;
+}
+
 /******************* index *******************/
 .shop-filter {
   display: flex;
@@ -2307,7 +2341,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -2334,7 +2370,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -2596,7 +2631,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -2623,7 +2660,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -2930,21 +2966,29 @@ form input:not(.btn, .file), form form textarea, form form select {
   width: 100%;
 }
 
-.trans-btn {
-  width: 80%;
-  transition: all 0.5s ease-out;
+.btn-flip {
+  color: #fff;
+  line-height: 2rem;
+  position: relative;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: var(--Pacifico);
+  font-size: 0.8rem;
 }
-.trans-btn p {
+.btn-flip:before {
+  top: 0;
+  left: 0;
+  opacity: 1;
+  color: var(--vert);
   display: block;
-}
-.trans-btn a {
-  display: none;
-}
-.trans-btn:hover p {
-  display: none;
-}
-.trans-btn:hover a {
-  display: block;
+  padding: 0 2rem;
+  line-height: 1.5rem;
+  transition: 0.5s;
+  position: relative;
+  border: 1px solid;
+  border-radius: 20px;
+  content: attr(data-front);
+  transform: translateY(0) rotateX(0);
 }
 
 .close-btn {
@@ -3028,15 +3072,45 @@ form input:not(.btn, .file), form form textarea, form form select {
     color: var(--vert); /* Nouvelle couleur de texte au survol */
     background-size: 100%; /* Augmenter la taille du dégradé au survol */
   }
-  .trans-btn {
-    width: 80%;
-    font-size: larger;
-    margin: 2rem;
-    position: relative;
-    animation: flip-horizontal-normal 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate;
+  /******************* btn-flip *******************/
+  .btn-flip:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
   }
-  .trans-btn:hover {
-    animation: flip-horizontal-hover 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
+  .btn-flip:hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+  }
+  .btn-flip:after {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    color: #fff;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    border: 1px solid;
+    background: -webkit-linear-gradient(308deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+    border-radius: 20px;
+    content: attr(data-back);
+    transform: translateY(-50%) rotateX(90deg);
+  }
+  .btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    color: var(--vert);
+    display: block;
+    padding: 0 2rem;
+    line-height: 2rem;
+    transition: 0.5s;
+    position: relative;
+    border: 1px solid;
+    border-radius: 20px;
+    background: #fff;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
   }
 }
 /******************* general *******************/
@@ -3142,7 +3216,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -3169,7 +3245,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -3407,7 +3482,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -3434,7 +3511,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -3585,7 +3661,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -3612,7 +3690,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;
@@ -3793,7 +3870,9 @@ a, a:active, a:hover {
   padding: 0.1rem 0.4rem;
   margin: auto;
   border: 1px solid;
+  line-height: 1.5rem;
   border-radius: 20px;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
@@ -3820,7 +3899,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 5px;
 }
 
-/******************* short *******************/
 /******************* hidden *******************/
 .hidden {
   display: none;

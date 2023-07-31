@@ -109,7 +109,9 @@ a, a:active, a:hover{
     padding: 0.1rem 0.4rem;
     margin: auto;
     border: 1px solid;
+        line-height: 1.5rem;
     border-radius: 20px;
+        letter-spacing: 1px;
     cursor: pointer;
     transition: all .5s ease-out;
     &:hover:not(#forgot){
@@ -119,6 +121,9 @@ a, a:active, a:hover{
         color: #fff;
     }
 }
+
+
+
 
 .buttons{
 	display: flex;
@@ -137,19 +142,6 @@ form{
         border-radius: 5px;
     }
 }
-
-/******************* short *******************/
-// .short{
-//     height: 13rem;
-//     overflow: hidden;
-//     background: linear-gradient(
-//         180deg,
-//         #000 70%,
-//         transparent 90%
-//     );
-//     -webkit-background-clip: text;
-//     -webkit-text-fill-color: transparent;
-// }
 
 /******************* hidden *******************/
 .hidden{

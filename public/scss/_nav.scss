@@ -105,15 +105,35 @@ nav{
             cursor: pointer;
         }
         li{
-            padding: 0.1rem 0.4rem;
             margin: auto;
-            border-radius: 20px;
-            transition: all .2s ease-out;
+            border-radius: 0 0 15px 15px;
             box-shadow: none;
+            position: relative;
+            z-index: 200;
+            overflow: hidden;
+            transition: all 0.5s;
+            &::after{
+                transition: all 0.5s;
+                content: "";
+                background-image: -webkit-linear-gradient(40deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                        -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+                position: absolute;
+                z-index: -1;
+                display: block;
+                left: 0;
+                right: 0;
+                top: -100%;
+                bottom: 100%;
+            }
             &:hover:not( .dropdown-menu){
-                background: -webkit-linear-gradient(40deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                    -webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
                 color: #fff;
+            }
+            &:hover::after{
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                // transition: all 0.35s;
             }
         }
         .pages{
@@ -157,7 +177,7 @@ nav{
                 align-items: baseline;
                 &::after{
                     content: "";
-                    background-image: url('../img/site/Logo pate.png');
+                    background-image: url('../img/site/Logo-pate.png');
                     background-repeat: no-repeat;
                     background-size: contain;
                     height: 0.5rem;
