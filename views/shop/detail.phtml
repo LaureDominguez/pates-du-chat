@@ -6,10 +6,35 @@
             <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
         <?php endif; ?>
         <figcaption>
+
             <h2><?= htmlspecialchars($product["name"]); ?></h2>
-            <p><?= htmlspecialchars($product["descript"]); ?></p>
-            <p><?= htmlspecialchars($product["ingredients"]); ?></p>
+
+            <p class="descript"><?= htmlspecialchars($product["descript"]); ?></p>
+
+            <div>
+                <h4>Conseil de cuisson :</h4>
+                <p>2 min dans l'eau bouillante salée</p>
+            </div>
+
             <h3><?= htmlspecialchars($product["price"]); ?>€ / kg</h3>
+
+            <section class="infoSup">
+                <div>
+                    <h4>Ingrédients :</h4>
+                    <p><?= htmlspecialchars($product["ingredients"]); ?></p>
+                </div>
+
+                <div>
+                    <h4>Allergènes :</h4>
+                    <p>Céréales contenant du gluten, oeufs, lupin</p>
+                </div>
+
+                <div>
+                    <h4>DLC :</h4>
+                    <p>4 jours après production</p>
+                    <p>Conserver à -4°C</p>
+                </div>
+            </section>
         </figcaption>
     </figure>
 </section>

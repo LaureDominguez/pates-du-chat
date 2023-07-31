@@ -1,7 +1,9 @@
-<?php if (isset($_SESSION['visitor']['flash_message']['success'])) : ?>
+<?php if (isset($_SESSION['visitor']['flash_message']['success']) && !$_SESSION['visitor']['flash_message']['success']) : ?>
+    <?php foreach ($success as $msg): ?>
     <div class="success">
-        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['success']); ?>
+        <?= htmlspecialchars($msg); ?>
     </div>
+    <?php endforeach ?>
 <?php endif; ?>
 
 <?php if (isset($errors)) : ?>

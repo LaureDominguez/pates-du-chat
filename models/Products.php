@@ -35,7 +35,7 @@ class Products extends Database {
 
     public function creatNew($params)
     {
-        $this->addOne("products", "name, cat_id, descript, ingredients, price, img", "?, ?, ?, ?, ?", $params);
+        $this->addOne("products", "name, cat_id, descript, ingredients, price, img", "?, ?, ?, ?, ?, ?", $params);
         header('Location: index.php?route=admin');
         exit();
     }

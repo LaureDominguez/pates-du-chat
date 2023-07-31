@@ -279,6 +279,20 @@
 		margin-bottom: 1rem;
 		border-collapse: collapse;
 
+		th:not(:last-child, :nth-last-child(2)){
+			&::after{
+				font-family: "FontAwesome";
+				content: "\f0b0";
+				font-size: 0.8rem;
+				padding: 0.5rem;
+				opacity: 0.4;
+				transition: all 0.5s ease;
+			}
+			&:hover::after{
+				opacity: 1;
+			}
+		}
+
 		&, th, td{
 			border: 1px solid rgb(200, 200, 200);
 			text-align: center;

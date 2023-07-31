@@ -35,9 +35,11 @@ class AdminController{
     public function isAdmin()
     {
         // autoriser le fetch
-        if (isset($_GET['route']) && 
-            $_GET['route'] === 'horairesFetch' || 
-            $_GET['route'] === 'productsFetch') {
+        if(
+            isset($_GET['route'])
+            && $_GET['route'] === 'horairesFetch'
+            || $_GET['route'] === 'productsFetch'
+        ){
             // Autoriser l'accès sans authentification
             return;
         }

@@ -18,6 +18,7 @@ class HomeController{
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();
 
+        // Affiche les messages d'erreur des forumalires de connexion
         if (isset($_SESSION['visitor']['flash_message']['error'])) {
             $errorLog = '';
             $errorRegist = '';

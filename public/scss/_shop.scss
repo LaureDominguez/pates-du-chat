@@ -86,6 +86,7 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    min-height: 90vh;
     img{
         width: 90%;
         object-fit: cover;
@@ -98,6 +99,43 @@
         border-radius: 10px;
         width: 90%;
         text-align: center;
+        h2{
+            border-width: 3px;
+            margin: 0;
+            padding: 0.3rem;
+            width: 60%;
+            border-style: solid;
+            border-image: linear-gradient(to right, var(--green), var(--orange)) 1;
+            border-left: none;
+            border-right: none;
+            &::before, &::after{
+                content: none;
+            }
+        }
+        h3{
+            border-width: 3px;
+            padding: 0.8rem;
+            border-style: solid;
+            border-image: linear-gradient(to right, var(--green), var(--orange)) 1;
+        }
+        h4{
+            margin: 0;
+            text-wrap: nowrap;
+            letter-spacing: 1px;
+        }
+        p:not(.descript){
+            margin: 0.3rem;
+            font-size: 0.8rem;
+        }
+        .infoSup{
+            display: flex;
+            padding: 1rem;
+            border-radius: 10px;
+            background-color: #ffffff86;
+            div{
+                flex: 1;
+            }
+        }
     }
 }
 
