@@ -2684,7 +2684,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* animation flip-horizontal-bottom *******************/
 .flip-horizontal-bottom {
   -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
-  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
+  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
 }
 
 /* ----------------------------------------------
@@ -2710,11 +2710,25 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 @keyframes flip-horizontal-bottom {
   0% {
-    -webkit-transform: rotateX(0);
     transform: rotateX(0);
   }
   100% {
-    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+}
+@keyframes flip-horizontal-normal {
+  0% {
+    transform: rotateX(-180deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+@keyframes flip-horizontal-hover {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
     transform: rotateX(-180deg);
   }
 }
@@ -2909,6 +2923,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .log .close-btn {
     position: absolute;
+    transition: all 0.5s ease-in-out;
   }
   .log .close-btn:hover {
     cursor: pointer;
@@ -2925,20 +2940,25 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   #forgot {
     border: 1px solid transparent;
+    background-image: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+    background-size: 0%; /* Initialiser la taille du dégradé à 0% */
+    background-repeat: no-repeat;
+    background-position: right;
+    transition: all 0.5s ease-in-out;
   }
   #forgot:hover {
-    color: #fff;
-    background: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+    color: var(--vert); /* Nouvelle couleur de texte au survol */
+    background-size: 100%; /* Augmenter la taille du dégradé au survol */
   }
   .trans-btn {
     width: 80%;
-    transition: all 0.5s ease-out;
     font-size: larger;
     margin: 2rem;
     position: relative;
+    animation: flip-horizontal-normal 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate;
   }
   .trans-btn:hover {
-    animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
+    animation: flip-horizontal-hover 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
   }
 }
 /******************* general *******************/
@@ -3544,7 +3564,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* animation flip-horizontal-bottom *******************/
 .flip-horizontal-bottom {
   -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
-  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) reverse both;
+  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.47, 0, 0.745, 0.715) alternate-reverse;
 }
 
 /* ----------------------------------------------
@@ -3570,11 +3590,25 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 @keyframes flip-horizontal-bottom {
   0% {
-    -webkit-transform: rotateX(0);
     transform: rotateX(0);
   }
   100% {
-    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+}
+@keyframes flip-horizontal-normal {
+  0% {
+    transform: rotateX(-180deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+@keyframes flip-horizontal-hover {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
     transform: rotateX(-180deg);
   }
 }

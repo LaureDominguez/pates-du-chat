@@ -5,7 +5,7 @@
 
 .flip-horizontal-bottom {
 	-webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
-	animation: flip-horizontal-bottom 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+	animation: flip-horizontal-bottom 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) alternate-reverse;
 }
 
 /* ----------------------------------------------
@@ -29,14 +29,39 @@
         -webkit-transform: rotateX(-180deg);
                 transform: rotateX(-180deg);
     }
-    }
-    @keyframes flip-horizontal-bottom {
+}
+
+@keyframes flip-horizontal-bottom {
     0% {
-        -webkit-transform: rotateX(0);
+        // -webkit-transform: rotateX(0);
                 transform: rotateX(0);
     }
     100% {
-        -webkit-transform: rotateX(-180deg);
+        // -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg);
+    }
+}
+
+
+// modifications perso :
+
+        @keyframes flip-horizontal-normal {
+    0% {
+        // -webkit-transform: rotateX(0);
+                transform: rotateX(-180deg);
+    }
+    100% {
+        // -webkit-transform: rotateX(-180deg);
+                transform: rotateX(0);
+    }
+}
+        @keyframes flip-horizontal-hover {
+    0% {
+        // -webkit-transform: rotateX(0);
+                transform: rotateX(0);
+    }
+    100% {
+        // -webkit-transform: rotateX(-180deg);
                 transform: rotateX(-180deg);
     }
 }

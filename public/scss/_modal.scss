@@ -169,6 +169,7 @@
         box-shadow: 2px 2px 15px 2px #000000a3;
         .close-btn{
             position: absolute;
+            transition: all 0.5s ease-in-out;
             &:hover{
                 cursor: pointer;
                 background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 0, 0, 0.49) 0%, rgba(255, 0, 0, 0) 60%);
@@ -193,22 +194,26 @@
 
     #forgot{
         border: 1px solid transparent;
+        background-image: -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+        background-size: 0%; /* Initialiser la taille du dégradé à 0% */
+        background-repeat: no-repeat;
+        background-position: right;
+        transition: all 0.5s ease-in-out;
         &:hover{
-            color: #fff;
-            background:-webkit-linear-gradient(127deg, #FAC172, rgba(0,255,0,0) 70.71%);
+            color: var(--vert); /* Nouvelle couleur de texte au survol */
+            background-size: 100%; /* Augmenter la taille du dégradé au survol */
         }
     }
 
 
-
     .trans-btn{
         width: 80%;
-        transition: all .5s ease-out;
         font-size: larger;
         margin: 2rem;
         position: relative;
+        animation: flip-horizontal-normal 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) alternate;
         &:hover{
-            animation: flip-horizontal-bottom 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) reverse both;
+            animation: flip-horizontal-hover 0.4s cubic-bezier(0.470, 0.000, 0.745, 0.715) alternate-reverse;
         }
     }
 }
