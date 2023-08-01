@@ -48,6 +48,11 @@ if (array_key_exists('route', $_GET)):
             $controller->submitMessage();
             break;
 
+        case 'legal':
+            $controller = new Controllers\ContactController();
+            $controller->displayMLPage();
+            break;
+
         case 'admin':
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
@@ -95,16 +100,20 @@ if (array_key_exists('route', $_GET)):
         //     $controller->updateUserMail();
         //     break;
 
-        case 'changePswdForm':
+        case 'resetPswd':
             $controller = new Controllers\UsersController();
-            $controller->isConnected();
+            $controller->sendPswdLink();
+            break;
+
+        case 'resetPswdForm':
+            $controller = new Controllers\UsersController();
             $controller->resetPswd();
             break;
 
-        case 'deleteUser':
+        case 'desactivateUser':
             $controller = new Controllers\UsersController();
             $controller->isConnected();
-            $controller->profil();
+            $controller->disable();
             break;
 
 /////////////////////// Admin dashboard ///////////////////////

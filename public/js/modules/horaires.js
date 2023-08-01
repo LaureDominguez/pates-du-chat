@@ -12,6 +12,7 @@ export function editContact() {
     const elements = document.querySelectorAll('.editable');
 
     if (saveBtn) {
+
         // rend les champs et le bouton save dispo sur page admin
         if (window.location.search !== "?route=admin") {
             saveBtn.style.display = "none";
@@ -19,12 +20,21 @@ export function editContact() {
                 field.classList.remove('editable');
             });
         } else {
+
+
             elements.forEach(function (field) {
                 field.setAttribute('contenteditable', 'true');
                 // Ajouter la classe 'modified' lorsque le contenu est modifié
                 field.addEventListener('input', function () {
                     this.classList.add('modified');
+                    //empeche la balise span "semaine du" de disparaitre si elle est vide
+                    if (field.tagName.toLowerCase() === "span" && field.textContent.trim() === '') {
+                        this.classList.add('emptySpan');
+                    } else {
+                        this.classList.remove('emptySpan');
+                    }
                 });
+
             });
             
             // bouton save
@@ -36,6 +46,16 @@ export function editContact() {
 
                 // Créer un tableau qui stock les données à enregistrer
                 const dataToSave = [];
+
+                // récup contenu de span week
+                const weekSpan = document.getElementById('spanWeek');
+                const weekData = weekSpan.textContent.trim();
+                console.log(weekSpan);
+                console.log(weekData);
+
+                if (weekSpan.classList.contains('modified')) {
+                    dataToSave.push({ day: 8, time: weekData, city:"", place:"" });
+                }
 
                 //vérifie tout le tableau
                 const tableRows = document.querySelectorAll('tr[data-day]');
@@ -68,6 +88,7 @@ export function editContact() {
                         console.log('réponse', data);
                         alert('Données enregistrées avec succès !');
                         // supprime la classe "modified" après envoi
+                        weekSpan.classList.remove('modified');
                         tableRows.forEach(function (row) {
                             row.querySelector('[data-field="time"]').classList.remove('modified');
                             row.querySelector('[data-field="city"]').classList.remove('modified');

@@ -42,7 +42,7 @@ foreach ($dates as $date) {
 ?>
 
 <?php if (isset($semaineData)) : ?>
-    <h4 data-field="semaine">Semaine du : <span class="editable"> <?= $semaineData['time']; ?></span></h4>
+    <h4 data-field="semaine" data-day="<?= $semaineData['id']; ?>">Semaine du : <span id="spanWeek" class="editable"> <?= $semaineData['time']; ?></span></h4>
 <?php endif; ?>
 
 <table>

@@ -6,7 +6,6 @@ export function dropdownNav() {
     let menu = document.getElementById('dropdown-menu');
 
     window.addEventListener('click', function (e) {
-        console.log(e.target)
         if (dropdown !== null) {
             if (dropdown.contains(e.target)) {
                 console.log('pouet')
@@ -23,18 +22,17 @@ export function dropdownNav() {
 export function mobileNav() {
     const burger = document.getElementById('burger');
     const menuMobile = document.getElementById('menu-mobile');
+    const main = document.querySelector('main');
     if(burger) {
         burger.addEventListener('click', function (e) {
-            switch (menuMobile.style.display) {
-                case 'none':
-                    menuMobile.style.display = 'flex';
-                    break;
-                case 'flex':
-                    menuMobile.style.display = 'none';
-                    break;
-                default:
-                    menuMobile.style.display = 'none';
-                    break;
+            const currentDisplay = window.getComputedStyle(menuMobile).display;
+
+            if (currentDisplay === 'none') {
+                menuMobile.style.display = 'flex';
+                main.classList.add('noScroll');
+            } else {
+                menuMobile.style.display = 'none';
+                main.classList.remove('noScroll');
             }
         })
     }

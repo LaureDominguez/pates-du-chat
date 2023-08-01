@@ -1,5 +1,4 @@
 
-import { revealOnScroll } from "./modules/anim-reveal.js";
 import { titleOnNav } from "./modules/home-title.js";
 import { dropdownNav, mobileNav } from "./modules/dropdown.js";
 import { filterCategory } from "./modules/fitler.js";
@@ -9,9 +8,9 @@ import { switchProducts } from "./modules/switch.js";
 import { editContact } from "./modules/horaires.js";
 import { sortTable } from "./modules/sort-table.js";
 import { lazy } from "./modules/lazy.js";
+import { disableAccount } from "./modules/disable.js";
 
 window.addEventListener("DOMContentLoaded", function () {
-    revealOnScroll(); // animation des blocs section sur homepage
     titleOnNav(); // animation du titre dans la barre de nav
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     mobileNav(); // navbar pour version mobile
@@ -22,6 +21,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     toogleModal(); // affiche les fenetres de connexion
     checkErrors(); // gestion des erreurs dans fenetres de connexion 
+    disableAccount();// desactive son compte
 
     switchProducts(); // hide/show produits dans partie admin
     editContact(); // gestion des horaires dans partie admin

@@ -25,7 +25,7 @@ class ContactController{
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site
         $errors = $success = $getMessage = [];
         
-        if(array_key_exists('message', $_POST) && array_key_exists('email', $_POST) && array_key_exists('email', $_POST)){
+        if(array_key_exists('email', $_POST) && array_key_exists('name', $_POST) && array_key_exists('message', $_POST)){
             if (empty($_POST['email'])) {
                 $errors[] = "Veuillez renseigner un email de contact";
             } elseif (!filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL)) {
@@ -50,9 +50,18 @@ class ContactController{
                 $modelMail = new Mail();
                 $modelMail->sendContactMessage($getMessage);
                 $success[] = "Votre message a bien été envoyé !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
             }
         }
         $template = "contact/index.phtml";
         include_once 'views/layout.phtml';
+    }
+
+    public function displayMLPage(){
+
+    $template = "contact/legal.phtml";
+    include_once 'views/layout.phtml';
     }
 }

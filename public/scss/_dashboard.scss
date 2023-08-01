@@ -313,6 +313,17 @@
 			color: var(--orange);
 			cursor: text;
 		}
+		.emptySpan{
+				min-width: 2rem;
+				min-height: 1rem;
+				display: inline-block;
+				flex-wrap: wrap;
+				border-radius: 10px;
+				background-color: #bababa94;
+				&::before{
+					content:'...';
+			}
+		}
 		table{
 			margin: 1rem auto;
 			&, th, td{

@@ -35,6 +35,19 @@ main{
     min-height: 100vh;
 }
 
+footer{
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.141));
+    // background-color: rgb(129 129 129 / 42%);
+    display: flex;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    color: #ffff;
+    justify-content: center;
+    & a{
+        padding: 0 0.3rem;
+    }
+}
+
 hr{
     margin: 3rem 10rem;
 }

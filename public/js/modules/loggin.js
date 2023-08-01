@@ -20,27 +20,6 @@ export function toogleModal() {
     const promptLogin = document.getElementById('errorL');
     const promptRegister = document.getElementById('errorR');
 
-    //////////////////////////////////////////////////
-    // Show / hide password
-
-    function showPassword(password) {
-        password.setAttribute('type', 'text');
-    }
-    function hidePassword(password) {
-        password.setAttribute('type', 'password');
-    }
-    // register form
-    const registerShow = document.getElementById('register-show')
-    const registerHide = document.getElementById('register-hide')
-    const registerPswd = document.getElementById('pswd_new');
-    const pswdConfirm = document.getElementById('pswd_confirm_new')
-
-    // login form
-    const loginShow = document.getElementById('login-show')
-    const loginHide = document.getElementById('login-hide')
-    const loginPswd = document.getElementById('pswd_log');
-    //////////////////////////////////////////////////
-
 
     // prompt modale with php error
     if (promptLogin || promptRegister) {
@@ -59,7 +38,7 @@ export function toogleModal() {
         }
     } 
 
-
+/////////////////////////////////
 
     if (logWindow || registerWindow) {
         // display login form from large screen
@@ -142,6 +121,24 @@ export function toogleModal() {
 
         //////////////////////////////////////////////////
         // Show / hide password
+        function showPassword(password) {
+            password.setAttribute('type', 'text');
+        }
+        function hidePassword(password) {
+            password.setAttribute('type', 'password');
+        }
+        // register form
+        const registerShow = document.getElementById('register-show')
+        const registerHide = document.getElementById('register-hide')
+        const registerPswd = document.getElementById('pswd_new');
+        const pswdConfirm = document.getElementById('pswd_confirm_new')
+
+        // login form
+        const loginShow = document.getElementById('login-show')
+        const loginHide = document.getElementById('login-hide')
+        const loginPswd = document.getElementById('pswd_log');
+        
+
         registerShow.style.display = 'inline-flex';
         registerHide.style.display = 'none';
         registerPswd.setAttribute('type', 'password');
@@ -176,5 +173,15 @@ export function toogleModal() {
             loginShow.style.display = 'inline-flex';
             hidePassword(loginPswd);
         })
+
+        //////////////////////////////////////////////////
+        // Reset password
+        const reset = document.getElementById('forgot');
+
+        reset.addEventListener('click', function () {
+            alert("C'est balo");
+            // route=resetPswd
+        })
+
     }
 }

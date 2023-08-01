@@ -92,27 +92,34 @@ class UsersController{
             $pswd = trim($_POST['pswd']);
 
             if (password_verify($pswd, $user['pswd'])){
-                $_SESSION['user'] = [
-                    'id' => $user['id'],
-                    'email' => $user['email'],
-                    'name' => $user['name'],
-                    'role' => $user['role']
-                ];
-
-                //si user a un nom, alors on l'appelle par son nom, sinon par email
-                $userName = isset($user['name']) ? $user['name'] : $user['email'];
-
-                //si user a le role admin, alors on lui dit
-                if ($user['role'] == 1) {
-                    $success = "Bienvenue admin " . $userName;
-                    $_SESSION['admin']['adminToken'];
+                if($user['disabled']===1){
+                    $errors[] = "Ce compte semble avoir été désactivé";
+                    $_SESSION['visitor']['flash_message']['error'] = [
+                        'login' => $errors
+                    ];
                 } else {
-                    $success = "Bienvenue, " . $userName;
-                }
+                    $_SESSION['user'] = [
+                        'id' => $user['id'],
+                        'email' => $user['email'],
+                        'name' => $user['name'],
+                        'role' => $user['role']
+                    ];
 
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
+                    //si user a un nom, alors on l'appelle par son nom, sinon par email
+                    $userName = isset($user['name']) ? $user['name'] : $user['email'];
+
+                    //si user a le role admin, alors on lui dit
+                    if ($user['role'] == 1) {
+                        $success = "Bienvenue admin " . $userName;
+                        $_SESSION['admin']['adminToken'];
+                    } else {
+                        $success = "Bienvenue, " . $userName;
+                    }
+
+                    $_SESSION['visitor']['flash_message'] = [
+                        'success' => $success
+                    ];
+                }
             } else {
                 $errors[] = "L'email ou le mot de passe est incorrect";
                 $_SESSION['visitor']['flash_message']['error'] = [
@@ -211,13 +218,14 @@ class UsersController{
     //     include_once 'views/layout.phtml';
     // }
 
+    public function sendPswdLink(){
+        //envoi un mail avec le lien vers le formulaire qui renvoi vers resetPswd()
+    }
+
     public function resetPswd()
     { //reset du password de user
         $errors = [];
         $success = "";
-
-        var_dump($_POST);
-        die;
 
         if (isset($_POST['pswd'])) {
             $restUser = [
@@ -260,5 +268,20 @@ class UsersController{
         } else {
             header('Location: ' . $currentPage);
         }
+    }
+
+    ////////////////////////// Disable //////////////////////////
+    public function disable()
+    {
+        $newData = [
+            'disabled' => 1
+        ];
+        $model = new Users();
+        $model->updateUser($newData);
+        $success = "Votre compte a bien été supprimé";
+        $_SESSION['visitor']['flash_message'] = [
+            'success' => $success
+        ];
+        $this->logout();
     }
 }

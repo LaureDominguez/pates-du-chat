@@ -14,6 +14,8 @@ class Mail {
         */
         
         $destinataire = 'dominguezlaure@gmail.com';
+        $subject = 'Nouveau message de ' . $contact['name'];
+
         $header = "MIME-Version: 1.0\r\n";
         $header .= 'From:"Les Pâtes du Chat"<dominguezlaure@gmail.com>' . "\n"; // L'adresse email de l'expéditeur peut être remplacé par une constante dans le fichier "config.php"
         // $header .= "Cc: ......@hotmail.com\n";
@@ -25,7 +27,7 @@ class Mail {
             <html>
                 <body>
                     <div align="center">
-                        <img src="https://www.autodiscount.fr/images/voitures/defaut/std/6425-std.png"/>
+                        <img src="./public/img/site.Logo texte.png"/>
                         <br />
                         Vous avez reçu un nouveau message de : '. $contact['name'] . ' 
                         <br />
@@ -51,6 +53,10 @@ class Mail {
             $message .= "\n\n";
         */
 
-        mail($destinataire, $message, $header);
+        if (mail($destinataire, $subject, $message, $header)) {
+            echo "L'email a été envoyé avec succès.";
+        } else {
+            echo "Une erreur s'est produite lors de l'envoi de l'email.";
+        }
     }
 }
