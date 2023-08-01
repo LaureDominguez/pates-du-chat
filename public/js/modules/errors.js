@@ -72,7 +72,7 @@ export function checkErrors() {
                     errorMessage = "Le mot de passe doit inclure au moins un chiffre";
                     errorFound = true;
                     break;
-                case !/\W/.test(pswd):
+                case !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]/.test(pswd):
                     errorMessage = "Le mot de passe doit inclure au moins un caractère spécial";
                     errorFound = true;
                     break;

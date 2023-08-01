@@ -150,17 +150,17 @@ export function toogleModal() {
         loginShow.style.display = 'inline-flex';
         loginHide.style.display = 'none';
         loginPswd.setAttribute('type', 'password');
-        
-        registerHide.addEventListener('click', function () {
-            hideElement(registerHide);
-            registerShow.style.display = 'inline-flex';
-            showPassword(registerPswd);
-            showPassword(pswdConfirm);
-        })
 
         registerShow.addEventListener('click', function () {
             hideElement(registerShow);
             registerHide.style.display = 'inline-flex';
+            showPassword(registerPswd);
+            showPassword(pswdConfirm);
+        })
+        
+        registerHide.addEventListener('click', function () {
+            hideElement(registerHide);
+            registerShow.style.display = 'inline-flex';
             hidePassword(registerPswd);
             hidePassword(pswdConfirm);
         })

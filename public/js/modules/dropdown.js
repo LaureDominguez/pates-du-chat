@@ -6,8 +6,10 @@ export function dropdownNav() {
     let menu = document.getElementById('dropdown-menu');
 
     window.addEventListener('click', function (e) {
+        console.log(e.target)
         if (dropdown !== null) {
             if (dropdown.contains(e.target)) {
+                console.log('pouet')
                 menu.style.display = "flex";
             }
             else if (menu.style.display == "flex") {
@@ -15,8 +17,10 @@ export function dropdownNav() {
             }
         }
     })
+}
 
 // mobile navbar
+export function mobileNav() {
     const burger = document.getElementById('burger');
     const menuMobile = document.getElementById('menu-mobile');
     if(burger) {

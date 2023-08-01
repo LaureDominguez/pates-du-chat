@@ -106,13 +106,15 @@ nav{
         }
         li{
             margin: auto;
-            border-radius: 0 0 15px 15px;
             box-shadow: none;
             position: relative;
-            z-index: 200;
             overflow: hidden;
-            transition: all 0.5s;
-            width: 49%;
+            z-index: 200;
+            &:not(.dropdown-menu li){
+                border-radius: 0 0 15px 15px;
+                transition: all 0.5s;
+                width: 49%;
+            }
             &::after{
                 transition: all 0.5s;
                 content: "";
@@ -126,7 +128,7 @@ nav{
                 top: -100%;
                 bottom: 100%;
             }
-            &:hover:not( .dropdown-menu){
+            &:hover:not(.dropdown-menu li){
                 color: #fff;
                 box-shadow: 5px 5px 15px 5px #53535389;
             }
@@ -208,18 +210,26 @@ nav{
     }
     .dropdown-menu{
         display: none;
-        position: absolute;
+        position: fixed;
         margin: 0.5rem;
         padding: 0.5rem;
         border-radius: 10px;
         width: 10rem;
         height: 5rem;
         top: 1.8rem;
-        // z-index: 100;
         background-color: #ffffff6a;
         backdrop-filter: blur(4px);
-        & li:hover{
-            background-color: #fff;
+        & li{
+            border-radius: 15px;
+            background-size: 100%;
+            background-color: transparent;
+            background-image: none;
+            transition: all 0.5s ease;
+            &::after{
+                background-color: #ffffff6a;
+                background-size: 100%;
+                background-image: none;
+            }
         }
     }
 }

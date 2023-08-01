@@ -296,11 +296,13 @@ nav li {
   }
   nav li {
     margin: auto;
-    border-radius: 0 0 15px 15px;
     box-shadow: none;
     position: relative;
-    z-index: 200;
     overflow: hidden;
+    z-index: 200;
+  }
+  nav li:not(.dropdown-menu li) {
+    border-radius: 0 0 15px 15px;
     transition: all 0.5s;
     width: 49%;
   }
@@ -316,7 +318,7 @@ nav li {
     top: -100%;
     bottom: 100%;
   }
-  nav li:hover:not(.dropdown-menu) {
+  nav li:hover:not(.dropdown-menu li) {
     color: #fff;
     box-shadow: 5px 5px 15px 5px rgba(83, 83, 83, 0.537254902);
   }
@@ -391,7 +393,7 @@ nav li {
   }
   .dropdown-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     margin: 0.5rem;
     padding: 0.5rem;
     border-radius: 10px;
@@ -401,8 +403,17 @@ nav li {
     background-color: rgba(255, 255, 255, 0.4156862745);
     backdrop-filter: blur(4px);
   }
-  .dropdown-menu li:hover {
-    background-color: #fff;
+  .dropdown-menu li {
+    border-radius: 15px;
+    background-size: 100%;
+    background-color: transparent;
+    background-image: none;
+    transition: all 0.5s ease;
+  }
+  .dropdown-menu li::after {
+    background-color: rgba(255, 255, 255, 0.4156862745);
+    background-size: 100%;
+    background-image: none;
   }
 }
 /******************* general *******************/
