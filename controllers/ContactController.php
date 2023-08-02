@@ -24,8 +24,8 @@ class ContactController{
     public function submitMessage()
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site
         $errors = $success = $getMessage = [];
-        
-        if(array_key_exists('email', $_POST) && array_key_exists('name', $_POST) && array_key_exists('message', $_POST)){
+
+        if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['message'])) {
             if (empty($_POST['email'])) {
                 $errors[] = "Veuillez renseigner un email de contact";
             } elseif (!filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL)) {
@@ -47,16 +47,25 @@ class ContactController{
                     'name' => trim($_POST['name']),
                     'phone' => trim($_POST['phone'])
                 ];
+
                 $modelMail = new Mail();
                 $modelMail->sendContactMessage($getMessage);
-                $success[] = "Votre message a bien été envoyé !";
+                $success = "Votre message a bien été envoyé !";
                 $_SESSION['visitor']['flash_message'] = [
                     'success' => $success
                 ];
+                
+                header('Location: index.php?route=contactMail');
+                exit();
+                
             }
         }
-        $template = "contact/index.phtml";
-        include_once 'views/layout.phtml';
+
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $errors
+        ];
+        header('Location: ' . $_SESSION['visitor']['currentPage']);
+        exit();
     }
 
     public function displayMLPage(){
