@@ -177,47 +177,6 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
-    // public function updateUserMail()
-    // { // change email de user
-    //     $errors = [];
-    //     $success = $email = "";
-
-    //     if (isset($_POST['email'])) {
-    //         $email = trim($_POST['email']);
-    //         $this->replaceSpecialChar($email);
-
-    //         if (empty($email)) {
-    //             $errors[] = "Veuillez renseigner la nouvelle adresse mail";
-    //         }
-
-    //         if (count($errors) == 0
-    //         ) {
-    //             $newData = [
-    //                 'email' => $email,
-    //                 'activate' => 0
-    //             ];
-
-    //             $model = new Users();
-    //             $model->updateUser($newData);
-
-    //             $_SESSION['user']['email'] = $email;
-
-    //             $success = "Votre email a bien été modifié !";
-    //             $_SESSION['visitor']['flash_message'] = [
-    //                 'success' => $success
-    //             ];
-
-    //             header('Location: index.php?route=myAccount');
-    //             exit();
-    //         }
-    //     }
-    //     $_SESSION['visitor']['flash_message'] = [
-    //         'error' => $errors
-    //     ];
-    //     $template = "users/profil.phtml";
-    //     include_once 'views/layout.phtml';
-    // }
-
     public function sendPswdLink(){
         //envoi un mail avec le lien vers le formulaire qui renvoi vers resetPswd()
     }

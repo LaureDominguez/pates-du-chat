@@ -8,7 +8,7 @@
 .menu-tabs{
 	max-width: 95%;
 	margin: 1rem auto;
-	font-size: small;
+	font-size: 1rem;
 	ul{
 		display: flex;
 		padding-left:0;
@@ -86,7 +86,7 @@
 .contenu-tabs{
 	background-color: white;
 	min-height:400px;
-	padding:1rem;
+	padding:0.3rem;
 }	
 
 .section-tab{
@@ -113,13 +113,25 @@
 
 	&, th, td{
 		border: 1px solid rgb(200, 200, 200);
+		padding: 0.2rem;
+    	line-height: 1.3rem;
 		text-align: center;
 		cursor: default;
+	}
+
+	tr:nth-child(even) {
+		background-color: #e6e6e6; /* Couleur pour les lignes paires */
 	}
 
 	thead{
 		background-color: var(--orange);
 		color: #fff;
+    	font-size: 0.9rem;
+	}
+
+	.action{
+		display: block;
+    	block-size: 2.5rem;
 	}
 
 	tbody>tr:hover {
@@ -129,17 +141,28 @@
 }
 
 #contact-tab{
+    max-width: 95%;
+	margin: auto;
 	.editable{
 		color: var(--orange);
 		font-style: italic;
 	}
 	table{
-		margin: 1rem auto;
+		margin-bottom: 1rem;
 		&, th, td{
-			padding: 1rem;
+			padding: 0.2rem;
 			border: 1px solid rgb(200, 200, 200);
 			text-align: center;
 			border-collapse: collapse;
+		}
+		th, td:first-child{
+			background-color: var(--orange);
+			color: #fff;
+			font-size: 0.9rem;
+			line-height: 1.3rem;
+		}
+		tr:nth-child(odd):not(td:first-child) {
+			background-color: #e6e6e6; /* Couleur pour les lignes paires */
 		}
 	}
 }

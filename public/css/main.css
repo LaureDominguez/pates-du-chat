@@ -62,46 +62,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -112,10 +108,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -170,6 +167,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* contact *******************/
@@ -492,46 +506,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -542,10 +552,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -601,13 +612,30 @@ form input:not(.btn, .file), form form textarea, form form select {
   section:not(:last-child) {
     margin-bottom: 3rem;
   }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
+  }
 }
 /******************* switch toggle *******************/
 .switch {
   display: inline-block;
   position: relative;
-  width: 20px;
-  height: 10px;
+  width: 35px;
+  height: 20px;
   cursor: pointer;
   overflow: hidden;
 }
@@ -636,8 +664,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   position: absolute;
   top: 50%;
   left: 2px;
-  width: 8px;
-  height: 8px;
+  width: 16px;
+  height: 16px;
   background: white;
   border-radius: 50%;
   transform: translateY(-50%);
@@ -649,24 +677,9 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 .switch input:checked + span:before {
-  left: 11px;
+  left: 17px;
 }
 
-/******************* Media query *******************/
-/* PC */
-@media (min-width: 1024px) {
-  .switch {
-    width: 35px;
-    height: 20px;
-  }
-  .switch input + span:before {
-    width: 16px;
-    height: 16px;
-  }
-  .switch input:checked + span:before {
-    left: 17px;
-  }
-}
 /******************* tooltip *******************/
 .aide {
   position: relative;
@@ -814,7 +827,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .menu-tabs {
   max-width: 95%;
   margin: 1rem auto;
-  font-size: small;
+  font-size: 1rem;
 }
 .menu-tabs ul {
   display: flex;
@@ -888,7 +901,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .contenu-tabs {
   background-color: white;
   min-height: 400px;
-  padding: 1rem;
+  padding: 0.3rem;
 }
 
 .section-tab {
@@ -913,29 +926,52 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .dashboard-table, .dashboard-table th, .dashboard-table td {
   border: 1px solid rgb(200, 200, 200);
+  padding: 0.2rem;
+  line-height: 1.3rem;
   text-align: center;
   cursor: default;
+}
+.dashboard-table tr:nth-child(even) {
+  background-color: #e6e6e6; /* Couleur pour les lignes paires */
 }
 .dashboard-table thead {
   background-color: var(--orange);
   color: #fff;
+  font-size: 0.9rem;
+}
+.dashboard-table .action {
+  display: block;
+  block-size: 2.5rem;
 }
 .dashboard-table tbody > tr:hover {
   background-color: rgb(255, 207, 149);
 }
 
+#contact-tab {
+  max-width: 95%;
+  margin: auto;
+}
 #contact-tab .editable {
   color: var(--orange);
   font-style: italic;
 }
 #contact-tab table {
-  margin: 1rem auto;
+  margin-bottom: 1rem;
 }
 #contact-tab table, #contact-tab table th, #contact-tab table td {
-  padding: 1rem;
+  padding: 0.2rem;
   border: 1px solid rgb(200, 200, 200);
   text-align: center;
   border-collapse: collapse;
+}
+#contact-tab table th, #contact-tab table td:first-child {
+  background-color: var(--orange);
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+}
+#contact-tab table tr:nth-child(odd):not(td:first-child) {
+  background-color: #e6e6e6; /* Couleur pour les lignes paires */
 }
 
 /******************* formulaires *******************/
@@ -1189,46 +1225,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -1239,10 +1271,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -1297,6 +1330,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* user *******************/
@@ -1455,46 +1505,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -1505,10 +1551,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -1563,6 +1610,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* home *******************/
@@ -1899,46 +1963,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -1949,10 +2009,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -2008,12 +2069,29 @@ form input:not(.btn, .file), form form textarea, form form select {
   section:not(:last-child) {
     margin-bottom: 3rem;
   }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
+  }
 }
 /******************* shop *******************/
 /******************* home *******************/
 .shop-tuile {
-  height: 8rem;
-  width: 8rem;
+  height: 9rem;
+  width: 9rem;
   overflow: hidden;
   border: solid 1px transparent;
   border-radius: 10px;
@@ -2024,14 +2102,15 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .shop-tuile img {
   object-fit: cover;
-  height: 8rem;
-  width: 8rem;
+  height: 9rem;
+  width: 9rem;
   position: relative;
 }
 .shop-tuile figcaption h4, .shop-tuile figcaption h5 {
   display: none;
 }
 .shop-tuile figcaption h3 {
+  padding: 0.2rem;
   font-size: 1rem;
   letter-spacing: 1px;
 }
@@ -2069,10 +2148,15 @@ form input:not(.btn, .file), form form textarea, form form select {
   flex-direction: column;
   align-items: center;
 }
+.shop-filter .btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
+}
 .shop-filter .filterBox {
   text-align: center;
 }
 .shop-filter .filterBox #filter {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 0.5rem;
@@ -2087,22 +2171,18 @@ form input:not(.btn, .file), form form textarea, form form select {
   flex-direction: column;
 }
 .shop-cat div {
-  margin: 1rem;
+  margin: 1rem 1.3rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 9rem);
   grid-template-rows: repeat(auto-fill, 9rem);
+  grid-column-gap: 2rem;
   align-items: center;
   justify-items: center;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .shop-cat .btn {
   border: 1px solid;
-}
-
-#filter {
-  display: flex;
-  flex-direction: column;
 }
 
 /******************* detail *******************/
@@ -2157,7 +2237,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .shop-detail figcaption p:not(.descript) {
   margin: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .shop-detail figcaption .infoSup {
   display: flex;
@@ -2377,46 +2457,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -2427,10 +2503,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -2486,6 +2563,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   section:not(:last-child) {
     margin-bottom: 3rem;
   }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
+  }
 }
 /******************* contact *******************/
 /******************* index *******************/
@@ -2531,7 +2625,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .map div {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4156862745);
   backdrop-filter: blur(4px);
@@ -2539,6 +2633,18 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .map div h3 {
   margin-top: 0;
+}
+.map div .social i {
+  color: var(--orange);
+  font-size: 2rem;
+  margin: 1rem;
+  transition: color 0.8s ease, background 0.3s ease;
+}
+.map div .social i:hover {
+  cursor: pointer;
+  color: var(--red);
+  background-image: radial-gradient(ellipse at center, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 2px 3px 15px 3px #FFFFFF;
 }
 .map #spinner {
   background-color: transparent;
@@ -2550,20 +2656,20 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 2rem 0;
 }
 
-.mail {
-  padding: 2rem 2rem 4rem 2rem;
-  position: relative;
+.mail form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
 }
-.mail div {
+.mail form div {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
 }
-.mail button {
-  position: absolute;
-  bottom: 2rem;
-  right: 40%;
-  left: 40%;
+.mail form .btn {
+  padding: 0.3rem 0.5rem;
+  font-size: 1rem;
 }
 
 .ML {
@@ -2625,7 +2731,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     justify-content: space-between;
   }
   .map div {
-    padding: 4rem;
+    padding: 4rem 4rem 2rem 4rem;
   }
   .map iframe {
     border-radius: 10px;
@@ -2714,46 +2820,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -2764,10 +2866,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -2822,6 +2925,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* animations *******************/
@@ -2972,7 +3092,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   z-index: 100;
   flex-direction: column;
   align-items: center;
-  font-size: 0.7rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
   z-index: 100;
 }
 .log .btn {
@@ -2988,6 +3109,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 .log form input:not(.checkbox) {
   width: 100%;
+  line-height: 1.5rem;
 }
 .log form label {
   color: #fff;
@@ -3017,10 +3139,11 @@ form input:not(.btn, .file), form form textarea, form form select {
   justify-content: center;
   border-radius: 0 5px 5px 0;
 }
-.password a {
+.password .btn {
   display: inline-block;
-  font-size: larger;
+  font-size: 1rem;
   text-align: right;
+  border: transparent;
   width: 100%;
 }
 
@@ -3031,7 +3154,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   text-align: center;
   letter-spacing: 1px;
   font-family: var(--Pacifico);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .btn-flip:before {
   top: 0;
@@ -3039,7 +3162,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   opacity: 1;
   color: var(--vert);
   display: block;
-  padding: 0 2rem;
+  padding: 0.5rem 3rem;
   line-height: 1.5rem;
   transition: 0.5s;
   position: relative;
@@ -3161,7 +3284,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     opacity: 1;
     color: var(--vert);
     display: block;
-    padding: 0 2rem;
+    padding: 0.5rem 3rem;
     line-height: 2rem;
     transition: 0.5s;
     position: relative;
@@ -3235,46 +3358,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -3285,10 +3404,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -3343,6 +3463,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* animations *******************/
@@ -3488,46 +3625,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -3538,10 +3671,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -3596,6 +3730,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* user *******************/
@@ -3683,46 +3834,42 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::firs
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   line-height: 5rem;
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 3rem;
   letter-spacing: 2px;
+  margin: 0 1rem;
   overflow: hidden;
   text-align: center;
+}
+
+h2:nth-child(1) {
+  border-width: 1px;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
 }
 
 h2:nth-child(1)::first-letter {
   text-transform: capitalize;
 }
 
-h2::before, h2::after {
-  background-color: var(--vert);
-  content: "";
-  display: inline-block;
-  height: 1px;
-  position: relative;
-  vertical-align: middle;
-  width: 10%;
-}
-
-h2::before {
-  right: 1rem;
-  margin-left: -10%;
-}
-
-h2::after {
-  left: 1rem;
-  margin-right: -10%;
-}
-
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 2.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
 }
 
 a, a:active, a:hover {
@@ -3733,10 +3880,11 @@ a, a:active, a:hover {
 
 /******************* bouttons *******************/
 .btn {
-  padding: 0.1rem 0.4rem;
+  padding: 0.3rem;
   margin: auto;
   border: 1px solid;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8rem;
   border-radius: 20px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -3791,6 +3939,23 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   section:not(:last-child) {
     margin-bottom: 3rem;
+  }
+  h2::before, h2::after {
+    background-color: var(--vert);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+  }
+  h2::before {
+    right: 1rem;
+    margin-left: -10%;
+  }
+  h2::after {
+    left: 1rem;
+    margin-right: -10%;
   }
 }
 /******************* contact *******************/

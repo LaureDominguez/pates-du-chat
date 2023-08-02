@@ -68,45 +68,40 @@ h1, h2, h3, h4, h5, nav, .btn {
 }
 
 h1{
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     line-height: 5rem;
     margin-bottom: 2rem;
 }
 
 h2{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     line-height: 3rem;
     letter-spacing: 2px;
+    margin: 0 1rem;
     overflow: hidden;
     text-align: center;
         &:nth-child(1){
         &::first-letter{
             text-transform: capitalize;
         }
-    }
-    &::before,
-    &::after {
-        background-color: var(--vert);
-        content: "";
-        display: inline-block;
-        height: 1px;
-        position: relative;
-        vertical-align: middle;
-        width: 10%;
-    }
-    &::before {
-        right: 1rem;
-        margin-left: -10%;
-    }
-    &::after {
-        left: 1rem;
-        margin-right: -10%;
+            border-width: 1px;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border-style: solid;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
     }
 }
 
 h3{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 2.5rem;
+}
+
+h4{
+    font-size: 1.3rem;
 }
 
 a, a:active, a:hover{
@@ -118,10 +113,12 @@ a, a:active, a:hover{
 /******************* bouttons *******************/
 
 .btn{
-    padding: 0.1rem 0.4rem;
+    padding: 0.3rem;
     margin: auto;
     border: 1px solid;
-    line-height: 1.5rem;
+    font-size: 1rem;
+    // font-size: 1.3rem;
+    line-height: 1.8rem;
     border-radius: 20px;
     letter-spacing: 1px;
     cursor: pointer;
@@ -183,5 +180,27 @@ form{
 
     section:not(:last-child){
         margin-bottom: 3rem ;
+    }
+
+    
+    h2{
+        &::before,
+        &::after {
+            background-color: var(--vert);
+            content: "";
+            display: inline-block;
+            height: 1px;
+            position: relative;
+            vertical-align: middle;
+            width: 10%;
+        }
+        &::before {
+            right: 1rem;
+            margin-left: -10%;
+        }
+        &::after {
+            left: 1rem;
+            margin-right: -10%;
+        }
     }
 }

@@ -2,8 +2,8 @@
 .switch {
     display: inline-block;
     position: relative;
-    width: 20px;
-    height: 10px;
+    width: 35px;
+    height: 20px;
     cursor: pointer;
     overflow: hidden;
     input {
@@ -27,8 +27,8 @@
             position: absolute;
             top: 50%;
             left: 2px;
-            width: 8px;
-            height: 8px;
+            width: 16px;
+            height: 16px;
             background: white;
             border-radius: 50%;
             transform: translateY(-50%);
@@ -38,28 +38,7 @@
     input:checked + span {
         background: #346abf;
         &:before {
-            left: 11px;
-        }
-    }
-}
-
-/******************* Media query *******************/
-
-/* PC */
-@media (min-width: 1024px) {
-    .switch {
-        width: 35px;
-        height: 20px;
-        input + span {
-            &:before {
-                width: 16px;
-                height: 16px;
-            }
-        }
-        input:checked + span {
-            &:before {
-                left: 17px;
-            }
+            left: 17px;
         }
     }
 }

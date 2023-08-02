@@ -46,13 +46,25 @@
     flex-direction: column;
     div{
         text-align: center;
-        padding: 2rem;
+        padding: 2rem 2rem 1rem 2rem;
         border-radius: 10px;
         background-color: #ffffff6a;
         backdrop-filter: blur(4px);
         box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
         h3{
             margin-top: 0;
+        }
+        .social i{
+            color: var(--orange);
+            font-size: 2rem;
+            margin: 1rem;
+            transition: color 0.8s ease, background 0.3s ease;
+            &:hover{
+                cursor: pointer;
+                color: var(--red);
+                background-image: radial-gradient(ellipse at center, #FFFFFF 0%, #ffffff00 100%);
+                box-shadow: 2px 3px 15px 3px #FFFFFF;
+            }
         }
     }
     #spinner{
@@ -66,19 +78,19 @@
     }
 }
 
-.mail {
-    padding: 2rem 2rem 4rem 2rem;
-    position: relative;
+.mail form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
     div{
         display: flex;
         flex-direction: column;
         margin: 0.5rem;
     }
-    button{
-        position: absolute;
-        bottom: 2rem;
-        right: 40%;
-        left: 40%;
+    .btn{
+        padding: 0.3rem 0.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -148,7 +160,7 @@
         align-items: center;
         justify-content: space-between;
         div{
-            padding: 4rem;
+            padding: 4rem 4rem 2rem 4rem;
         }
         iframe{
             border-radius: 10px;

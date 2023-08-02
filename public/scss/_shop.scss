@@ -4,8 +4,8 @@
 
 /******************* home *******************/
 .shop-tuile{
-    height: 8rem;
-    width: 8rem;
+    height: 9rem;
+    width: 9rem;
     overflow: hidden;
     border: solid 1px transparent;
     border-radius: 10px;
@@ -15,8 +15,8 @@
     align-content: center;
     img{
         object-fit: cover;
-        height: 8rem;
-        width: 8rem;
+        height: 9rem;
+        width: 9rem;
         position: relative;
     }
     figcaption{
@@ -24,6 +24,7 @@
             display: none;
         }
         h3 {
+            padding: 0.2rem;
             font-size: 1rem;
             letter-spacing: 1px;
         }
@@ -63,9 +64,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    .btn{
+        padding: 0.3rem 0.5rem;
+        font-size: 1rem;
+    }
     .filterBox{
         text-align: center;
         #filter{
+            display: flex;
             flex-direction: column;
             align-items: flex-start;
             margin: 0.5rem;
@@ -81,24 +87,25 @@
     display: flex;
     flex-direction: column;
     div{
-        margin: 1rem;
+        margin: 1rem 1.3rem;
         display: grid;
         grid-template-columns: repeat(auto-fill, 9rem);
         grid-template-rows: repeat(auto-fill, 9rem);
+        grid-column-gap: 2rem;
         align-items: center;
         justify-items: center;
         align-content: center;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .btn{
         border: 1px solid;
     }
 }
 
-#filter{
-    display: flex;
-    flex-direction: column;
-}
+// #filter{
+//     display: flex;
+//     flex-direction: column;
+// }
 
 /******************* detail *******************/
 
@@ -152,7 +159,7 @@
         }
         p:not(.descript){
             margin: 0.3rem;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
         .infoSup{
             display: flex;
