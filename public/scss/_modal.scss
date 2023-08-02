@@ -56,6 +56,7 @@
         }
         label{
             color: #fff;
+            line-height: 1.5rem;
         }
         .champs{
             margin-bottom: 1rem;
@@ -89,7 +90,7 @@
         display: inline-block;
         font-size: 1rem;
         text-align: right;
-        border: transparent;
+        border: solid 1px transparent;
         width: 100%;
     }
 }
@@ -108,7 +109,7 @@
             opacity: 1;
             color: var(--vert);
             display: block;
-            padding: 0.5rem 3rem;
+            padding: 0.3rem 3rem;
             line-height: 1.5rem;
             transition: 0.5s;
             position: relative;
@@ -188,11 +189,15 @@
 
         form{
             height: 60%;
+            label{
+                font-size: 1rem;
+            }
         }
     }
 
     .password{
         i{
+            font-size: 0.8rem;
             &:hover, &:active{
                 background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #FAC172 25%);
             }
@@ -249,8 +254,8 @@
             opacity: 1;
             color: var(--vert);
             display: block;
-            padding: 0.5rem 3rem;
-            line-height: 2rem;
+            padding: 0.3rem 3rem;
+            line-height: 1.5rem;
             transition: 0.5s;
             position: relative;
             border: 1px solid;

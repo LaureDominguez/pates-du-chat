@@ -80,18 +80,18 @@ h2{
     margin: 0 1rem;
     overflow: hidden;
     text-align: center;
+    border-width: 1px;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border-style: solid;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
         &:nth-child(1){
         &::first-letter{
             text-transform: capitalize;
         }
-            border-width: 1px;
-            padding: 0.8rem;
-            margin-top: 1rem;
-            border-style: solid;
-            border-left: none;
-            border-right: none;
-            border-bottom: none;
-            border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
     }
 }
 
@@ -184,6 +184,7 @@ form{
 
     
     h2{
+        border: none;
         &::before,
         &::after {
             background-color: var(--vert);

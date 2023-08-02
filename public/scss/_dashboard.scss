@@ -111,7 +111,20 @@
 	border-collapse: collapse;
     width: 100%;
 
-	&, th, td{
+	th:not(:last-child, :nth-last-child(2)){
+			&::after{
+				font-family: "FontAwesome";
+				content: "\f0b0";
+				font-size: 0.5rem;
+				// padding: 0.5rem;
+				opacity: 0.4;
+				transition: all 0.5s ease;
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+	th, td{
 		border: 1px solid rgb(200, 200, 200);
 		padding: 0.2rem;
     	line-height: 1.3rem;
@@ -170,7 +183,7 @@
 /******************* formulaires *******************/
 
 .dashboard-form form{
-	width: 60%;
+	width: 85%;
 	margin: auto;
 	div:not(.buttons){
 		display: flex;
@@ -299,35 +312,22 @@
 
 	/******************* tableaux *******************/
 	.dashboard-table{
-		margin-bottom: 1rem;
-		border-collapse: collapse;
 		th:not(:last-child, :nth-last-child(2)){
 			&::after{
-				font-family: "FontAwesome";
-				content: "\f0b0";
 				font-size: 0.8rem;
 				padding: 0.5rem;
-				opacity: 0.4;
-				transition: all 0.5s ease;
+				display: inline-block;
 			}
 			&:hover::after{
 				opacity: 1;
 			}
 		}
 
-		&, th, td{
-			border: 1px solid rgb(200, 200, 200);
-			text-align: center;
-			cursor: default;
-		}
-
-		thead{
-			background-color: var(--orange);
-			color: #fff;
-		}
-
 		tbody>tr:hover {
 			background-color: rgb(255, 207, 149);
+		}
+		.action{
+			display: table-cell;
 		}
 	}
 
@@ -349,11 +349,12 @@
 		}
 		table{
 			margin: 1rem auto;
-			&, th, td{
+			width: 80%;
+			th, td{
 				padding: 1rem;
-				border: 1px solid rgb(200, 200, 200);
-				text-align: center;
-			border-collapse: collapse;
+			}
+			th, td:first-child{
+				font-size: 1rem;
 			}
 		}
 	}

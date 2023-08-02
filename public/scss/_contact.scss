@@ -87,6 +87,9 @@
         display: flex;
         flex-direction: column;
         margin: 0.5rem;
+        input{
+            line-height: 1.3rem;
+        }
     }
     .btn{
         padding: 0.3rem 0.5rem;
@@ -172,6 +175,7 @@
 
     .mail {
         margin: auto;
+        padding: 1rem;
         width: 70%;
         border-radius: 10px;
         background-color: #ffffff6a;
