@@ -5,11 +5,23 @@
         <div class="filterBox">
             <button type="button" class="btn" id="filterBtn">Filtrer</button>
             <div id="filter">
+                <!-- affiche la liste des catégories dispo, si elle contient des produist -->
                 <?php foreach ($categories as $category) : ?>
-                    <div>
-                        <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
-                        <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
-                    </div>
+                    <?php
+                    $hasActiveProducts = false;
+                    foreach ($products as $product) {
+                        if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) {
+                            $hasActiveProducts = true;
+                            break;
+                        }
+                    }
+                    ?>
+                    <?php if ($hasActiveProducts) : ?>
+                        <div>
+                            <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
+                            <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
+                        </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -17,7 +29,19 @@
 
 
     <?php foreach ($categories as $category) : ?>
-        <?php if ($category['active']) : ?>
+
+        <!-- affiche la catégories, si elle contient des produist -->
+        <?php
+        $hasActiveProducts = false;
+        foreach ($products as $product) {
+            if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) {
+                $hasActiveProducts = true;
+                break;
+            }
+        }
+        ?>
+
+        <?php if ($category['active'] && $hasActiveProducts) : ?>
             <article class="shop-cat">
                 <h2><?= htmlspecialchars($category["name"]); ?></h2>
                 <div>

@@ -17,10 +17,10 @@ class Mail {
         $subject = 'Nouveau message de ' . $contact['name'];
 
         $header = "MIME-Version: 1.0\r\n";
-        $header .= 'From:"Les Pâtes du Chat"<dominguezlaure@gmail.com>' . "\n"; // L'adresse email de l'expéditeur peut être remplacé par une constante dans le fichier "config.php"
+        $header .= 'From: "Les Pâtes du Chat" <dominguezlaure@gmail.com>' . "\r\n"; // L'adresse email de l'expéditeur peut être remplacé par une constante dans le fichier "config.php"
         // $header .= "Cc: ......@hotmail.com\n";
-        $header .= "X-Priority: 1\n";
-        $header .= 'Content-Type: text/html; charset="uft-8"' . "\n";
+        $header .= "X-Priority: 1\r\n";
+        $header .= 'Content-Type: text/html; charset="uft-8"' . "\r\n";
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         $message = '

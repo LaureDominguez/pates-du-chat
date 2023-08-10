@@ -11,7 +11,11 @@ class UsersController{
     public function isConnected()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: index.php?route=login');
+            header('Location: index.php?route=home');
+            $errors = "Veuillez vous authentifier";
+            $_SESSION['visitor']['flash_message']['error'] = [
+                'login' => $errors
+            ];
         }
     }
 

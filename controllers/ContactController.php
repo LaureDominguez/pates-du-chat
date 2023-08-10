@@ -67,7 +67,6 @@ class ContactController{
         header('Location: ' . $_SESSION['visitor']['currentPage']);
         exit();
     }
-
     public function displayMLPage(){
 
     $template = "contact/legal.phtml";

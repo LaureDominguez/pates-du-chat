@@ -42,11 +42,6 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\ContactController();
             $controller->displayContactForm();
             break;
-            
-        case 'sendContactMail':
-            $controller = new Controllers\ContactController();
-            $controller->submitMessage();
-            break;
 
         case 'legal':
             $controller = new Controllers\ContactController();
@@ -57,6 +52,13 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayDashboard();
+            break;
+
+/////////////////////// contact mail ///////////////////////
+
+        case 'sendContactMail':
+            $controller = new Controllers\ContactController();
+            $controller->submitMessage();
             break;
 
 /////////////////////// login ///////////////////////

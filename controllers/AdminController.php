@@ -66,9 +66,42 @@ class AdminController{
 
     public function verifProdForm()
     { // vérifie et créer le nouveau produit
-        $errors = $imgErrors = [];
-        $success = [];
+        $errors = $imgErrors = $success = [];
         $img = null;
+
+        // vérifi si il y a une image à uploader
+        if (!empty($_FILES['img'])) {
+            $imgFile = strtolower($_FILES['img']['name']);
+            $file = $_FILES['img']['tmp_name'];
+            $imgSize = $_FILES['img']['size'];
+
+            $folder = "./public/img/produits/";
+            $path = $folder . $imgFile;
+            $targetFile = $folder . basename($imgFile);
+            $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+
+            if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
+            $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
+            if ($imgSize > 1000000)
+                $imgErrors[] = "L'image doit peser moins de 1 Mo";
+
+            // si l'image est conforme :
+            if (count($imgErrors) == 0) {
+                //on déplace l'image dans le dossier
+                move_uploaded_file($file, $targetFile);
+                $addNew = [
+                    trim($_POST['name']),
+                    $imgFile,
+                ];
+                //et on l'enregistre dans la db
+                $modelGallery = new Gallery();
+                $img = $modelGallery->creatNew($addNew);
+                $success = "L'image a bien été envoyée !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+            }
+        }
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -83,40 +116,6 @@ class AdminController{
                 $errors[] = "Veuillez définir un prix";
 
             if (count($errors) == 0){
-                //si il y a une image à uploader :
-                if (!empty($_FILES['img'])) {
-                    $imgFile = strtolower($_FILES['img']['name']);
-                    $file = $_FILES['img']['tmp_name'];
-                    $imgSize = $_FILES['img']['size'];
-
-                    $folder = "./public/img/produits/";
-                    $path = $folder . $imgFile;
-                    $targetFile = $folder . basename($imgFile);
-                    $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
-
-                    if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
-                        $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
-                    if ($imgSize > 1000000)
-                        $imgErrors[] = "L'image doit peser moins de 1 Mo";
-
-                    // si l'image est conforme :
-                    if (count($imgErrors) == 0) {
-                        //on déplace l'image dans le dossier
-                        move_uploaded_file($file, $targetFile);
-                        $addNew = [
-                            trim($_POST['name']),
-                            $imgFile,
-                        ];
-                        //et on l'enregistre dans la db
-                        $modelGallery = new Gallery();
-                        $img = $modelGallery->creatNew($addNew);
-                        $success[] = "L'image a bien été envoyée !";
-                        $_SESSION['visitor']['flash_message'] = [
-                            'success' => $success
-                        ];
-                    }
-                }
-
                 //on créer le produit avec l'id de l'image si elle existe
                 $addNew = [
                     trim($_POST['name']),
@@ -126,6 +125,7 @@ class AdminController{
                     trim($_POST['price']),
                     $img
                 ];
+
                 $modelProduct = new Products();
                 $modelProduct->creatNew($addNew);
                 $success[] = "Le nouveau produit a bien été créé !";
