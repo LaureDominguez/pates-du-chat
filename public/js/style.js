@@ -7,7 +7,7 @@ import { checkErrors } from "./modules/errors.js";
 import { switchProducts } from "./modules/switch.js";
 import { editContact } from "./modules/horaires.js";
 import { sortTable } from "./modules/sort-table.js";
-import { lazy } from "./modules/lazy.js";
+// import { lazy } from "./modules/lazy.js";
 import { disableAccount } from "./modules/disable.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", function () {
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     mobileNav(); // navbar pour version mobile
 
-    lazy(); // spinner le temps que le google map charge
+    // lazy(); // spinner le temps que le google map charge
 
     filterCategory(); // tri des produits dans partie shop
 

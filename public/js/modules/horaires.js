@@ -11,11 +11,11 @@ export function editContact() {
     const saveBtn = document.getElementById('saveBtn');
     const elements = document.querySelectorAll('.editable');
 
-    if (saveBtn) {
+    if (elements) {
 
-        // rend les champs et le bouton save dispo sur page admin
+        // rend les champs et le bouton save dispo que sur page admin
         if (window.location.search !== "?route=admin") {
-            saveBtn.style.display = "none";
+            saveBtn.style.display = "none"; 
             elements.forEach(function (field) {
                 field.classList.remove('editable');
             });

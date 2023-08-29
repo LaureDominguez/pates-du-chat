@@ -78,22 +78,34 @@
     }
 }
 
-.mail form{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: auto;
-    div{
-        display: flex;
-        flex-direction: column;
-        margin: 0.5rem;
-        input{
-            line-height: 1.3rem;
+.mail {
+        height: 90vh;
+
+    form{
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        width: 90%;
+        margin: auto;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #ffffff6a;
+        backdrop-filter: blur(4px);
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        div{
+            display: flex;
+            flex-direction: column;
+            margin: 0.8rem;
+            input{
+                line-height: 1.3rem;
+            }
         }
-    }
-    .btn{
-        padding: 0.3rem 0.5rem;
-        font-size: 1rem;
+        .btn{
+            padding: 0.3rem 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
     }
 }
 
@@ -177,10 +189,10 @@
         margin: auto;
         padding: 1rem;
         width: 70%;
-        border-radius: 10px;
-        background-color: #ffffff6a;
-        backdrop-filter: blur(4px);
-        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        // border-radius: 10px;
+        // background-color: #ffffff6a;
+        // backdrop-filter: blur(4px);
+        // box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
         .btn{
             transition: all 0.5s ease;
             background-size: 0%;

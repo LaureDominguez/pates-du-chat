@@ -1,4 +1,4 @@
-<h2>Les marchés où me trouver :</h2>
+<h1>Les marchés où me trouver :</h1>
 
 <?php
 $daysData = array(
@@ -42,7 +42,7 @@ foreach ($dates as $date) {
 ?>
 
 <?php if (isset($semaineData)) : ?>
-    <h4 data-field="semaine" data-day="<?= $semaineData['id']; ?>">Semaine du : <span id="spanWeek" class="editable"> <?= $semaineData['time']; ?></span></h4>
+    <h3 data-field="semaine" data-day="<?= $semaineData['id']; ?>">Semaine du : <span id="spanWeek" class="editable"> <?= $semaineData['time']; ?></span></h3>
 <?php endif; ?>
 
 <table>
@@ -61,4 +61,6 @@ foreach ($dates as $date) {
         </tr>
     <?php endforeach; ?>
 </table>
-<button type="button" class="btn" id="saveBtn">Enregistrer</button>
+<?php if (isset($_SESSION['user']) && ($_SESSION['user']['role'] == 1)) : ?>
+    <button type="button" class="btn" id="saveBtn">Enregistrer</button>
+<?php endif; ?>
