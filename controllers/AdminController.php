@@ -64,15 +64,15 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    //Fonction pour gérer l'upload d'image
     public function imageForm($id = null){
-
         //Si il y a un product id, c'est que c'est une update d'image
         if ($id !== null) {
             $modelProduct = new Products();
             $currentProductData = $modelProduct->getOneProduct($id);
             $currentImg = $currentProductData['image'];
         }
-        // sinon c'est une création de nouveau produit
+        // sinon c'est la création d'un nouveau produit
 
         $imgErrors = [];
         $success = [];

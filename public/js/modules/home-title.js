@@ -2,7 +2,7 @@
 export function titleOnNav() {
 
     if (window.location.search === "?route=home") {
-        const title = document.getElementById("title");
+        const title = document.getElementById("title-nav");
         let lastScrollPosition = window.scrollY;
 
         window.addEventListener("scroll", () => {

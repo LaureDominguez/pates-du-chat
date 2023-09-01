@@ -1,6 +1,6 @@
-<h3>ajouter une image</h>
+<h3>ajouter une image</h3>
 <form action="index.php?route=imgForm&id=<?= htmlspecialchars($product['id']); ?>" method="post" enctype="multipart/form-data">
-    
+
     <div>
         <label for="img">image</label>
         <input type="file" class="file" name="img" id="img">
@@ -9,6 +9,6 @@
 
     <div class="buttons">
         <button type="submit" class="btn" value="submit">envoyer</button>
-        <a type="button" href="index.php?route=admin" class="btn">annuler</a>
+        <button class="btn">supprimer</button>
     </div>
 </form>

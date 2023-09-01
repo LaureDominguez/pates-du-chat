@@ -39,6 +39,9 @@
     <article class="shop-cat">
         <div>
             <?php foreach ($products as $product) : ?>
+                <?php if ($count >= $maxProducts) {
+                    break;
+                } ?>
                 <?php if ($product["active"] && $product["cat_id"] === 7) : ?>
                     <figure class="shop-tuile">
                         <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
@@ -54,12 +57,10 @@
                             </figcaption>
                         </a>
                     </figure>
+                    <?php $count++; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
             <a href="index.php?route=shop" class="more">Voir plus</a>
         </div>
-
-        <!-- <a href=" index.php?route=shop" class="btn">afficher plus -->
-        </a>
     </article>
 </div>
