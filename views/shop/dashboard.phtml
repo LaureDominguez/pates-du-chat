@@ -26,21 +26,19 @@
                         <!-- fetch -->
                         <form action="">
                             <label class="switch">
-                                <input id="switchProducts" type="checkbox" 
-                                    <?php if ($product['active']) : echo 'checked'; endif; ?> 
-                                    value=<?= htmlspecialchars($product["id"]); ?>>
+                                <input id="switchProducts" type="checkbox" <?php if ($product['active']) : echo 'checked';
+                                                                            endif; ?> value=<?= htmlspecialchars($product["id"]); ?>>
                                 <span id="setSwitchProduct"></span>
                             </label>
                         </form>
                     </td>
                     <td class="action">
-                        <a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']); ?>"             data-text="Modifier le produit" class="aide left">
+                        <a href="index.php?route=displayUpdateProdForm&id=<?= htmlspecialchars($product['id']); ?>" data-text="Modifier le produit" class="aide left">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                     </td>
                     <td class="action">
-                        <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>" 
-                        data-text="Voir le produit" class="aide left">
+                        <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>" data-text="Voir le produit" class="aide left">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </td>
@@ -49,6 +47,8 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a href="index.php?route=displayCreateProdForm" class="btn">Ajouter un produit</a>
 
 <hr>
 
@@ -79,9 +79,8 @@
                     <!-- fetch -->
                     <form action="">
                         <label class="switch">
-                            <input id="switchCategory" type="checkbox" 
-                            <?php if ($category['active']) : echo 'checked'; endif; ?> 
-                            value=<?= htmlspecialchars($category["id"]); ?>>
+                            <input id="switchCategory" type="checkbox" <?php if ($category['active']) : echo 'checked';
+                                                                        endif; ?> value=<?= htmlspecialchars($category["id"]); ?>>
                             <span id="setSwitchCategory"></span>
                         </label>
                     </form>
@@ -94,9 +93,11 @@
     </tbody>
 </table>
 
+<a href="index.php?route=displayCreateCatForm" class="btn">Ajouter une catégorie</a>
+<!-- 
 <hr>
 
 <div class="buttons">
     <a href="index.php?route=displayCreateProdForm" class="btn">créer un produit</a>
     <a href="index.php?route=displayCreateCatForm" class="btn">créer une catégorie</a>
-</div>
+</div> -->

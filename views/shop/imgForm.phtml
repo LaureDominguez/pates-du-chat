@@ -1,0 +1,14 @@
+<h3>ajouter une image</h>
+<form action="index.php?route=imgForm&id=<?= htmlspecialchars($product['id']); ?>" method="post" enctype="multipart/form-data">
+    
+    <div>
+        <label for="img">image</label>
+        <input type="file" class="file" name="img" id="img">
+        <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="btn" value="submit">envoyer</button>
+        <a type="button" href="index.php?route=admin" class="btn">annuler</a>
+    </div>
+</form>

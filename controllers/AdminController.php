@@ -64,6 +64,67 @@ class AdminController{
         include_once 'views/layout.phtml';
     }
 
+    public function imageForm($id = null){
+
+        //Si il y a un product id, c'est que c'est une update d'image
+        if ($id !== null) {
+            $modelProduct = new Products();
+            $currentProductData = $modelProduct->getOneProduct($id);
+            $currentImg = $currentProductData['image'];
+        }
+        // sinon c'est une création de nouveau produit
+
+        $imgErrors = [];
+        $success = [];
+
+        //les données de l'image à uploader
+        $imgFile = strtolower($_FILES['img']['name']);
+        $file = $_FILES['img']['tmp_name'];
+        $imgSize = $_FILES['img']['size'];
+
+        //la destination de l'image
+        $folder = "./public/img/produits/";
+        $path = $folder . $imgFile;
+        $targetFile = $folder . basename($imgFile);
+
+        $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+
+        if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
+            $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
+        if ($imgSize > 10000000)
+            $imgErrors[] = "L'image doit peser moins de 10 Mo";
+
+        // si l'image est conforme :
+        if (count($imgErrors) == 0) {
+
+            // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
+            if (isset($currentImg)) {
+                //si oui, on supprime l'ancienne image
+                $oldImgPath = $folder . $currentImg;
+                if (file_exists($oldImgPath)) {
+                    unlink($oldImgPath);
+                }
+            }
+
+            //on déplace l'image dans le dossier
+            move_uploaded_file($file, $targetFile);
+            $addNew = [
+                trim($_POST['name']),
+                $imgFile,
+            ];
+
+            //et on l'enregistre dans la db
+            $modelGallery = new Gallery();
+            $img = $modelGallery->creatNew($addNew);
+            $success = "L'image a bien été enregistrée !";
+            $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+
+            return $img;
+        }
+    }
+
     public function verifProdForm()
     { // vérifie et créer le nouveau produit
         $errors = $imgErrors = $success = [];
@@ -71,36 +132,7 @@ class AdminController{
 
         // vérifi si il y a une image à uploader
         if (!empty($_FILES['img'])) {
-            $imgFile = strtolower($_FILES['img']['name']);
-            $file = $_FILES['img']['tmp_name'];
-            $imgSize = $_FILES['img']['size'];
-
-            $folder = "./public/img/produits/";
-            $path = $folder . $imgFile;
-            $targetFile = $folder . basename($imgFile);
-            $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
-
-            if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
-            $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
-            if ($imgSize > 1000000)
-                $imgErrors[] = "L'image doit peser moins de 1 Mo";
-
-            // si l'image est conforme :
-            if (count($imgErrors) == 0) {
-                //on déplace l'image dans le dossier
-                move_uploaded_file($file, $targetFile);
-                $addNew = [
-                    trim($_POST['name']),
-                    $imgFile,
-                ];
-                //et on l'enregistre dans la db
-                $modelGallery = new Gallery();
-                $img = $modelGallery->creatNew($addNew);
-                $success = "L'image a bien été envoyée !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-            }
+            $img = $this->imageForm();
         }
 
         if (array_key_exists('name', $_POST)) {
@@ -159,6 +191,9 @@ class AdminController{
         $img = null;
         $id = $_GET['id'];
 
+        var_dump("début");
+        // die;
+
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
                 $errors[] = "Veuillez donner un nom au produit";
@@ -193,46 +228,7 @@ class AdminController{
 
                 //si nouvelle image, on l'upload et l'enregistre à la db
                 if (!empty($_FILES['img'])) {
-                    $imgFile = strtolower($_FILES['img']['name']);
-                    $file = $_FILES['img']['tmp_name'];
-                    $imgSize = $_FILES['img']['size'];
-                    $folder = "./public/img/produits/";
-                    $path = $folder . $imgFile;
-                    $targetFile = $folder . basename($imgFile);
-                    $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
-
-                    if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
-                        $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
-                    if ($imgSize > 1000000)
-                        $imgErrors[] = "L'image doit peser moins de 1 Mo";
-
-                    // si l'image est conforme :
-                    if (count($imgErrors) == 0) {
-
-                        //on vérifie s'il y a déjà une image d'enregistré
-                        $currentImg = $currentProductData['image'];
-                        // var_dump($currentImg);
-                        // die;
-                        if($currentImg){
-                            //si oui, on supprime l'ancienne image
-                            $oldImgPath = $folder . $currentImg;
-                            if(file_exists($oldImgPath)){
-                                unlink($oldImgPath);
-                            }
-                        }
-
-                        //on déplace l'image dans le dossier
-                        move_uploaded_file($file, $targetFile);
-                        $addNew = [
-                            trim($_POST['name']),
-                            $imgFile,
-                        ];
-                        //et on l'enregistre dans la db
-                        $modelGallery = new Gallery();
-                        $img = $modelGallery->creatNew($addNew);
-                        $success[] = "L'image a bien été enregistrée !";
-                        $newData['img'] = $img;
-                    }
+                    $newData['img'] = $this->imageForm($id);
                 } else {
                     $newData['img'] = $currentProductData['img'];
                 }
