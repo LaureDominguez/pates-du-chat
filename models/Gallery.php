@@ -24,8 +24,8 @@ class Gallery extends Database {
 
     public function updateImage($newData)
     {
-        $this->updateOne('images', $newData, 'id', $newData['id']);        
-        header('Location: index.php?route=admin');
-        exit();
+        return $this->updateOne('images', $newData, 'id', $newData['id']);        
+        // header('Location: index.php?route=admin');
+        // exit();
     }
 }

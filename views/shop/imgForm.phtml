@@ -1,14 +1,31 @@
-<h3>ajouter une image</h3>
-<form action="index.php?route=imgForm&id=<?= htmlspecialchars($product['id']); ?>" method="post" enctype="multipart/form-data">
-
+<h3>Ajouter une image</h3>
+<form id="imgForm" method="post" enctype="multipart/form-data">
     <div>
         <label for="img">image</label>
+
+        <?php if (isset($product['id'])) : ?>
+            <input type="hidden" name="productId" id="productId" value=<?= $product['id']; ?>>
+        <?php endif; ?>
+
         <input type="file" class="file" name="img" id="img">
-        <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+
+        <figure>
+            <?php if (!empty($product["img"])) : ?>
+                <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                <figcaption>
+                    <?= $product['imgTitle']; ?>
+                </figcaption>
+            <?php else : ?>
+                <i class="fa-regular fa-image"></i>
+                <figcaption>Aucune image</figcaption>
+            <?php endif; ?>
+        </figure>
     </div>
 
-    <div class="buttons">
+    <div>
         <button type="submit" class="btn" value="submit">envoyer</button>
         <button class="btn">supprimer</button>
     </div>
+
+    <div id="message"></div>
 </form>

@@ -1,7 +1,7 @@
 <?php
 
 $ExpirationTime = 3600; // 1h
-session_set_cookie_params($ExpirationTime);
+// session_set_cookie_params($ExpirationTime);
 session_start();
 
 spl_autoload_register(function ($class) {       
@@ -174,6 +174,10 @@ if (array_key_exists('route', $_GET)):
 
         case 'productsFetch':
             require('./config/switchActiveFetch.php');
+            break;
+
+        case 'imagesFetch':
+            require('./config/imagesFetch.php');
             break;
             
         case 'horairesFetch':

@@ -15,12 +15,13 @@ export function editContact() {
 
         // rend les champs et le bouton save dispo que sur page admin
         if (window.location.search !== "?route=admin") {
-            saveBtn.style.display = "none"; 
+            if (saveBtn) {
+                saveBtn.style.display = "none"; 
+            }
             elements.forEach(function (field) {
                 field.classList.remove('editable');
             });
         } else {
-
 
             elements.forEach(function (field) {
                 field.setAttribute('contenteditable', 'true');
@@ -34,7 +35,6 @@ export function editContact() {
                         this.classList.remove('emptySpan');
                     }
                 });
-
             });
             
             // bouton save

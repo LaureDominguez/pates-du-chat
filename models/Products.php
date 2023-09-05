@@ -35,15 +35,15 @@ class Products extends Database {
 
     public function creatNew($params)
     {
-        $this->addOne("products", "name, cat_id, descript, ingredients, price, img", "?, ?, ?, ?, ?, ?", $params);
-        header('Location: index.php?route=admin');
-        exit();
+        return $this->addOne("products", "name, cat_id, descript, ingredients, price, img", "?, ?, ?, ?, ?, ?", $params);
+        // header('Location: index.php?route=admin');
+        // exit();
     }
 
     public function updateProduct($newData)
     {
-        $this->updateOne('products', $newData, 'id', $newData['id']);        
-        header('Location: index.php?route=admin');
-        exit();
+        return $this->updateOne('products', $newData, 'id', $newData['id']);        
+        // header('Location: index.php?route=admin');
+        // exit();
     }
 }

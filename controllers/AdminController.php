@@ -39,6 +39,7 @@ class AdminController{
             isset($_GET['route'])
             && $_GET['route'] === 'horairesFetch'
             || $_GET['route'] === 'productsFetch'
+            || $_GET['route'] === 'imagesFetch'
         ){
             // Autoriser l'accès sans authentification
             return;
@@ -66,28 +67,30 @@ class AdminController{
 
     //Fonction pour gérer l'upload d'image
     public function imageForm($id = null){
-        //Si il y a un product id, c'est que c'est une update d'image
+        // Si il y a un product id, c'est que c'est une update d'image, sinon c'est la création d'un nouveau produit
+
+        var_dump("chiant");
+        die;
+
         if ($id !== null) {
             $modelProduct = new Products();
             $currentProductData = $modelProduct->getOneProduct($id);
             $currentImg = $currentProductData['image'];
         }
-        // sinon c'est la création d'un nouveau produit
 
         $imgErrors = [];
         $success = [];
 
-        //les données de l'image à uploader
-        $imgFile = strtolower($_FILES['img']['name']);
-        $file = $_FILES['img']['tmp_name'];
+        //la destination de l'image à uploader
+        $uploadDir = "./public/img/produits/";
+        $imgName = strtolower($_FILES['img']['name']);
+        $imagePath = $uploadDir . basename($imgName);
+        // $imagePath = $uploadDir . $imgName;
+
+        //les données de l'image
+        $imgFile = $_FILES['img']['tmp_name'];
         $imgSize = $_FILES['img']['size'];
-
-        //la destination de l'image
-        $folder = "./public/img/produits/";
-        $path = $folder . $imgFile;
-        $targetFile = $folder . basename($imgFile);
-
-        $imgType = pathinfo($targetFile, PATHINFO_EXTENSION);
+        $imgType = pathinfo($imagePath, PATHINFO_EXTENSION);
 
         if ($imgType !== 'jpg' && $imgType !== 'jpeg' && $imgType !== 'png')
             $imgErrors[] = "Seul les images de type 'jpg', 'jpeg' et 'png' sont autorisés";
@@ -100,17 +103,17 @@ class AdminController{
             // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
             if (isset($currentImg)) {
                 //si oui, on supprime l'ancienne image
-                $oldImgPath = $folder . $currentImg;
+                $oldImgPath = $uploadDir . $currentImg;
                 if (file_exists($oldImgPath)) {
                     unlink($oldImgPath);
                 }
             }
 
             //on déplace l'image dans le dossier
-            move_uploaded_file($file, $targetFile);
+            move_uploaded_file($imgFile, $imagePath);
             $addNew = [
                 trim($_POST['name']),
-                $imgFile,
+                $imgName,
             ];
 
             //et on l'enregistre dans la db
@@ -129,11 +132,14 @@ class AdminController{
     { // vérifie et créer le nouveau produit
         $errors = $imgErrors = $success = [];
         $img = null;
+        
+        var_dump("raté");
+        die;
 
         // vérifi si il y a une image à uploader
-        if (!empty($_FILES['img'])) {
-            $img = $this->imageForm();
-        }
+        // if (!empty($_FILES['img'])) {
+        //     $img = $this->imageForm();
+        // }
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -192,7 +198,7 @@ class AdminController{
         $id = $_GET['id'];
 
         var_dump("début");
-        // die;
+        die;
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -227,11 +233,11 @@ class AdminController{
                 }
 
                 //si nouvelle image, on l'upload et l'enregistre à la db
-                if (!empty($_FILES['img'])) {
-                    $newData['img'] = $this->imageForm($id);
-                } else {
-                    $newData['img'] = $currentProductData['img'];
-                }
+                // if (!empty($_FILES['img'])) {
+                //     $newData['img'] = $this->imageForm($id);
+                // } else {
+                //     $newData['img'] = $currentProductData['img'];
+                // }
 
                 $newData['id'] = $id;
                 $modelProduct->updateProduct($newData);
