@@ -132,7 +132,7 @@ class AdminController{
     { // vérifie et créer le nouveau produit
         $errors = $imgErrors = $success = [];
         $img = null;
-        
+
         var_dump("raté");
         die;
 
@@ -197,8 +197,8 @@ class AdminController{
         $img = null;
         $id = $_GET['id'];
 
-        var_dump("début");
-        die;
+        // var_dump("début");
+        // die;
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -236,7 +236,7 @@ class AdminController{
                 // if (!empty($_FILES['img'])) {
                 //     $newData['img'] = $this->imageForm($id);
                 // } else {
-                //     $newData['img'] = $currentProductData['img'];
+                    $newData['img'] = $currentProductData['img'];
                 // }
 
                 $newData['id'] = $id;

@@ -9,9 +9,11 @@
 
         <input type="file" class="file" name="img" id="img">
 
+        <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
+
         <figure>
             <?php if (!empty($product["img"])) : ?>
-                <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
                 <figcaption>
                     <?= $product['imgTitle']; ?>
                 </figcaption>
@@ -23,9 +25,9 @@
     </div>
 
     <div>
-        <button type="submit" class="btn" value="submit">envoyer</button>
+        <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
         <button class="btn">supprimer</button>
     </div>
 
-    <div id="message"></div>
+    <div id="imgMsg"></div>
 </form>

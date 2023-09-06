@@ -1,88 +1,49 @@
 <section class="content dashboard-form">
     <?php if (isset($product['id'])) : ?>
         <!-- Formulaire pour modifier un produit -->
-        <h2>modifier un produit</h2>
-        <form action="index.php?route=updateProdForm&id=<?= htmlspecialchars($product['id']); ?>" method="post" enctype="multipart/form-data">
-            <div>
-                <label for="name">nom</label>
-                <input type="text" name="name" id="name" required value="<?= htmlspecialchars($product["name"]); ?>">
-            </div>
-            <div>
-                <label for="category">catégorie</label>
-                <select name="category" id="category">
-                    <option value="<?= htmlspecialchars($product['cat_id']); ?>"><?= htmlspecialchars($product['categoryProduct']); ?></option>
-                    <?php foreach ($categories as $category) : ?>
-                        <?php if ($category['name'] != $product['categoryProduct']) : ?>
-                            <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
-                        <?php endif ?>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div>
-                <label for="descript">decription</label>
-                <textarea name="descript" id="descript" cols="30" rows="10"><?= htmlspecialchars($product["descript"]); ?></textarea>
-            </div>
-            <div>
-                <label for="ingredients">ingredients</label>
-                <textarea name="ingredients" id="ingredients" cols="30" rows="10"><?= htmlspecialchars($product["ingredients"]); ?></textarea>
-            </div>
-            <div>
-                <label for="price">prix</label>
-                <input type="number" min="1" step="any" name="price" id="price" required value="<?= $product["price"] ?>">
-            </div>
-
-            <div class="buttons">
-                <button type="submit" class="btn" value="submit">envoyer</button>
-                <a type="button" href="index.php?route=admin" class="btn">annuler</a>
-            </div>
-        </form>
-
-
-        <div class="imgForm">
-            <?php include('imgForm.phtml'); ?>
-        </div>
-
-        
+        <h2>Modifier un produit</h2>
+        <?php $action = "index.php?route=updateProdForm&id=" . htmlspecialchars($product['id']); ?>
     <?php else : ?>
         <!-- Formulaire pour créer un nouveau produit -->
-
-        <h2>créer un produit</h2>
-        <form action="index.php?route=submitProdForm" method="post" enctype="multipart/form-data">
-            <div>
-                <label for="name">nom</label>
-                <input type="text" name="name" id="name" required>
-            </div>
-            <div>
-                <label for="category">catégorie</label>
-                <select name="category" id="category">
-                    <?php foreach ($categories as $category) : ?>
-                        <option value="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div>
-                <label for="descript">decription</label>
-                <textarea name="descript" id="descript" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <label for="ingredients">ingredients</label>
-                <textarea name="ingredients" id="ingredients" cols="30" rows="10"></textarea>
-            </div>
-            <div>
-                <label for="price">prix</label>
-                <input type="number" min="1" step="any" name="price" name="price" id="price" required>
-            </div>
-
-            <div class="buttons">
-                <button type="submit" class="btn" value="submit">envoyer</button>
-                <a href="index.php?route=admin" class="btn">annuler</a>
-            </div>
-        </form>
-
-
-        <div class="imgForm">
-            <?php include('imgForm.phtml'); ?>
-        </div>
-
+        <h2>Créer un produit</h2>
+        <?php $action = "index.php?route=submitProdForm"; ?>
     <?php endif; ?>
+
+    <form id="productForm" action="<?= $action ?>" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" required value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
+        </div>
+        <div>
+            <label for="category">Catégorie</label>
+            <select name="category" id="category">
+                <?php foreach ($categories as $category) : ?>
+                    <?php $categoryId = htmlspecialchars($category['id']); ?>
+                    <?php $categoryName = htmlspecialchars($category['name']); ?>
+                    <option value="<?= $categoryId ?>" <?= isset($product['cat_id']) && $product['cat_id'] == $categoryId ? 'selected' : '' ?>><?= $categoryName ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
+            <label for="descript">Description</label>
+            <textarea name="descript" id="descript" cols="30" rows="10"><?= isset($product["descript"]) ? htmlspecialchars($product["descript"]) : '' ?></textarea>
+        </div>
+        <div>
+            <label for="ingredients">Ingrédients</label>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10"><?= isset($product["ingredients"]) ? htmlspecialchars($product["ingredients"]) : '' ?></textarea>
+        </div>
+        <div>
+            <label for="price">Prix</label>
+            <input type="number" min="1" step="any" name="price" id="price" required value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
+        </div>
+    </form>
+
+    <div class="imgForm">
+        <?php include('imgForm.phtml'); ?>
+    </div>
+
+    <div class="buttons">
+        <button type="submit" class="btn" value="submit" form="productForm">Envoyer</button>
+        <a href="index.php?route=admin" class="btn">Annuler</a>
+    </div>
 </section>
