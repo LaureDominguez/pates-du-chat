@@ -42,6 +42,10 @@
             <label for="price">Prix *</label>
             <input type="number" min="1" step="any" name="price" id="price" value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
         </div>
+
+        <?php if (!isset($product['id'])) : ?>
+            <input type="hidden" id="imgLoaded" name="imgLoaded" value="0">
+        <?php endif; ?>
     </form>
 
     <div id="imgInput" class="imgForm">

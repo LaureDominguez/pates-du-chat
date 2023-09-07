@@ -70,13 +70,14 @@ class AdminController{
         // Si il y a un product id, c'est que c'est une update d'image, sinon c'est la création d'un nouveau produit
 
         var_dump("chiant");
+        var_dump($_FILES);
         die;
 
-        if ($id !== null) {
-            $modelProduct = new Products();
-            $currentProductData = $modelProduct->getOneProduct($id);
-            $currentImg = $currentProductData['image'];
-        }
+        // if ($id !== null) {
+        //     $modelProduct = new Products();
+        //     $currentProductData = $modelProduct->getOneProduct($id);
+        //     $currentImg = $currentProductData['image'];
+        // }
 
         $imgErrors = [];
         $success = "";
@@ -134,25 +135,31 @@ class AdminController{
         $success = "";
         $img = null;
 
+
+
+        // vérifi si il y a une image à uploader
+        if ($_POST['imgLoaded'] === "1") {
+            // var_dump("ici");
+            // die;
+            $img = $this->imageForm();
+        }
+        var_dump($_POST);
         var_dump("raté");
         die;
 
-        // vérifi si il y a une image à uploader
-        // if (!empty($_FILES['img'])) {
-        //     $img = $this->imageForm();
-        // }
-
         if (array_key_exists('name', $_POST)) {
+            
             if (empty($_POST['name']))
                 $errors[] = "Veuillez donner un nom au produit";
-            if (empty($_POST['category']))
-                $errors[] = "Veuillez selectionner une catégorie";
             if (empty($_POST['descript']))
                 $errors[] = "Veuillez entrer une description";
             // if (empty($_POST['ingredients']))
             //     $errors[] = "Veuillez renseigner les ingrédients";
             if (empty($_POST['price']))
                 $errors[] = "Veuillez définir un prix";
+
+            // var_dump($errors);
+            // die;
 
             if (count($errors) == 0){
                 //on créer le produit avec l'id de l'image si elle existe
@@ -174,6 +181,8 @@ class AdminController{
                 header('Location: index.php?route=admin');
             }
         }
+        var_dump("raté");
+        die;
 
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';

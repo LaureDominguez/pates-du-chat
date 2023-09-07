@@ -3,7 +3,6 @@ export function uploadImages() {
 
     // Creation de produit -> img -> php + preview d'img + pas de fetch + msg flash
     //-> revoir formulaire -> test js -> envoi php -> redirect
-    // -> chiant
 
     // done ! update produit -> php -> rediriger vers accueil + msg flash
 
@@ -14,16 +13,15 @@ export function uploadImages() {
     //  Formulaire de produit
     const productForm = document.getElementById("productForm");
     const imageForm = document.getElementById("imgForm");
-    // const imgBtn = document.getElementById("imgBtn");
-    const imgLoadedInput = document.getElementById("imgLoaded");
+    const imgBtn = document.getElementById("imgBtn");
 
     if (productForm) {
 
         // preview d'image pour création de produit
-        if (imgLoadedInput) { // dispo que pour la création de produit
+        if (!imgBtn) { // dispo que si les boutons de modification ne sont pas affichés
             const imgInput = imageForm.querySelector('input[type="file"]');
             const previewImage = document.getElementById('previewImage');
-            
+
             imgInput.addEventListener('change', function () {
                 const file = this.files[0]; // Récupère le fichier sélectionné
 
@@ -34,7 +32,6 @@ export function uploadImages() {
                         // Met à jour l'attribut src de l'élément img avec l'URL de l'image chargée
                         previewImage.src = e.target.result;
                         previewImage.style.display = 'block'; // Affiche l'image
-                        imgLoadedInput.value = "1";
                     };
 
                     reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
@@ -42,7 +39,6 @@ export function uploadImages() {
                     // Si aucun fichier n'est sélectionné, masque l'image
                     previewImage.src = '#';
                     previewImage.style.display = 'none';
-                    imgLoadedInput.value = "0";
                 }
             });
         }
@@ -52,53 +48,49 @@ export function uploadImages() {
             e.preventDefault();
 
             const formData = new FormData(imageForm);
-            const formDataObject = formDataToObject(formData);
             const imgMsg = document.getElementById("imgMsg");
-
-            // console.log(formDataObject);
-
-            if (imgLoadedInput) {
-                console.log("fait chier 2");
+            const formDataObject = {};
+                for (const [key, value] of formData.entries()) {
+                    formDataObject[key] = value;
+            }
+            console.log(formDataObject);
+            
+            //Tests
+            if (formDataObject.img.size === 0) {
+                imgMsg.innerHTML = "Selectionnez une image à envoyer";
                 return;
-            } else {
+            } 
 
-                //Tests
-                if (formDataObject.img.size === 0) {
-                    imgMsg.innerHTML = "Selectionnez une image à envoyer";
-                    return;
-                } 
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
-                const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-
-                if (!allowedTypes.includes(formDataObject.img.type)) {
-                    imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
-                } else if (formDataObject.img.size > 10000000) {
-                    imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
-                } else { // Si pas d'erreur, on envoi la requete fetch
-                    fetch("index.php?route=imagesFetch", {
-                        method: "POST",
-                        body: formData,
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Erreur lors de la requête Fetch");
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.success) {
-                            imgMsg.innerHTML = "L'image a été téléchargée avec succès.";
-                            // Mise à jour de la balise <img> avec le chemin de la nouvelle image
-                            const productImage = document.getElementById('productImage');
-                            productImage.src = 'public/img/produits/' + formDataObject.img.name;
-                        } else {
-                            imgMsg.innerHTML = "Erreur lors du téléchargement de l'image.";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Erreur :", error);
-                    });
-                }
+            if (!allowedTypes.includes(formDataObject.img.type)) {
+                imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
+            } else if (formDataObject.img.size > 10000000) {
+                imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
+            } else { // Si pas d'erreur, on envoi la requete fetch
+                fetch("index.php?route=imagesFetch", {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Erreur lors de la requête Fetch");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        imgMsg.innerHTML = "L'image a été téléchargée avec succès.";
+                         // Mise à jour de la balise <img> avec le chemin de la nouvelle image
+                        const productImage = document.getElementById('productImage');
+                        productImage.src = 'public/img/produits/' + formDataObject.img.name;
+                    } else {
+                        imgMsg.innerHTML = "Erreur lors du téléchargement de l'image.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur :", error);
+                });
             }
         })
 
@@ -107,9 +99,12 @@ export function uploadImages() {
             e.preventDefault();
 
             const formData = new FormData(productForm);
-            const formDataObject = formDataToObject(formData);
+            const formDataObject = {};
 
-            // console.log(imgInput);
+            for (const [key, value] of formData.entries()) {
+                formDataObject[key] = value;
+            }
+            console.log(imgInput);
 
             // Test
 
@@ -146,19 +141,35 @@ export function uploadImages() {
                 priceInput.style.color = "black";
             }
 
-
             if (errorFound === false) {
-                // imageForm.submit(); ça marche pas
                 productForm.submit();
             }
         })
     }
 
-    function formDataToObject(formData) {
-        const formDataObject = {};
-        for (const [key, value] of formData.entries()) {
-            formDataObject[key] = value;
-        }
-        return formDataObject;
-    }
+
+
+    //preview d'image
+    // const imgInput = imageForm.querySelector('input[type="file"]');
+    // const previewImage = document.getElementById('previewImage');
+
+    // imgInput.addEventListener('change', function () {
+    //     const file = this.files[0]; // Récupère le fichier sélectionné
+
+    //     if (file) {
+    //         const reader = new FileReader();
+
+    //         reader.onload = function (e) {
+    //             // Met à jour l'attribut src de l'élément img avec l'URL de l'image chargée
+    //             previewImage.src = e.target.result;
+    //             previewImage.style.display = 'block'; // Affiche l'image
+    //         };
+
+    //         reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
+    //     } else {
+    //         // Si aucun fichier n'est sélectionné, masque l'image
+    //         previewImage.src = '#';
+    //         previewImage.style.display = 'none';
+    //     }
+    // });
 }
