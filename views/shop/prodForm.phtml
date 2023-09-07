@@ -10,11 +10,12 @@
     <?php endif; ?>
 
     <form id="productForm" action="<?= $action ?>" method="post" enctype="multipart/form-data">
-        <div>
-            <label for="name">Nom</label>
-            <input type="text" name="name" id="name" required value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
+        <div id="nameInput">
+            <label for="name">Nom *</label>
+            <input type="text" name="name" id="name" placeholder="youpi" value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
         </div>
-        <div>
+
+        <div id="categoryInput">
             <label for="category">Catégorie</label>
             <select name="category" id="category">
                 <?php foreach ($categories as $category) : ?>
@@ -24,21 +25,26 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div>
+
+        <div id="descriptInput">
             <label for="descript">Description</label>
             <textarea name="descript" id="descript" cols="30" rows="10"><?= isset($product["descript"]) ? htmlspecialchars($product["descript"]) : '' ?></textarea>
         </div>
-        <div>
+
+        <div id="ingredientsInput">
             <label for="ingredients">Ingrédients</label>
-            <textarea name="ingredients" id="ingredients" cols="30" rows="10"><?= isset($product["ingredients"]) ? htmlspecialchars($product["ingredients"]) : '' ?></textarea>
+            <textarea name="ingredients" id="ingredients" cols="30" rows="10">
+                <?= isset($product["ingredients"]) ? htmlspecialchars($product["ingredients"]) : '' ?>
+            </textarea>
         </div>
-        <div>
-            <label for="price">Prix</label>
-            <input type="number" min="1" step="any" name="price" id="price" required value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
+
+        <div id="priceInput">
+            <label for="price">Prix *</label>
+            <input type="number" min="1" step="any" name="price" id="price" value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
         </div>
     </form>
 
-    <div class="imgForm">
+    <div id="imgInput" class="imgForm">
         <?php include('imgForm.phtml'); ?>
     </div>
 

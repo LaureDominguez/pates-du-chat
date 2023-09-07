@@ -79,7 +79,7 @@ class AdminController{
         }
 
         $imgErrors = [];
-        $success = [];
+        $success = "";
 
         //la destination de l'image à uploader
         $uploadDir = "./public/img/produits/";
@@ -130,7 +130,8 @@ class AdminController{
 
     public function verifProdForm()
     { // vérifie et créer le nouveau produit
-        $errors = $imgErrors = $success = [];
+        $errors = $imgErrors = [];
+        $success = "";
         $img = null;
 
         var_dump("raté");
@@ -166,10 +167,11 @@ class AdminController{
 
                 $modelProduct = new Products();
                 $modelProduct->creatNew($addNew);
-                $success[] = "Le nouveau produit a bien été créé !";
+                $success = "Le nouveau produit a bien été créé !";
                 $_SESSION['visitor']['flash_message'] = [
                     'success' => $success
                 ];
+                header('Location: index.php?route=admin');
             }
         }
 
@@ -192,9 +194,9 @@ class AdminController{
 
     public function verifUpdateProdForm($id)
     { // vérifie et met à jour le produit 
-        $errors = $imgErrors = [];
-        $success = [];
-        $img = null;
+        $errors = [];
+        $success = "";
+        // $img = null;
         $id = $_GET['id'];
 
         // var_dump("début");
@@ -241,7 +243,11 @@ class AdminController{
 
                 $newData['id'] = $id;
                 $modelProduct->updateProduct($newData);
-                $success[] = "Le produit a bien été modifié !";
+                $success = "Le produit a bien été modifié !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+                header('Location: index.php?route=admin');
             }
         }
         $template = "views/shop/prodForm.phtml";
@@ -261,7 +267,7 @@ class AdminController{
     public function verifCatForm()
     { // vérifie et créer la catégorie
         $errors = [];
-        $success = [];
+        $success = "";
         if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
         ) {
             if (empty($_POST['name']))
@@ -277,7 +283,11 @@ class AdminController{
 
                 $modelCategory = new Categories();
                 $modelCategory->creatNewCat($addNew);
-                $success[] = "La nouvelle catégorie a bien été créée !";
+                $success = "La nouvelle catégorie a bien été créée !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+                header('Location: index.php?route=admin');
             }
         }
 
@@ -298,7 +308,7 @@ class AdminController{
     public function verifUpdateCatForm($id)
     { // vérifie et met à jour la catégorie 
         $errors = [];
-        $success = [];
+        $success = "";
         $id = $_GET['id'];
         if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
         ) {
@@ -327,7 +337,11 @@ class AdminController{
                 ];
 
                 $modelCategory->updateCategory($newData);
-                $success[] = "La catégorie a bien été modifiée !";
+                $success = "La catégorie a bien été modifiée !";
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+                header('Location: index.php?route=admin');
             }
         }
         $template = "dashboard.phtml";

@@ -35,7 +35,8 @@ class UsersController{
     public function newUser()
     { //création d'un nouveau compte user
         //check si email deja utilisé
-        $errors = $success = [];
+        $errors = [];
+        $success = "";
         $model = new Users();
         $isUsed = $model->checkEmail(trim($_POST['email']));
 
@@ -77,7 +78,8 @@ class UsersController{
 
     public function loginUser()
     { //connexion à un compte
-        $errors = $success = [];
+        $errors = [];
+        $success = "";
         $email = trim($_POST['email']);
         $model = new Users();
 
@@ -234,9 +236,11 @@ class UsersController{
     }
 
     ////////////////////////// Disable //////////////////////////
-    public function disable()
+    public function disable($id)
     {
         $newData = [
+            //'email' => 'disabled-account' . $id . '@disabled.com',
+            //'name' => '', 
             'disabled' => 1
         ];
         $model = new Users();

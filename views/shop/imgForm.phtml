@@ -7,9 +7,8 @@
             <input type="hidden" name="productId" id="productId" value=<?= $product['id']; ?>>
         <?php endif; ?>
 
-        <input type="file" class="file" name="img" id="img">
-
         <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
+        <input type="file" class="file" name="img" id="img">
 
         <figure>
             <?php if (!empty($product["img"])) : ?>
@@ -24,10 +23,12 @@
         </figure>
     </div>
 
-    <div>
-        <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
-        <button class="btn">supprimer</button>
-    </div>
+    <?php if (isset($product['id'])) : ?>
+        <div>
+            <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
+            <button class="btn">supprimer</button>
+        </div>
+    <?php endif ?>
 
     <div id="imgMsg"></div>
 </form>

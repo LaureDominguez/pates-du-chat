@@ -1,6 +1,13 @@
 // ********************* upload d'images
 export function uploadImages() {
 
+    // Creation de produit -> img -> php + preview d'img + pas de fetch + msg flash
+    //-> revoir formulaire -> test js -> envoi php -> redirect
+
+    // done ! update produit -> php -> rediriger vers accueil + msg flash
+
+    // delete img -> fetch
+
     /////////// images form ///////////////////
     
     //  Formulaire de produit
@@ -8,7 +15,6 @@ export function uploadImages() {
 
     if (productForm) {
         productForm.addEventListener("submit", function (e) {
-            console.log("pouet");
             e.preventDefault();
 
             const formData = new FormData(productForm);
@@ -19,7 +25,34 @@ export function uploadImages() {
             }
             console.log(formDataObject);
 
+            // Test
+
+            const nameInput = document.getElementById("nameInput");
+            const prodtuctName = document.getElementById("name");
+            const priceInput = document.getElementById("priceInput");
+            const productPrice = document.getElementById("price");
             
+            let errorFound = false;
+
+            if (formDataObject.name.trim() === "") {
+                prodtuctName.placeholder = "Veuillez donner un nom au produit";
+                nameInput.style.color = "red";
+                errorFound = true;
+            } else {
+                nameInput.style.color = "black";
+            }
+
+            if (formDataObject.price.trim() === "") {
+                productPrice.placeholder = "Veuillez donner un prix au produit";
+                priceInput.style.color = "red";
+                errorFound = true;
+            } else {
+                priceInput.style.color = "black";
+            }
+
+            if (errorFound === false) {
+                productForm.submit();
+            }
         })
     }
 
@@ -30,7 +63,6 @@ export function uploadImages() {
     if (imageForm) {
         // upload d'image
         imageForm.addEventListener("submit", function (e) {
-            console.log("prout");
             e.preventDefault();
 
             const formData = new FormData(imageForm);
@@ -45,6 +77,10 @@ export function uploadImages() {
                 imgMsg.innerHTML = "Selectionnez une image à envoyer";
                 return;
             } 
+
+            // if (formDataObject.productId === "") {
+                
+            // }
 
             const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
@@ -68,7 +104,6 @@ export function uploadImages() {
                         imgMsg.innerHTML = "L'image a été téléchargée avec succès.";
                          // Mise à jour de la balise <img> avec le chemin de la nouvelle image
                         const productImage = document.getElementById('productImage');
-                        console.log(data);
                         productImage.src = 'public/img/produits/' + formDataObject.img.name;
                     } else {
                         imgMsg.innerHTML = "Erreur lors du téléchargement de l'image.";
@@ -83,26 +118,26 @@ export function uploadImages() {
 
 
     //preview d'image
-    const imgInput = imageForm.querySelector('input[type="file"]');
-    const previewImage = document.getElementById('previewImage');
+    // const imgInput = imageForm.querySelector('input[type="file"]');
+    // const previewImage = document.getElementById('previewImage');
 
-    imgInput.addEventListener('change', function () {
-        const file = this.files[0]; // Récupère le fichier sélectionné
+    // imgInput.addEventListener('change', function () {
+    //     const file = this.files[0]; // Récupère le fichier sélectionné
 
-        if (file) {
-            const reader = new FileReader();
+    //     if (file) {
+    //         const reader = new FileReader();
 
-            reader.onload = function (e) {
-                // Met à jour l'attribut src de l'élément img avec l'URL de l'image chargée
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block'; // Affiche l'image
-            };
+    //         reader.onload = function (e) {
+    //             // Met à jour l'attribut src de l'élément img avec l'URL de l'image chargée
+    //             previewImage.src = e.target.result;
+    //             previewImage.style.display = 'block'; // Affiche l'image
+    //         };
 
-            reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
-        } else {
-            // Si aucun fichier n'est sélectionné, masque l'image
-            previewImage.src = '#';
-            previewImage.style.display = 'none';
-        }
-    });
+    //         reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
+    //     } else {
+    //         // Si aucun fichier n'est sélectionné, masque l'image
+    //         previewImage.src = '#';
+    //         previewImage.style.display = 'none';
+    //     }
+    // });
 }

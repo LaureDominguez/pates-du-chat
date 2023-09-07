@@ -23,7 +23,8 @@ class ContactController{
 
     public function submitMessage()
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site
-        $errors = $success = $getMessage = [];
+        $errors = $getMessage = [];
+        $success = "";
 
         if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['message'])) {
             if (empty($_POST['email'])) {
