@@ -1,13 +1,8 @@
 <h3>Ajouter une image</h3>
-<form id="imgForm" method="post" enctype="multipart/form-data">
+<form id="imgForm" action="index.php?route=submitImgForm" method="post" enctype="multipart/form-data">
     <div>
         <label for="img">image</label>
 
-        <?php if (isset($product['id'])) : ?>
-            <input type="hidden" name="productId" id="productId" value=<?= $product['id']; ?>>
-        <?php endif; ?>
-
-        <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
         <input type="file" class="file" name="img" id="img">
 
         <figure>
@@ -21,14 +16,12 @@
                 <figcaption>Aucune image</figcaption>
             <?php endif; ?>
         </figure>
+        <div id="imgMsg"></div>
     </div>
 
-    <?php if (isset($product['id'])) : ?>
-        <div id="imgBtn">
-            <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
-            <button class="btn">supprimer</button>
-        </div>
-    <?php endif ?>
+    <div id="imgBtn">
+        <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
+        <button class="btn">supprimer</button>
+    </div>
 
-    <div id="imgMsg"></div>
 </form>

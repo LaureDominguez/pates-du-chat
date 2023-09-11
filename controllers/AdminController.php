@@ -66,19 +66,7 @@ class AdminController{
     }
 
     //Fonction pour gérer l'upload d'image
-    public function imageForm($id = null){
-        // Si il y a un product id, c'est que c'est une update d'image, sinon c'est la création d'un nouveau produit
-
-        var_dump("chiant");
-        var_dump($_FILES);
-        die;
-
-        // if ($id !== null) {
-        //     $modelProduct = new Products();
-        //     $currentProductData = $modelProduct->getOneProduct($id);
-        //     $currentImg = $currentProductData['image'];
-        // }
-
+    public function imageForm(){
         $imgErrors = [];
         $success = "";
 
@@ -86,7 +74,6 @@ class AdminController{
         $uploadDir = "./public/img/produits/";
         $imgName = strtolower($_FILES['img']['name']);
         $imagePath = $uploadDir . basename($imgName);
-        // $imagePath = $uploadDir . $imgName;
 
         //les données de l'image
         $imgFile = $_FILES['img']['tmp_name'];
@@ -102,13 +89,13 @@ class AdminController{
         if (count($imgErrors) == 0) {
 
             // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
-            if (isset($currentImg)) {
-                //si oui, on supprime l'ancienne image
-                $oldImgPath = $uploadDir . $currentImg;
-                if (file_exists($oldImgPath)) {
-                    unlink($oldImgPath);
-                }
-            }
+            // if (isset($currentImg)) {
+            //     //si oui, on supprime l'ancienne image
+            //     $oldImgPath = $uploadDir . $currentImg;
+            //     if (file_exists($oldImgPath)) {
+            //         unlink($oldImgPath);
+            //     }
+            // }
 
             //on déplace l'image dans le dossier
             move_uploaded_file($imgFile, $imagePath);
@@ -135,17 +122,10 @@ class AdminController{
         $success = "";
         $img = null;
 
-
-
-        // vérifi si il y a une image à uploader
-        if ($_POST['imgLoaded'] === "1") {
-            // var_dump("ici");
-            // die;
+        // vérifie si il y a une image à uploader
+        if ($_FILES) {
             $img = $this->imageForm();
         }
-        var_dump($_POST);
-        var_dump("raté");
-        die;
 
         if (array_key_exists('name', $_POST)) {
             
@@ -157,9 +137,6 @@ class AdminController{
             //     $errors[] = "Veuillez renseigner les ingrédients";
             if (empty($_POST['price']))
                 $errors[] = "Veuillez définir un prix";
-
-            // var_dump($errors);
-            // die;
 
             if (count($errors) == 0){
                 //on créer le produit avec l'id de l'image si elle existe
@@ -181,9 +158,6 @@ class AdminController{
                 header('Location: index.php?route=admin');
             }
         }
-        var_dump("raté");
-        die;
-
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }

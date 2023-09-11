@@ -109,7 +109,7 @@ if (array_key_exists('route', $_GET)):
         case 'desactivateUser':
             $controller = new Controllers\UsersController();
             $controller->isConnected();
-            $controller->disable();
+            $controller->disable($id);
             break;
 
 /////////////////////// Admin dashboard ///////////////////////
@@ -125,6 +125,12 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->verifProdForm();
+            break;
+
+        case 'submitImgForm':
+            $controller = new Controllers\AdminController();
+            $controller->isAdmin();
+            $controller->imageForm();
             break;
 
         case 'displayUpdateProdForm':

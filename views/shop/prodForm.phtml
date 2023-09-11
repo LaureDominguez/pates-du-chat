@@ -43,17 +43,24 @@
             <input type="number" min="1" step="any" name="price" id="price" value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
         </div>
 
+
         <?php if (!isset($product['id'])) : ?>
-            <input type="hidden" id="imgLoaded" name="imgLoaded" value="0">
-        <?php endif; ?>
+            <div id="imgInput" class="imgForm">
+                <div id="imgMsg"></div>
+                <label for="img">Nouvelle image</label>
+                <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
+                <input type="file" class="file" name="img" id="newImg">
+            </div>
     </form>
+        <?php else : ?>
+            </form>
+            <div id="imgInput" class="imgForm">
+                <?php include('imgForm.phtml'); ?>
+            </div>
+        <?php endif; ?>
 
-    <div id="imgInput" class="imgForm">
-        <?php include('imgForm.phtml'); ?>
-    </div>
-
-    <div class="buttons">
-        <button type="submit" class="btn" value="submit" form="productForm">Envoyer</button>
-        <a href="index.php?route=admin" class="btn">Annuler</a>
-    </div>
+<div class="buttons">
+    <button type="submit" class="btn" value="submit" form="productForm">Envoyer</button>
+    <a href="index.php?route=admin" class="btn">Annuler</a>
+</div>
 </section>
