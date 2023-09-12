@@ -105,6 +105,9 @@ class AdminController{
 
             return $img;
         }
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $imgErrors
+        ];
     }
 
     public function verifProdForm()
@@ -151,6 +154,9 @@ class AdminController{
             ];
             header('Location: index.php?route=admin');
         }
+        $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
+            ];
         
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
@@ -175,50 +181,51 @@ class AdminController{
         $success = "";
         $id = $_GET['id'];
 
+        if (empty($_POST['name']))
+            $errors[] = "Veuillez donner un nom au produit";
+        if (empty($_POST['category']))
+        $errors[] = "Veuillez selectionner une catégorie";
+        if (empty($_POST['descript']))
+        $errors[] = "Veuillez entrer une description";
+        if (empty($_POST['price']))
+            $errors[] = "Veuillez définir un prix";
 
-        if (array_key_exists('name', $_POST)) {
-            if (empty($_POST['name']))
-                $errors[] = "Veuillez donner un nom au produit";
-            if (empty($_POST['category']))
-            $errors[] = "Veuillez selectionner une catégorie";
-            if (empty($_POST['descript']))
-            $errors[] = "Veuillez entrer une description";
-            if (empty($_POST['price']))
-                $errors[] = "Veuillez définir un prix";
+        if (count($errors) == 0) {
+            // Récupère les données actuelles du produit
+            $modelProduct = new Products();
+            $currentProductData = $modelProduct->getOneProduct($id);
 
-            if (count($errors) == 0) {
-                // Récupère les données actuelles du produit
-                $modelProduct = new Products();
-                $currentProductData = $modelProduct->getOneProduct($id);
-
-                // Compare les données
-                if ($_POST['name'] !== $currentProductData['name']) {
-                    $newData['name'] = trim($_POST['name']);
-                }
-                if ($_POST['category'] !== $currentProductData['cat_id']) {
-                    $newData['cat_id'] = trim($_POST['category']);
-                }
-                if ($_POST['descript'] !== $currentProductData['descript']) {
-                    $newData['descript'] = trim($_POST['descript']);
-                }
-                if ($_POST['ingredients'] !== $currentProductData['ingredients']) {
-                    $newData['ingredients'] = trim($_POST['ingredients']);
-                }
-                if ($_POST['price'] !== $currentProductData['price']) {
-                    $newData['price'] = trim($_POST['price']);
-                }
-
-                $newData['img'] = $currentProductData['img'];
-
-                $newData['id'] = $id;
-                $modelProduct->updateProduct($newData);
-                $success = "Le produit a bien été modifié !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-                header('Location: index.php?route=admin');
+            // Compare les données
+            if ($_POST['name'] !== $currentProductData['name']) {
+                $newData['name'] = trim($_POST['name']);
             }
+            if ($_POST['category'] !== $currentProductData['cat_id']) {
+                $newData['cat_id'] = trim($_POST['category']);
+            }
+            if ($_POST['descript'] !== $currentProductData['descript']) {
+                $newData['descript'] = trim($_POST['descript']);
+            }
+            if ($_POST['ingredients'] !== $currentProductData['ingredients']) {
+                $newData['ingredients'] = trim($_POST['ingredients']);
+            }
+            if ($_POST['price'] !== $currentProductData['price']) {
+                $newData['price'] = trim($_POST['price']);
+            }
+
+            $newData['img'] = $currentProductData['img'];
+
+            $newData['id'] = $id;
+            $modelProduct->updateProduct($newData);
+            $success = "Le produit a bien été modifié !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+            header('Location: index.php?route=admin');
         }
+        $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
+            ];
+
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -257,6 +264,9 @@ class AdminController{
             ];
             header('Location: index.php?route=admin');
         }
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $errors
+        ];
 
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
@@ -277,40 +287,42 @@ class AdminController{
         $errors = [];
         $success = "";
         $id = $_GET['id'];
-        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
-        ) {
-            if (empty($_POST['name']))
-            $errors[] = "Veuillez renseigner le nom de la catgéorie";
-            if (empty($_POST['descript']))
-            $errors[] = "Veuillez entrer une description";
 
-            if (count($errors) == 0) {
-                // Récupère les données actuelles
-                $modelCategory = new Categories();
-                $currentCatData = $modelCategory->getOneCategory($id);
+        if (empty($_POST['name']))
+        $errors[] = "Veuillez renseigner le nom de la catgéorie";
+        if (empty($_POST['descript']))
+        $errors[] = "Veuillez entrer une description";
 
-                // Compare les données
-                $newData = ['id' => $id]; 
-                if ($_POST['name'] !== $currentCatData['name']) {
-                    $newData['name'] = trim($_POST['name']);
-                }
-                if ($_POST['descript'] !== $currentCatData['descript']) {
-                    $newData['descript'] = trim($_POST['descript']);
-                }
-                $newData = [
-                    'id' => $id,
-                    'name' => trim($_POST['name']),
-                    'descript' => trim($_POST['descript'])
-                ];
+        if (count($errors) == 0) {
+            // Récupère les données actuelles
+            $modelCategory = new Categories();
+            $currentCatData = $modelCategory->getOneCategory($id);
 
-                $modelCategory->updateCategory($newData);
-                $success = "La catégorie a bien été modifiée !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-                header('Location: index.php?route=admin');
+            // Compare les données
+            $newData = ['id' => $id]; 
+            if ($_POST['name'] !== $currentCatData['name']) {
+                $newData['name'] = trim($_POST['name']);
             }
+            if ($_POST['descript'] !== $currentCatData['descript']) {
+                $newData['descript'] = trim($_POST['descript']);
+            }
+            $newData = [
+                'id' => $id,
+                'name' => trim($_POST['name']),
+                'descript' => trim($_POST['descript'])
+            ];
+
+            $modelCategory->updateCategory($newData);
+            $success = "La catégorie a bien été modifiée !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+            header('Location: index.php?route=admin');
         }
+        $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
+            ];
+
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }

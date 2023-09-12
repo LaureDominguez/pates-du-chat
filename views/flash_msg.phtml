@@ -4,8 +4,10 @@
     </div>
 <?php endif; ?>
 
-<?php if (isset($errors)) : ?>
+<?php if (isset($_SESSION['visitor']['flash_message']['error'])) : ?>
     <div class="error">
-        <?= htmlspecialchars($errors); ?>
+        <?php foreach ($_SESSION['visitor']['flash_message']['error'] as $error): ?>
+            <?= $error; ?>
+        <?php endforeach; ?>
     </div>
 <?php endif; ?>
