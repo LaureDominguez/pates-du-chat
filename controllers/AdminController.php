@@ -88,15 +88,6 @@ class AdminController{
         // si l'image est conforme :
         if (count($imgErrors) == 0) {
 
-            // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
-            // if (isset($currentImg)) {
-            //     //si oui, on supprime l'ancienne image
-            //     $oldImgPath = $uploadDir . $currentImg;
-            //     if (file_exists($oldImgPath)) {
-            //         unlink($oldImgPath);
-            //     }
-            // }
-
             //on déplace l'image dans le dossier
             move_uploaded_file($imgFile, $imagePath);
             $addNew = [
@@ -118,7 +109,7 @@ class AdminController{
 
     public function verifProdForm()
     { // vérifie et créer le nouveau produit
-        $errors = $imgErrors = [];
+        $errors = [];
         $success = "";
         $img = null;
 
@@ -127,37 +118,40 @@ class AdminController{
             $img = $this->imageForm();
         }
 
-        if (array_key_exists('name', $_POST)) {
-            
-            if (empty($_POST['name']))
-                $errors[] = "Veuillez donner un nom au produit";
-            if (empty($_POST['descript']))
-                $errors[] = "Veuillez entrer une description";
-            // if (empty($_POST['ingredients']))
-            //     $errors[] = "Veuillez renseigner les ingrédients";
-            if (empty($_POST['price']))
-                $errors[] = "Veuillez définir un prix";
-
-            if (count($errors) == 0){
-                //on créer le produit avec l'id de l'image si elle existe
-                $addNew = [
-                    trim($_POST['name']),
-                    trim($_POST['category']),
-                    trim($_POST['descript']),
-                    trim($_POST['ingredients']),
-                    trim($_POST['price']),
-                    $img
-                ];
-
-                $modelProduct = new Products();
-                $modelProduct->creatNew($addNew);
-                $success = "Le nouveau produit a bien été créé !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-                header('Location: index.php?route=admin');
-            }
+        if (empty($_POST['name']))
+            $errors[] = "Veuillez donner un nom au produit";
+        if (empty($_POST['category'])) {
+            $category = 1;
+        } else {
+            $category = trim($_POST['category']);
         }
+        if (empty($_POST['descript']))
+            $errors[] = "Veuillez entrer une description";
+        // if (empty($_POST['ingredients']))
+        //     $errors[] = "Veuillez renseigner les ingrédients";
+        if (empty($_POST['price']))
+            $errors[] = "Veuillez définir un prix";
+
+        if (count($errors) == 0){
+            //on créer le produit avec l'id de l'image si elle existe
+            $addNew = [
+                trim($_POST['name']),
+                $category,
+                trim($_POST['descript']),
+                trim($_POST['ingredients']),
+                trim($_POST['price']),
+                $img
+            ];
+
+            $modelProduct = new Products();
+            $modelProduct->creatNew($addNew);
+            $success = "Le nouveau produit a bien été créé !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+            header('Location: index.php?route=admin');
+        }
+        
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -179,11 +173,8 @@ class AdminController{
     { // vérifie et met à jour le produit 
         $errors = [];
         $success = "";
-        // $img = null;
         $id = $_GET['id'];
 
-        // var_dump("début");
-        // die;
 
         if (array_key_exists('name', $_POST)) {
             if (empty($_POST['name']))
@@ -217,12 +208,7 @@ class AdminController{
                     $newData['price'] = trim($_POST['price']);
                 }
 
-                //si nouvelle image, on l'upload et l'enregistre à la db
-                // if (!empty($_FILES['img'])) {
-                //     $newData['img'] = $this->imageForm($id);
-                // } else {
-                    $newData['img'] = $currentProductData['img'];
-                // }
+                $newData['img'] = $currentProductData['img'];
 
                 $newData['id'] = $id;
                 $modelProduct->updateProduct($newData);
@@ -251,30 +237,28 @@ class AdminController{
     { // vérifie et créer la catégorie
         $errors = [];
         $success = "";
-        if (array_key_exists('name', $_POST) && array_key_exists('descript', $_POST)
-        ) {
-            if (empty($_POST['name']))
-            $errors[] = "Veuillez renseigner le nom de la catgéorie";
-            if (empty($_POST['descript']))
-            $errors[] = "Veuillez entrer une description";
 
-            if (count($errors) == 0) {
-                $addNew = [
-                    trim($_POST['name']),
-                    trim($_POST['descript'])
-                ];
+        if (empty($_POST['name']))
+        $errors[] = "Veuillez renseigner le nom de la catgéorie";
+        if (empty($_POST['descript']))
+        $errors[] = "Veuillez entrer une description";
 
-                $modelCategory = new Categories();
-                $modelCategory->creatNewCat($addNew);
-                $success = "La nouvelle catégorie a bien été créée !";
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
-                header('Location: index.php?route=admin');
-            }
+        if (count($errors) == 0) {
+            $addNew = [
+                trim($_POST['name']),
+                trim($_POST['descript'])
+            ];
+
+            $modelCategory = new Categories();
+            $modelCategory->creatNewCat($addNew);
+            $success = "La nouvelle catégorie a bien été créée !";
+            $_SESSION['visitor']['flash_message'] = [
+                'success' => $success
+            ];
+            header('Location: index.php?route=admin');
         }
 
-        $template = "dashboard.phtml";
+        $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
 
@@ -327,7 +311,7 @@ class AdminController{
                 header('Location: index.php?route=admin');
             }
         }
-        $template = "dashboard.phtml";
+        $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
 

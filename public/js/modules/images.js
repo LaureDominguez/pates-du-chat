@@ -20,39 +20,33 @@ export function uploadImages() {
         // preview d'image pour création de produit
         const imgInput = productForm.querySelector('input[type="file"]');
         const previewImage = document.getElementById('previewImage');
-        if (previewImage) {
+        
+        if (imgInput && previewImage) {
             imgInput.addEventListener('change', function () {
                 const file = this.files[0]; // Récupère fichier sélectionné
-                let errorFound = false;
                 
                 // Réinitialise l'image et message d'erreur
                 previewImage.src = '#';
                 imgMsg.innerHTML = "";
 
-                if (!file) {
-                    // Si aucun fichier n'est sélectionné, masque l'image
-                    previewImage.style.display = 'none';
-                    return;
-                }
+                if (file) {
+                    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+                    const maxSize = 10000000;
 
-                const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-                const maxSize = 10000000;
+                    if (!allowedTypes.includes(file.type)) {
+                        imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
+                    } else if (file.size > maxSize) {
+                        imgMsg.innerHTML = "La taille de l'image doit être inférieure à 10 Mo.";
+                    } else {
+                        const reader = new FileReader();
 
-                if (!allowedTypes.includes(file.type)) {
-                    imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
-                    errorFound = true;
-                } else if (file.size > maxSize) {
-                    imgMsg.innerHTML = "La taille de l'image doit être inférieure à 10 Mo.";
-                    errorFound = true;
-                } else {
-                    const reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        // Met à jour la balise img avec l'image chargée
-                        previewImage.src = e.target.result;
-                        previewImage.style.display = 'block'; // Affiche l'image
-                    };
-                    reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
+                        reader.onload = function (e) {
+                            // Met à jour la balise img avec l'image chargée
+                            previewImage.src = e.target.result;
+                            previewImage.style.display = 'block'; // Affiche l'image
+                        };
+                        reader.readAsDataURL(file); // Charge le fichier en tant qu'URL Data
+                    }
                 }
             });
         }
@@ -100,18 +94,33 @@ export function uploadImages() {
             }
 
             
-            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
 
-            if (!allowedTypes.includes(formDataObject.img.type)) {
-                imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
-                errorFound = true;
-            } else if (formDataObject.img.size > 10000000) {
-                imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
-                errorFound = true;
-            } else {
-                imgMsg.innerHTML = "";
-            }
+            // if (imgInput) {
+            //     imgInput.addEventListener('change', function () {
+            //         const file = this.files[0]; // Récupère fichier sélectionné
+                
+            //         // Réinitialise l'image et message d'erreur
+            //         previewImage.src = '#';
+            //         imgMsg.innerHTML = "";
 
+            //         if (file) {
+                    
+            //             const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+
+            //             console.log(imgInput);
+
+            //             if (!allowedTypes.includes(formDataObject.img.type)) {
+            //                 imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
+            //                 errorFound = true;
+            //             } else if (formDataObject.img.size > 10000000) {
+            //                 imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
+            //                 errorFound = true;
+            //             } else {
+            //                 imgMsg.innerHTML = "";
+            //             }
+            //         }
+            //     });
+            // }
 
             if (errorFound === false) {
                 productForm.submit();
@@ -130,10 +139,7 @@ export function uploadImages() {
                 let errorFound = false;
                 imgMsg.innerHTML = ""
                 
-                console.log(formDataObject);
-
                 //Tests
-                
                 const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
                 if (formDataObject.img.size === 0) {
                     imgMsg.innerHTML = "Selectionnez une image à envoyer";

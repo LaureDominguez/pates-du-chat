@@ -20,20 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
         //les données de l'image
         $imgFile = $_FILES['img']['tmp_name'];
 
-        var_dump("chier");
-        var_dump($_POST);
-        var_dump($_FILES);
-        die;
-
         if ($_POST['productId']) {
                 // un productId a été donné, donc c'est une update
                 $productId = $_POST['productId'];
                 $currentProductData = $modelProduct->getOneProduct($productId);
                 $currentImg = $currentProductData['image'];
 
-                // print_r($currentProductData);
-                // die;
-                
                 // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
                 if (isset($currentImg)) {
                         //si oui, on supprime l'ancienne image
@@ -52,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
                         //et on l'enregistre dans la db
                         $imgId = $modelGalery->creatNew($addNew);
 
-                        // print_r($imgId);
-                        // die;
 
                         //on mets à jour le produit
                         // $currentProductData['image'] = $imgId;

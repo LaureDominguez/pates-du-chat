@@ -2,22 +2,24 @@
 <form id="imgForm" action="index.php?route=submitImgForm" method="post" enctype="multipart/form-data">
     <div>
         <label for="img">image</label>
-
         <input type="file" class="file" name="img" id="img">
 
+        <input type="hidden" name="productId" value="<?= $product['id']; ?>">
+
         <figure>
-            <?php if (!empty($product["img"])) : ?>
+            <!-- < ?php if (!empty($product["img"])) : ?> -->
                 <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
                 <figcaption>
                     <?= $product['imgTitle']; ?>
                 </figcaption>
-            <?php else : ?>
+            <!-- < ?php else : ?>
                 <i class="fa-regular fa-image"></i>
                 <figcaption>Aucune image</figcaption>
-            <?php endif; ?>
+            < ?php endif; ?> -->
         </figure>
         <div id="imgMsg"></div>
     </div>
+
 
     <div id="imgBtn">
         <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>

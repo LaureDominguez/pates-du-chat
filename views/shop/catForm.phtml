@@ -1,15 +1,22 @@
 <section class="content dashboard-form">
     <?php if (isset($category['id'])) : ?>
+        <!-- Formulaire pour modifier une catégorie -->
+        <h2>Modifier une catégorie</h2>
+        <?php $action="index.php?route=updateCatForm&id=" . htmlspecialchars($category["id"]); ?>
+        <?php else : ?>
+            <!-- Formulaire pour créer une nouvelle catégorie -->
+            <h2>Créer une catégorie</h2>
+            <?php $action = "index.php?route=submitCatForm" ?>
+        <?php endif; ?>
 
-        <h2>modifier une catégorie</h2>
-        <form action="index.php?route=updateCatForm&id=<?= htmlspecialchars($category["id"]); ?>" method="post">
+        <form action="<?= $action ?>" method="post">
             <div>
                 <label for="name">nom</label>
-                <input type="text" name="name" id="name" required value="<?= htmlspecialchars($category["name"]); ?>">
+                <input type="text" name="name" id="name" required value="<?= isset($category["name"]) ? htmlspecialchars($category["name"]) : ""; ?>">
             </div>
             <div>
                 <label for="descript">decription</label>
-                <textarea name="descript" id="decript" cols="30" rows="10"><?= htmlspecialchars($category["descript"]); ?></textarea>
+                <textarea name="descript" id="decript" cols="30" rows="10"><?= isset($category["descript"]) ? htmlspecialchars($category["descript"]) : ""; ?></textarea>
             </div>
 
             <div class="buttons">
@@ -18,24 +25,4 @@
             </div>
         </form>
 
-    <?php else : ?>
-
-        <h2>créer une catégorie</h2>
-        <form action="index.php?route=submitCatForm" method="post">
-            <div>
-                <label for="name">nom</label>
-                <input type="text" name="name" id="name" required>
-            </div>
-            <div>
-                <label for="descript">decription</label>
-                <textarea name="descript" id="decript" cols="30" rows="10"></textarea>
-            </div>
-
-            <div class="buttons">
-                <button type="submit" class="btn" value="submit">envoyer</button>
-                <a href="index.php?route=admin" class="btn">annuler</a>
-            </div>
-        </form>
-
-    <?php endif; ?>
 </section>
