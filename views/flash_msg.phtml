@@ -6,7 +6,7 @@
 
 <?php if (isset($_SESSION['visitor']['flash_message']['error'])) : ?>
     <div class="error">
-        <?php foreach ($_SESSION['visitor']['flash_message']['error'] as $error): ?>
+        <?php foreach ($errors as $error) : ?>
             <?= $error; ?>
         <?php endforeach; ?>
     </div>

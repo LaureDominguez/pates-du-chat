@@ -117,7 +117,7 @@ class AdminController{
         $img = null;
 
         // vérifie si il y a une image à uploader
-        if ($_FILES) {
+        if ($_FILES && $_FILES["img"]["size"] !== 0) {
             $img = $this->imageForm();
         }
 
@@ -220,6 +220,7 @@ class AdminController{
             $_SESSION['visitor']['flash_message'] = [
                 'success' => $success
             ];
+
             header('Location: index.php?route=admin');
         }
         $_SESSION['visitor']['flash_message'] = [
@@ -262,6 +263,7 @@ class AdminController{
             $_SESSION['visitor']['flash_message'] = [
                 'success' => $success
             ];
+
             header('Location: index.php?route=admin');
         }
         $_SESSION['visitor']['flash_message'] = [
@@ -317,6 +319,7 @@ class AdminController{
             $_SESSION['visitor']['flash_message'] = [
                 'success' => $success
             ];
+
             header('Location: index.php?route=admin');
         }
         $_SESSION['visitor']['flash_message'] = [

@@ -21,24 +21,24 @@ class HomeController{
         $maxProducts = 11;
         $count = 0;
 
-        // Affiche les messages d'erreur des forumalires de connexion
-        if (isset($_SESSION['visitor']['flash_message']['error'])) {
-            $errorLog = '';
-            $errorRegist = '';
-            $errors = '';
-            $errorType = $_SESSION['visitor']['flash_message']['error'];
-            switch (true){
-                case isset($errorType['login']):
-                    $errorLog = $errorType['login'][0];
-                    break;
-                case isset($errorType['register']):
-                    $errorRegist = $errorType['register'][0];
-                    break;
-                default:
-                    $errors = $errorType;
-                    break;
-            }
-        }
+        // Affiche les messages d'erreur de connexion
+        // if (isset($_SESSION['visitor']['flash_message']['error'])) {
+        //     $errorLog = '';
+        //     $errorRegist = '';
+        //     $errors = '';
+        //     $errorType = $_SESSION['visitor']['flash_message']['error'];
+        //     switch (true){
+        //         case isset($errorType['login']):
+        //             $errorLog = $errorType['login'][0];
+        //             break;
+        //         case isset($errorType['register']):
+        //             $errorRegist = $errorType['register'][0];
+        //             break;
+        //         default:
+        //             $errors = $errorType;
+        //             break;
+        //     }
+        // }
 
         $template = "home.phtml";
         include_once'views/layout.phtml';

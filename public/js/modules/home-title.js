@@ -1,8 +1,10 @@
 // ********************* home title move to nav on scroll
 export function titleOnNav() {
     const title = document.getElementById("title-nav");
+    const template = document.getElementById("template");
 
     if (window.location.search === "?route=home") {
+        template.classList.remove("container");
         let lastScrollPosition = window.scrollY;
 
         window.addEventListener("scroll", () => {

@@ -39,15 +39,15 @@ class Categories extends Database {
 
     public function creatNewCat($params)
     {
-        $this->addOne("categories", "name, descript", "?, ?", $params);
-        header('Location: index.php?route=admin');
-        exit();
+        return $this->addOne("categories", "name, descript", "?, ?", $params);
+        // header('Location: index.php?route=admin');
+        // exit();
     }
     
     public function updateCategory($newData)
     {
-        $this->updateOne("categories", $newData, 'id', $newData['id']);
-        header('Location: index.php?route=admin');
-        exit();
+        return $this->updateOne("categories", $newData, 'id', $newData['id']);
+        // header('Location: index.php?route=admin');
+        // exit();
     }
 }

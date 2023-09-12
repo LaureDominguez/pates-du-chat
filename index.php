@@ -5,7 +5,7 @@ $ExpirationTime = 3600; // 1h
 session_start();
 
 spl_autoload_register(function ($class) {       
-    require_once lcfirst(str_replace('\\', '/', $class)) . '.php';   // require_once controllers/HomeController.php
+    require_once lcfirst(str_replace('\\', '/', $class)) . '.php';
 });
 // charge les configs du site
 require('config/config.php');

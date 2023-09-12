@@ -20,7 +20,7 @@ class Horaires extends Database {
 
     public function updateDate($newData)
     {
-        $this->updateOne('horaires', $newData, 'id', $newData['id']);
+        return $this->updateOne('horaires', $newData, 'id', $newData['id']);
     }
 
 }

@@ -39,13 +39,9 @@
             <?php unset($_SESSION['visitor']['flash_message']); ?>
         <?php endif ?>
 
-        <?php if (isset($template) && $template == "home.phtml") : ?>
-            <section>
-            <?php else : ?>
-                <section class="container">
-                <?php endif ?>
-                <?php include $template; ?>
-                </section>
+        <section id="template" class="container">
+            <?php include $template; ?>
+        </section>
     </main>
 
     <footer>

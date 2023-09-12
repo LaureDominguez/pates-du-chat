@@ -3,20 +3,6 @@
 @use '_animations';
 @use '_rotate-center';
 
-/******************* alert *******************/
-
-.success{
-    position: fixed;
-    top: 1rem;
-    left: 10%;
-    right: 10%;
-    text-align: center;
-    color: #fff;
-    background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #ADC865 50%,  rgba(255,0,0,0) 100%);
-    text-align: center;
-    padding: 0.2rem;
-}
-
 
 /******************* loggin *******************/
 
@@ -62,12 +48,6 @@
             margin-bottom: 1rem;
         }
     }
-}
-
-.error{
-    color: #fff;
-    background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
-    text-align: center;
 }
 
 .password{
@@ -138,18 +118,6 @@
 /******************* Media query *******************/
 /* PC */
 @media (min-width: 1024px) {
-    /******************* alert *******************/
-    .error{
-        color: #fff;
-        background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
-        text-align: center;
-    }
-
-    .success{
-        top: 2.2rem;
-        left: 40%;
-        right: 40%;
-    }
 
     /******************* loggin *******************/
     #modal{
