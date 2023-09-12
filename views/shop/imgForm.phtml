@@ -1,4 +1,4 @@
-<h3>Ajouter une image</h3>
+<!-- <h3>Ajouter une image</h3> -->
 <form id="imgForm" action="index.php?route=submitImgForm" method="post" enctype="multipart/form-data">
     <div>
         <label for="img">image</label>
@@ -6,17 +6,19 @@
 
         <input type="hidden" name="productId" value="<?= $product['id']; ?>">
 
-        <figure>
+        <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+
+        <!-- <figure> -->
             <!-- < ?php if (!empty($product["img"])) : ?> -->
-                <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
-                <figcaption>
-                    <?= $product['imgTitle']; ?>
-                </figcaption>
+            <!-- <img id="productImage" src="public/img/produits/< ?= $product['image']; ?>" alt="< ?= $product['imgTitle']; ?>">
+            <figcaption>
+                < ?= $product['imgTitle']; ?>
+            </figcaption> -->
             <!-- < ?php else : ?>
                 <i class="fa-regular fa-image"></i>
                 <figcaption>Aucune image</figcaption>
             < ?php endif; ?> -->
-        </figure>
+        <!-- </figure> -->
         <div id="imgMsg"></div>
     </div>
 

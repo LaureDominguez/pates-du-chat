@@ -1218,38 +1218,16 @@ form input:not(.btn, .file), form form textarea, form form select {
   height: 15rem;
 }
 .dashboard-form form img {
-  width: 50%;
-  margin: 1rem 0;
+  height: 15rem;
+  width: 15rem;
   border-radius: 10px;
   background-color: #fff;
 }
 
-.imgForm {
-  border: 1px solid red;
-}
-.imgForm figure {
-  height: 15rem;
-  width: 15rem;
-  position: relative;
-  background-color: #fff;
-}
-.imgForm figure i {
-  font-size: 5rem;
-  color: #f28f18;
-}
-.imgForm figure img, .imgForm figure i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.imgForm figure figcaption {
-  background: rgba(0, 0, 0, 0.168627451);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 0.2rem;
-  text-align: center;
+#imgForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /******************* Media query *******************/
@@ -1400,12 +1378,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .dashboard-form form textarea {
     height: 15rem;
-  }
-  .dashboard-form form img {
-    width: 50%;
-    margin: 1rem 0;
-    border-radius: 10px;
-    background-color: #fff;
   }
 }
 /******************* general *******************/
