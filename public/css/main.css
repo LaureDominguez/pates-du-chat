@@ -1214,6 +1214,9 @@ form input:not(.btn, .file), form form textarea, form form select {
   flex-direction: column;
   margin: 1rem;
 }
+.dashboard-form form div:not(.buttons) div:not(#imgBtn) {
+  flex-direction: row;
+}
 .dashboard-form form textarea {
   height: 15rem;
 }
@@ -1223,8 +1226,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 10px;
   background-color: #fff;
 }
-
-#imgForm {
+.dashboard-form form .imgInput {
   display: flex;
   justify-content: center;
   align-items: center;

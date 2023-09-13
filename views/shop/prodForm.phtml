@@ -11,12 +11,12 @@
 
     <form id="productForm" action="<?= $action ?>" method="post" enctype="multipart/form-data">
         <div id="nameInput">
-            <label for="name">Nom *</label>
+            <label for="name">Nom</label>
             <input type="text" name="name" id="name" placeholder="youpi" value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
         </div>
 
         <div id="categoryInput">
-            <label for="category">Catégorie</label>
+            <label for="category">Catégorie (optionnel)</label>
             <select name="category" id="category">
                 <?php foreach ($categories as $category) : ?>
                     <?php $categoryId = htmlspecialchars($category['id']); ?>
@@ -39,25 +39,23 @@
         </div>
 
         <div id="priceInput">
-            <label for="price">Prix *</label>
+            <label for="price">Prix</label>
             <input type="number" min="1" step="any" name="price" id="price" value="<?= isset($product["price"]) ? $product["price"] : '' ?>">
         </div>
 
 
         <?php if (!isset($product['id'])) : ?>
             <div id="imgInput" class="imgForm">
-                <div id="imgMsg"></div>
-                <label for="img">Nouvelle image</label>
+                <label for="img">Image (optionnel)</label>
                 <img id="previewImage" src="#" alt="Image Preview" style="display: none;">
                 <input type="file" class="file" name="img" id="newImg">
+                <div id="imgMsg"></div>
             </div>
     </form>
-        <?php else : ?>
-            </form>
-            <div id="imgInput" class="imgForm">
-                <?php include('imgForm.phtml'); ?>
-            </div>
-        <?php endif; ?>
+<?php else : ?>
+    </form>
+    <?php include('imgForm.phtml'); ?>
+<?php endif; ?>
 
 <div class="buttons">
     <button type="submit" class="btn" value="submit" form="productForm">Envoyer</button>

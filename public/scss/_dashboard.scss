@@ -189,6 +189,9 @@
 		display: flex;
 		flex-direction: column;
 		margin: 1rem;
+		div:not(#imgBtn){
+				flex-direction: row;
+			}
 	}
 	textarea{
 		height: 15rem;
@@ -200,13 +203,14 @@
 		border-radius: 10px;
 		background-color: #fff;
 	}
+	
+	.imgInput {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
-#imgForm {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 /******************* Media query *******************/

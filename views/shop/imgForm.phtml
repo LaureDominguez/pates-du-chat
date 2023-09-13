@@ -1,31 +1,32 @@
 <!-- <h3>Ajouter une image</h3> -->
 <form id="imgForm" action="index.php?route=submitImgForm" method="post" enctype="multipart/form-data">
-    <div>
+    <div id="imgInput" class="imgForm">
         <label for="img">image</label>
         <input type="file" class="file" name="img" id="img">
 
         <input type="hidden" name="productId" value="<?= $product['id']; ?>">
 
-        <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+        <div>
+            <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+            <div id="imgBtn">
+                <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
+                <button class="btn">supprimer</button>
+            </div>
+        </div>
 
         <!-- <figure> -->
-            <!-- < ?php if (!empty($product["img"])) : ?> -->
-            <!-- <img id="productImage" src="public/img/produits/< ?= $product['image']; ?>" alt="< ?= $product['imgTitle']; ?>">
-            <figcaption>
-                < ?= $product['imgTitle']; ?>
-            </figcaption> -->
-            <!-- < ?php else : ?>
-                <i class="fa-regular fa-image"></i>
-                <figcaption>Aucune image</figcaption>
-            < ?php endif; ?> -->
+        <!-- < ?php if (!empty($product["img"])) : ?> -->
+        <!-- <img id="productImage" src="public/img/produits/< ?= $product['image']; ?>" alt="< ?= $product['imgTitle']; ?>">
+        <figcaption>
+            < ?= $product['imgTitle']; ?>
+        </figcaption> -->
+        <!-- < ?php else : ?>
+            <i class="fa-regular fa-image"></i>
+            <figcaption>Aucune image</figcaption>
+        < ?php endif; ?> -->
         <!-- </figure> -->
         <div id="imgMsg"></div>
     </div>
 
-
-    <div id="imgBtn">
-        <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
-        <button class="btn">supprimer</button>
-    </div>
 
 </form>
