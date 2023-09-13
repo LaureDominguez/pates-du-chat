@@ -10,8 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
         $modelGalery = new Models\Gallery();
         $modelProduct = new Models\Products();
 
-        // $success = [];
-
         //la destination de l'image à uploader
         $uploadDir = "./public/img/produits/";
         $imgName = strtolower($_FILES['img']['name']);
@@ -21,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
         $imgFile = $_FILES['img']['tmp_name'];
 
         if ($_POST['productId']) {
-                // un productId a été donné, donc c'est une update
                 $productId = $_POST['productId'];
                 $currentProductData = $modelProduct->getOneProduct($productId);
                 $currentImg = $currentProductData['image'];

@@ -1,12 +1,7 @@
 // ********************* upload d'images
 export function uploadImages() {
 
-    // Creation de produit -> img -> php + preview d'img + pas de fetch + msg flash
-    //-> revoir formulaire -> test js -> envoi php -> redirect
-    // -> chiant
-    // -> DONE !
-
-    // done ! update produit -> php -> rediriger vers accueil + msg flash
+    // success message stocké dans msg flash, effacé par session_start lors de la redirection...
 
     // delete img -> fetch
 
@@ -93,35 +88,6 @@ export function uploadImages() {
                 priceInput.style.color = "black";
             }
 
-            
-
-            // if (imgInput) {
-            //     imgInput.addEventListener('change', function () {
-            //         const file = this.files[0]; // Récupère fichier sélectionné
-                
-            //         // Réinitialise l'image et message d'erreur
-            //         previewImage.src = '#';
-            //         imgMsg.innerHTML = "";
-
-            //         if (file) {
-                    
-            //             const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-
-            //             console.log(imgInput);
-
-            //             if (!allowedTypes.includes(formDataObject.img.type)) {
-            //                 imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
-            //                 errorFound = true;
-            //             } else if (formDataObject.img.size > 10000000) {
-            //                 imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
-            //                 errorFound = true;
-            //             } else {
-            //                 imgMsg.innerHTML = "";
-            //             }
-            //         }
-            //     });
-            // }
-
             if (errorFound === false) {
                 productForm.submit();
             }
@@ -179,6 +145,18 @@ export function uploadImages() {
                     });
                 }
             })
+
+            // suppression d'image fetch
+            const deleteBtn = imageForm.querySelector("#delete-btn");
+            const productImage = document.getElementById('productImage');
+            const productId = document.getElementById('productId');
+
+            deleteBtn.addEventListener("click", function (e) {
+                console.log(productImage);
+                console.log(productId);
+            })
+
+
         }
 
     function formDataToObject(formData) {

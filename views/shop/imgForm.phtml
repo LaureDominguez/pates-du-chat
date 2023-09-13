@@ -4,13 +4,13 @@
         <label for="img">image</label>
         <input type="file" class="file" name="img" id="img">
 
-        <input type="hidden" name="productId" value="<?= $product['id']; ?>">
+        <input type="hidden" id="productId" name="productId" value="<?= $product['id']; ?>">
 
         <div>
             <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
             <div id="imgBtn">
                 <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
-                <button class="btn">supprimer</button>
+                <button class="btn" id="delete-btn">supprimer</button>
             </div>
         </div>
 
