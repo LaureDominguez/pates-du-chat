@@ -10,7 +10,8 @@ class Products extends Database {
             categories.name AS category,
             categories.active AS categoryActive,
             images.img AS image,
-            images.name AS imgTitle
+            images.name AS imgTitle,
+            images.id AS imgId
             FROM `products` 
             INNER JOIN categories ON products.cat_id = categories.id
             LEFT JOIN images ON products.img = images.id";
@@ -24,7 +25,8 @@ class Products extends Database {
             categories.name AS categoryProduct,
             categories.active AS categoryActive,
             images.img AS image,
-            images.name AS imgTitle
+            images.name AS imgTitle,
+            images.id AS imgId
             FROM `products` 
             INNER JOIN categories ON products.cat_id = categories.id
             LEFT JOIN images ON products.img = images.id

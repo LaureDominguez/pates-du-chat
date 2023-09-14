@@ -15,9 +15,9 @@
         <div class="gallery">
             <!-- changer table images pour faire une gallerie, lister chaque image liée au produit ci-dessous -->
             <div class="picture">
-                <img class="productImage" id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                <img class="productImage" id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>" data-id="<?= $product['imgId']; ?>" data-name="<?= $product['image']; ?>">
                 <div class="number">1</div>
-                <button type="button" class="delete-btn" id="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                <button type=" button" class="delete-btn" id="delete-btn"><i class="fa-solid fa-trash"></i></button>
             </div>
 
             <div id="imgMsg"></div>

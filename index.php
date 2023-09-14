@@ -190,6 +190,10 @@ if (array_key_exists('route', $_GET)):
             require ('./config/horairesFetch.php');
             break;
 
+        case 'deleteFetch':
+            require('./config/deleteFetch.php');
+            break;
+
 /////////////////////// end ///////////////////////
         default:
             header('Location: index.php?route=home');

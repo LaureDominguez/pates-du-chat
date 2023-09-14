@@ -40,6 +40,7 @@ class AdminController{
             && $_GET['route'] === 'horairesFetch'
             || $_GET['route'] === 'productsFetch'
             || $_GET['route'] === 'imagesFetch'
+            || $_GET['route'] === 'deleteFetch'
         ){
             // Autoriser l'accès sans authentification
             return;

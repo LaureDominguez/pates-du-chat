@@ -148,13 +148,38 @@ export function uploadImages() {
 
             // suppression d'image fetch
             const deleteBtn = imageForm.querySelector("#delete-btn");
-            const productImage = document.getElementById('productImage');
-            const productId = document.getElementById('productId');
 
-            deleteBtn.addEventListener("click", function (e) {
-                console.log(productImage);
-                console.log(productId);
-            })
+            if (deleteBtn) {
+                deleteBtn.addEventListener("click", function (e) {
+                    const imageData = document.getElementById('productImage');
+                    const productId = document.getElementById('productId').value;
+                    const imageId = imageData.getAttribute('data-id');
+                    const imageName = imageData.getAttribute('data-name');
+
+                    
+                fetch('index.php?route=deleteFetch', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `product_id=${productId}&image_id=${imageId}`,
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            // Suppression réussie, effectuez une action appropriée (par exemple, redirigez l'utilisateur)
+                            window.location.href = 'confirmation.php';
+                        } else {
+                            // Gérez l'erreur ou affichez un message d'erreur
+                            console.error(data.error);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Une erreur s\'est produite :', error);
+                    });
+                })
+            }
+
 
 
         }

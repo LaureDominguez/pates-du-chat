@@ -28,4 +28,9 @@ class Gallery extends Database {
         // header('Location: index.php?route=admin');
         // exit();
     }
+
+    public function deleteOne($table, $id)
+    {
+        $this->deleteOne('images', $id);
+    }
 }
