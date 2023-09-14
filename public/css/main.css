@@ -1209,12 +1209,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   width: 85%;
   margin: auto;
 }
-.dashboard-form form div:not(.buttons) {
+.dashboard-form form div:not(.imgField) {
   display: flex;
   flex-direction: column;
   margin: 1rem;
 }
-.dashboard-form form div:not(.buttons) div:not(#imgBtn) {
+.dashboard-form form div:not(.imgField) div {
   flex-direction: row;
 }
 .dashboard-form form textarea {
@@ -1226,10 +1226,51 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 10px;
   background-color: #fff;
 }
-.dashboard-form form .imgInput {
+
+/******************* gallery *******************/
+.imgField p {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 1rem;
+}
+
+.gallery {
+  display: block;
+}
+.gallery .picture {
+  position: relative;
+}
+.gallery .picture .number, .gallery .picture .delete-btn {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(255, 255, 255, 0.2823529412);
+  border-radius: 100%;
+  font-size: 1.2rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem;
+  margin: 0.5rem;
+  border-color: transparent;
+}
+.gallery .picture .number {
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-weight: bold;
+}
+.gallery .picture .delete-btn {
+  bottom: 0;
+  right: 0;
+  color: red;
+  transition: all 0.5s ease;
+}
+.gallery .picture .delete-btn:hover {
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
 }
 
 /******************* Media query *******************/
@@ -1372,11 +1413,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .dashboard-form form {
     width: 60%;
     margin: auto;
-  }
-  .dashboard-form form div:not(.buttons) {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
   }
   .dashboard-form form textarea {
     height: 15rem;

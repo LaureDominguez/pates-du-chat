@@ -2,31 +2,26 @@
 <form id="imgForm" action="index.php?route=submitImgForm" method="post" enctype="multipart/form-data">
     <div id="imgInput" class="imgForm">
         <label for="img">image</label>
-        <input type="file" class="file" name="img" id="img">
+        <div class="imgField">
+            <div>
+                <input type="file" class="file" name="img" id="img">
+                <button class="file-btn" type="submit" value="submit" form="imgForm">charger</button>
+            </div>
+            <p>(l'ancienne image sera remplacée par la nouvelle.)</p>
+        </div>
 
         <input type="hidden" id="productId" name="productId" value="<?= $product['id']; ?>">
 
-        <div>
-            <img id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
-            <div id="imgBtn">
-                <button type="submit" class="btn" value="submit" form="imgForm">envoyer</button>
-                <button class="btn" id="delete-btn">supprimer</button>
+        <div class="gallery">
+            <!-- changer table images pour faire une gallerie, lister chaque image liée au produit ci-dessous -->
+            <div class="picture">
+                <img class="productImage" id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                <div class="number">1</div>
+                <button type="button" class="delete-btn" id="delete-btn"><i class="fa-solid fa-trash"></i></button>
             </div>
-        </div>
 
-        <!-- <figure> -->
-        <!-- < ?php if (!empty($product["img"])) : ?> -->
-        <!-- <img id="productImage" src="public/img/produits/< ?= $product['image']; ?>" alt="< ?= $product['imgTitle']; ?>">
-        <figcaption>
-            < ?= $product['imgTitle']; ?>
-        </figcaption> -->
-        <!-- < ?php else : ?>
-            <i class="fa-regular fa-image"></i>
-            <figcaption>Aucune image</figcaption>
-        < ?php endif; ?> -->
-        <!-- </figure> -->
-        <div id="imgMsg"></div>
-    </div>
+            <div id="imgMsg"></div>
+        </div>
 
 
 </form>

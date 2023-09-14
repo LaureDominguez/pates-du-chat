@@ -185,11 +185,11 @@
 .dashboard-form form{
 	width: 85%;
 	margin: auto;
-	div:not(.buttons){
+	div:not(.imgField){
 		display: flex;
 		flex-direction: column;
 		margin: 1rem;
-		div:not(#imgBtn){
+		div{
 				flex-direction: row;
 			}
 	}
@@ -199,15 +199,57 @@
 	img{
         height: 15rem;
         width: 15rem;
-		// margin: 1rem 0;
 		border-radius: 10px;
 		background-color: #fff;
 	}
-	
-	.imgInput {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+}
+
+/******************* gallery *******************/
+
+.imgField{
+	p{
+		font-size: 0.8rem;
+		font-weight: bold;
+		font-style: italic;
+		padding: 0 1rem;
+	}
+}
+
+.gallery{
+	display: block;
+	.picture{
+		position: relative;
+		.number, .delete-btn{
+			position: absolute;
+			display: flex;
+    		justify-content: center;
+    		align-items: center;
+			background-color: #ffffff48;
+			border-radius: 100%;
+			font-size: 1.2rem;
+			width: 2rem;
+			height: 2rem;
+			padding: 0.3rem;
+			margin: 0.5rem;
+			border-color: transparent;
+		}
+		.number{
+			top: 0;
+			left: 0;
+			color: #fff;
+			font-weight: bold;
+		}
+		.delete-btn{
+			bottom: 0;
+			right: 0;
+			color: red;
+            transition: all .5s ease;
+			&:hover{
+				background-color: red;
+				color: #fff;
+				cursor: pointer;
+			}
+		}
 	}
 }
 
@@ -375,11 +417,6 @@
 	.dashboard-form form{
 		width: 60%;
 		margin: auto;
-		div:not(.buttons){
-			display: flex;
-			flex-direction: column;
-			margin: 1rem;
-		}
 		textarea{
 			height: 15rem;
 		}
