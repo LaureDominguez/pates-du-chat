@@ -15,9 +15,13 @@
         <div class="gallery">
             <!-- changer table images pour faire une gallerie, lister chaque image liée au produit ci-dessous -->
             <div class="picture">
-                <img class="productImage" id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>" data-id="<?= $product['imgId']; ?>" data-name="<?= $product['image']; ?>">
+                <?php if ($product['image']) : ?>
+                    <img class="productImage" id="productImage" src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>" data-id="<?= $product['imgId']; ?>" data-name="<?= $product['image']; ?>">
+                <?php else : ?>
+                    <img class="productImage" id="previewImage" src="public/img/site/picture.svg" alt="aucune image">
+                <?php endif; ?>
+                <button type=" button" class="delete-btn hidden" id="delete-btn"><i class="fa-solid fa-trash"></i></button>
                 <div class="number">1</div>
-                <button type=" button" class="delete-btn" id="delete-btn"><i class="fa-solid fa-trash"></i></button>
             </div>
 
             <div id="imgMsg"></div>

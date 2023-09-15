@@ -1,12 +1,9 @@
 // ********************* upload d'images
 export function uploadImages() {
 
-    // success message stocké dans msg flash, effacé par session_start lors de la redirection...
+// à faire : success message stocké dans msg flash, effacé par session_start lors de la redirection
 
-    // delete img -> fetch
 
-    /////////// images form ///////////////////
-    
     const productForm = document.getElementById("productForm");
     const imageForm = document.getElementById("imgForm");
     const imgMsg = document.getElementById("imgMsg");
@@ -45,9 +42,9 @@ export function uploadImages() {
                 }
             });
         }
-        
 
-        // envoi du product form
+
+        // envoi du formulaire product en post
         productForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -94,97 +91,96 @@ export function uploadImages() {
         })
     }
 
-    
-        // upload d'image fetch pour product updating
 
-        if (imageForm) {
-            imageForm.addEventListener("submit", function (e) {
-                e.preventDefault();
-                const formData = new FormData(imageForm);
-                const formDataObject = formDataToObject(formData);
-                let errorFound = false;
-                imgMsg.innerHTML = ""
-                
-                //Tests
-                const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-                if (formDataObject.img.size === 0) {
-                    imgMsg.innerHTML = "Selectionnez une image à envoyer";
-                    errorFound = true;
-                } else if (formDataObject.img.size > 10000000) {
-                    imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
-                    errorFound = true;
-                } else if (!allowedTypes.includes(formDataObject.img.type)) {
-                    imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
-                    errorFound = true;
-                } 
-                
-                // Si pas d'erreur, on envoi la requete fetch
-                if (!errorFound) { 
-                    fetch("index.php?route=imagesFetch", {
-                        method: "POST",
-                        body: formData,
+    // upload d'image en fetch pour product updating
+    if (imageForm) {
+        const previewImage = document.getElementById('previewImage');
+        const productImage = document.getElementById('productImage');
+        const deleteBtn = imageForm.querySelector("#delete-btn");
+        
+        imageForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(imageForm);
+            const formDataObject = formDataToObject(formData);
+            let errorFound = false;
+            imgMsg.innerHTML = ""
+
+            //Tests
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (formDataObject.img.size === 0) {
+                imgMsg.innerHTML = "Selectionnez une image à envoyer";
+                errorFound = true;
+            } else if (formDataObject.img.size > 10000000) {
+                imgMsg.innerHTML = "La taille de l'image doit être inférieur à 10 Mo.";
+                errorFound = true;
+            } else if (!allowedTypes.includes(formDataObject.img.type)) {
+                imgMsg.innerHTML = "Le format de l'image doit être de type jpeg, png ou gif.";
+                errorFound = true;
+            } 
+            
+            // Si pas d'erreur, on envoi la requete fetch
+            if (!errorFound) { 
+                fetch("index.php?route=imagesFetch", {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Erreur lors de la requête Fetch");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        imgMsg.innerHTML = "L'image a été enregistrée avec succès.";
+                        // Mise à jour de la balise <img> avec le chemin de la nouvelle image
+                        previewImage.src = 'public/img/produits/' + formDataObject.img.name;
+                        deleteBtn.classList.remove("hidden");
+                        // location.reload();
+                    } else {
+                        imgMsg.innerHTML = "Erreur lors du téléchargement de l'image.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur :", error);
+                });
+            }
+        })
+
+
+        // suppression d'image avec fetch
+        if (productImage) {
+            deleteBtn.classList.remove("hidden");
+            deleteBtn.addEventListener("click", function (e) {
+                const productId = document.getElementById('productId').value;
+                const imageId = productImage.getAttribute('data-id');
+                const imageName = productImage.getAttribute('data-name');
+
+                const verif = window.confirm("Êtes-vous sûr de vouloir supprimer l'image ?");
+
+                if (verif) {
+                    fetch('index.php?route=deleteFetch', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `product_id=${productId}&image_id=${imageId}`,
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Erreur lors de la requête Fetch");
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
+                    .then((response) => response.json())
+                    .then((data) => {
                         if (data.success) {
-                            imgMsg.innerHTML = "L'image a été enregistrée avec succès.";
-                            // Mise à jour de la balise <img> avec le chemin de la nouvelle image
-                            const productImage = document.getElementById('productImage');
-                            productImage.src = 'public/img/produits/' + formDataObject.img.name;
-                            // location.reload();
+                            location.reload();
                         } else {
-                            imgMsg.innerHTML = "Erreur lors du téléchargement de l'image.";
+                            // Gérez l'erreur ou affichez un message d'erreur
+                            console.error(data.error);
                         }
                     })
-                    .catch(error => {
-                        console.error("Erreur :", error);
+                    .catch((error) => {
+                        console.error('Une erreur s\'est produite :', error);
                     });
                 }
             })
-
-            // suppression d'image fetch
-            const deleteBtn = imageForm.querySelector("#delete-btn");
-
-            if (deleteBtn) {
-                deleteBtn.addEventListener("click", function (e) {
-                    const imageData = document.getElementById('productImage');
-                    const productId = document.getElementById('productId').value;
-                    const imageId = imageData.getAttribute('data-id');
-                    const imageName = imageData.getAttribute('data-name');
-
-                    console.log(imageId);
-                    console.log(productId);
-
-                    const verif = window.confirm("Êtes-vous sûr de vouloir supprimer l'image ?");
-
-                    if (verif) {
-                        fetch('index.php?route=deleteFetch', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: `product_id=${productId}&image_id=${imageId}`,
-                        })
-                        .then((response) => response.json())
-                        .then((data) => {
-                            if (data.success) {
-                                location.reload();
-                            } else {
-                                // Gérez l'erreur ou affichez un message d'erreur
-                                console.error(data.error);
-                            }
-                        })
-                        .catch((error) => {
-                            console.error('Une erreur s\'est produite :', error);
-                        });
-                    }
-                })
-            }
+        }
     }
     
 
