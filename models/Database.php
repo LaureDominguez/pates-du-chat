@@ -61,11 +61,13 @@ class Database {
         $query->closeCursor();
     }
 
-    protected function deleteOne(string $table, int $uniq)
+    protected function deleteOne(string $table, int $uniq): bool
     {
-        $query = $this->bdd->prepare("DELETE FROM $table WHERE id = $uniq");
-        $query->execute();
+        $query = $this->bdd->prepare("DELETE FROM $table WHERE id = :uniq");
+        $query->bindParam(':uniq', $uniq, \PDO::PARAM_INT);
+        $success = $query->execute();
         $query->closeCursor();
+        return $success;
     }
 }
 

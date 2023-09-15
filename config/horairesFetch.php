@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ];
                         $dates->updateDate($newData);
                 }
-                $response = array('status' => 'success', 'message' => 'Data updated successfully');
+                $response = array('status' => 'success', 'message' => 'Les données ont bien été modifiées');
         } else {
                 // Return an error response if the request data is not an array
-                $response = array('status' => 'error', 'message' => 'Invalid request data');
+                $response = array('status' => 'error', 'message' => 'Données invalides');
         }
 } else {
         // Return an error response if the request method is not POST
-        $response = array('status' => 'error', 'message' => 'Invalid request');
+        $response = array('status' => 'error', 'message' => 'Une erreur est survenue lors de l\'envoi de la requête');
 }
 
 // Set the response header to indicate JSON content

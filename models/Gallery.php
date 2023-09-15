@@ -29,8 +29,8 @@ class Gallery extends Database {
         // exit();
     }
 
-    public function deleteOne($table, $id)
+    public function deleteImage($id)
     {
-        $this->deleteOne('images', $id);
+        return $this->deleteOne('images', $id);
     }
 }

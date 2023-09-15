@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
 
 
                         //on mets à jour le produit
-                        // $currentProductData['image'] = $imgId;
                         $newData = [
                                 'id' => $currentProductData['id'],
                                 'name' => $currentProductData['name'],
@@ -54,11 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
                                 'img' => $imgId,
                         ];
 
-                        // print_r($currentProductData);
-                        // die;
-
-                        // $newData['id'] = $productId;
-                        // $newData['img'] = $imgId;
                         $modelProduct->updateProduct($newData);
 
                         
