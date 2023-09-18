@@ -12,8 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
 
         //la destination de l'image à uploader
         $uploadDir = "./public/img/produits/";
-        $imgName = strtolower($_FILES['img']['name']);
+        $imgName = str_replace(' ', '-', $_FILES['img']['name']);
         $imagePath = $uploadDir . basename($imgName);
+
+
 
         //les données de l'image
         $imgFile = $_FILES['img']['tmp_name'];

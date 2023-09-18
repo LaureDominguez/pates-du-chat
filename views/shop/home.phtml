@@ -3,13 +3,13 @@
 </div>
 <div>
     <article class="shop-cat">
-        <div>
+        <ul>
             <?php foreach ($products as $product) : ?>
                 <?php if ($count >= $maxProducts) {
                     break;
                 } ?>
                 <?php if ($product["active"] && $product["cat_id"] !== 7) : ?>
-                    <figure class="shop-tuile">
+                    <li class="shop-tuile">
                         <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
                             <?php if (!empty($product["img"])) : ?>
                                 <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
@@ -17,17 +17,17 @@
                                 <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
                             <?php endif; ?>
 
-                            <figcaption>
+                            <div class="detail">
                                 <h3 class="title-tuile"><?= htmlspecialchars($product["name"]); ?></h3>
                                 <h4><?= htmlspecialchars($product["price"]); ?>€ / kg</h4>
-                            </figcaption>
+                            </div>
                         </a>
-                    </figure>
+                    </li>
                     <?php $count++; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
             <a href="index.php?route=shop" class="more">Voir plus</a>
-        </div>
+        </ul>
 
     </article>
 </div>
@@ -37,13 +37,13 @@
 </div>
 <div>
     <article class="shop-cat">
-        <div>
+        <ul>
             <?php foreach ($products as $product) : ?>
                 <?php if ($count >= $maxProducts) {
                     break;
                 } ?>
                 <?php if ($product["active"] && $product["cat_id"] === 7) : ?>
-                    <figure class="shop-tuile">
+                    <li class="shop-tuile">
                         <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
                             <?php if (!empty($product["img"])) : ?>
                                 <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
@@ -51,16 +51,16 @@
                                 <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
                             <?php endif; ?>
 
-                            <figcaption>
+                            <div class="detail">
                                 <h3 class="title-tuile"><?= htmlspecialchars($product["name"]); ?></h3>
                                 <h4><?= htmlspecialchars($product["price"]); ?>€ / kg</h4>
-                            </figcaption>
+                            </div>
                         </a>
-                    </figure>
+                    </li>
                     <?php $count++; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
             <a href="index.php?route=shop" class="more">Voir plus</a>
-        </div>
+        </ul>
     </article>
 </div>

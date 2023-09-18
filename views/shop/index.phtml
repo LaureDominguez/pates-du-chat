@@ -44,10 +44,10 @@
         <?php if ($category['active'] && $hasActiveProducts) : ?>
             <article class="shop-cat">
                 <h2><?= htmlspecialchars($category["name"]); ?></h2>
-                <div>
+                <ul>
                     <?php foreach ($products as $product) : ?>
                         <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) : ?>
-                            <figure class="shop-tuile">
+                            <li class="shop-tuile">
                                 <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
                                     <?php if (!empty($product["img"])) : ?>
                                         <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
@@ -55,16 +55,15 @@
                                         <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
                                     <?php endif; ?>
 
-                                    <figcaption>
+                                    <div class="detail">
                                         <h3 class="title-tuile"><?= htmlspecialchars($product["name"]); ?></h3>
                                         <h4><?= htmlspecialchars($product["price"]); ?>€ / kg</h4>
-                                    </figcaption>
+                                    </div>
                                 </a>
-                            </figure>
+                            </li>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                </div>
-
+                </ul>
             </article>
         <?php endif; ?>
     <?php endforeach; ?>
