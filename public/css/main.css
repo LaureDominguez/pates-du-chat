@@ -169,7 +169,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -333,11 +333,12 @@ nav li {
     position: relative;
     overflow: hidden;
     z-index: 200;
+    min-width: 10rem;
+    padding: 0.5rem;
   }
   nav li:not(.dropdown-menu li) {
     border-radius: 0 0 15px 15px;
     transition: all 0.5s;
-    width: 49%;
   }
   nav li::after {
     transition: all 0.5s;
@@ -351,7 +352,7 @@ nav li {
     top: -100%;
     bottom: 100%;
   }
-  nav li:hover:not(.dropdown-menu li) {
+  nav li:hover:not(#title-nav) {
     color: #fff;
     box-shadow: 5px 5px 15px 5px rgba(83, 83, 83, 0.537254902);
   }
@@ -369,46 +370,23 @@ nav li {
     justify-content: space-around;
     z-index: 10;
   }
-  nav .title-nav {
-    width: 40%;
-    overflow: hidden;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    opacity: 0;
-    align-items: center;
-    justify-content: center;
-    z-index: 0;
+  nav .title {
+    width: 20%;
   }
-  nav .title-nav::before, nav .title-nav::after {
-    background-color: var(--vert);
-    content: "";
-    height: 1px;
-    position: relative;
-    vertical-align: middle;
-    width: 10%;
-  }
-  nav .title-nav::before {
-    right: 1rem;
-    margin-left: -10%;
-  }
-  nav .title-nav::after {
-    left: 1rem;
-    margin-right: -10%;
-  }
-  nav .title-nav a {
-    display: flex;
+  nav .title #title-nav {
     white-space: nowrap;
-    align-items: baseline;
     font-size: 1.3rem;
   }
-  nav .title-nav a::after {
+  nav .title #title-nav a::after {
     content: "";
     background-image: url("../img/site/Logo-pate.png");
     background-repeat: no-repeat;
     background-size: contain;
     height: 0.6rem;
     width: 0.9rem;
+  }
+  nav .title #title-nav:hover {
+    text-shadow: 0 0 20px #FFFFFF;
   }
   nav .account {
     width: 30%;
@@ -429,7 +407,6 @@ nav li {
     display: none;
     position: fixed;
     margin: 0.5rem;
-    padding: 0.5rem;
     border-radius: 10px;
     width: 10rem;
     height: 5rem;
@@ -438,15 +415,15 @@ nav li {
     backdrop-filter: blur(4px);
   }
   .dropdown-menu li {
-    border-radius: 15px;
-    background-size: 100%;
-    background-color: transparent;
-    background-image: none;
     transition: all 0.5s ease;
   }
+  .dropdown-menu li:first-of-type {
+    border-radius: 10px 10px 0 0;
+  }
+  .dropdown-menu li:last-of-type {
+    border-radius: 0 0 10px 10px;
+  }
   .dropdown-menu li::after {
-    background-color: rgba(255, 255, 255, 0.4156862745);
-    background-size: 100%;
     background-image: none;
   }
 }
@@ -620,7 +597,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -844,7 +821,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -1604,7 +1581,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -1896,7 +1873,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -2161,13 +2138,17 @@ main {
 /* PC */
 @media (min-width: 1024px) {
   .home {
-    padding-top: 4rem;
+    padding: 1rem;
   }
   .home:target {
     scroll-margin-top: 5rem;
   }
-  .home:not(:last-child) {
+  .home:first-child {
+    padding-top: 4rem;
     min-height: 100vh;
+  }
+  .home:nth-child(2) {
+    background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.4) 0%, rgba(252, 252, 252, 0.1) 80%);
   }
   #title-landscape {
     display: none;
@@ -2385,7 +2366,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -2610,6 +2591,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   .shop-tuile {
     height: 12rem;
     width: 12rem;
+    margin: 0.5rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -2886,7 +2868,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -3259,7 +3241,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -3780,7 +3762,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -4053,7 +4035,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -4268,7 +4250,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     border-radius: 10px;
   }
   section:not(:last-child) {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
   h2 {
     border: none;

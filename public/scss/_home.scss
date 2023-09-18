@@ -263,12 +263,16 @@ main{
 /* PC */
 @media (min-width: 1024px) {
     .home{
-        padding-top: 4rem;
+        padding: 1rem;
         &:target{
             scroll-margin-top: 5rem;
         }
-        &:not(:last-child){
+        &:first-child{
+            padding-top: 4rem;
             min-height: 100vh;
+        }
+        &:nth-child(2){
+            background: radial-gradient(circle at 48.7% 44.3%, rgba(255, 255, 255, 0.4) 0%, rgba(252, 252, 252, 0.1) 80%);
         }
     }
     #title-landscape{

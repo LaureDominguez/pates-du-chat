@@ -110,10 +110,12 @@ nav{
             position: relative;
             overflow: hidden;
             z-index: 200;
+            min-width: 10rem;
+            padding: 0.5rem;
             &:not(.dropdown-menu li){
                 border-radius: 0 0 15px 15px;
                 transition: all 0.5s;
-                width: 49%;
+                // width: 49%;
             }
             &::after{
                 transition: all 0.5s;
@@ -128,7 +130,7 @@ nav{
                 top: -100%;
                 bottom: 100%;
             }
-            &:hover:not(.dropdown-menu li){
+            &:hover:not(#title-nav){
                 color: #fff;
                 box-shadow: 5px 5px 15px 5px #53535389;
             }
@@ -149,39 +151,12 @@ nav{
             justify-content: space-around;
             z-index: 10;
         }
-        .title-nav{
-            width: 40%;
-            overflow: hidden;
-            text-align: center;
-            display: flex;
-            flex-direction: row;
-            opacity: 0;
-            align-items: center;
-            justify-content: center;
-            z-index: 0;
-            &::before,
-            &::after {
-                background-color: var(--vert);
-                content: "";
-                height: 1px;
-                position: relative;
-                vertical-align: middle;
-                width: 10%;
-            }
-            &::before {
-                right: 1rem;
-                margin-left: -10%;
-            }
-            &::after {
-                left: 1rem;
-                margin-right: -10%;
-            }
-            a{
-                display: flex;
+        .title{
+            width: 20%;
+            #title-nav{
                 white-space: nowrap;
-                align-items: baseline;
                 font-size: 1.3rem;
-                &::after{
+                a::after{
                     content: "";
                     background-image: url('../img/site/Logo-pate.png');
                     background-repeat: no-repeat;
@@ -189,9 +164,12 @@ nav{
                     height: 0.6rem;
                     width: 0.9rem;
                 }
+                &:hover{
+                    text-shadow: 0 0 20px #FFFFFF;
+                }
             }
-            
         }
+        
         .account{
             width: 30%;  
             display: flex;
@@ -213,22 +191,21 @@ nav{
         display: none;
         position: fixed;
         margin: 0.5rem;
-        padding: 0.5rem;
         border-radius: 10px;
         width: 10rem;
         height: 5rem;
         top: 1.8rem;
         background-color: #ffffff6a;
         backdrop-filter: blur(4px);
-        & li{
-            border-radius: 15px;
-            background-size: 100%;
-            background-color: transparent;
-            background-image: none;
+        li{
             transition: all 0.5s ease;
+            &:first-of-type{
+                border-radius: 10px 10px 0 0;
+            }
+            &:last-of-type{
+                border-radius: 0 0 10px 10px;
+            }
             &::after{
-                background-color: #ffffff6a;
-                background-size: 100%;
                 background-image: none;
             }
         }
