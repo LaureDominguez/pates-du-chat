@@ -6,7 +6,7 @@
 .shop-cat ul{
     display: flex;
     align-items: center;
-    overflow: scroll;
+    // overflow: scroll;
     width: max-content;
 }
 
@@ -55,20 +55,11 @@
     border-radius: 25px;
     border: 1px solid;
     padding: 1rem 1.3rem;
-    transition: all 0.5s ease;
-    background-size: 0%;
-    background-repeat: no-repeat;
-    background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
-    &:hover{
-        color: #fff;
-        background-size: 100%;
-    }
 }
 
 /******************* index *******************/
 
-.shop-filter{
+.shop-grid{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -278,7 +269,7 @@
 
     /******************* index *******************/
 
-    .shop-filter{
+    .shop-grid{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-column-gap: 0px;
@@ -300,7 +291,19 @@
         }
     }
 
-    .shop-cat div{
+    .shop-cat{
+        .more{
+            transition: all 0.5s ease;
+            background-size: 0%;
+            background-repeat: no-repeat;
+            background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
+                        -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
+            &:hover{
+                color: #fff;
+                background-size: 100%;
+            }
+        }
+    } div{
         grid-template-columns: repeat(auto-fill, 15rem);
         grid-template-rows: repeat(auto-fill, 15rem);
     }

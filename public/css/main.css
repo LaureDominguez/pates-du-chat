@@ -2413,7 +2413,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 .shop-cat ul {
   display: flex;
   align-items: center;
-  overflow: scroll;
   width: max-content;
 }
 
@@ -2457,30 +2456,22 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 25px;
   border: 1px solid;
   padding: 1rem 1.3rem;
-  transition: all 0.5s ease;
-  background-size: 0%;
-  background-repeat: no-repeat;
-  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
-}
-.more:hover {
-  color: #fff;
-  background-size: 100%;
 }
 
 /******************* index *******************/
-.shop-filter {
+.shop-grid {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.shop-filter .btn {
+.shop-grid .btn {
   padding: 0.3rem 0.5rem;
   font-size: 1rem;
 }
-.shop-filter .filterBox {
+.shop-grid .filterBox {
   text-align: center;
 }
-.shop-filter .filterBox #filter {
+.shop-grid .filterBox #filter {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2663,28 +2654,38 @@ form input:not(.btn, .file), form form textarea, form form select {
     opacity: 0.9;
   }
   /******************* index *******************/
-  .shop-filter {
+  .shop-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     position: relative;
   }
-  .shop-filter h1 {
+  .shop-grid h1 {
     grid-area: 1/2/2/5;
   }
-  .shop-filter .filterBox {
+  .shop-grid .filterBox {
     grid-area: 1/5/2/6;
     position: absolute;
   }
-  .shop-filter .filterBox #filterBtn {
+  .shop-grid .filterBox #filterBtn {
     position: fixed;
   }
-  .shop-filter .filterBox #filter {
+  .shop-grid .filterBox #filter {
     top: 9.5rem;
     position: fixed;
   }
-  .shop-cat div {
+  .shop-cat .more {
+    transition: all 0.5s ease;
+    background-size: 0%;
+    background-repeat: no-repeat;
+    background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+  }
+  .shop-cat .more:hover {
+    color: #fff;
+    background-size: 100%;
+  }
+  div {
     grid-template-columns: repeat(auto-fill, 15rem);
     grid-template-rows: repeat(auto-fill, 15rem);
   }
