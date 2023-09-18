@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
 
         // Récupérez l'ID du produit et de l'image à supprimer
-        $productID = $_POST['product_id']; // Vous devez sécuriser cette valeur avant de l'utiliser.
-        $imageID = $_POST['image_id']; // Vous devez sécuriser cette valeur avant de l'utiliser.
+        $productID = $_POST['product_id'];
+        $imageID = $_POST['image_id'];
 
-        // Supprimer l'image de la table "images" (assurez-vous que l'image n'est pas utilisée ailleurs avant de la supprimer)
+        // Supprimer l'image de la table "images"
         $galleryModel = new Models\Gallery();
         $galleryModel->deleteImage($imageID); // Supprimez l'image de la table "images"
 

@@ -12,7 +12,7 @@
     <form id="productForm" action="<?= $action ?>" method="post" enctype="multipart/form-data">
         <div id="nameInput">
             <label for="name">Nom</label>
-            <input type="text" name="name" id="name" placeholder="youpi" value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
+            <input type="text" name="name" id="name" value="<?= isset($product["name"]) ? htmlspecialchars($product["name"]) : '' ?>">
         </div>
 
         <div id="categoryInput">
@@ -52,10 +52,10 @@
                 <div id="imgMsg"></div>
             </div>
     </form>
-<?php else : ?>
+        <?php else : ?>
     </form>
-    <?php include('imgForm.phtml'); ?>
-<?php endif; ?>
+            <?php include('imgForm.phtml'); ?>
+        <?php endif; ?>
 
 <div class="buttons">
     <button type="submit" class="btn" value="submit" form="productForm">Envoyer</button>

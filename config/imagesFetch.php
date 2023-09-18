@@ -22,14 +22,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
                 $productId = $_POST['productId'];
                 $currentProductData = $modelProduct->getOneProduct($productId);
                 $currentImg = $currentProductData['image'];
+                $currentImgID = $currentProductData['imgId'];
+
+                // var_dump($currentImg);
+                // var_dump($currentImgID);
+
+                // die;
 
                 // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
                 if (isset($currentImg)) {
-                        //si oui, on supprime l'ancienne image
+                        //si oui, on supprime l'ancienne image du serveur
                         $oldImgPath = $uploadDir . $currentImg;
                         if (file_exists($oldImgPath)) {
                                 unlink($oldImgPath);
                         }
+                        //et de la table image
+                        $modelGalery->deleteImage($currentImgID);
+
                 }
 
                 if (move_uploaded_file($imgFile, $imagePath)) {

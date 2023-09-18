@@ -64,25 +64,31 @@ export function uploadImages() {
             if (formDataObject.name.trim() === "") {
                 productName.placeholder = "Veuillez donner un nom au produit";
                 nameInput.style.color = "red";
+                productName.style.border = "1px solid red"
                 errorFound = true;
             } else {
                 nameInput.style.color = "black";
+                productName.style.border = "inherit"
             }
 
             if (formDataObject.descript.trim() === "") {
                 productDescript.placeholder = "Veuillez donner une description au produit";
                 descriptInput.style.color = "red";
+                productDescript.style.border = "1px solid red"
                 errorFound = true;
             } else {
                 descriptInput.style.color = "black";
+                productDescript.style.border = "inherit"
             }
 
             if (formDataObject.price.trim() === "") {
                 productPrice.placeholder = "Veuillez donner un prix au produit";
                 priceInput.style.color = "red";
+                productPrice.style.border = "1px solid red"
                 errorFound = true;
             } else {
                 priceInput.style.color = "black";
+                productPrice.style.border = "inherit"
             }
 
             if (errorFound === false) {
@@ -104,6 +110,7 @@ export function uploadImages() {
             const formDataObject = formDataToObject(formData);
             let errorFound = false;
             imgMsg.innerHTML = ""
+
 
             //Tests
             const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -134,7 +141,11 @@ export function uploadImages() {
                     if (data.success) {
                         imgMsg.innerHTML = "L'image a été enregistrée avec succès.";
                         // Mise à jour de la balise <img> avec le chemin de la nouvelle image
-                        previewImage.src = 'public/img/produits/' + formDataObject.img.name;
+                        if (previewImage) {
+                            previewImage.src = 'public/img/produits/' + formDataObject.img.name;
+                        } else {
+                            productImage.src = 'public/img/produits/' + formDataObject.img.name;
+                        }
                         deleteBtn.classList.remove("hidden");
                         // location.reload();
                     } else {
