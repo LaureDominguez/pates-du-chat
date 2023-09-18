@@ -177,7 +177,7 @@ main{
             scroll-margin-top: 5rem;
         }
         &:not(:last-child){
-            height: 100vh;
+            min-height: 100vh;
         }
     }
 

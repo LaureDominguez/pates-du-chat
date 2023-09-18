@@ -3,21 +3,29 @@
 
 
 /******************* home *******************/
+.shop-cat ul{
+    display: flex;
+    align-items: center;
+    overflow: scroll;
+    width: max-content;
+}
+
 .shop-tuile{
     height: 9rem;
     width: 9rem;
+    margin: 0.2rem;
     overflow: hidden;
     border: solid 1px transparent;
     border-radius: 10px;
     position: relative;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+    // align-items: center;
+    // justify-content: center;
+    // align-content: center;
     img{
         object-fit: cover;
         height: 9rem;
         width: 9rem;
-        position: relative;
+        // position: relative;
     }
     .detail{
         h4, h5 {
@@ -83,9 +91,9 @@
     }
 }
 
-.shop-cat{
-    display: flex;
-    flex-direction: column;
+// .shop-cat{
+    // display: flex;
+    // flex-direction: column;
     .detail{
         margin: 1rem 1.3rem;
         display: grid;
@@ -99,7 +107,7 @@
     .btn{
         border: 1px solid;
     }
-}
+// }
 
 /******************* detail *******************/
 

@@ -103,6 +103,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -262,9 +268,6 @@ nav ul {
   width: 100%;
 }
 nav ul, nav li, nav a {
-  padding: 0;
-  margin: 0;
-  list-style: none;
   white-space: nowrap;
 }
 nav li, nav a {
@@ -551,6 +554,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -767,6 +776,12 @@ a, a:active, a:hover {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /******************* bouttons *******************/
@@ -1523,6 +1538,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -1809,6 +1830,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -2057,7 +2084,7 @@ main {
     scroll-margin-top: 5rem;
   }
   .home:not(:last-child) {
-    height: 100vh;
+    min-height: 100vh;
   }
   #title-landscape {
     display: none;
@@ -2292,6 +2319,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -2377,22 +2410,26 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 /******************* shop *******************/
 /******************* home *******************/
+.shop-cat ul {
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  width: max-content;
+}
+
 .shop-tuile {
   height: 9rem;
   width: 9rem;
+  margin: 0.2rem;
   overflow: hidden;
   border: solid 1px transparent;
   border-radius: 10px;
   position: relative;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
 }
 .shop-tuile img {
   object-fit: cover;
   height: 9rem;
   width: 9rem;
-  position: relative;
 }
 .shop-tuile .detail h4, .shop-tuile .detail h5 {
   display: none;
@@ -2454,11 +2491,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 10px;
 }
 
-.shop-cat {
-  display: flex;
-  flex-direction: column;
-}
-.shop-cat .detail {
+.detail {
   margin: 1rem 1.3rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, 9rem);
@@ -2468,7 +2501,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   align-content: center;
   justify-content: space-around;
 }
-.shop-cat .btn {
+
+.btn {
   border: 1px solid;
 }
 
@@ -2785,6 +2819,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -2943,9 +2983,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin: 2rem 0;
 }
 
-.mail {
-  height: 90vh;
-}
 .mail form {
   width: 90%;
   margin: auto;
@@ -3153,6 +3190,12 @@ a, a:active, a:hover {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /******************* bouttons *******************/
@@ -3670,6 +3713,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -3937,6 +3986,12 @@ a, a:active, a:hover {
   cursor: pointer;
 }
 
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -4144,6 +4199,12 @@ a, a:active, a:hover {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+ul, li, a {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /******************* bouttons *******************/
