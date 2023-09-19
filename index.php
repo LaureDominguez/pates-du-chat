@@ -1,7 +1,7 @@
 <?php
 
 $ExpirationTime = 3600; // 1h
-// session_set_cookie_params($ExpirationTime);
+session_set_cookie_params($ExpirationTime);
 session_start();
 
 spl_autoload_register(function ($class) {       
