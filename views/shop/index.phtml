@@ -18,8 +18,8 @@
                 ?>
                 <?php if ($hasActiveProducts) : ?>
                     <div>
-                        <input type="checkbox" class="filter" data-id="<?= htmlspecialchars($category['name']); ?>" data-name="filter" checked>
-                        <label for="filter"><?= htmlspecialchars($category['name']); ?></label>
+                        <input type="checkbox" class="filter" id="<?= htmlspecialchars($category['id']); ?>" data-name="<?= htmlspecialchars($category['name']); ?>" checked>
+                        <label for="<?= htmlspecialchars($category['id']); ?>"><?= htmlspecialchars($category['name']); ?></label>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -42,7 +42,7 @@
         ?>
 
         <?php if ($category['active'] && $hasActiveProducts) : ?>
-            <article>
+            <article class="category">
                 <h2><?= htmlspecialchars($category["name"]); ?></h2>
                 <ul class="shop-grid">
                     <?php foreach ($products as $product) : ?>

@@ -10,6 +10,7 @@ export function filterCategory() {
     if (filterDiv) {
         filterDiv.style.display = "none";
     
+        //gestion de la boite de filtres
         filterBtn.addEventListener('click', function (e) {
             const currentDisplay = filterDiv.style.display;
             filterDiv.style.display = currentDisplay === "none" ? "flex" : "none";
@@ -22,9 +23,11 @@ export function filterCategory() {
         checkboxes.forEach(function (checkbox) {
             checkbox.addEventListener('change', function () {
                 // récup nom de la catégorie
-                const categoryName = checkbox.dataset.id;
+                const categoryName = checkbox.dataset.name;
                 // et de l'article associé
-                const categories = document.querySelectorAll('.shop-cat');
+                const categories = document.querySelectorAll('.category');
+
+                // console.log(categories);
                 
                 // puis parcours chaque catégorie pour appliquer la fonction
                 categories.forEach(function (category) {
