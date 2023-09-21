@@ -109,6 +109,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -537,6 +542,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -759,6 +769,11 @@ ul, li, a {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /******************* bouttons *******************/
@@ -1521,6 +1536,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -1811,6 +1831,11 @@ ul, li, a {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /******************* bouttons *******************/
@@ -2304,6 +2329,11 @@ ul, li, a {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /******************* bouttons *******************/
@@ -2808,6 +2838,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -2894,7 +2929,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* contact *******************/
 /******************* index *******************/
 .contact {
-  padding: 1rem;
+  padding: 0 1rem;
   border-radius: 10px;
   margin: auto;
 }
@@ -2936,6 +2971,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .map div {
   text-align: center;
   padding: 2rem 2rem 1rem 2rem;
+  margin: 1rem 0;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4156862745);
   backdrop-filter: blur(4px);
@@ -2963,12 +2999,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-radius: 10px;
   height: 250px;
   width: 100%;
-  margin: 2rem 0;
 }
 
 .mail form {
   width: 90%;
   margin: auto;
+  margin-top: 1rem;
   padding: 1rem;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.4156862745);
@@ -3179,6 +3215,11 @@ ul, li, a {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /******************* bouttons *******************/
@@ -3702,6 +3743,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -3975,6 +4021,11 @@ ul, li, a {
   margin: 0;
 }
 
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
+}
+
 /******************* bouttons *******************/
 .btn {
   padding: 0.3rem;
@@ -4188,6 +4239,11 @@ ul, li, a {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.optionnal {
+  font-size: smaller;
+  font-weight: lighter;
 }
 
 /******************* bouttons *******************/

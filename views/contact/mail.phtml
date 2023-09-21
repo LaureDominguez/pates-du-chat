@@ -1,20 +1,20 @@
 <section class="mail">
-    <h2>Une question ? Écrivez-moi !</h2>
+    <h2 class="responsive-title">Une question ? Écrivez-moi !</h2>
     <form action="index.php?route=sendContactMail" method="post">
         <div>
-            <label for="name-contact">nom*</label>
+            <label for="name-contact">nom</label>
             <input type="text" name="name" id="name-contact" required>
         </div>
         <div>
-            <label for="email-contact">email*</label>
+            <label for="email-contact">email</label>
             <input type="email" name="email" id="email-contact" required>
         </div>
         <div>
-            <label for="phone-contact">téléphone</label>
+            <label for="phone-contact">téléphone <span class="optionnal">(optionnel)</span></label>
             <input type="tel" name="phone" id="phone-contact">
         </div>
         <div>
-            <label for="message-contact">message*</label>
+            <label for="message-contact">message</label>
             <textarea name="message" id="message-contact" cols="30" rows="10" required></textarea>
         </div>
         <button class="btn" type="submit">Envoyer</button>

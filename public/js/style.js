@@ -10,12 +10,14 @@ import { sortTable } from "./modules/sort-table.js";
 // import { lazy } from "./modules/lazy.js";
 import { disableAccount } from "./modules/disable.js";
 import { uploadImages } from "./modules/images.js";
+import { addLineBreak } from "./modules/title-contact.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     titleOnNav(); // animation du titre dans la barre de nav
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     mobileNav(); // navbar pour version mobile
 
+    addLineBreak(); // ajoute un br au titre de la partie contact
     // lazy(); // spinner le temps que le google map charge
 
     filterCategory(); // tri des produits dans partie shop
