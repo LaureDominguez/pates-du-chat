@@ -10,16 +10,19 @@ import { sortTable } from "./modules/sort-table.js";
 // import { lazy } from "./modules/lazy.js";
 import { disableAccount } from "./modules/disable.js";
 import { uploadImages } from "./modules/images.js";
-import { addLineBreak } from "./modules/title-contact.js";
+import { draggingGrid } from "./modules/dragging.js";
+// import { addLineBreak } from "./modules/title-contact.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     titleOnNav(); // animation du titre dans la barre de nav
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     mobileNav(); // navbar pour version mobile
 
-    addLineBreak(); // ajoute un br au titre de la partie contact
+    // addLineBreak(); // ajoute un br au titre de la partie contact (je me suis fait chier à faire cette fonction en js et je suis tombé le lendemain sur un tiktok qui parle de l'attribut css text-wrap: balance)
+
     // lazy(); // spinner le temps que le google map charge
 
+    draggingGrid(); // dragging sur la grille des produits
     filterCategory(); // tri des produits dans partie shop
 
     toogleModal(); // affiche les fenetres de connexion
