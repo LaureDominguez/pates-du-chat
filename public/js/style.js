@@ -11,6 +11,7 @@ import { sortTable } from "./modules/sort-table.js";
 import { disableAccount } from "./modules/disable.js";
 import { uploadImages } from "./modules/images.js";
 import { draggingGrid } from "./modules/dragging.js";
+import { hrefOnclick } from "./modules/hrefOnclick.js";
 // import { addLineBreak } from "./modules/title-contact.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -18,9 +19,7 @@ window.addEventListener("DOMContentLoaded", function () {
     dropdownNav(); // menu dropdown de gestion de compte dans barre de nav
     mobileNav(); // navbar pour version mobile
 
-    // addLineBreak(); // ajoute un br au titre de la partie contact (je me suis fait chier à faire cette fonction en js et je suis tombé le lendemain sur un tiktok qui parle de l'attribut css text-wrap: balance)
-
-    // lazy(); // spinner le temps que le google map charge
+    hrefOnclick(); // pour pas utiliser onclick dans la balise html
 
     draggingGrid(); // dragging sur la grille des produits
     filterCategory(); // tri des produits dans partie shop
