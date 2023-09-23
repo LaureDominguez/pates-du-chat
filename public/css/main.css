@@ -178,9 +178,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -616,9 +613,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -849,9 +843,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .content {
     border-radius: 10px;
-  }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -1620,9 +1611,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -1922,9 +1910,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -1980,6 +1965,9 @@ main {
   margin-top: 1rem;
   padding: 0.3rem 0.5rem;
   font-size: 1rem;
+}
+.home #shop {
+  padding-bottom: 2rem;
 }
 
 #title-landscape {
@@ -2425,9 +2413,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -2461,11 +2446,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   box-shadow: inset 1px 3px 15px -7px #000000;
   background-color: rgba(255, 255, 255, 0.206);
 }
-.dragDisplay ul {
+.dragDisplay .drag {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: max-content;
+  margin-right: 3rem;
 }
 .dragDisplay .more {
   position: absolute;
@@ -2477,6 +2463,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   font-family: "Pacifico", cursive;
   letter-spacing: 2px;
   color: var(--vert);
+  background-color: var(--orange);
 }
 
 .shop-tuile {
@@ -2742,7 +2729,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     transition: all 0.5s ease;
     background-size: 0%;
     background-repeat: no-repeat;
-    background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+    background-image: -webkit-linear-gradient(337deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
   }
   .shop-cat .more i {
     font-size: 2rem;
@@ -2961,9 +2948,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .content {
     border-radius: 10px;
-  }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -3345,9 +3329,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .content {
     border-radius: 10px;
-  }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
   }
   h2 {
     border: none;
@@ -3877,9 +3858,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -4160,9 +4138,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   .content {
     border-radius: 10px;
   }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
-  }
   h2 {
     border: none;
   }
@@ -4384,9 +4359,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .content {
     border-radius: 10px;
-  }
-  section:not(:last-child) {
-    margin-bottom: 1rem;
   }
   h2 {
     border: none;

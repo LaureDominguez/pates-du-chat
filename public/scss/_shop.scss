@@ -12,11 +12,12 @@
     overflow: hidden;
     box-shadow: inset 1px 3px 15px -7px #000000;
     background-color: rgba(255, 255, 255, 0.206);
-    ul{
+    .drag{
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: max-content;
+        margin-right: 3rem;
     }
     .more{
         position: absolute;
@@ -28,6 +29,7 @@
         font-family: 'Pacifico', cursive;
         letter-spacing: 2px;
         color: var(--vert);
+        background-color: var(--orange);
     }
 }
 
@@ -311,8 +313,7 @@
             transition: all 0.5s ease;
             background-size: 0%;
             background-repeat: no-repeat;
-            background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
-                        -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
+            background-image: -webkit-linear-gradient(337deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
             i{
                 font-size: 2rem;
             }
