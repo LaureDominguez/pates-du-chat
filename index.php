@@ -109,7 +109,7 @@ if (array_key_exists('route', $_GET)):
         case 'desactivateUser':
             $controller = new Controllers\UsersController();
             $controller->isConnected();
-            $controller->disable($id);
+            $controller->disable();
             break;
 
 /////////////////////// Admin dashboard ///////////////////////

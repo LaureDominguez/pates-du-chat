@@ -114,7 +114,7 @@ class UsersController{
                     //si user a un nom, alors on l'appelle par son nom, sinon par email
                     $userName = isset($user['name']) ? $user['name'] : $user['email'];
 
-                    //si user a le role admin, alors on lui dit
+                    //si user a le role admin, alors on le lui dit
                     if ($user['role'] == 1) {
                         $success = "Bienvenue admin " . $userName;
                         $_SESSION['admin']['adminToken'];
@@ -236,11 +236,15 @@ class UsersController{
     }
 
     ////////////////////////// Disable //////////////////////////
-    public function disable($id)
+    public function disable()
     {
+        $userId = $_SESSION['user']['id'];
+        $randomPswd = $this->generatePswd();
         $newData = [
-            //'email' => 'disabled-account' . $id . '@disabled.com',
-            //'name' => '', 
+            'email' => 'disabled-account' . $userId,
+            'name' => null,
+            'pswd' => $randomPswd,
+            'role' => 0,
             'disabled' => 1
         ];
         $model = new Users();
@@ -250,5 +254,16 @@ class UsersController{
             'success' => $success
         ];
         $this->logout();
+    }
+
+    function generatePswd($length = 40)
+    {
+        $characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_!?./$';
+        $charactersLength = strlen($characters);
+        $Pswd            = '';
+        for ($i = 0; $i < $length; $i++) {
+            $Pswd .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $Pswd;
     }
 }
