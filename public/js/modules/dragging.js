@@ -4,13 +4,12 @@ export function draggingGrid() {
     let isDragging = false;
     let startX, scrollLeft;
 
-    const containers = document.querySelectorAll(".shop-cat");
+    const containers = document.querySelectorAll(".drag");
 
     if (containers) {
         containers.forEach(container => {
-            console.log("pouet");
+
             container.addEventListener("mousedown", (e) => {
-                console.log("prout");
                 isDragging = true;
                 startX = e.pageX - container.offsetLeft;
                 scrollLeft = container.scrollLeft;

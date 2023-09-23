@@ -3,10 +3,32 @@
 
 
 /******************* home *******************/
-.shop-cat ul{
-    display: flex;
-    align-items: center;
-    width: max-content;
+.dragDisplay{
+    position: relative;
+    margin: auto;
+    padding: 0.3rem;
+    width: 90%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 1px 3px 15px -7px #000000;
+    background-color: rgba(255, 255, 255, 0.206);
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: max-content;
+    }
+    .more{
+        position: absolute;
+        width: 3rem;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: 1px solid transparent;
+        font-family: 'Pacifico', cursive;
+        letter-spacing: 2px;
+        color: var(--vert);
+    }
 }
 
 .shop-tuile{
@@ -15,16 +37,14 @@
     margin: 0.2rem;
     overflow: hidden;
     border: solid 1px transparent;
+    box-shadow: -2px 5px 15px -7px #000000;
+
     border-radius: 10px;
     position: relative;
-    // align-items: center;
-    // justify-content: center;
-    // align-content: center;
     img{
         object-fit: cover;
         height: 9rem;
         width: 9rem;
-        // position: relative;
     }
     .detail{
         h4, h5 {
@@ -46,14 +66,6 @@
             border-radius: 8px;
         }
     }
-}
-.more{
-    font-family: 'Pacifico', cursive;
-    letter-spacing: 2px;
-    color: var(--vert);
-    border-radius: 25px;
-    border: 1px solid;
-    padding: 1rem 1.3rem;
 }
 
 /******************* index *******************/
@@ -81,9 +93,9 @@
     }
 }
 
-// .shop-cat{
-    // display: flex;
-    // flex-direction: column;
+    .dragContainer{
+        overflow: scroll;
+    }
     .detail{
         margin: 1rem 1.3rem;
         display: grid;
@@ -219,6 +231,9 @@
 @media (min-width: 1024px) {
     
 /******************* home *******************/
+    .dragContainer{
+            overflow: auto;
+        }
     .shop-tuile{
         height: 12rem;
         width: 12rem;
@@ -298,8 +313,12 @@
             background-repeat: no-repeat;
             background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255,0,0,0) 70.71%),          
                         -webkit-linear-gradient(67deg, #FAC172, rgba(0,255,0,0) 70.71%); 
+            i{
+                font-size: 2rem;
+            }
             &:hover{
                 color: #fff;
+                cursor: pointer;
                 background-size: 100%;
             }
         }
