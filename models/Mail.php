@@ -57,7 +57,7 @@ class Mail {
                             margin: auto;
                             max-width: 600px;
                         }
-                        img{
+                        .logo{
                             height: 9rem;
                         }
                     </style>
@@ -65,7 +65,7 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo"/>
+                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
                         </a>
                         <h1>Vous avez reçu un nouveau message de : <br> '. $contact['name'] . '</h1>
                         <h2>Email : '. $contact['email'] . '</h2>
@@ -143,7 +143,7 @@ class Mail {
                             margin: auto;
                             max-width: 600px;
                         }
-                        img{
+                        .logo{
                             height: 9rem;
                         }
                     </style>
@@ -151,21 +151,20 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo"/>
+                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
                         </a>
                         <h1>Cher(e) ' . (isset($newUser['name']) ? $newUser['name'] : $newUser['email']) .  ',</h1>
                         <p>Nous sommes ravis de vous accueillir sur Les Pâtes du Chat ! <br>Merci de nous avoir rejoint.</p>
-                        <p>Votre adhésion a été créée avec succès, et vous êtes maintenant membre de notre communauté. Vous pouvez dès à présent profiter des avantages de votre compte.</p>
+                        <p>Votre compte a été créé avec succès, et vous êtes maintenant membre de notre communauté. Vous pouvez dès à présent profiter des avantages de votre compte.</p>
                         <p>Voici quelques informations importantes pour commencer :</p>
                         <div>
-                            <p>Votre Nom d\'Utilisateur : ' . $newUser['name'] . '</p>
                             <p>Votre Adresse E-mail : ' . $newUser['email'] . '</p>
                         </div>
 
                         <h2>Que pouvez-vous faire maintenant ?</h2>
                         <ol>
                             <li>
-                                Connectez-vous à votre compte : Utilisez votre nom d\'utilisateur et votre mot de passe pour accéder à votre compte sur [Lien de Connexion].
+                                Connectez-vous à votre compte : Utilisez votre nom d\'utilisateur et votre mot de passe pour accéder à votre compte sur <a href="https://laure-web.fr/">Les Pâtes du Chat</a>.
                             </li>
                             <li>
                                 Personnalisez votre profil : Ajoutez une photo de profil et complétez vos informations personnelles pour rendre votre profil unique.
@@ -174,7 +173,7 @@ class Mail {
                                 Explorez notre contenu : Parcourez notre site web pour découvrir nos fonctionnalités, articles, produits et services.
                             </li>
                             <li>
-                                Contactez notre équipe d\'assistance : Si vous avez des questions ou avez besoin d\'aide, n\'hésitez pas à nous contacter via [Adresse E-mail de l\'Assistance] ou notre [Page de Contact].
+                                Contactez notre équipe d\'assistance : Si vous avez des questions ou avez besoin d\'aide, n\'hésitez pas à nous contacter via notre <a href="https://laure-web.fr/index.php?route=contactMail">Page de Contact</a>.
                             </li>
                         </ol>
                         <p>Nous tenons à vous remercier de nous avoir rejoint, et nous sommes déterminés à vous fournir la meilleure expérience possible sur notre plateforme. Restez à l\'écoute pour les dernières mises à jour, offres spéciales et bien plus encore !</p>
@@ -201,6 +200,8 @@ class Mail {
             echo "Une erreur s'est produite lors de l'envoi de l'email.";
         }
     }
+
+    /////////////////////////////// Verif
 
     public function VerifMessage($newUser)
     {
@@ -260,7 +261,7 @@ class Mail {
                             margin: auto;
                             max-width: 600px;
                         }
-                        img{
+                        .logo{
                             height: 9rem;
                         }
                     </style>
@@ -268,19 +269,19 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo"/>
+                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
                         </a>
                         <h1>Cher(e) ' . (isset($newUser['name']) ? $newUser['name'] : $newUser['email']) .  ',</h1>
                         <p>Nous vous remercions de vous être inscrit(e) sur Les Pâtes du Chat ! <br>Avant de pouvoir profiter pleinement de tous nos services, nous devons vérifier votre adresse e-mail.</p>
                         <p>Pour valider votre compte, veuillez cliquer sur le lien de vérification ci-dessous :</p>
                         <div class="link">
-                            <a href="https://laure-web.fr/index.php?route=validate?token=' . $newUser['token'] . '&email=' . urlencode($newUser['email']) . '">Lien de validation</a>
+                            <a href="https://laure-web.fr/index.php?route=validate&token=' . $newUser['token'] . '&email=' . urlencode($newUser['email']) . '">Lien de validation</a>
                         </div>
                         <p>Ce lien est unique et ne peut être utilisé qu\'une seule fois pour confirmer votre adresse e-mail. Assurez-vous de ne pas partager ce lien avec d\'autres personnes.</p>
                         <p>Si vous ne parvenez pas à cliquer sur le lien, vous pouvez également copier et coller l\'URL dans la barre d\'adresse de votre navigateur.</p>
                         <p>Une fois votre adresse e-mail confirmée, vous aurez un accès complet à Les Pâtes du Chat et à toutes ses fonctionnalités passionnantes.</p>
                         <p>Si vous n\'avez pas créé de compte sur Les Pâtes du Chat, veuillez ignorer cet e-mail.</p>
-                        <p>Nous sommes ravis de vous avoir parmi nous et sommes impatients de vous offrir une expérience exceptionnelle sur notre plateforme. Si vous avez des questions ou avez besoin d\'aide, n\'hésitez pas à nous contacter via notre <a href="https://laure-web.fr/index.php?route=contactMail>Page de Contact</a>.</p>
+                        <p>Nous sommes ravis de vous avoir parmi nous et sommes impatients de vous offrir une expérience exceptionnelle sur notre plateforme. Si vous avez des questions ou avez besoin d\'aide, n\'hésitez pas à nous contacter via notre <a href="https://laure-web.fr/index.php?route=contactMail">Page de Contact</a>.</p>
                         <p>Merci de nous faire confiance !</p>
                         
                         <p>Cordialement,</p>

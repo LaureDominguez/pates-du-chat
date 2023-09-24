@@ -160,7 +160,7 @@ class UsersController{
             $_SESSION['visitor']['flash_message'] = [
                 'error' => $errors
             ];
-            // header('Location: ' . $_SESSION['visitor']['currentPage']);
+            header('Location: index.php?route=home');
             exit();
         } else {
             $user = $model->getUser($userExist['id']);
@@ -185,11 +185,11 @@ class UsersController{
                 $_SESSION['visitor']['flash_message'] = [
                     'success' => $success
                 ];
+
+                header('Location: index.php?route=home');
+                exit();
             }
         }
-
-        $template = "home.phtml";
-        include_once 'views/layout.phtml';
     }
 
     ////////////////////////// update //////////////////////////
