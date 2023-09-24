@@ -176,12 +176,12 @@ export function toogleModal() {
 
         //////////////////////////////////////////////////
         // Reset password
-        const reset = document.getElementById('forgot');
+        // const reset = document.getElementById('forgot');
 
-        reset.addEventListener('click', function () {
-            alert("C'est balo");
-            // route=resetPswd
-        })
+        // reset.addEventListener('click', function () {
+        //     alert("C'est balo");
+        //     // route=resetPswd
+        // })
 
     }
 }

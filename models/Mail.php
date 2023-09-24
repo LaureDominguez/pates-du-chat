@@ -3,6 +3,7 @@
 namespace Models;
 
 class Mail {
+    ////////////// Contact
     public function sendContactMessage($contact)
     {        
         $destinataire = 'dominguezlaure@gmail.com';
@@ -87,6 +88,8 @@ class Mail {
             echo "Une erreur s'est produite lors de l'envoi de l'email.";
         }
     }
+
+    //////////////////// Welcome
 
     public function welcomeMessage($newUser)
     {
@@ -183,9 +186,13 @@ class Mail {
 
                         <p>P.S. N\'oubliez pas de nous suivre sur les réseaux sociaux pour rester informé(e) de nos dernières nouvelles et mises à jour :<p>
                         <ul>
-                            <li>[Lien vers la Page Facebook]</li>
-                            <li>[Lien vers le Compte Twitter]</li>
-                            <li>[Lien vers le Compte Instagram]</li>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100094325392125">
+                                    f082
+                                </a>
+                            </li>
+                            <li><i class="fa-brands fa-square-twitter"></i></li>
+                            <li><i class="fa-brands fa-square-instagram"></i></li>
                         </ul>
                     </div>
                     <div class="mention">
@@ -289,9 +296,13 @@ class Mail {
 
                         <p>P.S. N\'oubliez pas de nous suivre sur les réseaux sociaux pour rester informé(e) de nos dernières nouvelles et mises à jour :<p>
                         <ul>
-                            <li>[Lien vers la Page Facebook]</li>
-                            <li>[Lien vers le Compte Twitter]</li>
-                            <li>[Lien vers le Compte Instagram]</li>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100094325392125">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+                                </a>
+                            </li>
+                            <li><i class="fa-brands fa-square-twitter"></i></li>
+                            <li><i class="fa-brands fa-square-instagram"></i></li>
                         </ul>
                     </div>
                     <div class="mention">
@@ -301,6 +312,126 @@ class Mail {
             </html>';
 
         if (mail($destinataire, $subject, $message, $header)) {
+            echo "L'email a été envoyé avec succès.";
+        } else {
+            echo "Une erreur s'est produite lors de l'envoi de l'email.";
+        }
+    }
+
+
+    /////////////////////////////// Reset password
+
+    public function resetPswd($user)
+    {
+        $destinataire = $user['email'];
+        $subject = 'Réinitialisation de votre mot de passe';
+
+        $header = "MIME-Version: 1.0\r\n";
+        $header .= 'From: "Les Pâtes du Chat" <dominguezlaure@gmail.com>' . "\r\n";
+        // L'adresse email de l'expéditeur peut être remplacé par une constante dans le fichier "config.php"
+        // $header .= "Cc: ......@hotmail.com\n";
+        $header .= "X-Priority: 1\r\n";
+        $header .= 'Content-Type: text/html; charset="uft-8"' . "\r\n";
+        $header .= 'Content-Transfer-Encoding: 8bit';
+
+        $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+        $image_url = $base_url . "/public/img/site/Logo-Arnaud.png";
+
+        $message = '
+            <html>
+                <head>
+                    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f2f2f2;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        .mail {
+                            background-color: #fff;
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                        }
+                        h1 {
+                            font-family: Pacifico, cursive;
+                            font-size: 1.5rem;
+                            color: #004f12;
+                        }
+                        h2{
+                            font-size: 1rem;
+                        }
+                        .link{
+                            text-align: center;
+                        }
+                        .mail p {
+                            font-size: 1rem;
+                            text-align: justify;
+                        }
+                        .mention p{
+                            font-size: 0.8rem;
+                            line-height: 1rem;
+                            color: #666;
+                            text-align: center;
+                            margin: auto;
+                            max-width: 600px;
+                        }
+                        .logo{
+                            height: 9rem;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="mail">
+                        <a href="https://laure-web.fr/">
+                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
+                        </a>
+                        <h1>Cher(e) ' . (isset($user['name']) ? $user['name'] : $user['email']) .  ',</h1>
+                        <p>Vous recevez cet e-mail car vous avez demandé une réinitialisation de votre mot de passe sur Les Pâtes du Chat. <br>Pour réinitialiser votre mot de passe, veuillez suivre les étapes ci-dessous :</p>
+                        <ol>
+                            <li>
+                                <p>Cliquez sur le lien ci-dessous pour accéder à la page de réinitialisation de mot de passe :</p>
+                                <div class="link">
+                                    <a href="https://laure-web.fr/index.php?route=validate&token=' . $user['token'] . '&email=' . urlencode($user['email']) . '">Lien de réinitialisation du mot de passe</a>
+                                </div>
+                            </li>
+                            <li>
+                                Vous serez redirigé(e) vers une page où vous pourrez créer un nouveau mot de passe sécurisé.
+                            </li>
+                        </ol>
+                        <p>Note : Ce lien de réinitialisation du mot de passe expire dans 10 minutes. Si vous ne réinitialisez pas votre mot de passe dans ce délai, vous devrez effectuer une nouvelle demande.</p>
+                        <p>Si vous n\'avez pas demandé de réinitialisation de mot de passe, vous pouvez ignorer cet e-mail en toute sécurité. Votre mot de passe actuel restera inchangé.</p>
+                        <p>Nous vous remercions d\utiliser nos services. Si vous avez des questions ou avez besoin d\'aide, n\'hésitez pas à nous contacter via notre <a href="https://laure-web.fr/index.php?route=contactMail">Page de Contact</a>.</p>
+                        <p>Merci de nous faire confiance !</p>
+                        
+                        <p>Cordialement,</p>
+                        <p>L\'équipe des Pâtes du Chat 😺</p>
+
+                        <p>P.S. N\'oubliez pas de nous suivre sur les réseaux sociaux pour rester informé(e) de nos dernières nouvelles et mises à jour :<p>
+                        <ul>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100094325392125">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+                                </a>
+                            </li>
+                            <li><i class="fa-brands fa-square-twitter"></i></li>
+                            <li><i class="fa-brands fa-square-instagram"></i></li>
+                        </ul>
+                    </div>
+                    <div class="mention">
+                        <p>Veuillez ne pas répondre à ce message, car nous ne pouvons pas envoyer de réponse à partir de cette adresse e-mail.<p>
+                    </div>
+                </body>
+            </html>';
+
+        if (mail($destinataire,
+            $subject,
+            $message,
+            $header
+        )) {
             echo "L'email a été envoyé avec succès.";
         } else {
             echo "Une erreur s'est produite lors de l'envoi de l'email.";

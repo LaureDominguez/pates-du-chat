@@ -16,11 +16,11 @@
             <form>
                 <h3>Compte activé</h3>
                 <p>état :
-                <?php if($user['activate'] === 1): ?>
-                    validé</p>
-                <?php else: ?>
-                    non validé</p>
-                <?php endif; ?>
+                    <?php if ($user['activate'] === 1) : ?>
+                        <i class="fa-solid fa-circle-check"></i></p>
+                    <?php else : ?>
+                        <i class="fa-solid fa-circle-xmark"></i></p>
+                    <?php endif; ?>
 
             </form>
 

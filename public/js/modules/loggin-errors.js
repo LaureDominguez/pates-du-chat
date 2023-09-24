@@ -103,14 +103,25 @@ export function checkErrors() {
 
 ////////// login form //////////
     const loginForm = document.querySelector('#login-form');
+    const reset = document.getElementById('forgot');
+
     if (loginForm) {
+        const logData = new FormData(loginForm);
+        const email = logData.get('email');
+            console.log(email);
+
+        reset.addEventListener('click', function () {
+            e.preventDefault();
+            console.log(email);
+        })
+
         loginForm.addEventListener("submit", handleSubmitLogin);
 
         async function handleSubmitLogin(e) {
             e.preventDefault(); //bloque l'envoi du formulaire
 
-            const logData = new FormData(loginForm);
-            const email = logData.get('email');
+            // const logData = new FormData(loginForm);
+            // const email = logData.get('email');
             const pswd = logData.get('pswd');
             const errorMail = document.getElementById('error_log_mail')
             const errorPswd = document.getElementById('error_log_pswd')
