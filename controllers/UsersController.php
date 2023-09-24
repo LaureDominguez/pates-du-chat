@@ -40,6 +40,7 @@ class UsersController{
         $success = "";
         $model = new Users();
         $sendMail = new Mail();
+
         $isUsed = $model->checkEmail(trim($_POST['email']));
 
         if($isUsed !== false){ 
@@ -53,10 +54,13 @@ class UsersController{
         } else {
             //sinon on créer le compte
             $token = bin2hex(random_bytes(16));
+            $expiration = time() + 600;
+
             $newUser = [
                 trim($_POST['email']),
                 password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
-                $token
+                $token,
+                $expiration
             ];
 
             $newID = $model->creatNew($newUser);
@@ -164,11 +168,11 @@ class UsersController{
             exit();
         } else {
             $user = $model->getUser($userExist['id']);
-            if ($token === $user['token']){
+            $current_time = time();
+            if ($token === $user['token'] && $current_time <= $user['expiration']){
                 // on confirme l'activation du compte dans la db
                 $newData = [
-                    'activate' => 1,
-                    'token' => null
+                    'activate' => 1
                 ];
                 $model->updateUser($newData);
 
@@ -186,9 +190,14 @@ class UsersController{
                     'success' => $success
                 ];
 
-                header('Location: index.php?route=home');
-                exit();
+            } else {
+                $errors[] = "Le lien a expiré";
+                $_SESSION['visitor']['flash_message'] = [
+                    'error' => $errors
+                ];
             }
+            header('Location: index.php?route=home');
+            exit();
         }
     }
 
