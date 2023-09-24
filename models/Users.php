@@ -11,7 +11,7 @@ class Users extends Database {
 
     public function creatNew($params)
     {
-        return $this->addOne("users", "email, pswd", "?, ?", $params);
+        return $this->addOne("users", "email, pswd, token", "?, ?, ?", $params);
     }
 
     public function checkEmail($email): array | bool

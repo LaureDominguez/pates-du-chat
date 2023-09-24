@@ -13,6 +13,17 @@
                 </div>
             </form>
 
+            <form>
+                <h3>Compte activé</h3>
+                <p>état :
+                <?php if($user['activate'] === 1): ?>
+                    validé</p>
+                <?php else: ?>
+                    non validé</p>
+                <?php endif; ?>
+
+            </form>
+
             <!-- <form action="index.php?route=changeMailForm" method="post">
                 <h3>Changer mon email de contact</h3>
                 <div>

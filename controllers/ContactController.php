@@ -21,32 +21,41 @@ class ContactController{
         include_once 'views/layout.phtml';
     }
 
+    public function displayMLPage()
+    {
+        $template = "contact/legal.phtml";
+        include_once 'views/layout.phtml';
+    }
+
     public function submitMessage()
     {//vérifie et envoi le message du visitor sur l'adresse gmail du site
         $errors = $getMessage = [];
         $success = "";
 
-        if (isset($_POST['email']) && isset($_POST['name']) && isset($_POST['message'])) {
-            if (empty($_POST['email'])) {
-                $errors[] = "Veuillez renseigner un email de contact";
-            } elseif (!filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Veuillez renseigner un email valide";
-                }
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $name = trim($_POST['name']);
+            $message = trim($_POST['message']);
+            $phone = trim($_POST['phone']);
 
-            if (empty($_POST['name'])) {
-                $errors[] = "Veuillez indiquer votre nom";
+            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors[] = "Veuillez renseigner une adresse e-mail valide.";
             }
 
-            if (empty($_POST['message'])) {
-                $errors[] = "Veuillez écrire votre message";
+            if (empty($name)) {
+                $errors[] = "Veuillez indiquer votre nom.";
+            }
+
+            if (empty($message)) {
+                $errors[] = "Veuillez écrire votre message.";
             }
 
             if(count($errors) == 0){
                 $getMessage = [
-                    'email' => trim($_POST['email']),
-                    'message' => trim($_POST['message']),
-                    'name' => trim($_POST['name']),
-                    'phone' => trim($_POST['phone'])
+                    'email' => $email,
+                    'message' => $message,
+                    'name' => $name,
+                    'phone' => $phone,
                 ];
 
                 $modelMail = new Mail();
@@ -58,7 +67,6 @@ class ContactController{
                 
                 header('Location: index.php?route=contactMail');
                 exit();
-                
             }
         }
 
@@ -67,10 +75,5 @@ class ContactController{
         ];
         header('Location: ' . $_SESSION['visitor']['currentPage']);
         exit();
-    }
-    public function displayMLPage(){
-
-    $template = "contact/legal.phtml";
-    include_once 'views/layout.phtml';
     }
 }

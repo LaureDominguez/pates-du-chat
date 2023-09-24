@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use \Models\Users;
+use \Models\Mail;
 
 class UsersController{
 
@@ -38,19 +39,24 @@ class UsersController{
         $errors = [];
         $success = "";
         $model = new Users();
+        $sendMail = new Mail();
         $isUsed = $model->checkEmail(trim($_POST['email']));
 
-        if($isUsed !== false){ // si error on arrete le script et renvoi l'erreur
+        if($isUsed !== false){ 
+            // si error on arrete le script et renvoi l'erreur
             $errors = "Cet email est déjà utilisé";
             $_SESSION['visitor']['flash_message']['error'] = [
                 'register' => $errors
             ];
             header('Location: ' . $_SESSION['visitor']['currentPage']);
             exit;
-        } else { //sinon on créer le compte
+        } else {
+            //sinon on créer le compte
+            $token = bin2hex(random_bytes(16));
             $newUser = [
                 trim($_POST['email']),
                 password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT),
+                $token
             ];
 
             $newID = $model->creatNew($newUser);
@@ -64,6 +70,10 @@ class UsersController{
                 'name' => $newUser['name'],
                 'role' => $newUser['role']
             ];
+
+            //envoie le mail de bienvenue et de vérif
+            $sendMail->welcomeMessage($newUser);
+            $sendMail->VerifMessage($newUser);
 
             $success = "Votre compte a bien été créé !";
             $_SESSION['visitor']['flash_message'] = [
@@ -135,6 +145,51 @@ class UsersController{
         }
         header('Location: ' . $_SESSION['visitor']['currentPage']);
         exit();
+    }
+    
+    ////////////////////////// validate email //////////////////////////
+    public function validateEmail($token, $email)
+    {
+        $errors = [];
+        $success = "";
+        $model = new Users();
+
+        $userExist = $model->checkEmail($email);
+        if (!$userExist) {
+            $errors[] = "Utilisateur inconnu";
+            $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
+            ];
+            // header('Location: ' . $_SESSION['visitor']['currentPage']);
+            exit();
+        } else {
+            $user = $model->getUser($userExist['id']);
+            if ($token === $user['token']){
+                // on confirme l'activation du compte dans la db
+                $newData = [
+                    'activate' => 1,
+                    'token' => null
+                ];
+                $model->updateUser($newData);
+
+                // on connecte l'utilisateur
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'email' => $user['email'],
+                    'name' => $user['name'],
+                    'role' => $user['role']
+                ];
+
+                $success = "Votre compte est correctement activé";
+                
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+            }
+        }
+
+        $template = "home.phtml";
+        include_once 'views/layout.phtml';
     }
 
     ////////////////////////// update //////////////////////////

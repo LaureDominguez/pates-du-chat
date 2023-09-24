@@ -28,7 +28,7 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'shopDetail':
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : '';
             $controller = new Controllers\ShopController();
             $controller->displayOneProduct($id);
             break;
@@ -60,6 +60,12 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\ContactController();
             $controller->submitMessage();
             break;
+        
+        // case 'sendVerifMessage':
+        //     $controller = new Controllers\ContactController();
+        //     $controller->submitMessage();
+        //     break;
+
 
 /////////////////////// login ///////////////////////
         // case 'login':
@@ -88,6 +94,13 @@ if (array_key_exists('route', $_GET)):
             $controller = new Controllers\UsersController();
             $controller->isConnected();
             $controller->profil();
+            break;
+
+        case 'validate':
+            $token = isset($_GET['token']) ? $_GET['token'] : '';
+            $email = isset($_GET['email']) ? urldecode($_GET['email']) : '';
+            $controller = new Controllers\UsersController();
+            $controller->validateEmail($token, $email);
             break;
 
         case 'changeNameForm':
@@ -134,14 +147,14 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'displayUpdateProdForm':
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : '';
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayUpdateProdForm($id);
             break;
 
         case 'updateProdForm':
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : '';
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->verifUpdateProdForm($id);
@@ -161,14 +174,14 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'displayUploadCatForm':
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : '';
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->displayUploadCatForm($id);
             break;
 
         case 'updateCatForm':
-            $id = $_GET['id'];
+            $id = isset($_GET['id']) ? $_GET['id'] : '';
             $controller = new Controllers\AdminController();
             $controller->isAdmin();
             $controller->verifUpdateCatForm($id);
