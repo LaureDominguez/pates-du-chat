@@ -2522,6 +2522,18 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 /******************* index *******************/
+.shop {
+  width: 90%;
+  margin: auto;
+}
+
+.category {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+}
+
 .shop-grid {
   display: flex;
   flex-direction: column;
@@ -2730,7 +2742,7 @@ form input:not(.btn, .file), form form textarea, form form select {
     grid-template-columns: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    position: relative;
+    justify-items: center;
   }
   .shop-grid h1 {
     grid-area: 1/2/2/5;
@@ -3118,7 +3130,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 @media (min-width: 1024px) {
   /******************* index *******************/
   .contact {
-    padding: 2rem;
+    padding: 1rem 2rem;
     margin-bottom: 3rem;
   }
   .contact table {

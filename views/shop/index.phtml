@@ -43,7 +43,7 @@
 
         <?php if ($category['active'] && $hasActiveProducts) : ?>
             <article class="category">
-                <h2><?= htmlspecialchars($category["name"]); ?></h2>
+                <h3><?= htmlspecialchars($category["name"]); ?></h3>
                 <ul class="shop-grid">
                     <?php foreach ($products as $product) : ?>
                         <?php if ($product["cat_id"] == $category["id"] && $product['categoryActive'] && $product["active"]) : ?>

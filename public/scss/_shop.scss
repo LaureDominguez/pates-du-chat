@@ -71,6 +71,16 @@
 }
 
 /******************* index *******************/
+.shop{
+    width: 90%;
+    margin: auto;
+}
+.category{
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    background-color: #ffffff86;
+}
 
 .shop-grid{
     display: flex;
@@ -291,7 +301,7 @@
         grid-template-columns: repeat(5, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-            position: relative;
+        justify-items: center;
         h1{
             grid-area: 1 / 2 / 2 / 5;
         }
