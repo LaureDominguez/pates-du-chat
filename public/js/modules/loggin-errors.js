@@ -18,7 +18,6 @@ export function checkErrors() {
             const errorChk = document.getElementById('error_new_verif')
             let errorFound = false;
 
-
             // Tests
             if (!email) {
                 errorMail.style.display = 'block';
@@ -43,57 +42,63 @@ export function checkErrors() {
                 return;
             }
 
-            if (pswd.length > 1 && !pswd_confirm) {
-                error_new_verif.style.display = 'block';
-                error_new_verif.innerHTML = 'confirmer le mot de passe';
-                errorFound = true;
-                return;
-            }
-            error_new_verif.style.display = 'none';
-
             //Tests supplémentaires du mot de passe
             const numberMinimal = 8;
-            let errorMessage = '';
+            let errorMsgPswd = '';
+            let errorMsgChk = '';
 
             switch (true) {
                 case pswd.length < numberMinimal:
-                    errorMessage = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
+                    errorMsgPswd = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
                     errorFound = true;
                     break;
                 case !/[A-Z]/.test(pswd):
-                    errorMessage = "Le mot de passe doit inclure au moins une lettre majuscule";
+                    errorMsgPswd = "Le mot de passe doit inclure au moins une lettre majuscule";
                     errorFound = true;
                     break;
                 case !/[a-z]/.test(pswd):
-                    errorMessage = "Le mot de passe doit inclure au moins une lettre minuscule";
+                    errorMsgPswd = "Le mot de passe doit inclure au moins une lettre minuscule";
                     errorFound = true;
                     break;
                 case !/\d/.test(pswd):
-                    errorMessage = "Le mot de passe doit inclure au moins un chiffre";
+                    errorMsgPswd = "Le mot de passe doit inclure au moins un chiffre";
                     errorFound = true;
                     break;
                 case !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]/.test(pswd):
-                    errorMessage = "Le mot de passe doit inclure au moins un caractère spécial";
-                    errorFound = true;
-                    break;
-                case pswd !== pswd_confirm:
-                    errorMessage = "Les mots de passe ne correspondent pas";
+                    errorMsgPswd = "Le mot de passe doit inclure au moins un caractère spécial";
                     errorFound = true;
                     break;
             }
 
             // Affiche les erreurs si besoin
             if (errorFound) {
-                errorPswd.style.display = 'block';
-                errorPswd.innerHTML = errorMessage;
-                console.log(errorFound);
-                return;
+                if (errorMsgPswd) {
+                    errorPswd.style.display = 'block';
+                    errorPswd.innerHTML = errorMsgPswd;
+                    return;
+                } else if (errorMsgChk) {
+                    errorChk.style.display = 'block';
+                    errorChk.innerHTML = errorMsgChk;
+                    return;
+                }
             }
-            errorPswd.style.display = 'none';
+
+            if (pswd.length > 1 && !pswd_confirm) {
+                errorChk.style.display = 'block';
+                errorChk.innerHTML = 'confirmer le mot de passe';
+                errorFound = true;
+                return;
+            } else if (pswd !== pswd_confirm) {
+                errorChk.style.display = 'block';
+                errorChk.innerHTML = "Les mots de passe ne correspondent pas";
+                errorFound = true;
+                return;
+            } else {
+                errorChk.style.display = 'none';
+            }
 
             // Sinon envoi le form
-            if (errorFound === false) {
-                console.log('ca passe');
+            if (!errorFound) {
                 registerForm.submit();
             }
         }
@@ -111,6 +116,7 @@ export function checkErrors() {
 
     if (loginForm) {
 
+        // envoie un mail pour reset pswd
         reset.addEventListener('click', function () {
             const email = emailInput.value.trim();
 
@@ -121,9 +127,8 @@ export function checkErrors() {
             }
         });
 
+        // envoi le form de loggin
         submit.addEventListener('click', function () {
-            console.log("pouet")
-
             loginForm.addEventListener("submit", handleSubmitLogin);
 
             async function handleSubmitLogin(e) {
@@ -137,9 +142,6 @@ export function checkErrors() {
                 errorMail.textContent = '';
                 errorPswd.textContent = '';
 
-                // Test email
-                // validateEmail(email);
-
                 // Test pswd
                 let pswdIsValid = false;
                 if (!pswd) {
@@ -150,23 +152,17 @@ export function checkErrors() {
                     errorPswd.style.display = 'none';
                 }
 
-                // Si ok, on envoi le form
+                // Test email & si ok, on envoi le form
                 if (validateEmail(email) && pswdIsValid) {
                     loginForm.submit();
                 }
             }
         })
-        function validateEmail(email) {
-            // const email = emailInput.value.trim();
 
-            // Réinitialiser les messages d'erreur
+        function validateEmail(email) {
             errorMail.style.display = 'none'
             errorMail.textContent = '';
-            // errorPswd.style.display = 'block'
-            // errorPswd.textContent = '';
 
-            // Valider l'e-mail
-            // let emailIsValid = false;
             if (!email) {
                 errorMail.style.display = 'block'
                 errorMail.textContent = 'Entrer une adresse e-mail';
