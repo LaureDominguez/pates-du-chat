@@ -26,6 +26,24 @@
     background: -webkit-linear-gradient(0deg, rgba(255,0,0,0) 0%, #E25B45 50%, rgba(255,0,0,0) 90%);
 }
 
+.travaux{
+    z-index: 10000;
+    background-color: red;
+    color: #fff;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    padding: 0 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg); 
+    text-align: center;
+    box-shadow: -4px 13px 15px 7px rgb(0 0 0 / 60%);
+    p{
+        font-size: 5rem;
+    }
+}
+
 
 /******************* Media query *******************/
 /* PC */
