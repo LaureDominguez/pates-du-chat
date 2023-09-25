@@ -172,6 +172,7 @@ class UsersController{
             if ($token === $user['token'] && $current_time <= $user['expiration']){
                 // on confirme l'activation du compte dans la db
                 $newData = [
+                    'id', $user['id'],
                     'activate' => 1
                 ];
                 $model->updateUser($newData);
@@ -224,6 +225,7 @@ class UsersController{
 
             if (count($errors) == 0) {
                 $newData = [
+                    'id' => $_SESSION['user']['id'],
                     'name' => $name
                 ];
                 $model = new Users();

@@ -72,20 +72,20 @@
 
 /******************* index *******************/
 .shop{
-    width: 90%;
     margin: auto;
-}
-.category{
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 10px;
-    background-color: #ffffff86;
+    .category{
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 10px;
+        background-color: #ffffff86;
+    }
 }
 
 .shop-grid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); 
+    gap: 20px;
+    justify-items: center;
     .btn{
         padding: 0.3rem 0.5rem;
         font-size: 1rem;
@@ -105,23 +105,24 @@
     }
 }
 
-    .dragContainer{
-        overflow: scroll;
-    }
-    .detail{
-        margin: 1rem 1.3rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 9rem);
-        grid-template-rows: repeat(auto-fill, 9rem);
-        align-items: center;
-        justify-items: center;
-        align-content: center;
-        justify-content: space-around;
-    }
-    .btn{
-        border: 1px solid;
-    }
-// }
+.dragContainer{
+    overflow: scroll;
+}
+
+.detail{
+    margin: 1rem 1.3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 9rem);
+    grid-template-rows: repeat(auto-fill, 9rem);
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.btn{
+    border: 1px solid;
+}
 
 /******************* detail *******************/
 
@@ -295,12 +296,13 @@
     }
 
     /******************* index *******************/
+    .shop{
+        width: 90%;
+    }
 
     .shop-grid{
-        display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+        grid: 20px;
         justify-items: center;
         h1{
             grid-area: 1 / 2 / 2 / 5;

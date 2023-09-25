@@ -2523,11 +2523,9 @@ form input:not(.btn, .file), form form textarea, form form select {
 
 /******************* index *******************/
 .shop {
-  width: 90%;
   margin: auto;
 }
-
-.category {
+.shop .category {
   padding: 1rem;
   margin: 1rem;
   border-radius: 10px;
@@ -2535,9 +2533,10 @@ form input:not(.btn, .file), form form textarea, form form select {
 }
 
 .shop-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 20px;
+  justify-items: center;
 }
 .shop-grid .btn {
   padding: 0.3rem 0.5rem;
@@ -2737,11 +2736,12 @@ form input:not(.btn, .file), form form textarea, form form select {
     opacity: 0.9;
   }
   /******************* index *******************/
+  .shop {
+    width: 90%;
+  }
   .shop-grid {
-    display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid: 20px;
     justify-items: center;
   }
   .shop-grid h1 {
