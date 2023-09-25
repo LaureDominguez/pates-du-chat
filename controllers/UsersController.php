@@ -247,8 +247,32 @@ class UsersController{
         include_once 'views/layout.phtml';
     }
 
-    public function sendPswdLink(){
-        //envoi un mail avec le lien vers le formulaire qui renvoi vers resetPswd()
+    public function resetForm($token, $email)
+    { //affiche le formulaire de reset
+        $model = new Users();
+        $userExist = $model->checkEmail($email);
+
+        if($userExist) {
+            $user = $model->getUser($userExist['id']);
+            $current_time = time();
+            if ($token === $user['token'] && $current_time <= $user['expiration']) {
+                var_dump("youpi");
+                die;
+                $template = "users/resetForm.phtml";
+                include_once 'views/layout.phtml';
+            }
+        }
+
+        $errors = "Le lien a expiré";
+        $_SESSION['visitor']['flash_message'] = [
+            'error' => $errors
+        ];
+        // var_dump($_SESSION);
+        $template = "users/resetForm.phtml";
+
+        // $template = "home.phtml";
+        include_once 'views/layout.phtml';
+
     }
 
     public function resetPswd()

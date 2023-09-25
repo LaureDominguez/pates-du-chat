@@ -119,17 +119,34 @@ export function checkErrors() {
         // envoie un mail pour reset pswd
         reset.addEventListener('click', function () {
             const email = emailInput.value.trim();
+            console.log("reset");
 
-            console.log("prout");
-            console.log(email);
             if (validateEmail(email)) {
-                console.log("shprout");
+                const data = {
+                    email: email
+                };
+
+                fetch('index.php?route=resetFetch', {
+                    method: 'POST',
+                    body: JSON.stringify(data), 
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result);
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la requête Fetch:', error);
+                });
             }
         });
 
         // envoi le form de loggin
         submit.addEventListener('click', function () {
             loginForm.addEventListener("submit", handleSubmitLogin);
+            console.log("login");
 
             async function handleSubmitLogin(e) {
                 e.preventDefault(); //bloque l'envoi du formulaire

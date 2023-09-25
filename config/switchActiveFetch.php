@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
         $products = new Models\Products();
         $categories = new Models\Categories();
+        // données reçues de fetch
         $input = json_decode(file_get_contents('php://input'), true);
 
         $type = $input['type'];

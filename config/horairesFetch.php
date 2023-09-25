@@ -7,6 +7,7 @@ require_once './models/Horaires.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $database = new Models\Database();
         $dates = new Models\Horaires();
+        // données reçues de fetch
         $input = json_decode(file_get_contents('php://input'), true);
 
         if (is_array($input)) {

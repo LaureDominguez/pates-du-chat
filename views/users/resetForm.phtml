@@ -1,0 +1,44 @@
+<section class="userProfil">
+    <h2>Réinitialisation du mot de passe</h2>
+
+    <form action="index.php?route=resetPswdForm" method="post">
+        <h3>Choisissez un nouveau mot de passe</h3>
+        <div>
+            <label for="email_rst">email</label>
+            <input type="email" id="email_rst" value="<?= htmlspecialchars($user['email']); ?>" disabled>
+        </div>
+
+        <div class="champs password">
+            <label for="pswd_rst">nouveau mot de passe</label>
+            <div>
+                <input type="password" name="pswd" id="pswd_rst">
+                <i class="fa-solid fa-eye" id="register-show"></i>
+                <i class="fa-regular fa-eye hidden" id="rst-hide"></i>
+            </div>
+            <div class="error" id="error_rst"></div>
+        </div>
+
+        <div class="champs">
+            <label for="pswd_confirm_rst">confirmez votre mot de passe</label>
+            <input type="password" name="pswd_confirm" id="pswd_confirm_rst" autocomplete="new-password">
+            <div class="error" id="error_rst_verif"></div>
+        </div>
+
+        <button type="submit" class="btn" value="Valider" id="validate-reset">valider</button>
+    </form>
+
+    <div>
+        <h3>Conseils de sécurité :</h3>
+        <ul>
+            <li>
+                Assurez-vous de choisir un mot de passe fort, composé de lettres majuscules, de lettres minuscules, de chiffres et de caractères spéciaux.
+            </li>
+            <li>
+                N'utilisez pas le même mot de passe sur plusieurs sites Web pour renforcer la sécurité de votre compte.
+            </li>
+            <li>
+                Si vous avez des questions ou rencontrez des problèmes lors de la réinitialisation de votre mot de passe, n'hésitez pas à nous contacter via notre <a href="https://laure-web.fr/index.php?route=contactMail">Page de Contact</a>.
+            </li>
+        </ul>
+    </div>
+</section>

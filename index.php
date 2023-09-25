@@ -110,14 +110,16 @@ if (array_key_exists('route', $_GET)):
             break;
 
         case 'resetPswd':
+            $token = isset($_GET['token']) ? $_GET['token'] : '';
+            $email = isset($_GET['email']) ? urldecode($_GET['email']) : '';
             $controller = new Controllers\UsersController();
-            $controller->sendPswdLink();
+            $controller->resetForm($token, $email);
             break;
 
-        case 'resetPswdForm':
-            $controller = new Controllers\UsersController();
-            $controller->resetPswd();
-            break;
+        // case 'resetPswdForm':
+        //     $controller = new Controllers\UsersController();
+        //     $controller->resetPswd();
+        //     break;
 
         case 'desactivateUser':
             $controller = new Controllers\UsersController();
@@ -205,6 +207,10 @@ if (array_key_exists('route', $_GET)):
 
         case 'deleteFetch':
             require('./config/deleteFetch.php');
+            break;
+
+        case 'resetFetch':
+            require('./config/resetFetch.php');
             break;
 
 /////////////////////// end ///////////////////////

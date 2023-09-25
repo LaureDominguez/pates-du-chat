@@ -395,7 +395,7 @@ class Mail {
                             <li>
                                 <p>Cliquez sur le lien ci-dessous pour accéder à la page de réinitialisation de mot de passe :</p>
                                 <div class="link">
-                                    <a href="https://laure-web.fr/index.php?route=validate&token=' . $user['token'] . '&email=' . urlencode($user['email']) . '">Lien de réinitialisation du mot de passe</a>
+                                    <a href="https://laure-web.fr/index.php?route=resetPswd&token=' . $user['token'] . '&email=' . urlencode($user['email']) . '">Lien de réinitialisation du mot de passe</a>
                                 </div>
                             </li>
                             <li>
