@@ -51,7 +51,7 @@
 }
 
 .password{
-    div{
+    div:not(.error){
         position: relative;
         overflow: hidden;
     }

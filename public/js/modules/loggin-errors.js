@@ -104,57 +104,79 @@ export function checkErrors() {
 ////////// login form //////////
     const loginForm = document.querySelector('#login-form');
     const reset = document.getElementById('forgot');
+    const submit = document.getElementById('validate-log');
+    const emailInput = document.getElementById('email_log');
+    const errorMail = document.getElementById('error_log_mail');
+    const errorPswd = document.getElementById('error_log_pswd');
 
     if (loginForm) {
-        const logData = new FormData(loginForm);
-        const email = logData.get('email');
-            console.log(email);
 
         reset.addEventListener('click', function () {
-            e.preventDefault();
+            const email = emailInput.value.trim();
+
+            console.log("prout");
             console.log(email);
+            if (validateEmail(email)) {
+                console.log("shprout");
+            }
+        });
+
+        submit.addEventListener('click', function () {
+            console.log("pouet")
+
+            loginForm.addEventListener("submit", handleSubmitLogin);
+
+            async function handleSubmitLogin(e) {
+                e.preventDefault(); //bloque l'envoi du formulaire
+
+                const logData = new FormData(loginForm);
+                const email = logData.get('email');
+                const pswd = logData.get('pswd');
+
+                // Réinitialiser les messages d'erreur
+                errorMail.textContent = '';
+                errorPswd.textContent = '';
+
+                // Test email
+                // validateEmail(email);
+
+                // Test pswd
+                let pswdIsValid = false;
+                if (!pswd) {
+                    errorPswd.style.display = 'block';
+                    errorPswd.innerHTML = 'entrer votre mot de passe';
+                } else {
+                    pswdIsValid = true;
+                    errorPswd.style.display = 'none';
+                }
+
+                // Si ok, on envoi le form
+                if (validateEmail(email) && pswdIsValid) {
+                    loginForm.submit();
+                }
+            }
         })
+        function validateEmail(email) {
+            // const email = emailInput.value.trim();
 
-        loginForm.addEventListener("submit", handleSubmitLogin);
+            // Réinitialiser les messages d'erreur
+            errorMail.style.display = 'none'
+            errorMail.textContent = '';
+            // errorPswd.style.display = 'block'
+            // errorPswd.textContent = '';
 
-        async function handleSubmitLogin(e) {
-            e.preventDefault(); //bloque l'envoi du formulaire
-
-            // const logData = new FormData(loginForm);
-            // const email = logData.get('email');
-            const pswd = logData.get('pswd');
-            const errorMail = document.getElementById('error_log_mail')
-            const errorPswd = document.getElementById('error_log_pswd')
-
-            console.log(email);
-            console.log(pswd);
-
-            // Test email
-            let emailIsValid = false;
+            // Valider l'e-mail
+            // let emailIsValid = false;
             if (!email) {
                 errorMail.style.display = 'block'
-                errorMail.innerHTML = 'entrer une adresse email';
+                errorMail.textContent = 'Entrer une adresse e-mail';
+                return false;
             } else if (!isValidEmail(email)) {
                 errorMail.style.display = 'block'
-                errorMail.innerHTML = 'entrer une adresse email valide';
+                errorMail.textContent = 'Entrer une adresse e-mail valide';
+                return false;
             } else {
-                emailIsValid = true;
-                errorMail.style.display = 'none'
-            }
-
-            // Test pswd
-            let pswdIsValid = false;
-            if (!pswd) {
-                errorPswd.style.display = 'block';
-                errorPswd.innerHTML = 'entrer votre mot de passe';
-            } else {
-                pswdIsValid = true;
-                errorPswd.style.display = 'none';
-            }
-
-            // Si ok, on envoi le form
-            if (emailIsValid && pswdIsValid) {
-                loginForm.submit();
+                return true;
             }
         }
     }

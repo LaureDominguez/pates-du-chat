@@ -637,8 +637,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 /******************* general *******************/
 /******************* alert *******************/
 .success, .error {
-  position: fixed;
-  top: 1rem;
   left: 10%;
   right: 10%;
   text-align: center;
@@ -646,6 +644,11 @@ form input:not(.btn, .file), form form textarea, form form select {
   text-align: center;
   padding: 0.2rem;
   display: none;
+}
+
+.success, .error:not(.log .error) {
+  position: fixed;
+  top: 1rem;
 }
 
 .success {
@@ -3513,7 +3516,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   margin-bottom: 1rem;
 }
 
-.password div {
+.password div:not(.error) {
   position: relative;
   overflow: hidden;
 }
