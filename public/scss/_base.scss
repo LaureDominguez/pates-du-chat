@@ -14,7 +14,7 @@
     --green: #ADC865;
 
     //font Pacifico
-    --Pacifico: 'Pacifico', cursive;
+    // --Pacifico: 'Pacifico', cursive;
 }
 
 body *{
@@ -56,6 +56,11 @@ hr{
 }
 
 /******************* Fonts *******************/
+
+@font-face {
+    font-family: "Pacifico";
+    src: url('./public/font/Pacifico-Regular.ttf') format('truetype');
+}
 
 h1, h2, h3, h4, h5, nav, .btn {
     font-family: 'Pacifico', cursive;

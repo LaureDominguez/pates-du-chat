@@ -40,6 +40,7 @@ class HomeController{
         //     }
         // }
 
+        // $description = "";
         $template = "home.phtml";
         include_once'views/layout.phtml';
     }

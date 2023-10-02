@@ -18,13 +18,17 @@ class Mail {
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-        $image_url = $base_url . "/public/img/site/Logo-Arnaud.png";
+        $image_url = $base_url . "/public/img/site/";
+        $font_url = $base_url . "/public/font/";
 
         $message = '
             <html>
                 <head>
-                    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
                     <style>
+                        @font-face {
+                            font-family: "Pacifico";
+                            src: url("' . $font_url . 'Pacifico-Regular.ttf") format("truetype");
+                        }
                         body {
                             font-family: Arial, sans-serif;
                             background-color: #f2f2f2;
@@ -66,7 +70,7 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
+                            <img src="' . $image_url . 'Logo-Arnaud.png" alt="Logo" class="logo"/>
                         </a>
                         <h1>Vous avez reçu un nouveau message de : <br> '. $contact['name'] . '</h1>
                         <h2>Email : '. $contact['email'] . '</h2>
@@ -105,13 +109,18 @@ class Mail {
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-        $image_url = $base_url . "/public/img/site/Logo-Arnaud.png";
+        $image_url = $base_url . "/public/img/site/";
+        $font_url = $base_url . "/public/font/";
 
         $message = '
             <html>
                 <head>
                     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
                     <style>
+                        @font-face {
+                            font-family: "Pacifico";
+                            src: url("' . $font_url . 'Pacifico-Regular.ttf") format("truetype");
+                        }
                         body {
                             font-family: Arial, sans-serif;
                             background-color: #f2f2f2;
@@ -154,7 +163,7 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
+                            <img src="' . $image_url . 'Logo-Arnaud.png" alt="Logo" class="logo"/>
                         </a>
                         <h1>Cher(e) ' . (isset($newUser['name']) ? $newUser['name'] : $newUser['email']) .  ',</h1>
                         <p>Nous sommes ravis de vous accueillir sur Les Pâtes du Chat ! <br>Merci de nous avoir rejoint.</p>
@@ -188,11 +197,15 @@ class Mail {
                         <ul>
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=100094325392125">
-                                    f082
+                                    <img src="' . $image_url . 'square-facebook.svg" alt="facebook" class="social"/>
                                 </a>
                             </li>
-                            <li><i class="fa-brands fa-square-twitter"></i></li>
-                            <li><i class="fa-brands fa-square-instagram"></i></li>
+                            <li>
+                                <img src="' . $image_url . 'square-x-twitter.svg" alt="x-twitter" class="social"/>
+                            </li>
+                            <li>
+                                <img src="' . $image_url . 'square-instagram.svg" alt="instagram" class="social"/>
+                            </li>
                         </ul>
                     </div>
                     <div class="mention">
@@ -224,13 +237,17 @@ class Mail {
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-        $image_url = $base_url . "/public/img/site/Logo-Arnaud.png";
+        $image_url = $base_url . "/public/img/site/";
+        $font_url = $base_url . "/public/font/";
 
         $message = '
             <html>
                 <head>
-                    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
                     <style>
+                        @font-face {
+                            font-family: "Pacifico";
+                            src: url("' . $font_url . 'Pacifico-Regular.ttf") format("truetype");
+                        }
                         body {
                             font-family: Arial, sans-serif;
                             background-color: #f2f2f2;
@@ -276,7 +293,7 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
+                            <img src="' . $image_url . 'Logo-Arnaud.png" alt="Logo" class="logo"/>
                         </a>
                         <h1>Cher(e) ' . (isset($newUser['name']) ? $newUser['name'] : $newUser['email']) .  ',</h1>
                         <p>Nous vous remercions de vous être inscrit(e) sur Les Pâtes du Chat ! <br>Avant de pouvoir profiter pleinement de tous nos services, nous devons vérifier votre adresse e-mail.</p>
@@ -298,11 +315,15 @@ class Mail {
                         <ul>
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=100094325392125">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+                                    <img src="' . $image_url . 'square-facebook.svg" alt="facebook" class="social"/>
                                 </a>
                             </li>
-                            <li><i class="fa-brands fa-square-twitter"></i></li>
-                            <li><i class="fa-brands fa-square-instagram"></i></li>
+                            <li>
+                                <img src="' . $image_url . 'square-x-twitter.svg" alt="x-twitter" class="social"/>
+                            </li>
+                            <li>
+                                <img src="' . $image_url . 'square-instagram.svg" alt="instagram" class="social"/>
+                            </li>
                         </ul>
                     </div>
                     <div class="mention">
@@ -335,13 +356,17 @@ class Mail {
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-        $image_url = $base_url . "/public/img/site/Logo-Arnaud.png";
+        $image_url = $base_url . "/public/img/site/";
+        $font_url = $base_url . "/public/font/";
 
         $message = '
             <html>
                 <head>
-                    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
                     <style>
+                        @font-face {
+                            font-family: "Pacifico";
+                            src: url("' . $font_url . 'Pacifico-Regular.ttf") format("truetype");
+                        }
                         body {
                             font-family: Arial, sans-serif;
                             background-color: #f2f2f2;
@@ -387,7 +412,7 @@ class Mail {
                 <body>
                     <div class="mail">
                         <a href="https://laure-web.fr/">
-                            <img src="' . $image_url . '" alt="Logo" class="logo"/>
+                            <img src="' . $image_url . 'Logo-Arnaud.png" alt="Logo" class="logo"/>
                         </a>
                         <h1>Cher(e) ' . (isset($user['name']) ? $user['name'] : $user['email']) .  ',</h1>
                         <p>Vous recevez cet e-mail car vous avez demandé une réinitialisation de votre mot de passe sur Les Pâtes du Chat. <br>Pour réinitialiser votre mot de passe, veuillez suivre les étapes ci-dessous :</p>
@@ -414,11 +439,15 @@ class Mail {
                         <ul>
                             <li>
                                 <a href="https://www.facebook.com/profile.php?id=100094325392125">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"/></svg>
+                                    <img src="' . $image_url . 'square-facebook.svg" alt="facebook" class="social"/>
                                 </a>
                             </li>
-                            <li><i class="fa-brands fa-square-twitter"></i></li>
-                            <li><i class="fa-brands fa-square-instagram"></i></li>
+                            <li>
+                                <img src="' . $image_url . 'square-x-twitter.svg" alt="x-twitter" class="social"/>
+                            </li>
+                            <li>
+                                <img src="' . $image_url . 'square-instagram.svg" alt="instagram" class="social"/>
+                            </li>
                         </ul>
                     </div>
                     <div class="mention">

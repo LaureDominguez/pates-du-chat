@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // si oui on lui envoie un mail avec un token qui expire dans 10min
                 $user = $modelUser->getUser($userExist['id']);
                 $token = bin2hex(random_bytes(16));
-                $expiration = time() + 600;
+                $expiration = time() + 600; // le lien expire en 10 minutes
 
 
                 $newData = [

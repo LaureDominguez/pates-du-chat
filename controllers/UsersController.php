@@ -54,7 +54,7 @@ class UsersController{
         } else {
             //sinon on créer le compte
             $token = bin2hex(random_bytes(16));
-            $expiration = time() + 600;
+            $expiration = time() + (7 * 24 * 60 * 60); // le lien expire dans 7jours
 
             $newUser = [
                 trim($_POST['email']),
@@ -172,7 +172,7 @@ class UsersController{
             if ($token === $user['token'] && $current_time <= $user['expiration']){
                 // on confirme l'activation du compte dans la db
                 $newData = [
-                    'id', $user['id'],
+                    'id'=> $user['id'],
                     'activate' => 1
                 ];
                 $model->updateUser($newData);

@@ -10,7 +10,6 @@
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -47,6 +46,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -445,7 +448,6 @@ nav li {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -482,6 +484,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -697,7 +703,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -734,6 +739,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -1464,7 +1473,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -1501,6 +1509,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -1763,7 +1775,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -1800,6 +1811,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -2266,7 +2281,6 @@ main {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -2303,6 +2317,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -2814,7 +2832,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -2851,6 +2868,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -3195,7 +3216,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -3232,6 +3252,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -3723,7 +3747,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -3760,6 +3783,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -4003,7 +4030,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -4040,6 +4066,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);
@@ -4225,7 +4255,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   --yellow: #FAC172;
   --blue: #89D5C9;
   --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
 }
 
 body * {
@@ -4262,6 +4291,10 @@ hr {
 }
 
 /******************* Fonts *******************/
+@font-face {
+  font-family: "Pacifico";
+  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+}
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
   color: var(--vert);

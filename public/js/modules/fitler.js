@@ -32,7 +32,7 @@ export function filterCategory() {
                 // puis parcours chaque catégorie pour appliquer la fonction
                 categories.forEach(function (category) {
                     // si le nom de la catégorie == la valeur de la checkbox
-                    if (category.querySelector('h2').textContent === categoryName) {
+                    if (category.querySelector('h3').textContent === categoryName) {
                         // show/hide la catégorie en fonction de l'état de la checkbox
                         category.style.display = checkbox.checked ? 'block' : 'none';
                     }

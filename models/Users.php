@@ -31,8 +31,9 @@ class Users extends Database {
     public function updateUser($newData)
     {
         // $this->updateOne('users', $newData, 'id', $_SESSION['user']['id']);
-        return $this->updateOne('users', $newData, 'id', $newData['id']);
-        // return $newData;
+        
+        $this->updateOne('users', $newData, 'id', $newData['id']);
+        return $newData;
     }
     
 }
