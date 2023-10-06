@@ -48,7 +48,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -486,7 +486,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -741,7 +741,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -1511,7 +1511,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -1813,7 +1813,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -2319,7 +2319,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -2870,7 +2870,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -3254,7 +3254,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -3785,7 +3785,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -4068,7 +4068,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;
@@ -4293,7 +4293,7 @@ hr {
 /******************* Fonts *******************/
 @font-face {
   font-family: "Pacifico";
-  src: url("./public/font/Pacifico-Regular.ttf") format("truetype");
+  src: url("../font/Pacifico-Regular.ttf") format("truetype");
 }
 h1, h2, h3, h4, h5, nav, .btn {
   font-family: "Pacifico", cursive;

@@ -19,7 +19,7 @@ class Mail {
 
         $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         $image_url = $base_url . "/public/img/site/";
-        $font_url = $base_url . "/public/font/";
+        $font_url = $base_url . "../font/";
 
         $message = '
             <html>
