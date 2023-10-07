@@ -6,11 +6,9 @@ export function resetPswd() {
     if (resetPswd) {
         // envoie un mail pour reset pswd
         resetPswd.addEventListener('click', function () {
-            console.log("reset");
 
             fetch('index.php?route=resetFetch', {
                 method: 'POST',
-                // body: JSON.stringify(data), 
                 headers: {
                     'Content-Type': 'application/json'
                 }

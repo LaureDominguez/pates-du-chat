@@ -27,6 +27,7 @@ class HomeController{
             $errorRegist = '';
             $errors = '';
             $errorType = $_SESSION['visitor']['flash_message']['error'];
+            var_dump($errorType);
             switch (true){
                 case isset($errorType['login']):
                     $errorLog = $errorType['login'][0];
