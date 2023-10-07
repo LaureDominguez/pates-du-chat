@@ -38,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         //envoi du mail
                         $modelMail->resetPswd($user);
 
-                        echo json_encode(["success" => true, "message" => "Un lien de réinitialisation a été envoyé à l'adresse email enregistrée."]);
+                        echo json_encode(["success" => true, "message" => "Un lien de réinitialisation a été envoyé à l'adresse email enregistrée"]);
                 } else {
-                        echo json_encode(["success" => false, "message" => "Aucun utilisateur valide trouvé."]);
+                        echo json_encode(["success" => false, "message" => "Aucun utilisateur trouvé"]);
                 }
 
         // changement de mdp depuis mon compte
@@ -57,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 //envoi du mail
                 $modelMail->resetPswd($user);
 
-                echo json_encode(["success" => true, "message" => "Un lien de réinitialisation a été envoyé à l'adresse email enregistrée."]);
+                echo json_encode(["success" => true, "message" => "Un lien de réinitialisation a été envoyé à l'adresse email enregistrée"]);
         } else {
                 // Aucun cas valide, renvoyer une réponse JSON indiquant l'échec
-                echo json_encode(["success" => false, "message" => "Aucun utilisateur valide trouvé."]);
+                echo json_encode(["success" => false, "message" => "Aucun utilisateur trouvé"]);
         }
 
 } else {

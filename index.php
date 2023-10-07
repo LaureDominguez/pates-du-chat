@@ -13,6 +13,7 @@ require('config/config.php');
 //session visiteur
 $controller = new Controllers\HomeController();
 $controller->visitor();
+$controller->alertMsg();
 if (array_key_exists('route', $_GET)):
     switch ($_GET['route']) {
 

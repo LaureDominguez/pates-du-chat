@@ -118,7 +118,6 @@ export function checkErrors() {
         // envoie un mail pour reset pswd
         reset.addEventListener('click', function () {
             const email = emailInput.value.trim();
-            console.log("reset");
 
             if (validateEmail(email)) {
                 const data = {
@@ -135,6 +134,12 @@ export function checkErrors() {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
+                    errorMail.textContent = result.message;
+                    errorMail.style.display = "flex";
+                    if (result.success) {
+                        errorMail.classList.remove = "error";
+                        errorMail.classList.add = "success";
+                    }
                 })
                 .catch(error => {
                     console.error('Erreur lors de la requête Fetch:', error);

@@ -1,9 +1,10 @@
-<?php if (isset($_SESSION['visitor']['flash_message']['success'])) : ?>
+<?php if (isset($success)) : ?>
     <div class="success">
-        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['success']); ?>
+        <p>fait chier</p>
+        <?= htmlspecialchars($success); ?>
     </div>
 <?php endif; ?>
-
+<?= var_dump($errors); ?>
 <?php if (isset($errors)) : ?>
     <div class="error">
         <p>fait chier</p>

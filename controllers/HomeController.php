@@ -21,26 +21,6 @@ class HomeController{
         $maxProducts = 11;
         $count = 0;
 
-        // Affiche les messages d'erreur de connexion
-        if (isset($_SESSION['visitor']['flash_message']['error'])) {
-            $errorLog = '';
-            $errorRegist = '';
-            $errors = '';
-            $errorType = $_SESSION['visitor']['flash_message']['error'];
-            var_dump($errorType);
-            switch (true){
-                case isset($errorType['login']):
-                    $errorLog = $errorType['login'][0];
-                    break;
-                case isset($errorType['register']):
-                    $errorRegist = $errorType['register'][0];
-                    break;
-                default:
-                    $errors = $errorType;
-                    break;
-            }
-        }
-
         // $description = "";
         $template = "home.phtml";
         include_once'views/layout.phtml';
@@ -68,5 +48,44 @@ class HomeController{
             $token .= $characters[rand(0, $charactersLength - 1)];
         }
         return $token;
+    }
+
+    public function alertMsg()
+    {
+        // var_dump($_SESSION['visitor']);
+
+        // Affiche les messages d'erreur
+        if (isset($_SESSION['visitor']['flash_message'])) {
+            $errorLog = '';
+            $errorRegist = '';
+            $errors = '';
+            $success = '';
+            var_dump($_SESSION['visitor']['flash_message']);
+
+            switch (true) {
+                case isset($_SESSION['visitor']['flash_message']['success']):
+                    var_dump("youpi1");
+                    $success = $_SESSION['visitor']['flash_message']['success'];
+                    break;
+                case isset($_SESSION['visitor']['flash_message']['error']):
+                    var_dump("youpi2");
+                    $errorType = $_SESSION['visitor']['flash_message']['error'];
+                    switch (true) {
+                        case isset($errorType['login']):
+                    var_dump("youpi3");
+                            $errorLog = $errorType['login'][0];
+                            break;
+                        case isset($errorType['register']):
+                    var_dump("youpi4");
+                            $errorRegist = $errorType['register'][0];
+                            break;
+                        default:
+                    var_dump("youpi5");
+                            $errors = $errorType[0];
+                            break;
+                    }
+                    break;
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@
         <?php endif ?>
 
         <?php if (isset($_SESSION['visitor']['flash_message'])) : ?>
-            <aside>
+            <aside id="promptAlert">
                 <?php include('./views/flash_msg.phtml'); ?>
             </aside>
             <?php unset($_SESSION['visitor']['flash_message']); ?>
