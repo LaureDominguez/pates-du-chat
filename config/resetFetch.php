@@ -12,38 +12,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // données reçues de fetch
         $input = json_decode(file_get_contents('php://input'), true);
 
-        $email = $input['email'];
-
         //envoi un mail avec le lien vers le formulaire qui renvoi vers resetPswd()
         $errors = [];
         $success = "";
 
-        // on verifie que l'email existe dans la db
-        $userExist = $modelUser->checkEmail($email);
+        $token = bin2hex(random_bytes(16));
+        $expiration = time() + 600; // le lien expire en 10 minutes
 
+        // mdp oublié
+        if (!empty($input['email'])){
+                $email = $input['email'];
+                // on verifie que l'email existe dans la db
+                $userExist = $modelUser->checkEmail($email);
 
-        if ($userExist) {
-                // si oui on lui envoie un mail avec un token qui expire dans 10min
-                $user = $modelUser->getUser($userExist['id']);
-                $token = bin2hex(random_bytes(16));
-                $expiration = time() + 600; // le lien expire en 10 minutes
+                if ($userExist) {
+                        // si oui on lui envoie un mail avec un token qui expire dans 10min
+                        $user = $modelUser->getUser($userExist['id']);
+                        $newData = [
+                                'id' => $user['id'],
+                                'token' => $token,
+                                'expiration' => $expiration
+                        ];
+                        //maj de user db
+                        $modelUser->updateUser($newData);
+                        //envoi du mail
+                        $modelMail->resetPswd($user);
 
+                        echo json_encode(["success" => true]);
+                } else {
+                        echo json_encode(["success" => false, "message" => "Aucun utilisateur valide trouvé."]);
+                }
 
+        // changement de mdp depuis mon compte
+        } elseif (isset($_SESSION['user'])) {
+                $user = $modelUser->getUser($_SESSION['user']['id']);
+                
                 $newData = [
-                        'id' => $user['id'],
-                        'token' => $token,
-                        'expiration' => $expiration
-                ];
+                                'id' => $user['id'],
+                                'token' => $token,
+                                'expiration' => $expiration
+                        ];
+                //maj de user db
                 $modelUser->updateUser($newData);
-
+                //envoi du mail
                 $modelMail->resetPswd($user);
 
-                // $success = "L'image a bien été enregistrée !";
-                // $_SESSION['visitor']['flash_message'] = [
-                //         'success' => $success
-                // ];
                 echo json_encode(["success" => true]);
         } else {
-                echo json_encode(["success" => false]);
+                // Aucun cas valide, renvoyer une réponse JSON indiquant l'échec
+                echo json_encode(["success" => false, "message" => "Aucun utilisateur valide trouvé."]);
         }
+
+} else {
+        echo json_encode(["success" => false]);
 }

@@ -33,7 +33,7 @@
 
         <?php if (isset($_SESSION['visitor']['flash_message'])) : ?>
             <aside>
-                <?php include_once('./views/flash_msg.phtml'); ?>
+                <?php include('./views/flash_msg.phtml'); ?>
             </aside>
             <?php unset($_SESSION['visitor']['flash_message']); ?>
         <?php endif ?>

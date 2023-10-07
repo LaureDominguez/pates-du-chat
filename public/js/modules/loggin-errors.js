@@ -115,7 +115,6 @@ export function checkErrors() {
     const errorPswd = document.getElementById('error_log_pswd');
 
     if (loginForm) {
-
         // envoie un mail pour reset pswd
         reset.addEventListener('click', function () {
             const email = emailInput.value.trim();

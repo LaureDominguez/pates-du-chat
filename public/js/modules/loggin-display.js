@@ -5,7 +5,6 @@ export function toogleModal() {
     function showElement(element) {
         element.style.display = 'flex';
     }
-    
     function hideElement(element) {
         element.style.display = 'none';
     }
@@ -18,7 +17,9 @@ export function toogleModal() {
     const menuMobile = document.getElementById('menu-mobile');
 
     const promptLogin = document.getElementById('errorL');
+    const divLog = document.getElementById('error_log_mail');
     const promptRegister = document.getElementById('errorR');
+    const divReg = document.getElementById('error_new_mail');
 
 
     // prompt modale with php error
@@ -37,6 +38,14 @@ export function toogleModal() {
             showElement(registerWindow);
         }
     } 
+
+    if (promptLogin) {
+        showElement(divLog);
+    }
+
+    if (promptRegister) {
+        showElement(divReg);
+    }
 
 /////////////////////////////////
 

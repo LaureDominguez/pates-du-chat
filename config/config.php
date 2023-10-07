@@ -2,12 +2,6 @@
 
 // base de données
 
-//db micke
-// define("DB_HOST", 'db.3wa.io');
-// define("DB_NAME", 'argon71hotmailfr_mysociety');
-// define("DB_USER", 'argon71hotmailfr');
-// define("DB_PASS", '1b6d9c41e962f51b032b2fbc3a06cba1');
-
 //db local
 define('DB_HOST', '127.0.0.1');
 define('DB_DATABASE', 'projet-rattrapage');
@@ -31,6 +25,3 @@ define('DB_PASSWORD', '');
 // define('DB_DATABASE', 'u633740463_pates');
 // define('DB_USERNAME', 'u633740463_laure');
 // define('DB_PASSWORD', 'rNK#$jaBzNq7o&F8');
-
-
-// serveur mail

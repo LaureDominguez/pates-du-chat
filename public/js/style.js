@@ -12,6 +12,7 @@ import { disableAccount } from "./modules/disable.js";
 import { uploadImages } from "./modules/images.js";
 import { draggingGrid } from "./modules/dragging.js";
 import { hrefOnclick } from "./modules/hrefOnclick.js";
+import { resetPswd } from "./modules/reset-pswd.js";
 // import { addLineBreak } from "./modules/title-contact.js";
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -26,6 +27,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
     toogleModal(); // affiche les fenetres de connexion
     checkErrors(); // gestion des erreurs dans fenetres de connexion 
+    resetPswd(); // changer de mdp
     disableAccount();// desactive son compte
 
     uploadImages(); // upload images dans partie admin

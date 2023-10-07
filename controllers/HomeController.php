@@ -22,23 +22,23 @@ class HomeController{
         $count = 0;
 
         // Affiche les messages d'erreur de connexion
-        // if (isset($_SESSION['visitor']['flash_message']['error'])) {
-        //     $errorLog = '';
-        //     $errorRegist = '';
-        //     $errors = '';
-        //     $errorType = $_SESSION['visitor']['flash_message']['error'];
-        //     switch (true){
-        //         case isset($errorType['login']):
-        //             $errorLog = $errorType['login'][0];
-        //             break;
-        //         case isset($errorType['register']):
-        //             $errorRegist = $errorType['register'][0];
-        //             break;
-        //         default:
-        //             $errors = $errorType;
-        //             break;
-        //     }
-        // }
+        if (isset($_SESSION['visitor']['flash_message']['error'])) {
+            $errorLog = '';
+            $errorRegist = '';
+            $errors = '';
+            $errorType = $_SESSION['visitor']['flash_message']['error'];
+            switch (true){
+                case isset($errorType['login']):
+                    $errorLog = $errorType['login'][0];
+                    break;
+                case isset($errorType['register']):
+                    $errorRegist = $errorType['register'][0];
+                    break;
+                default:
+                    $errors = $errorType;
+                    break;
+            }
+        }
 
         // $description = "";
         $template = "home.phtml";

@@ -4,8 +4,9 @@
     </div>
 <?php endif; ?>
 
-<?php if (isset($_SESSION['visitor']['flash_message']['error'])) : ?>
+<?php if (isset($errors)) : ?>
     <div class="error">
+        <p>fait chier</p>
         <?php foreach ($errors as $error) : ?>
             <?= $error; ?>
         <?php endforeach; ?>
