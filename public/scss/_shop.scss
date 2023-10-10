@@ -322,17 +322,32 @@
 
     .shop-cat{
         .more{
-            transition: all 0.5s ease;
+            transition: all 0.5s ease-in-out;
             background-size: 0%;
             background-repeat: no-repeat;
-            background-image: -webkit-linear-gradient(337deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
+            width: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            p{
+                font-size: 1.2rem;
+                margin-right: 1rem;
+                text-wrap: balance;
+                opacity: 0;
+                color: transparent;
+                transition: opacity 1.5s ease-in-out;
+            }
             i{
                 font-size: 2rem;
             }
             &:hover{
                 color: #fff;
                 cursor: pointer;
-                background-size: 100%;
+                width: 9rem;
+                p{
+                    color: #fff;
+                    opacity: 1;
+                }
             }
         }
     } div{

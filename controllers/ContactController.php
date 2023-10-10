@@ -67,9 +67,9 @@ class ContactController{
                 $_SESSION['visitor']['flash_message'] = [
                     'success' => $success
                 ];
-                
-                header('Location: index.php?route=contactMail');
-                exit();
+
+                header('Location: ' . $_SESSION['visitor']['currentPage']);
+                exit;
             }
         }
 

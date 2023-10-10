@@ -1,4 +1,42 @@
-<article class="shop-cat">
+<article class="shop-cat" id="ravioli">
+    <h2>Les raviolis de la semaine</h2>
+    <div class="dragDisplay">
+        <div class="dragContainer">
+            <ul class="drag">
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($count >= $maxProducts) {
+                        break;
+                    } ?>
+                    <?php if ($product["active"] && $product["cat_id"] === 7) : ?>
+                        <li class="shop-tuile">
+                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
+                                <?php if (!empty($product["img"])) : ?>
+                                    <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
+                                <?php else : ?>
+                                    <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
+                                <?php endif; ?>
+
+                                <div class="detail">
+                                    <h3 class="title-tuile"><?= htmlspecialchars($product["name"]); ?></h3>
+                                    <h4><?= htmlspecialchars($product["price"]); ?>€ / kg</h4>
+                                </div>
+                            </a>
+                        </li>
+                        <?php $count++; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+            <!-- <a href="index.php?route=shop"> -->
+            <button class="more">
+                <p>Aller à<br>la<br>boutique</p>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <!-- </a> -->
+        </div>
+    </div>
+</article>
+
+<article class="shop-cat" id="pasta">
     <h2>Les pâtes fraîches</h2>
     <div class="dragDisplay">
         <div class="dragContainer">
@@ -27,48 +65,11 @@
                 <?php endforeach; ?>
             </ul>
             <!-- <a href="index.php?route=shop"> -->
-                <button class="more">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
+            <button class="more">
+                <p>Aller à<br>la<br>boutique</p>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
             <!-- </a> -->
         </div>
     </div>
-</article>
-
-<article class="shop-cat">
-    <h2>Les nouvelles recettes de raviolis</h2>
-    <div class="dragDisplay">
-        <div class="dragContainer">
-            <ul class="drag">
-                <?php foreach ($products as $product) : ?>
-                    <?php if ($count >= $maxProducts) {
-                        break;
-                    } ?>
-                    <?php if ($product["active"] && $product["cat_id"] === 7) : ?>
-                        <li class="shop-tuile">
-                            <a href="index.php?route=shopDetail&id=<?= htmlspecialchars($product['id']); ?>">
-                                <?php if (!empty($product["img"])) : ?>
-                                    <img src="public/img/produits/<?= $product['image']; ?>" alt="<?= $product['imgTitle']; ?>">
-                                <?php else : ?>
-                                    <img src="public/img/site/logo-Arnaud.png" alt="Image non disponible">
-                                <?php endif; ?>
-
-                                <div class="detail">
-                                    <h3 class="title-tuile"><?= htmlspecialchars($product["name"]); ?></h3>
-                                    <h4><?= htmlspecialchars($product["price"]); ?>€ / kg</h4>
-                                </div>
-                            </a>
-                        </li>
-                        <?php $count++; ?>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
-            <!-- <a href="index.php?route=shop"> -->
-                <button class="more">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-            <!-- </a> -->
-        </div>
-    </div>
-
 </article>
