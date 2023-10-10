@@ -7,8 +7,8 @@
             <label for="email_new">email</label>
             <input type="email" name="email" id="email_new" autocomplete="email">
             <div class="error" id="error_new_mail">
-                <?php if (isset($errorRegist)) : ?>
-                    <span id="errorR"><?= htmlspecialchars($errorRegist); ?></span>
+                <?php if (isset($_SESSION['visitor']['flash_message']['error']['register'])) : ?>
+                    <span id="errorR"><?= htmlspecialchars($_SESSION['visitor']['flash_message']['error']['register'][0]); ?></span>
                 <?php endif; ?>
             </div>
         </div>

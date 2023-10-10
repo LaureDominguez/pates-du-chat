@@ -20,13 +20,14 @@ class UsersController{
         }
     }
 
-////////////////////////// Profile //////////////////////////
+////////////////////////// Profil //////////////////////////
 
     public function profil()
     {//affiche le compte user
         $model = new Users();
         $user = $model->getUser($_SESSION['user']['id']);
 
+        $description = "Mon compte";
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }
@@ -245,6 +246,8 @@ class UsersController{
         $_SESSION['visitor']['flash_message'] = [
             'error' => $errors
         ];
+
+        $description = "Erreur lors de la modification du compte";
         $template = "users/profil.phtml";
         include_once 'views/layout.phtml';
     }
@@ -271,6 +274,7 @@ class UsersController{
         ];
         // var_dump($_SESSION);
         $template = "users/resetForm.phtml";
+        $description = "Réinitialisation du mot de passe";
 
         // $template = "home.phtml";
         include_once 'views/layout.phtml';
@@ -308,6 +312,8 @@ class UsersController{
         $_SESSION['visitor']['flash_message'] = [
             'error' => $errors
         ];
+
+        $description = "Erreur lors de la modification du mot de passe";
         $template = "users/reset.phtml";
         include_once 'views/layout.phtml';
     }

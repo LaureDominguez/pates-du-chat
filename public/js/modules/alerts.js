@@ -4,16 +4,15 @@ export function displayAlerts() {
 /////////// register form ///////////////////
     const alertDiv = document.getElementById('promptAlert');
     if (alertDiv) {
-        const success = document.querySelectorAll('.success');
-        const error = document.querySelectorAll('.error');
+        const success = document.querySelector('.success');
+        const error = document.querySelector('.error');
 
         // Affiche les erreurs si besoin
         if (success) {
-            success.style.display = 'block';
-            return;
-        } else if (error) {
-            error.style.display = 'block';
-            return;
+            success.style.display = 'flex';
+        }
+        if (error) {
+            error.style.display = 'flex';
         }
     }
 }

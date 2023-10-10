@@ -11,18 +11,21 @@ class ContactController{
         $modelHoraires = new Horaires();
         $dates = $modelHoraires->getAllDates();
 
+        $description = "Où me trouver ?";
         $template = "contact/index.phtml";
         include_once 'views/layout.phtml';
     }
 
     public function displayContactForm()
     {
+        $description = "Contactez-moi !";
         $template = "contact/mail.phtml";
         include_once 'views/layout.phtml';
     }
 
     public function displayMLPage()
     {
+        $description = "Mentions légales";
         $template = "contact/legal.phtml";
         include_once 'views/layout.phtml';
     }

@@ -28,6 +28,7 @@ class AdminController{
         $modelDate = new Horaires;
         $dates = $modelDate->getAllDates();
 
+        $description = "Gestion du site";
         $template = "dashboard.phtml";
         include'views/layout.phtml';
     }
@@ -62,6 +63,7 @@ class AdminController{
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
+        $description = "Création d'un nouveau produit";
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -158,7 +160,8 @@ class AdminController{
         $_SESSION['visitor']['flash_message'] = [
                 'error' => $errors
             ];
-        
+
+        $description = "Erreur lors de la création du produit";
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -172,6 +175,7 @@ class AdminController{
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
+        $description = "Modification d'un produit";
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -228,6 +232,7 @@ class AdminController{
                 'error' => $errors
             ];
 
+        $description = "Erreur lors de la modification du produit";
         $template = "views/shop/prodForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -238,6 +243,7 @@ class AdminController{
         $modelCategory = new Categories();
         $categories = $modelCategory->getAllCategories();
 
+        $description = "Création d'une nouvelle catégorie";
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -271,6 +277,7 @@ class AdminController{
             'error' => $errors
         ];
 
+        $description = "Erreur lors de la création de la catégorie";
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -281,6 +288,7 @@ class AdminController{
         $modelCategory = new Categories();
         $category = $modelCategory->getOneCategory($id);
 
+        $description = "Modification d'une catégorie";
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }
@@ -327,6 +335,7 @@ class AdminController{
                 'error' => $errors
             ];
 
+        $description = "Erreur lors del a moficition de la catgéorie";
         $template = "views/shop/catForm.phtml";
         include_once 'views/layout.phtml';
     }

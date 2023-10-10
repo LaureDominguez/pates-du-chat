@@ -1,14 +1,12 @@
-<?php if (isset($success)) : ?>
+<?php if (isset($_SESSION['visitor']['flash_message']['success'])) : ?>
     <div class="success">
-        <p>fait chier</p>
-        <?= htmlspecialchars($success); ?>
+        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['success']); ?>
     </div>
 <?php endif; ?>
-<?= var_dump($errors); ?>
-<?php if (isset($errors)) : ?>
+
+<?php if (isset($_SESSION['visitor']['flash_message']['errors'])) : ?>
     <div class="error">
-        <p>fait chier</p>
-        <?php foreach ($errors as $error) : ?>
+        <?php foreach ($_SESSION['visitor']['flash_message']['errors'] as $error) : ?>
             <?= $error; ?>
         <?php endforeach; ?>
     </div>

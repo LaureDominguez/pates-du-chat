@@ -13,6 +13,7 @@ class ShopController{
         $model = new Categories();
         $categories = $model->getAllCategoriesWithProducts();
 
+        $description = "Découvrez toutes nos recettes !";
         $template = "shop/index.phtml";
         include_once'views/layout.phtml';
     }
@@ -25,6 +26,7 @@ class ShopController{
         $modelCategories = new Categories();
         $category = $modelCategories->getOneCategory($product['cat_id']);
 
+        $description = "Détails du produit";
         $template = "shop/detail.phtml";
         include_once 'views/layout.phtml';
     }

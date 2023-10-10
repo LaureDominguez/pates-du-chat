@@ -8,9 +8,9 @@
             <input type="email" name="email" id="email_log" autocomplete="email">
             <div class="error" id="error_log_mail">
 
-                <?php if (isset($errorLog)) : ?>
+                <?php if (isset($_SESSION['visitor']['flash_message']['error']['login'])) : ?>
                     <span id="errorL">
-                        <?= htmlspecialchars($errorLog); ?>
+                        <?= htmlspecialchars($_SESSION['visitor']['flash_message']['error']['login'][0]); ?>
                     </span>
                 <?php endif; ?>
             </div>
