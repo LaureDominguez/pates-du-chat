@@ -30,6 +30,12 @@
         letter-spacing: 2px;
         color: var(--vert);
         background-color: var(--orange);
+        p{
+            display: none;
+        }
+        i {
+            font-size: 2rem;
+        }
     }
 }
 
@@ -323,22 +329,18 @@
     .shop-cat{
         .more{
             transition: all 0.5s ease-in-out;
-            background-size: 0%;
-            background-repeat: no-repeat;
             width: 3rem;
             display: flex;
             align-items: center;
             justify-content: flex-end;
             p{
+                display: inline;
                 font-size: 1.2rem;
                 margin-right: 1rem;
                 text-wrap: balance;
                 opacity: 0;
                 color: transparent;
                 transition: opacity 1.5s ease-in-out;
-            }
-            i{
-                font-size: 2rem;
             }
             &:hover{
                 color: #fff;

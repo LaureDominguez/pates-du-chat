@@ -1988,7 +1988,7 @@ main {
   background-color: rgba(255, 255, 255, 0.4156862745);
   backdrop-filter: blur(4px);
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  padding: 1rem;
 }
 .home .mail form {
   display: flex;
@@ -2220,6 +2220,9 @@ main {
 @media (min-width: 1024px) {
   .home {
     padding: 1rem;
+  }
+  .home .mail {
+    padding: 2rem;
   }
   .home:target {
     scroll-margin-top: 5rem;
@@ -2512,6 +2515,12 @@ form input:not(.btn, .file), form form textarea, form form select {
   color: var(--vert);
   background-color: var(--orange);
 }
+.dragDisplay .more p {
+  display: none;
+}
+.dragDisplay .more i {
+  font-size: 2rem;
+}
 
 .shop-tuile {
   height: 9rem;
@@ -2786,23 +2795,19 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   .shop-cat .more {
     transition: all 0.5s ease-in-out;
-    background-size: 0%;
-    background-repeat: no-repeat;
     width: 3rem;
     display: flex;
     align-items: center;
     justify-content: flex-end;
   }
   .shop-cat .more p {
+    display: inline;
     font-size: 1.2rem;
     margin-right: 1rem;
     text-wrap: balance;
     opacity: 0;
     color: transparent;
     transition: opacity 1.5s ease-in-out;
-  }
-  .shop-cat .more i {
-    font-size: 2rem;
   }
   .shop-cat .more:hover {
     color: #fff;
