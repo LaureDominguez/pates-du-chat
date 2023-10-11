@@ -24,9 +24,9 @@ class Mail
         $header .= 'Content-Transfer-Encoding: 8bit';
 
         if (mail($destinataire, $subject, $message, $header)) {
-            echo "L'email a été envoyé avec succès.";
+            return true;
         } else {
-            echo "Une erreur s'est produite lors de l'envoi de l'email.";
+            return false;
         }
     }
 
@@ -144,7 +144,13 @@ class Mail
 
         $message = $this->generateEmailMessage($user, $emailContent);
 
-        $this->sendEmail($destinataire, $subject, $message);
+        $success = $this->sendEmail($destinataire, $subject, $message);
+
+        if ($success){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function generateEmailMessage($data, $emailContent)

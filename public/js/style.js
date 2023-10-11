@@ -7,14 +7,12 @@ import { checkErrors } from "./modules/loggin-errors.js";
 import { switchProducts } from "./modules/switch.js";
 import { editContact } from "./modules/horaires.js";
 import { sortTable } from "./modules/sort-table.js";
-// import { lazy } from "./modules/lazy.js";
 import { disableAccount } from "./modules/disable.js";
 import { uploadImages } from "./modules/images.js";
 import { draggingGrid } from "./modules/dragging.js";
 import { hrefOnclick } from "./modules/hrefOnclick.js";
 import { resetPswd } from "./modules/reset-pswd.js";
 import { displayAlerts } from "./modules/alerts.js";
-// import { addLineBreak } from "./modules/title-contact.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     titleOnNav(); // animation du titre dans la barre de nav

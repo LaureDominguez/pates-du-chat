@@ -134,11 +134,17 @@ export function checkErrors() {
                 .then(response => response.json())
                 .then(result => {
                     console.log(result);
-                    errorMail.textContent = result.message;
-                    errorMail.style.display = "flex";
+                    // affiche success ou error dans une div
                     if (result.success) {
-                        errorMail.classList.remove = "error";
-                        errorMail.classList.add = "success";
+                        errorMail.classList.add('success');
+                        errorMail.classList.remove('error');
+                        errorMail.textContent = result.message;
+                        errorMail.style.display = "flex";
+                    } else {
+                        errorMail.classList.add('error');
+                        errorMail.classList.remove('success');
+                        errorMail.textContent = result.message;
+                        errorMail.style.display = "flex";
                     }
                 })
                 .catch(error => {

@@ -1,9 +1,6 @@
 // ********************* upload d'images
 export function uploadImages() {
 
-// à faire : success message stocké dans msg flash, effacé par session_start lors de la redirection
-
-
     const productForm = document.getElementById("productForm");
     const imageForm = document.getElementById("imgForm");
     const imgMsg = document.getElementById("imgMsg");

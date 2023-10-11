@@ -1,4 +1,4 @@
-// ********************* test errors on login/register modal
+// ********************* test errors on reset function
 export function resetPswd() {
 
     const resetPswd = document.getElementById('resetPswd');
@@ -6,6 +6,7 @@ export function resetPswd() {
     if (resetPswd) {
         // envoie un mail pour reset pswd
         resetPswd.addEventListener('click', function () {
+            console.log("comment ca marche");
 
             fetch('index.php?route=resetFetch', {
                 method: 'POST',

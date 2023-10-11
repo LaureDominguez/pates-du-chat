@@ -215,7 +215,4 @@ export function toogleModal() {
             hidePassword(loginPswd);
         })
     }
-
-
-    
 }
