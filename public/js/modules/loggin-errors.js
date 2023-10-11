@@ -150,7 +150,6 @@ export function checkErrors() {
         // envoi le form de loggin
         submit.addEventListener('click', function () {
             loginForm.addEventListener("submit", handleSubmitLogin);
-            console.log("login");
 
             async function handleSubmitLogin(e) {
                 e.preventDefault(); //bloque l'envoi du formulaire

@@ -4,10 +4,36 @@
 .userProfil{
     width: 90%;
     margin: auto;
-    .profil{
+    form{
+        margin: 1rem;
+        padding: 1rem;
+        text-align: center;
+        background-color: #ffffff86;
+        border-radius: 10px;
+        h3, div{
+            margin: 1rem;
+        }
+        .text-input{ 
+            font-size: 1rem;
+            padding: 0.2rem 0.5rem;
+            margin: 0.5rem;
+            background-color: #ffffff86;
+            box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
+        }
+        p{
+            font-style: italic;
+        }
+        .btn{
+            margin: 1rem;
+        }
+    }
+}
+
+.profil section{
         display: flex;
         flex-direction: column;
-        padding: 1rem;
+        padding: 0 0.5rem;
+        margin: 2rem 0;
         background-color: #ffffff86;
         border-radius: 10px;
         h2{
@@ -25,29 +51,6 @@
             font-size: 1.3rem;
             letter-spacing: 1px;
         }
-        form{
-            margin: 1rem;
-            padding: 1rem;
-            text-align: center;
-            background-color: #ffffff86;
-            border-radius: 10px;
-            h3, div{
-                margin: 1rem;
-            }
-            .text-input{ 
-                font-size: 1rem;
-                padding: 0.2rem 0.5rem;
-                margin: 0.5rem;
-                background-color: #ffffff86;
-                box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
-            }
-            p{
-                font-style: italic;
-            }
-            .btn{
-                margin: 1rem;
-            }
-        }
         #newsletter{
             label{
                 font-weight: normal;
@@ -56,57 +59,116 @@
         }
         
     }
-}
 
-
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-    /******************* detail *******************/
-}
-
-/* PC */
-@media (min-width: 1024px) {
-    .userProfil{
-        width: 80%;
+.resetPswd{
+    padding: 0.2rem 0.5rem;
+    background-color: #ffffff86;
+    border-radius: 10px;
+    .resetForm{
+        width: 30rem;
         margin: auto;
-        .profil{
+        display: flex;
+    flex-direction: column;
+        text-align: left;
+        border-width: 3px;
+        padding: 0.8rem;
+        border-style: solid;
+        border-image: linear-gradient(to right, var(--green), var(--orange)) 1;
+        border-radius: 15px;
+        .champs{
             display: flex;
             flex-direction: column;
-            padding: 1rem;
-            background-color: #ffffff86;
-            border-radius: 10px;
-            section{
-                width: 80%;
-                margin: auto;
+            div{
+                margin: 0;
             }
         }
-        form{
-            margin: 1rem;
-            padding: 1rem;
-            text-align: center;
-            background-color: #ffffff86;
-            border-radius: 10px;
-            h3, div{
-                margin: 1rem;
-            }
-            .text-input{ 
-                padding: 0.2rem 0.5rem;
-                background-color: #ffffff86;
-                box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
-            }
-            p{
-                font-style: italic;
-            }
+        label{
+            color: var(--vert);
         }
-        #newsletter{
-            label{
-                font-weight: normal;
-                text-transform: none;
-            }
+        input{
+            padding: 0.2rem 0.5rem;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .btn{
+            width: 8rem;
+            margin: auto;
         }
     }
+    .advertise{
+        margin: 1rem;
+        padding: 1rem;
+        background-color: #ffffff86;
+        border-radius: 10px;
+        ul li{
+            list-style: disc;
+            margin-left: 1rem;
+            line-height: 1.5rem;
+        }
+        ul{
+            margin: 0 10%;
+            color: var(--vert);
+            li p{
+                color: #000;
+            }
+        }
 
-
-
-    
+        .souligne, a{
+            text-decoration: underline;
+            color: var(--vert);
+            font-weight: 600;
+        }
+    }
 }
+
+
+// /* Tablettes */
+// @media (min-width: 768px) and (max-width: 1023px) {
+//     /******************* detail *******************/
+// }
+
+// /* PC */
+// @media (min-width: 1024px) {
+//     .userProfil{
+//         width: 80%;
+//         margin: auto;
+//     }
+
+//     .profil{
+//         display: flex;
+//         flex-direction: column;
+//         padding: 1rem;
+//         background-color: #ffffff86;
+//         border-radius: 10px;
+//         section{
+//             width: 80%;
+//             margin: auto;
+//         }
+//         // form{
+//         //     margin: 1rem;
+//         //     padding: 1rem;
+//         //     text-align: center;
+//         //     background-color: #ffffff86;
+//         //     border-radius: 10px;
+//         //     h3, div{
+//         //         margin: 1rem;
+//         //     }
+//         //     .text-input{ 
+//         //         padding: 0.2rem 0.5rem;
+//         //         background-color: #ffffff86;
+//         //         box-shadow: inset 4px 4px 15px 0px #d8d8d8e5, inset 6px 13px 14px -23px #e7e7e7e5;
+//         //     }
+//         //     p{
+//         //         font-style: italic;
+//         //     }
+//         // }
+//         #newsletter{
+//             label{
+//                 font-weight: normal;
+//                 text-transform: none;
+//             }
+//         }
+//     }
+
+// }

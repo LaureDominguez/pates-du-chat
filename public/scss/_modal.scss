@@ -11,7 +11,6 @@
 }
 
 .log{
-    // display: flex;
     display: none;
     justify-content: center;
     position: absolute;
@@ -26,8 +25,9 @@
     font-size: 1rem;
     z-index: 100;
     .btn{
-        // width: 100%;
-        margin: 0;
+        
+        width: 15rem;
+        margin: auto;
         background-position: top;
     }
     form{
@@ -39,6 +39,7 @@
         input:not(.checkbox){
             width: 100%;
             line-height: 1.5rem;
+            border-radius: 10px;
         }
         label{
             color: #fff;
@@ -83,6 +84,7 @@
         letter-spacing: 1px;
         font-family: var(--Pacifico);
         font-size: 1rem;
+        width: 15rem;
         &:before {
             top: 0;
             left: 0;

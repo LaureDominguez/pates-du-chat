@@ -152,8 +152,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -591,8 +594,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -667,24 +673,6 @@ form input:not(.btn, .file), form form textarea, form form select {
 
 .error {
   background: -webkit-linear-gradient(0deg, rgba(255, 0, 0, 0) 0%, #E25B45 50%, rgba(255, 0, 0, 0) 90%);
-}
-
-.travaux {
-  z-index: 10000;
-  background-color: red;
-  color: #fff;
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  padding: 0 5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-30deg);
-  text-align: center;
-  box-shadow: -4px 13px 15px 7px rgba(0, 0, 0, 0.6);
-}
-.travaux p {
-  font-size: 5rem;
 }
 
 /******************* Media query *******************/
@@ -849,8 +837,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -1620,8 +1611,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -1676,14 +1670,39 @@ form input:not(.btn, .file), form form textarea, form form select {
   width: 90%;
   margin: auto;
 }
-.userProfil .profil {
-  display: flex;
-  flex-direction: column;
+.userProfil form {
+  margin: 1rem;
   padding: 1rem;
+  text-align: center;
   background-color: rgba(255, 255, 255, 0.5254901961);
   border-radius: 10px;
 }
-.userProfil .profil h2 {
+.userProfil form h3, .userProfil form div {
+  margin: 1rem;
+}
+.userProfil form .text-input {
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  box-shadow: inset 4px 4px 15px 0px rgba(216, 216, 216, 0.8980392157), inset 6px 13px 14px -23px rgba(231, 231, 231, 0.8980392157);
+}
+.userProfil form p {
+  font-style: italic;
+}
+.userProfil form .btn {
+  margin: 1rem;
+}
+
+.profil section {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+  margin: 2rem 0;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  border-radius: 10px;
+}
+.profil section h2 {
   border-width: 3px;
   padding: 0.8rem;
   border-style: solid;
@@ -1691,85 +1710,79 @@ form input:not(.btn, .file), form form textarea, form form select {
   border-left: none;
   border-right: none;
 }
-.userProfil .profil h2::before, .userProfil .profil h2::after {
+.profil section h2::before, .profil section h2::after {
   content: none;
 }
-.userProfil .profil h3 {
+.profil section h3 {
   font-size: 1.3rem;
   letter-spacing: 1px;
 }
-.userProfil .profil form {
-  margin: 1rem;
-  padding: 1rem;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.5254901961);
-  border-radius: 10px;
-}
-.userProfil .profil form h3, .userProfil .profil form div {
-  margin: 1rem;
-}
-.userProfil .profil form .text-input {
-  font-size: 1rem;
-  padding: 0.2rem 0.5rem;
-  margin: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.5254901961);
-  box-shadow: inset 4px 4px 15px 0px rgba(216, 216, 216, 0.8980392157), inset 6px 13px 14px -23px rgba(231, 231, 231, 0.8980392157);
-}
-.userProfil .profil form p {
-  font-style: italic;
-}
-.userProfil .profil form .btn {
-  margin: 1rem;
-}
-.userProfil .profil #newsletter label {
+.profil section #newsletter label {
   font-weight: normal;
   text-transform: none;
 }
 
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1023px) {
-  /******************* detail *******************/
+.resetPswd {
+  padding: 0.2rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  border-radius: 10px;
 }
-/* PC */
-@media (min-width: 1024px) {
-  .userProfil {
-    width: 80%;
-    margin: auto;
-  }
-  .userProfil .profil {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.5254901961);
-    border-radius: 10px;
-  }
-  .userProfil .profil section {
-    width: 80%;
-    margin: auto;
-  }
-  .userProfil form {
-    margin: 1rem;
-    padding: 1rem;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.5254901961);
-    border-radius: 10px;
-  }
-  .userProfil form h3, .userProfil form div {
-    margin: 1rem;
-  }
-  .userProfil form .text-input {
-    padding: 0.2rem 0.5rem;
-    background-color: rgba(255, 255, 255, 0.5254901961);
-    box-shadow: inset 4px 4px 15px 0px rgba(216, 216, 216, 0.8980392157), inset 6px 13px 14px -23px rgba(231, 231, 231, 0.8980392157);
-  }
-  .userProfil form p {
-    font-style: italic;
-  }
-  .userProfil #newsletter label {
-    font-weight: normal;
-    text-transform: none;
-  }
+.resetPswd .resetForm {
+  width: 30rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  border-width: 3px;
+  padding: 0.8rem;
+  border-style: solid;
+  border-image: linear-gradient(to right, var(--green), var(--orange)) 1;
+  border-radius: 15px;
 }
+.resetPswd .resetForm .champs {
+  display: flex;
+  flex-direction: column;
+}
+.resetPswd .resetForm .champs div {
+  margin: 0;
+}
+.resetPswd .resetForm label {
+  color: var(--vert);
+}
+.resetPswd .resetForm input {
+  padding: 0.2rem 0.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+}
+.resetPswd .resetForm .btn {
+  width: 8rem;
+  margin: auto;
+}
+.resetPswd .advertise {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.5254901961);
+  border-radius: 10px;
+}
+.resetPswd .advertise ul li {
+  list-style: disc;
+  margin-left: 1rem;
+  line-height: 1.5rem;
+}
+.resetPswd .advertise ul {
+  margin: 0 10%;
+  color: var(--vert);
+}
+.resetPswd .advertise ul li p {
+  color: #000;
+}
+.resetPswd .advertise .souligne, .resetPswd .advertise a {
+  text-decoration: underline;
+  color: var(--vert);
+  font-weight: 600;
+}
+
 /******************* general *******************/
 :root {
   --orange-charte: #f28f18;
@@ -1923,8 +1936,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -2433,8 +2449,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -3002,8 +3021,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -3387,8 +3409,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -3578,7 +3603,8 @@ form input:not(.btn, .file), form form textarea, form form select {
   z-index: 100;
 }
 .log .btn {
-  margin: 0;
+  width: 15rem;
+  margin: auto;
   background-position: top;
 }
 .log form {
@@ -3591,6 +3617,7 @@ form input:not(.btn, .file), form form textarea, form form select {
 .log form input:not(.checkbox) {
   width: 100%;
   line-height: 1.5rem;
+  border-radius: 10px;
 }
 .log form label {
   color: #fff;
@@ -3631,6 +3658,7 @@ form input:not(.btn, .file), form form textarea, form form select {
   letter-spacing: 1px;
   font-family: var(--Pacifico);
   font-size: 1rem;
+  width: 15rem;
 }
 .btn-flip:before {
   top: 0;
@@ -3919,8 +3947,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -4203,8 +4234,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {
@@ -4429,8 +4463,11 @@ strong {
 
 /******************* form *******************/
 form label {
-  text-transform: capitalize;
   font-weight: bold;
+}
+
+form label::first-letter {
+  text-transform: capitalize;
 }
 
 form input:not(.btn, .file), form form textarea, form form select {

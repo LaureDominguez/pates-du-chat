@@ -2,8 +2,11 @@
 
 export function toogleModal() {
 
-    function showElement(element) {
+    function showElementFlex(element) {
         element.style.display = 'flex';
+    }
+    function showElementInline(element) {
+        element.style.display = 'inline-flex';
     }
     function hideElement(element) {
         element.style.display = 'none';
@@ -29,22 +32,22 @@ export function toogleModal() {
             hideElement(burger);
             logWindow.classList.add('bg-animed');
         } else {
-            showElement(modal);
+            showElementFlex(modal);
         }
         
         if (promptLogin) {
-            showElement(logWindow);
+            showElementFlex(logWindow);
         } else if (promptRegister) {
-            showElement(registerWindow);
+            showElementFlex(registerWindow);
         }
     } 
 
     if (promptLogin) {
-        showElement(divLog);
+        showElementFlex(divLog);
     }
 
     if (promptRegister) {
-        showElement(divReg);
+        showElementFlex(divReg);
     }
 
 /////////////////////////////////
@@ -52,15 +55,15 @@ export function toogleModal() {
     if (logWindow || registerWindow) {
         // display login form from large screen
         document.getElementById('login').addEventListener('click', function () {
-            showElement(modal);
-            showElement(logWindow);
+            showElementFlex(modal);
+            showElementFlex(logWindow);
         })
 
         // display login form from mobile
         document.getElementById('login-mobile').addEventListener('click', function () {
             hideElement(menuMobile);
             hideElement(burger);
-            showElement(logWindow);
+            showElementFlex(logWindow);
             logWindow.classList.add('bg-animed');
         })
 
@@ -68,10 +71,10 @@ export function toogleModal() {
         document.getElementById('register').addEventListener('click', function () {
             if (mediaQuery.matches) {
                 hideElement(menuMobile);
-                showElement(registerWindow);
+                showElementFlex(registerWindow);
                 registerWindow.classList.add('bg-animed');
             } else {
-                showElement(registerWindow);
+                showElementFlex(registerWindow);
                 hideElement(logWindow);
             }
         })
@@ -80,11 +83,11 @@ export function toogleModal() {
         document.getElementById('connexion').addEventListener('click', function () {
             if (mediaQuery.matches) {
                 hideElement(registerWindow);
-                showElement(logWindow);
+                showElementFlex(logWindow);
             } else {
-                showElement(modal);
+                showElementFlex(modal);
                 hideElement(registerWindow);
-                showElement(logWindow);
+                showElementFlex(logWindow);
             }
         })
 
@@ -93,7 +96,7 @@ export function toogleModal() {
             if (mediaQuery.matches) {
                 hideElement(registerWindow);
                 hideElement(logWindow);
-                showElement(burger);
+                showElementFlex(burger);
             } else {
                 hideElement(modal);
                 hideElement(logWindow);
@@ -105,7 +108,7 @@ export function toogleModal() {
             if (mediaQuery.matches) {
                 hideElement(registerWindow)
                 hideElement(logWindow);
-                showElement(burger);
+                showElementFlex(burger);
             } else {
                 hideElement(modal);
                 hideElement(registerWindow)
@@ -140,57 +143,79 @@ export function toogleModal() {
         const registerShow = document.getElementById('register-show')
         const registerHide = document.getElementById('register-hide')
         const registerPswd = document.getElementById('pswd_new');
+        const pswdConfirmShow = document.getElementById('confirm-register-show')
+        const pswdConfirmHide = document.getElementById('confirm-register-hide')
         const pswdConfirm = document.getElementById('pswd_confirm_new')
 
         // login form
         const loginShow = document.getElementById('login-show')
         const loginHide = document.getElementById('login-hide')
         const loginPswd = document.getElementById('pswd_log');
-        
 
-        registerShow.style.display = 'inline-flex';
-        registerHide.style.display = 'none';
-        registerPswd.setAttribute('type', 'password');
-        pswdConfirm.setAttribute('type', 'password');
-        
-        loginShow.style.display = 'inline-flex';
-        loginHide.style.display = 'none';
+        // set display at load
+        showElementInline(loginShow);
+        hideElement(loginHide);
         loginPswd.setAttribute('type', 'password');
 
+        showElementInline(registerShow);
+        showElementInline(pswdConfirmShow);
+        hideElement(registerHide);
+        hideElement(pswdConfirmHide);
+
+        registerPswd.setAttribute('type', 'password');
+        pswdConfirm.setAttribute('type', 'password');
+
+        // toogle on register form
         registerShow.addEventListener('click', function () {
             hideElement(registerShow);
-            registerHide.style.display = 'inline-flex';
+            hideElement(pswdConfirmShow);
+            showElementInline(registerHide);
+            showElementInline(pswdConfirmHide);
+            showPassword(registerPswd);
+            showPassword(pswdConfirm);
+        })
+
+        pswdConfirmShow.addEventListener('click', function () {
+            hideElement(registerShow);
+            hideElement(pswdConfirmShow);
+            showElementInline(registerHide);
+            showElementInline(pswdConfirmHide);
             showPassword(registerPswd);
             showPassword(pswdConfirm);
         })
         
         registerHide.addEventListener('click', function () {
             hideElement(registerHide);
-            registerShow.style.display = 'inline-flex';
+            hideElement(pswdConfirmHide);
+            showElementInline(registerShow);
+            showElementInline(pswdConfirmShow);
             hidePassword(registerPswd);
             hidePassword(pswdConfirm);
         })
 
+        pswdConfirmHide.addEventListener('click', function () {
+            hideElement(registerHide);
+            hideElement(pswdConfirmHide);
+            showElementInline(registerShow);
+            showElementInline(pswdConfirmShow);
+            hidePassword(registerPswd);
+            hidePassword(pswdConfirm);
+        })
+
+        // toogle on login form
         loginShow.addEventListener('click', function () {
             hideElement(loginShow);
-            loginHide.style.display = 'inline-flex';
+            showElementInline(loginHide);
             showPassword(loginPswd);
         })
 
         loginHide.addEventListener('click', function () {
             hideElement(loginHide);
-            loginShow.style.display = 'inline-flex';
+            showElementInline(loginShow);
             hidePassword(loginPswd);
         })
-
-        //////////////////////////////////////////////////
-        // Reset password
-        // const reset = document.getElementById('forgot');
-
-        // reset.addEventListener('click', function () {
-        //     alert("C'est balo");
-        //     // route=resetPswd
-        // })
-
     }
+
+
+    
 }

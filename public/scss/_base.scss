@@ -167,8 +167,10 @@ strong{
 /******************* form *******************/
 form{
     label{
-        text-transform: capitalize;
         font-weight: bold;
+        &::first-letter{
+            text-transform: capitalize;
+        }
     }
     input:not(.btn, .file), form textarea, form select{
         border: none;

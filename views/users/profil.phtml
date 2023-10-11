@@ -8,7 +8,7 @@
             <form action="index.php?route=changeNameForm" method="post">
                 <h3>Changer mon nom</h3>
                 <div>
-                    <input type="text" name="name" class="text-input" id="name" value="<?= htmlspecialchars($user['name']); ?>">
+                    <input type="text" name="name" class="text-input" id="name" placeholder="<?= htmlspecialchars($user['name']); ?>">
                     <input type="submit" class="btn" value="Valider">
                 </div>
             </form>
@@ -53,7 +53,7 @@
             <form action="index.php?route=desactivateUser" id="disable" method="post">
                 <h3>Supprimer mon compte</h3>
                 <p>Attention, cette action est irréversible.</p>
-                <input type="submit" class="btn" value="Désactiver">
+                <input type="submit" class="btn" value="Supprimer">
             </form>
         </section>
     </div>
