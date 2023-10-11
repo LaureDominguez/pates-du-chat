@@ -59,9 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 //maj de user db
                 $modelUser->updateUser($newData);
                 //envoi du mail
-                $modelMail->resetPswd($user);
+                $success = $modelMail->resetPswd($user);
 
-                echo json_encode(["success" => true, "message" => "Un lien de réinitialisation a été envoyé à l'adresse email enregistrée"]);
+                if ($success) {
+                        echo json_encode(["success" => true, "message" => "Un lien a été envoyé à l'adresse email enregistrée"]);
+                } else {
+                        echo json_encode(["success" => false, "message" => "Une erreur s'est produite lors de l'envoi de l'email."]);
+                }
         } else {
                 // Aucun cas valide, renvoyer une réponse JSON indiquant l'échec
                 echo json_encode(["success" => false, "message" => "Aucun utilisateur trouvé"]);

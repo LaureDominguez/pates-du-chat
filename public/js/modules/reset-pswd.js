@@ -6,7 +6,7 @@ export function resetPswd() {
     if (resetPswd) {
         // envoie un mail pour reset pswd
         resetPswd.addEventListener('click', function () {
-            console.log("comment ca marche");
+            console.log("pouet");
 
             fetch('index.php?route=resetFetch', {
                 method: 'POST',
@@ -17,7 +17,6 @@ export function resetPswd() {
             .then(response => response.json())
             .then(result => {
                 console.log(result);
-                
 
                 // affiche success ou error dans une div
                 const addDiv = document.createElement('div');
@@ -26,12 +25,12 @@ export function resetPswd() {
                     addDiv.classList.add('success');
                     msg.textContent = result.message;
                     addDiv.appendChild(msg);
-                    // addDiv.style.display = "flex";
+                    addDiv.style.display = "flex";
                 } else {
                     addDiv.classList.add('error');
                     msg.textContent = result.message;
                     addDiv.appendChild(msg);
-                    // addDiv.style.display = "flex";
+                    addDiv.style.display = "flex";
                 }
 
                 document.body.appendChild(addDiv);
