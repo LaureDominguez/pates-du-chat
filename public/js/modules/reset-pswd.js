@@ -34,40 +34,41 @@ export function resetPswd() {
                 }
 
                 document.body.appendChild(addDiv);
-
-                // cln error div
-                // const errorDiv
             })
             .catch(error => {
                 console.error('Erreur lors de la requête Fetch:', error);
             });
         });
     }
-
     //////////////////////////////////////////////////
-    // Show / hide password
-    function showElementInline(element) {
-        element.style.display = 'inline-flex';
-    }
-    function hideElement(element) {
-        element.style.display = 'none';
-    }
-    function showPassword(password) {
-        password.setAttribute('type', 'text');
-    }
-    function hidePassword(password) {
-        password.setAttribute('type', 'password');
-    }
-    
-    const resetShow = document.getElementById('rst-show')
-    const resetHide = document.getElementById('rst-hide')
-    const resetPswdInput = document.getElementById('pswd_rst');
 
-    const pswdConfirmShow = document.getElementById('confirm-rst-show')
-    const pswdConfirmHide = document.getElementById('confirm-rst-hide')
-    const resetPswdConfirmInput = document.getElementById('pswd_confirm_rst')
+    // Reset form
+    const resetForm = document.querySelector('#reset-form');
 
-    if (resetPswdInput) {
+    if (resetForm) {
+        //////////////////////////////////////////////////
+        // Show / hide password on reset form
+        function showElementInline(element) {
+            element.style.display = 'inline-flex';
+        }
+        function hideElement(element) {
+            element.style.display = 'none';
+        }
+        function showPassword(password) {
+            password.setAttribute('type', 'text');
+        }
+        function hidePassword(password) {
+            password.setAttribute('type', 'password');
+        }
+        
+        const resetShow = document.getElementById('rst-show')
+        const resetHide = document.getElementById('rst-hide')
+        const resetPswdInput = document.getElementById('pswd_rst');
+
+        const pswdConfirmShow = document.getElementById('confirm-rst-show')
+        const pswdConfirmHide = document.getElementById('confirm-rst-hide')
+        const resetPswdConfirmInput = document.getElementById('pswd_confirm_rst')
+
         // set display at load
         showElementInline(resetShow);
         showElementInline(pswdConfirmShow);
@@ -114,6 +115,81 @@ export function resetPswd() {
             hidePassword(resetPswdInput);
             hidePassword(resetPswdConfirmInput);
         })
+        //////////////////////////////////////////////////
+
+        // test and submit for reset form
+        resetForm.addEventListener("submit", handleSubmitReset);
+
+        async function handleSubmitReset(e) {
+            e.preventDefault();
+
+            const newData = new FormData(resetForm);
+            const pswd = newData.get('pswd_rst');
+            const confirmPswd = newData.get('pswd_confirm_rst')
+            const errorPswd = document.getElementById('error_rst');
+            const errorConfirm = document.getElementById('error_rst_verif');
+
+            let errorFound = false;
+
+            // Tests
+            const numberMinimal = 8;
+            let errorMsgPswd = '';
+
+            if (!pswd) {
+                errorPswd.style.display = 'block';
+                errorPswd.innerHTML = 'entrer un mot de passe';
+                errorFound = true;
+            } else {
+                errorPswd.style.display = 'none';
+                
+                switch (true) {
+                    case pswd.length < numberMinimal:
+                        errorMsgPswd = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
+                        errorFound = true;
+                        break;
+                    case !/[A-Z]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins une lettre majuscule";
+                        errorFound = true;
+                        break;
+                    case !/[a-z]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins une lettre minuscule";
+                        errorFound = true;
+                        break;
+                    case !/\d/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins un chiffre";
+                        errorFound = true;
+                        break;
+                    case !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins un caractère spécial";
+                        errorFound = true;
+                        break;
+                }
+            }
+
+            // Affiche les erreurs si besoin
+            if (errorMsgPswd) {
+                errorPswd.style.display = 'block';
+                errorPswd.innerHTML = errorMsgPswd;
+            }
+            
+            if (pswd.length > 1 && !confirmPswd) {
+                errorConfirm.style.display = 'block';
+                errorConfirm.innerHTML = 'confirmer le mot de passe';
+                errorFound = true;
+            } else if (pswd !== confirmPswd) {
+                errorConfirm.style.display = 'block';
+                errorConfirm.innerHTML = "Les mots de passe ne correspondent pas";
+                errorFound = true;
+            } else {
+                errorConfirm.style.display = 'none';
+            }
+
+            // Sinon envoi le form
+            if (!errorFound) {
+                console.log("c'est gagné");
+                // resetForm.submit();
+            }
+        }
     }
 
 }

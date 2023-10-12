@@ -15,7 +15,8 @@ export function checkErrors() {
             const pswd_confirm = newData.get('pswd_confirm');
             const errorMail = document.getElementById('error_new_mail')
             const errorPswd = document.getElementById('error_new_pswd')
-            const errorChk = document.getElementById('error_new_verif')
+            const errorConfirm = document.getElementById('error_new_verif')
+
             let errorFound = false;
 
             // Tests
@@ -23,78 +24,67 @@ export function checkErrors() {
                 errorMail.style.display = 'block';
                 errorMail.innerHTML = 'entrer une adresse email';
                 errorFound = true;
-                return;
-            }
-            errorMail.style.display = 'none';
+            } else {
+                errorMail.style.display = 'none';
 
-            if (!isValidEmail(email)) {
-                errorMail.style.display = 'block';
-                errorMail.innerHTML = 'entrer une adresse email valide';
-                errorFound = true;
-                return;
+                if (!isValidEmail(email)) {
+                    errorMail.style.display = 'block';
+                    errorMail.innerHTML = 'entrer une adresse email valide';
+                    errorFound = true;
+                }
             }
-            errorMail.style.display = 'none';
 
             if (!pswd) {
                 errorPswd.style.display = 'block';
                 errorPswd.innerHTML = 'entrer un mot de passe';
                 errorFound = true;
-                return;
-            }
+            } else {
+                errorPswd.style.display = 'none';
 
-            //Tests supplémentaires du mot de passe
-            const numberMinimal = 8;
-            let errorMsgPswd = '';
-            let errorMsgChk = '';
+                //Tests supplémentaires du mot de passe
+                const numberMinimal = 8;
+                let errorMsgPswd = '';
 
-            switch (true) {
-                case pswd.length < numberMinimal:
-                    errorMsgPswd = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
-                    errorFound = true;
-                    break;
-                case !/[A-Z]/.test(pswd):
-                    errorMsgPswd = "Le mot de passe doit inclure au moins une lettre majuscule";
-                    errorFound = true;
-                    break;
-                case !/[a-z]/.test(pswd):
-                    errorMsgPswd = "Le mot de passe doit inclure au moins une lettre minuscule";
-                    errorFound = true;
-                    break;
-                case !/\d/.test(pswd):
-                    errorMsgPswd = "Le mot de passe doit inclure au moins un chiffre";
-                    errorFound = true;
-                    break;
-                case !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]/.test(pswd):
-                    errorMsgPswd = "Le mot de passe doit inclure au moins un caractère spécial";
-                    errorFound = true;
-                    break;
-            }
+                switch (true) {
+                    case pswd.length < numberMinimal:
+                        errorMsgPswd = `Le mot de passe doit contenir au minimum ${numberMinimal} caractères`;
+                        errorFound = true;
+                        break;
+                    case !/[A-Z]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins une lettre majuscule";
+                        errorFound = true;
+                        break;
+                    case !/[a-z]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins une lettre minuscule";
+                        errorFound = true;
+                        break;
+                    case !/\d/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins un chiffre";
+                        errorFound = true;
+                        break;
+                    case !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?\s]/.test(pswd):
+                        errorMsgPswd = "Le mot de passe doit inclure au moins un caractère spécial";
+                        errorFound = true;
+                        break;
+                }
 
-            // Affiche les erreurs si besoin
-            if (errorFound) {
+                // Affiche les erreurs si besoin
                 if (errorMsgPswd) {
                     errorPswd.style.display = 'block';
                     errorPswd.innerHTML = errorMsgPswd;
-                    return;
-                } else if (errorMsgChk) {
-                    errorChk.style.display = 'block';
-                    errorChk.innerHTML = errorMsgChk;
-                    return;
                 }
             }
 
             if (pswd.length > 1 && !pswd_confirm) {
-                errorChk.style.display = 'block';
-                errorChk.innerHTML = 'confirmer le mot de passe';
+                errorConfirm.style.display = 'block';
+                errorConfirm.innerHTML = 'confirmer le mot de passe';
                 errorFound = true;
-                return;
             } else if (pswd !== pswd_confirm) {
-                errorChk.style.display = 'block';
-                errorChk.innerHTML = "Les mots de passe ne correspondent pas";
+                errorConfirm.style.display = 'block';
+                errorConfirm.innerHTML = "Les mots de passe ne correspondent pas";
                 errorFound = true;
-                return;
             } else {
-                errorChk.style.display = 'none';
+                errorConfirm.style.display = 'none';
             }
 
             // Sinon envoi le form

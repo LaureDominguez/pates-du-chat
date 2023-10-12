@@ -9,13 +9,16 @@
     text-align: center;
     color: #fff;
     text-align: center;
+    
+    line-height: 1.5rem;
+    font-size: 0.7rem;
     padding: 0.2rem;
     display: none;
     z-index: 5000;
     justify-content: center;
 }
 
-.success, .error:not(.log .error){
+.success, .error:not(.log .error, .resetPswd .error){
     position: fixed;
     top: 1rem;
 }

@@ -656,13 +656,15 @@ form input:not(.btn, .file), form form textarea, form form select {
   text-align: center;
   color: #fff;
   text-align: center;
+  line-height: 1.5rem;
+  font-size: 0.7rem;
   padding: 0.2rem;
   display: none;
   z-index: 5000;
   justify-content: center;
 }
 
-.success, .error:not(.log .error) {
+.success, .error:not(.log .error, .resetPswd .error) {
   position: fixed;
   top: 1rem;
 }
@@ -3711,7 +3713,6 @@ form input:not(.btn, .file), form form textarea, form form select {
     align-items: center;
     margin: auto;
     position: relative;
-    font-size: 0.7rem;
     padding: 1rem;
     border-radius: 10px;
     background-color: var(--orange);
@@ -4079,235 +4080,6 @@ form input:not(.btn, .file), form form textarea, form form select {
   }
   100% {
     transform: scale(1);
-  }
-}
-/******************* general *******************/
-:root {
-  --orange-charte: #f28f18;
-  --orange-select: rgb(255, 207, 149);
-  --orange-clair: rgb(255, 242, 225);
-  --vert: #004f12;
-  --red: #E25B45;
-  --orange: #FF8357;
-  --yellow: #FAC172;
-  --blue: #89D5C9;
-  --green: #ADC865;
-  --Pacifico: "Pacifico", cursive;
-}
-
-body * {
-  box-sizing: border-box;
-  user-select: none;
-}
-
-body {
-  margin: 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
-  background: -webkit-linear-gradient(217deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(127deg, #FAC172, rgba(0, 255, 0, 0) 70.71%), -webkit-linear-gradient(336deg, #ADC865, rgba(0, 255, 0, 0) 70.71%);
-}
-
-main {
-  margin: 0 auto;
-  min-height: 98vh;
-}
-
-footer {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.141));
-  display: flex;
-  font-size: 0.8rem;
-  padding: 0.2vh;
-  color: white;
-  justify-content: center;
-}
-
-footer a {
-  padding: 0 0.3rem;
-}
-
-hr {
-  margin: 3rem 10rem;
-}
-
-/******************* Fonts *******************/
-@font-face {
-  font-family: "Pacifico";
-  src: url("../font/Pacifico-Regular.ttf") format("truetype");
-}
-h1, h2, h3, h4, h5, nav, .btn {
-  font-family: "Pacifico", cursive;
-  color: var(--vert);
-  text-align: center;
-  text-wrap: balance;
-}
-
-h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, h5::first-letter, nav::first-letter, .btn::first-letter {
-  text-transform: capitalize;
-}
-
-*::first-letter {
-  text-transform: capitalize;
-}
-
-h1 {
-  font-size: 2.5rem;
-  line-height: 5rem;
-  margin-bottom: 2rem;
-}
-
-h2 {
-  font-size: 1.6rem;
-  line-height: 3rem;
-  letter-spacing: 2px;
-  margin: 0 1rem;
-  overflow: hidden;
-  text-align: center;
-  border-width: 1px;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  border-style: solid;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-  border-image: linear-gradient(to right, transparent, var(--vert), transparent) 1;
-}
-
-h2:nth-child(1)::first-letter {
-  text-transform: capitalize;
-}
-
-h3 {
-  font-size: 1.5rem;
-  line-height: 2.5rem;
-}
-
-h4 {
-  font-size: 1.3rem;
-}
-
-a, a:active, a:hover {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-ul, li, a {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-strong {
-  font-weight: unset;
-}
-
-.optionnal {
-  font-size: smaller;
-  font-weight: lighter;
-}
-
-/******************* bouttons *******************/
-.btn {
-  padding: 0.3rem;
-  margin: auto;
-  border: 1px solid;
-  font-size: 1rem;
-  line-height: 1.8rem;
-  border-radius: 20px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  background-size: 0%;
-  background-repeat: no-repeat;
-  background-image: -webkit-linear-gradient(117deg, #E25B45, rgba(255, 0, 0, 0) 70.71%), -webkit-linear-gradient(67deg, #FAC172, rgba(0, 255, 0, 0) 70.71%);
-}
-
-.btn:hover:not(#forgot) {
-  color: #fff;
-  background-size: 100%;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-/******************* form *******************/
-form label {
-  font-weight: bold;
-}
-
-form label::first-letter {
-  text-transform: capitalize;
-}
-
-form input:not(.btn, .file), form form textarea, form form select {
-  border: none;
-  border-radius: 5px;
-}
-
-/******************* hidden *******************/
-.hidden {
-  display: none !important;
-}
-
-/******************* noScroll *******************/
-.noScroll {
-  overflow: hidden;
-  position: fixed;
-}
-
-/******************* Media query *******************/
-/* Tablettes */
-/* PC */
-@media (min-width: 1024px) {
-  .container {
-    padding: 3.3rem 0;
-  }
-  .content {
-    border-radius: 10px;
-  }
-  h2 {
-    border: none;
-  }
-  h2::before, h2::after {
-    background-color: var(--vert);
-    content: "";
-    display: inline-block;
-    height: 1px;
-    position: relative;
-    vertical-align: middle;
-    width: 10%;
-  }
-  h2::before {
-    right: 1rem;
-    margin-left: -10%;
-  }
-  h2::after {
-    left: 1rem;
-    margin-right: -10%;
-  }
-}
-/******************* user *******************/
-#spinner {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: #fff;
-  animation: spin 1s ease-in-out infinite;
-  -webkit-animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(360deg);
   }
 }
 /******************* general *******************/
