@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productsModel->updateProduct(['img' => null, 'id' => $productID]); // Mettez à jour la colonne "img" avec NULL
 
         // Répondez avec un JSON pour indiquer le succès
-        echo json_encode(['success' => true]);
+        echo json_encode(['success' =>true, 'message' => "L'image a bien été supprimée"]);
 } else {
         // Répondez avec une erreur si la requête n'est pas de type POST
-        echo json_encode(['success' => false, 'error' => 'Méthode non autorisée']);
+        echo json_encode(['success' => false, 'message' => "Une erreur s'est produite lors de la suppression de l'image"]);
 }

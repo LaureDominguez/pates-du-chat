@@ -160,13 +160,9 @@ class UsersController{
         $model = new Users();
 
         $userExist = $model->checkEmail($email);
+
         if (!$userExist) {
             $errors[] = "Utilisateur inconnu";
-            $_SESSION['visitor']['flash_message'] = [
-                'error' => $errors
-            ];
-            header('Location: index.php?route=home');
-            exit();
         } else {
             $user = $model->getUser($userExist['id']);
             $current_time = time();
@@ -187,17 +183,21 @@ class UsersController{
                 ];
 
                 $success = "Votre compte est correctement activé";
-                
-                $_SESSION['visitor']['flash_message'] = [
-                    'success' => $success
-                ];
 
             } else {
                 $errors[] = "Le lien a expiré";
+            }
+
+            if (count($errors) == 0){
+                $_SESSION['visitor']['flash_message'] = [
+                    'success' => $success
+                ];
+            } else {
                 $_SESSION['visitor']['flash_message'] = [
                     'error' => $errors
                 ];
             }
+
             header('Location: index.php?route=home');
             exit();
         }
@@ -253,52 +253,64 @@ class UsersController{
     }
 
     public function resetForm($token, $email)
-    { //affiche le formulaire de reset
+    { //affiche le formulaire pour reset le mdp
         $model = new Users();
         $userExist = $model->checkEmail($email);
+        $errors = [];
 
         if($userExist) {
             $user = $model->getUser($userExist['id']);
             $current_time = time();
+            
             if ($token === $user['token'] && $current_time <= $user['expiration']) {
-                var_dump("youpi");
-                die;
+
                 $template = "users/resetForm.phtml";
+                $description = "Réinitialisation du mot de passe";
                 include_once 'views/layout.phtml';
+            } else {
+                $errors[] = "Le lien a expiré";
             }
+        } else {
+            $errors[] = "Utilisateur inconnu";
         }
-
-        $errors = "Le lien a expiré";
-        $_SESSION['visitor']['flash_message'] = [
-            'error' => $errors
-        ];
-        // var_dump($_SESSION);
-        $template = "users/resetForm.phtml";
-        $description = "Réinitialisation du mot de passe";
-
-        // $template = "home.phtml";
-        include_once 'views/layout.phtml';
-
+        if (!empty($errors)) {
+            $_SESSION['visitor']['flash_message'] = [
+                'error' => $errors
+            ];
+            header('Location: index.php?route=home');
+            exit();
+        }
     }
 
     public function resetPswd()
-    { //reset du password de user
+    { // envoi du reset du password de user
         $errors = [];
         $success = "";
 
-        if (isset($_POST['pswd'])) {
-            $restUser = [
-                    'pswd' => password_hash(trim($_POST['pswd']), PASSWORD_DEFAULT)
-                ];
+        if (isset($_POST['pswd_rst'])) {
+            $email = trim($_POST['email_rst']);
 
+            // on retrouve les info de l'utilisateur
             $model = new Users();
-            $model->updateUser($restUser);
+            $userId = $model->checkEmail($email)['id'];
+
+            $resetUser = [
+                'id' => $userId,
+                'email' => $email,
+                'pswd' => password_hash(trim($_POST['pswd_rst']), PASSWORD_DEFAULT)
+            ];
+
+            // update user
+            $model->updateUser($resetUser);
+
+            // on recup info à jour de user pour le connecter
+            $user = $model->getUser($userId);
 
             $_SESSION['user'] = [
-                'id' => $restUser['id'],
-                'email' => $restUser['email'],
-                'name' => $restUser['name'],
-                'role' => $restUser['role']
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'name' => $user['name'],
+                'role' => $user['role']
             ];
 
             $success = "Votre mot de passe a bien été modifié !";
@@ -309,6 +321,7 @@ class UsersController{
             header('Location: index.php?route=myAccount');
             exit();
         }
+        $errors[] = "Une erreur est survenu lors de la modification de votre mot de passe";
         $_SESSION['visitor']['flash_message'] = [
             'error' => $errors
         ];

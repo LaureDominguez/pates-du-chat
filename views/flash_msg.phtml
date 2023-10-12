@@ -4,10 +4,14 @@
     </div>
 <?php endif; ?>
 
-<?php if (isset($_SESSION['visitor']['flash_message']['errors'])) : ?>
+<?php if (isset($_SESSION['visitor']['flash_message']['error'])) : ?>
     <div class="error">
-        <?php foreach ($_SESSION['visitor']['flash_message']['errors'] as $error) : ?>
-            <?= $error; ?>
-        <?php endforeach; ?>
+        <?php if (is_array($_SESSION['visitor']['flash_message']['error'])) : ?>
+            <?php foreach ($_SESSION['visitor']['flash_message']['error'] as $error) : ?>
+                <?= $error; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <?= $_SESSION['visitor']['flash_message']['error']; ?>
+        <?php endif; ?>
     </div>
 <?php endif; ?>

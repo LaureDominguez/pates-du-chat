@@ -17,10 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = "";
 
         $token = bin2hex(random_bytes(16));
-        $expiration = time() + 600; // le lien expire en 10 minutes
+        $expiration = time() + 6000; // le lien expire en 10 minutes
 
         // mdp oublié
-        if (!empty($input['email'])){
+        if (!empty($input['email'])){                
                 $email = $input['email'];
                 // on verifie que l'email existe dans la db
                 $userExist = $modelUser->checkEmail($email);
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ];
                         //maj de user db
                         $modelUser->updateUser($newData);
+                        $user = $modelUser->getUser($userExist['id']);
                         //envoi du mail
                         $success = $modelMail->resetPswd($user);
 
@@ -49,15 +50,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // changement de mdp depuis mon compte
         } elseif (isset($_SESSION['user'])) {
-                $user = $modelUser->getUser($_SESSION['user']['id']);
+                $id = $_SESSION['user']['id'];
+                $user = $modelUser->getUser($id);
+
                 
                 $newData = [
-                                'id' => $user['id'],
+                                'id' => $id,
                                 'token' => $token,
                                 'expiration' => $expiration
                         ];
                 //maj de user db
                 $modelUser->updateUser($newData);
+                $user = $modelUser->getUser($id);
+
                 //envoi du mail
                 $success = $modelMail->resetPswd($user);
 

@@ -1,12 +1,12 @@
 <section class="userProfil resetPswd">
     <h2>Réinitialisation du mot de passe</h2>
 
-    <form action="index.php?route=resetPswdForm" method="post" id="reset-form">
+    <form action="index.php?route=submitResetPswd" method="post" id="reset-form">
         <h3>Choisissez un nouveau mot de passe</h3>
         <div class="resetForm">
             <div class="champs">
                 <label for="email_rst">email</label>
-                <input type="email" id="email_rst" value="<?= htmlspecialchars($user['email']); ?>" disabled>
+                <input type="email" name="email_rst" id="email_rst" value="<?= htmlspecialchars($user['email']); ?>" readonly>
             </div>
 
             <div class="champs password">

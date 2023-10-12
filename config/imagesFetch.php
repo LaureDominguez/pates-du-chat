@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
         $imgName = str_replace(' ', '-', $_FILES['img']['name']);
         $imagePath = $uploadDir . basename($imgName);
 
-
-
         //les données de l'image
         $imgFile = $_FILES['img']['tmp_name'];
 
@@ -25,11 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
                 $currentProductData = $modelProduct->getOneProduct($productId);
                 $currentImg = $currentProductData['image'];
                 $currentImgID = $currentProductData['imgId'];
-
-                // var_dump($currentImg);
-                // var_dump($currentImgID);
-
-                // die;
 
                 // //on vérifie s'il y a déjà une image d'enregistré (si c'est une update)
                 if (isset($currentImg)) {
@@ -40,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
                         }
                         //et de la table image
                         $modelGalery->deleteImage($currentImgID);
-
                 }
 
                 if (move_uploaded_file($imgFile, $imagePath)) {
@@ -66,14 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&& isset($_FILES['img'])) {
 
                         $modelProduct->updateProduct($newData);
 
-                        
-                        // $success = "L'image a bien été enregistrée !";
-                        // $_SESSION['visitor']['flash_message'] = [
-                        //         'success' => $success
-                        // ];
-                        echo json_encode(["success" => true]);
+                        echo json_encode(["success" => true, "message" => "L'image a bien été enregistrée !"]);
                 } else {
-                        echo json_encode(["success" => false]);
+                        echo json_encode(["success" => false, "message" => "Une erreur s'est produite lors de l'enregistrement de l'image"]);
                 }
         }
 } 

@@ -6,8 +6,6 @@ export function resetPswd() {
     if (resetPswd) {
         // envoie un mail pour reset pswd
         resetPswd.addEventListener('click', function () {
-            console.log("pouet");
-
             fetch('index.php?route=resetFetch', {
                 method: 'POST',
                 headers: {
@@ -124,6 +122,8 @@ export function resetPswd() {
             e.preventDefault();
 
             const newData = new FormData(resetForm);
+            const email = newData.get('email_rst')
+            console.log(email);
             const pswd = newData.get('pswd_rst');
             const confirmPswd = newData.get('pswd_confirm_rst')
             const errorPswd = document.getElementById('error_rst');
@@ -186,8 +186,7 @@ export function resetPswd() {
 
             // Sinon envoi le form
             if (!errorFound) {
-                console.log("c'est gagné");
-                // resetForm.submit();
+                resetForm.submit();
             }
         }
     }

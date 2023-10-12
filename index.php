@@ -117,10 +117,10 @@ if (array_key_exists('route', $_GET)):
             $controller->resetForm($token, $email);
             break;
 
-        // case 'resetPswdForm':
-        //     $controller = new Controllers\UsersController();
-        //     $controller->resetPswd();
-        //     break;
+        case 'submitResetPswd':
+            $controller = new Controllers\UsersController();
+            $controller->resetPswd();
+            break;
 
         case 'desactivateUser':
             $controller = new Controllers\UsersController();
